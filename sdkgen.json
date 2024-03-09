@@ -2,7 +2,7 @@
   "type": "client-python",
   "require": {
     "fusio/sdk": {
-      "target": "./src"
+      "target": "./src/sdk"
     }
   }
 }
