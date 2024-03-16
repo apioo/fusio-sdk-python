@@ -25,7 +25,7 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/consumer/plan/$plan_id<[0-9]+>", pathParams)
+            url = self.parser.url("/consumer/plan/$plan_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 

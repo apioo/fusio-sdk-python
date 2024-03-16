@@ -28,7 +28,7 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 
@@ -60,7 +60,7 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", pathParams)
 
             headers = {}
             headers["Content-Type"] = "application/json"
@@ -95,7 +95,7 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 

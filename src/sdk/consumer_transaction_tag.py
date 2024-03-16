@@ -25,7 +25,7 @@ class ConsumerTransactionTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/consumer/transaction/$transaction_id<[0-9]+>", pathParams)
+            url = self.parser.url("/consumer/transaction/$transaction_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 

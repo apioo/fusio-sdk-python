@@ -63,7 +63,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 
@@ -95,7 +95,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
             headers["Content-Type"] = "application/json"
@@ -130,7 +130,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 
