@@ -16,8 +16,8 @@ from consumer_page_tag import ConsumerPageTag
 from consumer_payment_tag import ConsumerPaymentTag
 from consumer_plan_tag import ConsumerPlanTag
 from consumer_scope_tag import ConsumerScopeTag
-from consumer_subscription_tag import ConsumerSubscriptionTag
 from consumer_transaction_tag import ConsumerTransactionTag
+from consumer_webhook_tag import ConsumerWebhookTag
 
 class ConsumerTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
@@ -45,8 +45,8 @@ class ConsumerTag(sdkgen.TagAbstract):
         )
     pass
 
-    def subscription(self) -> ConsumerSubscriptionTag:
-        return ConsumerSubscriptionTag(
+    def webhook(self) -> ConsumerWebhookTag:
+        return ConsumerWebhookTag(
             this.http_client,
             this.parser
         )
