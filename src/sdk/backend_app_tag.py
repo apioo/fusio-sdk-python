@@ -9,8 +9,6 @@ import sdkgen
 from backend_app import BackendApp
 from backend_app_collection import BackendAppCollection
 from backend_app_create import BackendAppCreate
-from backend_app_token import BackendAppToken
-from backend_app_token_collection import BackendAppTokenCollection
 from backend_app_update import BackendAppUpdate
 from common_message import CommonMessage
 from common_message_exception import CommonMessageException
@@ -63,7 +61,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 
@@ -95,7 +93,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
             headers["Content-Type"] = "application/json"
@@ -130,7 +128,7 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             queryStructNames = [];
 
-            url = self.parser.url("/backend/app/$app_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", pathParams)
 
             headers = {}
 
@@ -202,73 +200,6 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendAppCollection.from_json(response.content)
-
-            if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
-            if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
-
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-    pass
-
-    def get_token(self, token_id: str) -> BackendAppToken:
-        try:
-            pathParams = {}
-            pathParams["token_id"] = token_id
-
-            queryParams = {}
-
-            queryStructNames = [];
-
-            url = self.parser.url("/backend/app/token/$token_id<[0-9]+>", pathParams)
-
-            headers = {}
-
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
-
-            if response.status_code >= 200 and response.status_code < 300:
-                return BackendAppToken.from_json(response.content)
-
-            if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
-            if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
-            if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
-
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-    pass
-
-    def get_all_tokens(self, start_index: int, count: int, search: str, _from: str, to: str, app_id: int, user_id: int, status: int, scope: str, ip: str) -> BackendAppTokenCollection:
-        try:
-            pathParams = {}
-
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["status"] = status
-            queryParams["scope"] = scope
-            queryParams["ip"] = ip
-
-            queryStructNames = [];
-
-            url = self.parser.url("/backend/app/token", pathParams)
-
-            headers = {}
-
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
-
-            if response.status_code >= 200 and response.status_code < 300:
-                return BackendAppTokenCollection.from_json(response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(CommonMessage.from_json(response.content))

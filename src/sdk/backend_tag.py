@@ -30,13 +30,22 @@ from backend_scope_tag import BackendScopeTag
 from backend_sdk_tag import BackendSdkTag
 from backend_statistic_tag import BackendStatisticTag
 from backend_tenant_tag import BackendTenantTag
+from backend_token_tag import BackendTokenTag
 from backend_transaction_tag import BackendTransactionTag
 from backend_trash_tag import BackendTrashTag
 from backend_user_tag import BackendUserTag
+from backend_webhook_tag import BackendWebhookTag
 
 class BackendTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+    pass
+
+    def webhook(self) -> BackendWebhookTag:
+        return BackendWebhookTag(
+            this.http_client,
+            this.parser
+        )
     pass
 
     def user(self) -> BackendUserTag:
@@ -55,6 +64,13 @@ class BackendTag(sdkgen.TagAbstract):
 
     def transaction(self) -> BackendTransactionTag:
         return BackendTransactionTag(
+            this.http_client,
+            this.parser
+        )
+    pass
+
+    def token(self) -> BackendTokenTag:
+        return BackendTokenTag(
             this.http_client,
             this.parser
         )

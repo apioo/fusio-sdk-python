@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 from typing import List
 from common_metadata import CommonMetadata
-from backend_app_token import BackendAppToken
+from backend_token import BackendToken
 @dataclass_json
 @dataclass
 class BackendApp:
@@ -22,4 +22,4 @@ class BackendApp:
     metadata: CommonMetadata
     date: datetime.datetime
     scopes: List[str]
-    tokens: List[BackendAppToken]
+    tokens: List[BackendToken]
