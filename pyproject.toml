@@ -15,8 +15,7 @@ classifiers = [
     "Topic :: Software Development :: Code Generators",
 ]
 dependencies = [
-    "requests",
-    "dataclasses-json",
+    "sdkgen-client",
 ]
 dynamic = ["version"]
 
