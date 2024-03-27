@@ -15,9 +15,8 @@ classifiers = [
     "Topic :: Software Development :: Code Generators",
 ]
 dependencies = [
-    "sdkgen-client",
+    "sdkgen-client == 0.1.0",
 ]
-dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://github.com/apioo/fusio-sdk-python"
@@ -29,3 +28,4 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["sdk"]
+package-dir = {"" = "src"}
