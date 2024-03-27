@@ -12,7 +12,7 @@ class BackendToken:
     id: int
     status: int
     name: str
-    scope: List[str]
+    scopes: List[str]
     ip: str
     expire: datetime.datetime
     date: datetime.datetime
