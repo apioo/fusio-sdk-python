@@ -10,5 +10,5 @@ from typing import List
 @dataclass
 class ConsumerTokenCreate:
     name: str
-    scope: List[str]
+    scopes: List[str]
     expire: datetime.datetime
