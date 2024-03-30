@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from common_message_exception import CommonMessageException
 from consumer_payment_checkout_request import ConsumerPaymentCheckoutRequest
@@ -15,65 +16,68 @@ from consumer_payment_portal_response import ConsumerPaymentPortalResponse
 class ConsumerPaymentTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def checkout(self, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
         try:
-            pathParams = {}
-            pathParams["provider"] = provider
+            path_params = {}
+            path_params["provider"] = provider
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/payment/:provider/checkout", pathParams)
+            url = self.parser.url("/consumer/payment/:provider/checkout", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPaymentCheckoutResponse.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def portal(self, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
         try:
-            pathParams = {}
-            pathParams["provider"] = provider
+            path_params = {}
+            path_params["provider"] = provider
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/payment/:provider/portal", pathParams)
+            url = self.parser.url("/consumer/payment/:provider/portal", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPaymentPortalResponse.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

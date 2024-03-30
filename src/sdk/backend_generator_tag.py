@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from backend_generator_index_providers import BackendGeneratorIndexProviders
 from backend_generator_provider import BackendGeneratorProvider
@@ -17,120 +18,125 @@ from common_message_exception import CommonMessageException
 class BackendGeneratorTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def get_changelog(self, provider: str, payload: BackendGeneratorProviderConfig) -> BackendGeneratorProviderChangelog:
         try:
-            pathParams = {}
-            pathParams["provider"] = provider
+            path_params = {}
+            path_params["provider"] = provider
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/generator/:provider", pathParams)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendGeneratorProviderChangelog.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def execute_provider(self, provider: str, payload: BackendGeneratorProvider) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["provider"] = provider
+            path_params = {}
+            path_params["provider"] = provider
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/generator/:provider", pathParams)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_form(self, provider: str) -> CommonFormContainer:
         try:
-            pathParams = {}
-            pathParams["provider"] = provider
+            path_params = {}
+            path_params["provider"] = provider
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/generator/:provider", pathParams)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonFormContainer.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
-    def get_classes(self, ) -> BackendGeneratorIndexProviders:
+    def get_classes(self) -> BackendGeneratorIndexProviders:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/generator", pathParams)
+            url = self.parser.url("/backend/generator", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendGeneratorIndexProviders.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

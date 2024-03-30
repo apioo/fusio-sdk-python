@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from common_message import CommonMessage
 from common_message_exception import CommonMessageException
@@ -12,71 +13,74 @@ from common_message_exception import CommonMessageException
 class BackendTenantTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def remove(self, tenant_id: str) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["tenant_id"] = tenant_id
+            path_params = {}
+            path_params["tenant_id"] = tenant_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/tenant/:tenant_id", pathParams)
+            url = self.parser.url("/backend/tenant/:tenant_id", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def setup(self, tenant_id: str) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["tenant_id"] = tenant_id
+            path_params = {}
+            path_params["tenant_id"] = tenant_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/tenant/:tenant_id", pathParams)
+            url = self.parser.url("/backend/tenant/:tenant_id", path_params)
 
             headers = {}
 
-            response = self.http_client.put(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

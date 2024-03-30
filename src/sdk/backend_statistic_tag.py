@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from backend_statistic_chart import BackendStatisticChart
 from backend_statistic_count import BackendStatisticCount
@@ -13,417 +14,428 @@ from common_message_exception import CommonMessageException
 class BackendStatisticTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def get_used_points(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/used_points", pathParams)
+            url = self.parser.url("/backend/statistic/used_points", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_time_per_operation(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/time_per_operation", pathParams)
+            url = self.parser.url("/backend/statistic/time_per_operation", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_time_average(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/time_average", pathParams)
+            url = self.parser.url("/backend/statistic/time_average", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_most_used_operations(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/most_used_operations", pathParams)
+            url = self.parser.url("/backend/statistic/most_used_operations", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_most_used_apps(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/most_used_apps", pathParams)
+            url = self.parser.url("/backend/statistic/most_used_apps", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_issued_tokens(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/issued_tokens", pathParams)
+            url = self.parser.url("/backend/statistic/issued_tokens", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_incoming_transactions(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/incoming_transactions", pathParams)
+            url = self.parser.url("/backend/statistic/incoming_transactions", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_incoming_requests(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/incoming_requests", pathParams)
+            url = self.parser.url("/backend/statistic/incoming_requests", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_errors_per_operation(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/errors_per_operation", pathParams)
+            url = self.parser.url("/backend/statistic/errors_per_operation", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticChart.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_count_requests(self, start_index: int, count: int, search: str, _from: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticCount:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["operationId"] = operation_id
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["ip"] = ip
-            queryParams["userAgent"] = user_agent
-            queryParams["method"] = method
-            queryParams["path"] = path
-            queryParams["header"] = header
-            queryParams["body"] = body
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/statistic/count_requests", pathParams)
+            url = self.parser.url("/backend/statistic/count_requests", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendStatisticCount.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

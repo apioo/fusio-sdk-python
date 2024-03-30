@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from backend_action import BackendAction
 from backend_action_collection import BackendActionCollection
@@ -20,250 +21,259 @@ from common_message_exception import CommonMessageException
 class BackendActionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def delete(self, action_id: str) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["action_id"] = action_id
+            path_params = {}
+            path_params["action_id"] = action_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", pathParams)
+            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def update(self, action_id: str, payload: BackendActionUpdate) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["action_id"] = action_id
+            path_params = {}
+            path_params["action_id"] = action_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", pathParams)
+            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 400:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get(self, action_id: str) -> BackendAction:
         try:
-            pathParams = {}
-            pathParams["action_id"] = action_id
+            path_params = {}
+            path_params["action_id"] = action_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", pathParams)
+            url = self.parser.url("/backend/action/$action_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendAction.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def execute(self, action_id: str, payload: BackendActionExecuteRequest) -> BackendActionExecuteResponse:
         try:
-            pathParams = {}
-            pathParams["action_id"] = action_id
+            path_params = {}
+            path_params["action_id"] = action_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/execute/:action_id", pathParams)
+            url = self.parser.url("/backend/action/execute/:action_id", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendActionExecuteResponse.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_form(self, _class: str) -> CommonFormContainer:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["class"] = _class
+            query_params = {}
+            query_params["class"] = _class
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/form", pathParams)
+            url = self.parser.url("/backend/action/form", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonFormContainer.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
-    def get_classes(self, ) -> BackendActionIndex:
+    def get_classes(self) -> BackendActionIndex:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action/list", pathParams)
+            url = self.parser.url("/backend/action/list", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendActionIndex.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def create(self, payload: BackendActionCreate) -> CommonMessage:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action", pathParams)
+            url = self.parser.url("/backend/action", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
             if response.status_code == 400:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendActionCollection:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/action", pathParams)
+            url = self.parser.url("/backend/action", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendActionCollection.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

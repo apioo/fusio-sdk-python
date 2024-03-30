@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from common_message_exception import CommonMessageException
 from passthru import Passthru
@@ -16,130 +17,136 @@ from system_schema import SystemSchema
 class SystemMetaTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def get_schema(self, name: str) -> SystemSchema:
         try:
-            pathParams = {}
-            pathParams["name"] = name
+            path_params = {}
+            path_params["name"] = name
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/schema/:name", pathParams)
+            url = self.parser.url("/system/schema/:name", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemSchema.from_json(response.content)
 
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
-    def get_routes(self, ) -> SystemRoute:
+    def get_routes(self) -> SystemRoute:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/route", pathParams)
+            url = self.parser.url("/system/route", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemRoute.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
-    def get_health(self, ) -> SystemHealthCheck:
+    def get_health(self) -> SystemHealthCheck:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/health", pathParams)
+            url = self.parser.url("/system/health", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemHealthCheck.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_debug(self, payload: Passthru) -> Passthru:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/debug", pathParams)
+            url = self.parser.url("/system/debug", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=this.parser.query(queryParams, queryStructNames), data=payload.to_json())
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
-    def get_about(self, ) -> SystemAbout:
+    def get_about(self) -> SystemAbout:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/about", pathParams)
+            url = self.parser.url("/system/about", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemAbout.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from common_message_exception import CommonMessageException
 from consumer_page import ConsumerPage
@@ -13,69 +14,72 @@ from consumer_page_collection import ConsumerPageCollection
 class ConsumerPageTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def get(self, page_id: str) -> ConsumerPage:
         try:
-            pathParams = {}
-            pathParams["page_id"] = page_id
+            path_params = {}
+            path_params["page_id"] = page_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/page/:page_id", pathParams)
+            url = self.parser.url("/consumer/page/:page_id", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPage.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerPageCollection:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/page", pathParams)
+            url = self.parser.url("/consumer/page", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPageCollection.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

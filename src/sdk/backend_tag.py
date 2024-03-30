@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from backend_account_tag import BackendAccountTag
 from backend_action_tag import BackendActionTag
@@ -39,6 +40,7 @@ from backend_webhook_tag import BackendWebhookTag
 class BackendTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
     def webhook(self) -> BackendWebhookTag:
@@ -46,6 +48,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def user(self) -> BackendUserTag:
@@ -53,6 +56,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def trash(self) -> BackendTrashTag:
@@ -60,6 +64,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def transaction(self) -> BackendTransactionTag:
@@ -67,6 +72,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def token(self) -> BackendTokenTag:
@@ -74,6 +80,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def tenant(self) -> BackendTenantTag:
@@ -81,6 +88,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def statistic(self) -> BackendStatisticTag:
@@ -88,6 +96,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def sdk(self) -> BackendSdkTag:
@@ -95,6 +104,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def scope(self) -> BackendScopeTag:
@@ -102,6 +112,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def schema(self) -> BackendSchemaTag:
@@ -109,6 +120,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def operation(self) -> BackendOperationTag:
@@ -116,6 +128,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def role(self) -> BackendRoleTag:
@@ -123,6 +136,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def rate(self) -> BackendRateTag:
@@ -130,6 +144,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def plan(self) -> BackendPlanTag:
@@ -137,6 +152,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def page(self) -> BackendPageTag:
@@ -144,6 +160,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def marketplace(self) -> BackendMarketplaceTag:
@@ -151,6 +168,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def log(self) -> BackendLogTag:
@@ -158,6 +176,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def identity(self) -> BackendIdentityTag:
@@ -165,6 +184,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def generator(self) -> BackendGeneratorTag:
@@ -172,6 +192,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def event(self) -> BackendEventTag:
@@ -179,6 +200,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def dashboard(self) -> BackendDashboardTag:
@@ -186,6 +208,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def cronjob(self) -> BackendCronjobTag:
@@ -193,6 +216,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def connection(self) -> BackendConnectionTag:
@@ -200,6 +224,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def config(self) -> BackendConfigTag:
@@ -207,6 +232,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def category(self) -> BackendCategoryTag:
@@ -214,6 +240,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def audit(self) -> BackendAuditTag:
@@ -221,6 +248,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def app(self) -> BackendAppTag:
@@ -228,6 +256,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def action(self) -> BackendActionTag:
@@ -235,6 +264,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def account(self) -> BackendAccountTag:
@@ -242,6 +272,7 @@ class BackendTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
 

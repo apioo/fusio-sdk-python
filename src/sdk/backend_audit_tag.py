@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from backend_audit import BackendAudit
 from backend_audit_collection import BackendAuditCollection
@@ -13,76 +14,79 @@ from common_message_exception import CommonMessageException
 class BackendAuditTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def get(self, audit_id: str) -> BackendAudit:
         try:
-            pathParams = {}
-            pathParams["audit_id"] = audit_id
+            path_params = {}
+            path_params["audit_id"] = audit_id
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/audit/$audit_id<[0-9]+>", pathParams)
+            url = self.parser.url("/backend/audit/$audit_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendAudit.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 404:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 410:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_all(self, start_index: int, count: int, search: str, _from: str, to: str, app_id: int, user_id: int, event: str, ip: str, message: str) -> BackendAuditCollection:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["startIndex"] = start_index
-            queryParams["count"] = count
-            queryParams["search"] = search
-            queryParams["from"] = _from
-            queryParams["to"] = to
-            queryParams["appId"] = app_id
-            queryParams["userId"] = user_id
-            queryParams["event"] = event
-            queryParams["ip"] = ip
-            queryParams["message"] = message
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = _from
+            query_params["to"] = to
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["event"] = event
+            query_params["ip"] = ip
+            query_params["message"] = message
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/backend/audit", pathParams)
+            url = self.parser.url("/backend/audit", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendAuditCollection.from_json(response.content)
 
             if response.status_code == 401:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

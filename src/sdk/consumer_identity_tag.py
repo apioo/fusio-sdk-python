@@ -5,6 +5,7 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
 from common_message_exception import CommonMessageException
 from consumer_identity_collection import ConsumerIdentityCollection
@@ -13,91 +14,95 @@ from passthru import Passthru
 class ConsumerIdentityTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def redirect(self, identity: str) -> Passthru:
         try:
-            pathParams = {}
-            pathParams["identity"] = identity
+            path_params = {}
+            path_params["identity"] = identity
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/identity/:identity/redirect", pathParams)
+            url = self.parser.url("/consumer/identity/:identity/redirect", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.from_json(response.content)
 
             if response.status_code == 400:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def exchange(self, identity: str) -> Passthru:
         try:
-            pathParams = {}
-            pathParams["identity"] = identity
+            path_params = {}
+            path_params["identity"] = identity
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/identity/:identity/exchange", pathParams)
+            url = self.parser.url("/consumer/identity/:identity/exchange", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.from_json(response.content)
 
             if response.status_code == 400:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
     def get_all(self, app_id: int) -> ConsumerIdentityCollection:
         try:
-            pathParams = {}
+            path_params = {}
 
-            queryParams = {}
-            queryParams["appId"] = app_id
+            query_params = {}
+            query_params["appId"] = app_id
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/consumer/identity", pathParams)
+            url = self.parser.url("/consumer/identity", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerIdentityCollection.from_json(response.content)
 
             if response.status_code == 400:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
-                raise CommonMessageException(CommonMessage.from_json(response.content))
+                raise CommonMessageException(response.content)
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 
