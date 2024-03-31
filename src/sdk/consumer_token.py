@@ -14,5 +14,5 @@ class ConsumerToken:
     name: str = field(metadata=config(field_name="name"))
     scopes: List[str] = field(metadata=config(field_name="scopes"))
     ip: str = field(metadata=config(field_name="ip"))
-    expire: datetime.datetime = field(metadata=config(field_name="expire"))
+    expire: datetime.date = field(metadata=config(field_name="expire"))
     date: datetime.datetime = field(metadata=config(field_name="date"))

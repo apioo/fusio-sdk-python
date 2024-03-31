@@ -9,4 +9,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass
 class ConsumerTokenUpdate:
     name: str = field(metadata=config(field_name="name"))
-    expire: datetime.datetime = field(metadata=config(field_name="expire"))
+    expire: datetime.date = field(metadata=config(field_name="expire"))

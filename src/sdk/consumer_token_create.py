@@ -11,4 +11,4 @@ from typing import List
 class ConsumerTokenCreate:
     name: str = field(metadata=config(field_name="name"))
     scopes: List[str] = field(metadata=config(field_name="scopes"))
-    expire: datetime.datetime = field(metadata=config(field_name="expire"))
+    expire: datetime.date = field(metadata=config(field_name="expire"))

@@ -14,4 +14,5 @@ class ConsumerPlan:
     description: str = field(metadata=config(field_name="description"))
     price: float = field(metadata=config(field_name="price"))
     points: int = field(metadata=config(field_name="points"))
+    period: int = field(metadata=config(field_name="period"))
     metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
