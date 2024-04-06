@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from consumer_page import ConsumerPage
+from .common_collection import CommonCollection
+from .consumer_page import ConsumerPage
 @dataclass_json
 @dataclass
 class ConsumerPageCollection(CommonCollection[ConsumerPage]):

@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_page import BackendPage
-from backend_page_collection import BackendPageCollection
-from backend_page_create import BackendPageCreate
-from backend_page_update import BackendPageUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_page import BackendPage
+from .backend_page_collection import BackendPageCollection
+from .backend_page_create import BackendPageCreate
+from .backend_page_update import BackendPageUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendPageTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

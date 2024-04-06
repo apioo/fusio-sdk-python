@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from system_schema_type_schema import SystemSchemaTypeSchema
-from system_schema_form import SystemSchemaForm
+from .system_schema_type_schema import SystemSchemaTypeSchema
+from .system_schema_form import SystemSchemaForm
 @dataclass_json
 @dataclass
 class SystemSchema:

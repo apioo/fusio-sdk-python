@@ -6,7 +6,7 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from consumer_scope import ConsumerScope
+from .consumer_scope import ConsumerScope
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeMeta:

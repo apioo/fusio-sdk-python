@@ -7,16 +7,16 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_connection import BackendConnection
-from backend_connection_collection import BackendConnectionCollection
-from backend_connection_create import BackendConnectionCreate
-from backend_connection_index import BackendConnectionIndex
-from backend_connection_introspection_entities import BackendConnectionIntrospectionEntities
-from backend_connection_introspection_entity import BackendConnectionIntrospectionEntity
-from backend_connection_update import BackendConnectionUpdate
-from common_form_container import CommonFormContainer
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_connection import BackendConnection
+from .backend_connection_collection import BackendConnectionCollection
+from .backend_connection_create import BackendConnectionCreate
+from .backend_connection_index import BackendConnectionIndex
+from .backend_connection_introspection_entities import BackendConnectionIntrospectionEntities
+from .backend_connection_introspection_entity import BackendConnectionIntrospectionEntity
+from .backend_connection_update import BackendConnectionUpdate
+from .common_form_container import CommonFormContainer
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendConnectionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

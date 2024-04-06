@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_action_execute_response_headers import BackendActionExecuteResponseHeaders
-from backend_action_execute_response_body import BackendActionExecuteResponseBody
+from .backend_action_execute_response_headers import BackendActionExecuteResponseHeaders
+from .backend_action_execute_response_body import BackendActionExecuteResponseBody
 @dataclass_json
 @dataclass
 class BackendActionExecuteResponse:

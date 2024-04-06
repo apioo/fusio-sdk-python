@@ -6,7 +6,7 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_statistic_chart_data import BackendStatisticChartData
+from .backend_statistic_chart_data import BackendStatisticChartData
 @dataclass_json
 @dataclass
 class BackendStatisticChart:

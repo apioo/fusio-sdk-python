@@ -6,8 +6,8 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from system_about_apps import SystemAboutApps
-from system_about_link import SystemAboutLink
+from .system_about_apps import SystemAboutApps
+from .system_about_link import SystemAboutLink
 @dataclass_json
 @dataclass
 class SystemAbout:

@@ -7,10 +7,10 @@ from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
 from typing import Union
-from common_form_element_input import CommonFormElementInput
-from common_form_element_select import CommonFormElementSelect
-from common_form_element_tag import CommonFormElementTag
-from common_form_element_text_area import CommonFormElementTextArea
+from .common_form_element_input import CommonFormElementInput
+from .common_form_element_select import CommonFormElementSelect
+from .common_form_element_tag import CommonFormElementTag
+from .common_form_element_text_area import CommonFormElementTextArea
 @dataclass_json
 @dataclass
 class CommonFormContainer:

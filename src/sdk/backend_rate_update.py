@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_rate import BackendRate
+from .backend_rate import BackendRate
 @dataclass_json
 @dataclass
 class BackendRateUpdate(BackendRate):

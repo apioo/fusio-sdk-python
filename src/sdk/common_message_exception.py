@@ -5,7 +5,7 @@ https://sdkgen.app
 
 import sdkgen
 
-from common_message import CommonMessage
+from .common_message import CommonMessage
 
 class CommonMessageException(sdkgen.KnownStatusCodeException):
     def __init__(self, payload):

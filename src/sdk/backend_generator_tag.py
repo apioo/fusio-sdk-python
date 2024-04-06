@@ -7,13 +7,13 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_generator_index_providers import BackendGeneratorIndexProviders
-from backend_generator_provider import BackendGeneratorProvider
-from backend_generator_provider_changelog import BackendGeneratorProviderChangelog
-from backend_generator_provider_config import BackendGeneratorProviderConfig
-from common_form_container import CommonFormContainer
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_generator_index_providers import BackendGeneratorIndexProviders
+from .backend_generator_provider import BackendGeneratorProvider
+from .backend_generator_provider_changelog import BackendGeneratorProviderChangelog
+from .backend_generator_provider_config import BackendGeneratorProviderConfig
+from .common_form_container import CommonFormContainer
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendGeneratorTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

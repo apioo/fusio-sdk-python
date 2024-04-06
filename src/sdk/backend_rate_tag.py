@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_rate import BackendRate
-from backend_rate_collection import BackendRateCollection
-from backend_rate_create import BackendRateCreate
-from backend_rate_update import BackendRateUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_rate import BackendRate
+from .backend_rate_collection import BackendRateCollection
+from .backend_rate_create import BackendRateCreate
+from .backend_rate_update import BackendRateUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendRateTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

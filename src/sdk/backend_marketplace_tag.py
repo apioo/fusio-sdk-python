@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_marketplace_collection import BackendMarketplaceCollection
-from backend_marketplace_install import BackendMarketplaceInstall
-from backend_marketplace_local_app import BackendMarketplaceLocalApp
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_marketplace_collection import BackendMarketplaceCollection
+from .backend_marketplace_install import BackendMarketplaceInstall
+from .backend_marketplace_local_app import BackendMarketplaceLocalApp
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendMarketplaceTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

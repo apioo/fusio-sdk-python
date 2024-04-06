@@ -7,10 +7,10 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_sdk_generate import BackendSdkGenerate
-from backend_sdk_response import BackendSdkResponse
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_sdk_generate import BackendSdkGenerate
+from .backend_sdk_response import BackendSdkResponse
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendSdkTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

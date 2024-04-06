@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from system_route_path import SystemRoutePath
+from .system_route_path import SystemRoutePath
 @dataclass_json
 @dataclass
 class SystemRoute:

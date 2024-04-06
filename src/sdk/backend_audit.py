@@ -5,9 +5,9 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_app import BackendApp
-from backend_user import BackendUser
-from backend_audit_object import BackendAuditObject
+from .backend_app import BackendApp
+from .backend_user import BackendUser
+from .backend_audit_object import BackendAuditObject
 @dataclass_json
 @dataclass
 class BackendAudit:

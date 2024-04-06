@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_transaction import BackendTransaction
-from backend_transaction_collection import BackendTransactionCollection
-from common_message_exception import CommonMessageException
+from .backend_transaction import BackendTransaction
+from .backend_transaction_collection import BackendTransactionCollection
+from .common_message_exception import CommonMessageException
 
 class BackendTransactionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

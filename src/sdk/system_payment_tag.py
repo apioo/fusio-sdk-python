@@ -7,8 +7,8 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class SystemPaymentTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

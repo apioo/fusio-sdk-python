@@ -5,9 +5,9 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_schema_source import BackendSchemaSource
-from backend_schema_form import BackendSchemaForm
-from common_metadata import CommonMetadata
+from .backend_schema_source import BackendSchemaSource
+from .backend_schema_form import BackendSchemaForm
+from .common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendSchema:

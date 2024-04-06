@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_user import BackendUser
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_user import BackendUser
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class AuthorizationTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

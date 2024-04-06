@@ -7,13 +7,13 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
-from consumer_token import ConsumerToken
-from consumer_token_access_token import ConsumerTokenAccessToken
-from consumer_token_collection import ConsumerTokenCollection
-from consumer_token_create import ConsumerTokenCreate
-from consumer_token_update import ConsumerTokenUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
+from .consumer_token import ConsumerToken
+from .consumer_token_access_token import ConsumerTokenAccessToken
+from .consumer_token_collection import ConsumerTokenCollection
+from .consumer_token_create import ConsumerTokenCreate
+from .consumer_token_update import ConsumerTokenUpdate
 
 class ConsumerTokenTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_operation import BackendOperation
-from backend_operation_collection import BackendOperationCollection
-from backend_operation_create import BackendOperationCreate
-from backend_operation_update import BackendOperationUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_operation import BackendOperation
+from .backend_operation_collection import BackendOperationCollection
+from .backend_operation_create import BackendOperationCreate
+from .backend_operation_update import BackendOperationUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendOperationTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

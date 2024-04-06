@@ -7,7 +7,7 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message import CommonMessage
+from .common_message import CommonMessage
 
 class SystemConnectionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

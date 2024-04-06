@@ -7,13 +7,13 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from passthru import Passthru
-from system_about import SystemAbout
-from system_health_check import SystemHealthCheck
-from system_o_auth_configuration import SystemOAuthConfiguration
-from system_route import SystemRoute
-from system_schema import SystemSchema
+from .common_message_exception import CommonMessageException
+from .passthru import Passthru
+from .system_about import SystemAbout
+from .system_health_check import SystemHealthCheck
+from .system_o_auth_configuration import SystemOAuthConfiguration
+from .system_route import SystemRoute
+from .system_schema import SystemSchema
 
 class SystemMetaTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

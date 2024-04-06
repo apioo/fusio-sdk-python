@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from consumer_identity import ConsumerIdentity
+from .common_collection import CommonCollection
+from .consumer_identity import ConsumerIdentity
 @dataclass_json
 @dataclass
 class ConsumerIdentityCollection(CommonCollection[ConsumerIdentity]):

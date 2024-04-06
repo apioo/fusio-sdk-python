@@ -6,6 +6,6 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import Dict
-from backend_operation_schema import BackendOperationSchema
+from .backend_operation_schema import BackendOperationSchema
 class BackendOperationParameters(Dict[str, BackendOperationSchema]):
     pass

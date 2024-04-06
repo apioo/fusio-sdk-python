@@ -6,7 +6,7 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_connection_introspection_entity_row import BackendConnectionIntrospectionEntityRow
+from .backend_connection_introspection_entity_row import BackendConnectionIntrospectionEntityRow
 @dataclass_json
 @dataclass
 class BackendConnectionIntrospectionEntity:

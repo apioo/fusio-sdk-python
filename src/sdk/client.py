@@ -7,10 +7,10 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from authorization_tag import AuthorizationTag
-from system_tag import SystemTag
-from consumer_tag import ConsumerTag
-from backend_tag import BackendTag
+from .authorization_tag import AuthorizationTag
+from .system_tag import SystemTag
+from .consumer_tag import ConsumerTag
+from .backend_tag import BackendTag
 
 class Client(sdkgen.ClientAbstract):
     def __init__(self, base_url: str, credentials: sdkgen.CredentialsInterface):

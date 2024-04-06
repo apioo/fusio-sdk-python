@@ -7,14 +7,14 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_identity import BackendIdentity
-from backend_identity_collection import BackendIdentityCollection
-from backend_identity_create import BackendIdentityCreate
-from backend_identity_index import BackendIdentityIndex
-from backend_identity_update import BackendIdentityUpdate
-from common_form_container import CommonFormContainer
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_identity import BackendIdentity
+from .backend_identity_collection import BackendIdentityCollection
+from .backend_identity_create import BackendIdentityCreate
+from .backend_identity_index import BackendIdentityIndex
+from .backend_identity_update import BackendIdentityUpdate
+from .common_form_container import CommonFormContainer
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendIdentityTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

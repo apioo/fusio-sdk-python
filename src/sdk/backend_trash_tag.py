@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_trash_data_collection import BackendTrashDataCollection
-from backend_trash_restore import BackendTrashRestore
-from backend_trash_types import BackendTrashTypes
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_trash_data_collection import BackendTrashDataCollection
+from .backend_trash_restore import BackendTrashRestore
+from .backend_trash_types import BackendTrashTypes
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendTrashTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

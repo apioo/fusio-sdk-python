@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_log import BackendLog
-from backend_log_collection import BackendLogCollection
-from backend_log_error import BackendLogError
-from backend_log_error_collection import BackendLogErrorCollection
-from common_message_exception import CommonMessageException
+from .backend_log import BackendLog
+from .backend_log_collection import BackendLogCollection
+from .backend_log_error import BackendLogError
+from .backend_log_error_collection import BackendLogErrorCollection
+from .common_message_exception import CommonMessageException
 
 class BackendLogTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

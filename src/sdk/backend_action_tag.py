@@ -7,16 +7,16 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_action import BackendAction
-from backend_action_collection import BackendActionCollection
-from backend_action_create import BackendActionCreate
-from backend_action_execute_request import BackendActionExecuteRequest
-from backend_action_execute_response import BackendActionExecuteResponse
-from backend_action_index import BackendActionIndex
-from backend_action_update import BackendActionUpdate
-from common_form_container import CommonFormContainer
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_action import BackendAction
+from .backend_action_collection import BackendActionCollection
+from .backend_action_create import BackendActionCreate
+from .backend_action_execute_request import BackendActionExecuteRequest
+from .backend_action_execute_response import BackendActionExecuteResponse
+from .backend_action_index import BackendActionIndex
+from .backend_action_update import BackendActionUpdate
+from .common_form_container import CommonFormContainer
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendActionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

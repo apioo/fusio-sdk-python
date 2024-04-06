@@ -7,20 +7,20 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_account_change_password import BackendAccountChangePassword
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
-from consumer_authorize_meta import ConsumerAuthorizeMeta
-from consumer_authorize_request import ConsumerAuthorizeRequest
-from consumer_authorize_response import ConsumerAuthorizeResponse
-from consumer_user_account import ConsumerUserAccount
-from consumer_user_activate import ConsumerUserActivate
-from consumer_user_email import ConsumerUserEmail
-from consumer_user_jwt import ConsumerUserJWT
-from consumer_user_login import ConsumerUserLogin
-from consumer_user_password_reset import ConsumerUserPasswordReset
-from consumer_user_refresh import ConsumerUserRefresh
-from consumer_user_register import ConsumerUserRegister
+from .backend_account_change_password import BackendAccountChangePassword
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
+from .consumer_authorize_meta import ConsumerAuthorizeMeta
+from .consumer_authorize_request import ConsumerAuthorizeRequest
+from .consumer_authorize_response import ConsumerAuthorizeResponse
+from .consumer_user_account import ConsumerUserAccount
+from .consumer_user_activate import ConsumerUserActivate
+from .consumer_user_email import ConsumerUserEmail
+from .consumer_user_jwt import ConsumerUserJWT
+from .consumer_user_login import ConsumerUserLogin
+from .consumer_user_password_reset import ConsumerUserPasswordReset
+from .consumer_user_refresh import ConsumerUserRefresh
+from .consumer_user_register import ConsumerUserRegister
 
 class ConsumerAccountTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

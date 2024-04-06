@@ -6,7 +6,7 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_generator_index_provider import BackendGeneratorIndexProvider
+from .backend_generator_index_provider import BackendGeneratorIndexProvider
 @dataclass_json
 @dataclass
 class BackendGeneratorIndexProviders:

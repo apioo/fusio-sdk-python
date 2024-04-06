@@ -5,11 +5,11 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_statistic_chart import BackendStatisticChart
-from backend_dashboard_apps import BackendDashboardApps
-from backend_dashboard_requests import BackendDashboardRequests
-from backend_dashboard_users import BackendDashboardUsers
-from backend_dashboard_transactions import BackendDashboardTransactions
+from .backend_statistic_chart import BackendStatisticChart
+from .backend_dashboard_apps import BackendDashboardApps
+from .backend_dashboard_requests import BackendDashboardRequests
+from .backend_dashboard_users import BackendDashboardUsers
+from .backend_dashboard_transactions import BackendDashboardTransactions
 @dataclass_json
 @dataclass
 class BackendDashboard:

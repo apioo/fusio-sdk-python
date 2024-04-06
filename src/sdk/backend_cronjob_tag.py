@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_cronjob import BackendCronjob
-from backend_cronjob_collection import BackendCronjobCollection
-from backend_cronjob_create import BackendCronjobCreate
-from backend_cronjob_update import BackendCronjobUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_cronjob import BackendCronjob
+from .backend_cronjob_collection import BackendCronjobCollection
+from .backend_cronjob_create import BackendCronjobCreate
+from .backend_cronjob_update import BackendCronjobUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendCronjobTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

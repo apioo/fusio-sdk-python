@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_config import BackendConfig
+from .backend_config import BackendConfig
 @dataclass_json
 @dataclass
 class BackendConfigUpdate(BackendConfig):

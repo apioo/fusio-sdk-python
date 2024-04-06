@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from system_connection_tag import SystemConnectionTag
-from system_meta_tag import SystemMetaTag
-from system_payment_tag import SystemPaymentTag
+from .system_connection_tag import SystemConnectionTag
+from .system_meta_tag import SystemMetaTag
+from .system_payment_tag import SystemPaymentTag
 
 class SystemTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

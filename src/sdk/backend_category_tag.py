@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_category import BackendCategory
-from backend_category_collection import BackendCategoryCollection
-from backend_category_create import BackendCategoryCreate
-from backend_category_update import BackendCategoryUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_category import BackendCategory
+from .backend_category_collection import BackendCategoryCollection
+from .backend_category_create import BackendCategoryCreate
+from .backend_category_update import BackendCategoryUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendCategoryTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

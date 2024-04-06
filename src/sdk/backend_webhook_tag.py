@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_webhook import BackendWebhook
-from backend_webhook_collection import BackendWebhookCollection
-from backend_webhook_create import BackendWebhookCreate
-from backend_webhook_update import BackendWebhookUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_webhook import BackendWebhook
+from .backend_webhook_collection import BackendWebhookCollection
+from .backend_webhook_create import BackendWebhookCreate
+from .backend_webhook_update import BackendWebhookUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendWebhookTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

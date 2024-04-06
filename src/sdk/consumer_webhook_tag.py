@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
-from consumer_webhook import ConsumerWebhook
-from consumer_webhook_collection import ConsumerWebhookCollection
-from consumer_webhook_create import ConsumerWebhookCreate
-from consumer_webhook_update import ConsumerWebhookUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
+from .consumer_webhook import ConsumerWebhook
+from .consumer_webhook_collection import ConsumerWebhookCollection
+from .consumer_webhook_create import ConsumerWebhookCreate
+from .consumer_webhook_update import ConsumerWebhookUpdate
 
 class ConsumerWebhookTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

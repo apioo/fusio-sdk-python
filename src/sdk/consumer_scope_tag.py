@@ -7,8 +7,8 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from consumer_scope_collection import ConsumerScopeCollection
+from .common_message_exception import CommonMessageException
+from .consumer_scope_collection import ConsumerScopeCollection
 
 class ConsumerScopeTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_role import BackendRole
-from backend_role_collection import BackendRoleCollection
-from backend_role_create import BackendRoleCreate
-from backend_role_update import BackendRoleUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_role import BackendRole
+from .backend_role_collection import BackendRoleCollection
+from .backend_role_create import BackendRoleCreate
+from .backend_role_update import BackendRoleUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendRoleTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

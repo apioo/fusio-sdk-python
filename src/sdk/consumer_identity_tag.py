@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from consumer_identity_collection import ConsumerIdentityCollection
-from passthru import Passthru
+from .common_message_exception import CommonMessageException
+from .consumer_identity_collection import ConsumerIdentityCollection
+from .passthru import Passthru
 
 class ConsumerIdentityTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

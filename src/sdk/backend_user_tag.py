@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_user import BackendUser
-from backend_user_collection import BackendUserCollection
-from backend_user_create import BackendUserCreate
-from backend_user_update import BackendUserUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_user import BackendUser
+from .backend_user_collection import BackendUserCollection
+from .backend_user_create import BackendUserCreate
+from .backend_user_update import BackendUserUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendUserTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

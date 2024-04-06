@@ -7,8 +7,8 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_dashboard import BackendDashboard
-from common_message_exception import CommonMessageException
+from .backend_dashboard import BackendDashboard
+from .common_message_exception import CommonMessageException
 
 class BackendDashboardTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

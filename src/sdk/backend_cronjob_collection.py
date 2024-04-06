@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from backend_cronjob import BackendCronjob
+from .common_collection import CommonCollection
+from .backend_cronjob import BackendCronjob
 @dataclass_json
 @dataclass
 class BackendCronjobCollection(CommonCollection[BackendCronjob]):

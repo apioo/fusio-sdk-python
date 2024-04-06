@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from consumer_transaction import ConsumerTransaction
-from consumer_transaction_collection import ConsumerTransactionCollection
+from .common_message_exception import CommonMessageException
+from .consumer_transaction import ConsumerTransaction
+from .consumer_transaction_collection import ConsumerTransactionCollection
 
 class ConsumerTransactionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

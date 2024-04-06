@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_token import BackendToken
-from backend_token_collection import BackendTokenCollection
-from common_message_exception import CommonMessageException
+from .backend_token import BackendToken
+from .backend_token_collection import BackendTokenCollection
+from .common_message_exception import CommonMessageException
 
 class BackendTokenTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

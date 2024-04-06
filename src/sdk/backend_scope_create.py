@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_scope import BackendScope
+from .backend_scope import BackendScope
 @dataclass_json
 @dataclass
 class BackendScopeCreate(BackendScope):

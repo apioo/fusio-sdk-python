@@ -7,13 +7,13 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_scope import BackendScope
-from backend_scope_categories import BackendScopeCategories
-from backend_scope_collection import BackendScopeCollection
-from backend_scope_create import BackendScopeCreate
-from backend_scope_update import BackendScopeUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_scope import BackendScope
+from .backend_scope_categories import BackendScopeCategories
+from .backend_scope_collection import BackendScopeCollection
+from .backend_scope_create import BackendScopeCreate
+from .backend_scope_update import BackendScopeUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendScopeTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

@@ -7,12 +7,12 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
-from consumer_app import ConsumerApp
-from consumer_app_collection import ConsumerAppCollection
-from consumer_app_create import ConsumerAppCreate
-from consumer_app_update import ConsumerAppUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
+from .consumer_app import ConsumerApp
+from .consumer_app_collection import ConsumerAppCollection
+from .consumer_app_create import ConsumerAppCreate
+from .consumer_app_update import ConsumerAppUpdate
 
 class ConsumerAppTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

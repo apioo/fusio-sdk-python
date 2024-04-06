@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_schema import BackendSchema
+from .backend_schema import BackendSchema
 @dataclass_json
 @dataclass
 class BackendSchemaCreate(BackendSchema):

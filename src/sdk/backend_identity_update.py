@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_identity import BackendIdentity
+from .backend_identity import BackendIdentity
 @dataclass_json
 @dataclass
 class BackendIdentityUpdate(BackendIdentity):

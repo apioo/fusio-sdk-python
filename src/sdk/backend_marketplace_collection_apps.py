@@ -6,6 +6,6 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import Dict
-from backend_marketplace_remote_app import BackendMarketplaceRemoteApp
+from .backend_marketplace_remote_app import BackendMarketplaceRemoteApp
 class BackendMarketplaceCollectionApps(Dict[str, BackendMarketplaceRemoteApp]):
     pass

@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_statistic_chart import BackendStatisticChart
-from backend_statistic_count import BackendStatisticCount
-from common_message_exception import CommonMessageException
+from .backend_statistic_chart import BackendStatisticChart
+from .backend_statistic_count import BackendStatisticCount
+from .common_message_exception import CommonMessageException
 
 class BackendStatisticTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

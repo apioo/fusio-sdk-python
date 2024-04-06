@@ -6,9 +6,9 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_operation_parameters import BackendOperationParameters
-from backend_operation_throws import BackendOperationThrows
-from common_metadata import CommonMetadata
+from .backend_operation_parameters import BackendOperationParameters
+from .backend_operation_throws import BackendOperationThrows
+from .common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendOperation:

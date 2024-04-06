@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_action_execute_request_body import BackendActionExecuteRequestBody
+from .backend_action_execute_request_body import BackendActionExecuteRequestBody
 @dataclass_json
 @dataclass
 class BackendActionExecuteRequest:

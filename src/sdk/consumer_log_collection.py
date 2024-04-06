@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from consumer_log import ConsumerLog
+from .common_collection import CommonCollection
+from .consumer_log import ConsumerLog
 @dataclass_json
 @dataclass
 class ConsumerLogCollection(CommonCollection[ConsumerLog]):

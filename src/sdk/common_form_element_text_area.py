@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_form_element import CommonFormElement
+from .common_form_element import CommonFormElement
 @dataclass_json
 @dataclass
 class CommonFormElementTextArea(CommonFormElement):

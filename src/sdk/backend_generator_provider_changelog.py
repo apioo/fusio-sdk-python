@@ -6,9 +6,9 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_schema import BackendSchema
-from backend_action import BackendAction
-from backend_operation import BackendOperation
+from .backend_schema import BackendSchema
+from .backend_action import BackendAction
+from .backend_operation import BackendOperation
 @dataclass_json
 @dataclass
 class BackendGeneratorProviderChangelog:

@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_user import BackendUser
+from .backend_user import BackendUser
 @dataclass_json
 @dataclass
 class BackendUserCreate(BackendUser):

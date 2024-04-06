@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_account_change_password import BackendAccountChangePassword
-from backend_user import BackendUser
-from backend_user_update import BackendUserUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_account_change_password import BackendAccountChangePassword
+from .backend_user import BackendUser
+from .backend_user_update import BackendUserUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendAccountTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

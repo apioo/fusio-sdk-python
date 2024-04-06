@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_event import BackendEvent
+from .backend_event import BackendEvent
 @dataclass_json
 @dataclass
 class BackendEventCreate(BackendEvent):

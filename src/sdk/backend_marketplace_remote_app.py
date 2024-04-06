@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_marketplace_app import BackendMarketplaceApp
+from .backend_marketplace_app import BackendMarketplaceApp
 @dataclass_json
 @dataclass
 class BackendMarketplaceRemoteApp(BackendMarketplaceApp):

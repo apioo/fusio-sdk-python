@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from backend_log import BackendLog
+from .common_collection import CommonCollection
+from .backend_log import BackendLog
 @dataclass_json
 @dataclass
 class BackendLogCollection(CommonCollection[BackendLog]):

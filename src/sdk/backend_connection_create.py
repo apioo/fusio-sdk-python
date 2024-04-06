@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_connection import BackendConnection
+from .backend_connection import BackendConnection
 @dataclass_json
 @dataclass
 class BackendConnectionCreate(BackendConnection):

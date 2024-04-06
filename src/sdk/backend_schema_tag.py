@@ -7,14 +7,14 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_schema import BackendSchema
-from backend_schema_collection import BackendSchemaCollection
-from backend_schema_create import BackendSchemaCreate
-from backend_schema_form import BackendSchemaForm
-from backend_schema_preview_response import BackendSchemaPreviewResponse
-from backend_schema_update import BackendSchemaUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_schema import BackendSchema
+from .backend_schema_collection import BackendSchemaCollection
+from .backend_schema_create import BackendSchemaCreate
+from .backend_schema_form import BackendSchemaForm
+from .backend_schema_preview_response import BackendSchemaPreviewResponse
+from .backend_schema_update import BackendSchemaUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendSchemaTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

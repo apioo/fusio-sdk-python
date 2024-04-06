@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from backend_config import BackendConfig
-from backend_config_collection import BackendConfigCollection
-from backend_config_update import BackendConfigUpdate
-from common_message import CommonMessage
-from common_message_exception import CommonMessageException
+from .backend_config import BackendConfig
+from .backend_config_collection import BackendConfigCollection
+from .backend_config_update import BackendConfigUpdate
+from .common_message import CommonMessage
+from .common_message_exception import CommonMessageException
 
 class BackendConfigTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

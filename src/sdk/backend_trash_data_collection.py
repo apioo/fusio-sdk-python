@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from backend_trash_data import BackendTrashData
+from .common_collection import CommonCollection
+from .backend_trash_data import BackendTrashData
 @dataclass_json
 @dataclass
 class BackendTrashDataCollection(CommonCollection[BackendTrashData]):

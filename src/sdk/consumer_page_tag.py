@@ -7,9 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from consumer_page import ConsumerPage
-from consumer_page_collection import ConsumerPageCollection
+from .common_message_exception import CommonMessageException
+from .consumer_page import ConsumerPage
+from .consumer_page_collection import ConsumerPageCollection
 
 class ConsumerPageTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

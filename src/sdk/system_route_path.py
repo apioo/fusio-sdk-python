@@ -6,6 +6,6 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import Dict
-from system_route_method import SystemRouteMethod
+from .system_route_method import SystemRouteMethod
 class SystemRoutePath(Dict[str, SystemRouteMethod]):
     pass

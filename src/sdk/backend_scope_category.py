@@ -6,7 +6,7 @@ https://sdkgen.app
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
 from typing import List
-from backend_scope_category_scope import BackendScopeCategoryScope
+from .backend_scope_category_scope import BackendScopeCategoryScope
 @dataclass_json
 @dataclass
 class BackendScopeCategory:

@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from consumer_authorize_response_token import ConsumerAuthorizeResponseToken
+from .consumer_authorize_response_token import ConsumerAuthorizeResponseToken
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeResponse:

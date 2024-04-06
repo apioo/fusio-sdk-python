@@ -7,11 +7,11 @@ import requests
 import sdkgen
 from requests import RequestException
 
-from common_message_exception import CommonMessageException
-from consumer_payment_checkout_request import ConsumerPaymentCheckoutRequest
-from consumer_payment_checkout_response import ConsumerPaymentCheckoutResponse
-from consumer_payment_portal_request import ConsumerPaymentPortalRequest
-from consumer_payment_portal_response import ConsumerPaymentPortalResponse
+from .common_message_exception import CommonMessageException
+from .consumer_payment_checkout_request import ConsumerPaymentCheckoutRequest
+from .consumer_payment_checkout_response import ConsumerPaymentCheckoutResponse
+from .consumer_payment_portal_request import ConsumerPaymentPortalRequest
+from .consumer_payment_portal_response import ConsumerPaymentPortalResponse
 
 class ConsumerPaymentTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):

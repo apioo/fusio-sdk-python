@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from backend_sdk_types import BackendSdkTypes
+from .backend_sdk_types import BackendSdkTypes
 @dataclass_json
 @dataclass
 class BackendSdkResponse:

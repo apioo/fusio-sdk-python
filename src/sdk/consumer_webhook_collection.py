@@ -5,8 +5,8 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
-from common_collection import CommonCollection
-from consumer_webhook import ConsumerWebhook
+from .common_collection import CommonCollection
+from .consumer_webhook import ConsumerWebhook
 @dataclass_json
 @dataclass
 class ConsumerWebhookCollection(CommonCollection[ConsumerWebhook]):
