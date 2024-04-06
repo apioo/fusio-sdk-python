@@ -5,6 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
+import datetime
 @dataclass_json
 @dataclass
 class BackendDashboardTransaction:

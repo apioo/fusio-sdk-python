@@ -5,6 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
+import datetime
 from .backend_app import BackendApp
 from .backend_user import BackendUser
 from .backend_audit_object import BackendAuditObject

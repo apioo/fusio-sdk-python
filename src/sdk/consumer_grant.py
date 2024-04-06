@@ -5,6 +5,7 @@ https://sdkgen.app
 
 from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json, config
+import datetime
 from .consumer_app import ConsumerApp
 @dataclass_json
 @dataclass

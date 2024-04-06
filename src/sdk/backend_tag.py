@@ -11,6 +11,7 @@ from .backend_account_tag import BackendAccountTag
 from .backend_action_tag import BackendActionTag
 from .backend_app_tag import BackendAppTag
 from .backend_audit_tag import BackendAuditTag
+from .backend_backup_tag import BackendBackupTag
 from .backend_category_tag import BackendCategoryTag
 from .backend_config_tag import BackendConfigTag
 from .backend_connection_tag import BackendConnectionTag
@@ -189,6 +190,14 @@ class BackendTag(sdkgen.TagAbstract):
 
     def generator(self) -> BackendGeneratorTag:
         return BackendGeneratorTag(
+            this.http_client,
+            this.parser
+        )
+
+    pass
+
+    def backup(self) -> BackendBackupTag:
+        return BackendBackupTag(
             this.http_client,
             this.parser
         )
