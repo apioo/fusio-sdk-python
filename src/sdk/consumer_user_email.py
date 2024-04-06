@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserEmail:
-    email: str = field(metadata=config(field_name="email"))
-    captcha: str = field(metadata=config(field_name="captcha"))
+    email: str = field(default=None, metadata=config(field_name="email"))
+    captcha: str = field(default=None, metadata=config(field_name="captcha"))

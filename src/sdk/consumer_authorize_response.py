@@ -9,7 +9,7 @@ from consumer_authorize_response_token import ConsumerAuthorizeResponseToken
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeResponse:
-    type: str = field(metadata=config(field_name="type"))
-    token: ConsumerAuthorizeResponseToken = field(metadata=config(field_name="token"))
-    code: str = field(metadata=config(field_name="code"))
-    redirect_uri: str = field(metadata=config(field_name="redirectUri"))
+    type: str = field(default=None, metadata=config(field_name="type"))
+    token: ConsumerAuthorizeResponseToken = field(default=None, metadata=config(field_name="token"))
+    code: str = field(default=None, metadata=config(field_name="code"))
+    redirect_uri: str = field(default=None, metadata=config(field_name="redirectUri"))

@@ -10,4 +10,4 @@ from backend_identity_index_entry import BackendIdentityIndexEntry
 @dataclass_json
 @dataclass
 class BackendIdentityIndex:
-    providers: List[BackendIdentityIndexEntry] = field(metadata=config(field_name="providers"))
+    providers: List[BackendIdentityIndexEntry] = field(default=None, metadata=config(field_name="providers"))

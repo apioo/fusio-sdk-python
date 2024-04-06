@@ -9,8 +9,8 @@ from typing import Any
 @dataclass_json
 @dataclass
 class BackendConfig:
-    id: int = field(metadata=config(field_name="id"))
-    type: int = field(metadata=config(field_name="type"))
-    name: str = field(metadata=config(field_name="name"))
-    description: str = field(metadata=config(field_name="description"))
-    value: Any = field(metadata=config(field_name="value"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    type: int = field(default=None, metadata=config(field_name="type"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    description: str = field(default=None, metadata=config(field_name="description"))
+    value: Any = field(default=None, metadata=config(field_name="value"))

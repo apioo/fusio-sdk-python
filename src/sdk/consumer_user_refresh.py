@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserRefresh:
-    refresh_token: str = field(metadata=config(field_name="refresh_token"))
+    refresh_token: str = field(default=None, metadata=config(field_name="refresh_token"))

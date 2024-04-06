@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerPaymentCheckoutResponse:
-    approval_url: str = field(metadata=config(field_name="approvalUrl"))
+    approval_url: str = field(default=None, metadata=config(field_name="approvalUrl"))

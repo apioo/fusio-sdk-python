@@ -10,4 +10,4 @@ from backend_scope_category import BackendScopeCategory
 @dataclass_json
 @dataclass
 class BackendScopeCategories:
-    categories: List[BackendScopeCategory] = field(metadata=config(field_name="categories"))
+    categories: List[BackendScopeCategory] = field(default=None, metadata=config(field_name="categories"))

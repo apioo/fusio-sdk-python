@@ -8,8 +8,8 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendLogError:
-    id: int = field(metadata=config(field_name="id"))
-    message: int = field(metadata=config(field_name="message"))
-    trace: str = field(metadata=config(field_name="trace"))
-    file: str = field(metadata=config(field_name="file"))
-    line: int = field(metadata=config(field_name="line"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    message: int = field(default=None, metadata=config(field_name="message"))
+    trace: str = field(default=None, metadata=config(field_name="trace"))
+    file: str = field(default=None, metadata=config(field_name="file"))
+    line: int = field(default=None, metadata=config(field_name="line"))

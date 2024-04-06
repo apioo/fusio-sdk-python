@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendDashboardRequest:
-    id: int = field(metadata=config(field_name="id"))
-    path: str = field(metadata=config(field_name="path"))
-    ip: str = field(metadata=config(field_name="ip"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    path: str = field(default=None, metadata=config(field_name="path"))
+    ip: str = field(default=None, metadata=config(field_name="ip"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

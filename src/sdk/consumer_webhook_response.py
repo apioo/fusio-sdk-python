@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerWebhookResponse:
-    status: int = field(metadata=config(field_name="status"))
-    code: int = field(metadata=config(field_name="code"))
-    attempts: str = field(metadata=config(field_name="attempts"))
-    execute_date: str = field(metadata=config(field_name="executeDate"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    code: int = field(default=None, metadata=config(field_name="code"))
+    attempts: str = field(default=None, metadata=config(field_name="attempts"))
+    execute_date: str = field(default=None, metadata=config(field_name="executeDate"))

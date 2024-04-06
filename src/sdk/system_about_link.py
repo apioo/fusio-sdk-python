@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class SystemAboutLink:
-    rel: str = field(metadata=config(field_name="rel"))
-    href: str = field(metadata=config(field_name="href"))
+    rel: str = field(default=None, metadata=config(field_name="rel"))
+    href: str = field(default=None, metadata=config(field_name="href"))

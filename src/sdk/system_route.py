@@ -9,4 +9,4 @@ from system_route_path import SystemRoutePath
 @dataclass_json
 @dataclass
 class SystemRoute:
-    routes: SystemRoutePath = field(metadata=config(field_name="routes"))
+    routes: SystemRoutePath = field(default=None, metadata=config(field_name="routes"))

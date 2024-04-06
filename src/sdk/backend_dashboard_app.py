@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendDashboardApp:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

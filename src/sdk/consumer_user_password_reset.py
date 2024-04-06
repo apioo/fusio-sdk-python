@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserPasswordReset:
-    token: str = field(metadata=config(field_name="token"))
-    new_password: str = field(metadata=config(field_name="newPassword"))
+    token: str = field(default=None, metadata=config(field_name="token"))
+    new_password: str = field(default=None, metadata=config(field_name="newPassword"))

@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class SystemHealthCheck:
-    healthy: bool = field(metadata=config(field_name="healthy"))
-    error: str = field(metadata=config(field_name="error"))
+    healthy: bool = field(default=None, metadata=config(field_name="healthy"))
+    error: str = field(default=None, metadata=config(field_name="error"))

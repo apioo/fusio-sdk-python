@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerPaymentPortalRequest:
-    return_url: str = field(metadata=config(field_name="returnUrl"))
+    return_url: str = field(default=None, metadata=config(field_name="returnUrl"))

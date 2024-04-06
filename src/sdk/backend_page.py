@@ -9,9 +9,9 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendPage:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    title: str = field(metadata=config(field_name="title"))
-    slug: str = field(metadata=config(field_name="slug"))
-    content: str = field(metadata=config(field_name="content"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    title: str = field(default=None, metadata=config(field_name="title"))
+    slug: str = field(default=None, metadata=config(field_name="slug"))
+    content: str = field(default=None, metadata=config(field_name="content"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

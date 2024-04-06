@@ -9,7 +9,7 @@ from typing import List
 @dataclass_json
 @dataclass
 class BackendRole:
-    id: int = field(metadata=config(field_name="id"))
-    category_id: int = field(metadata=config(field_name="categoryId"))
-    name: str = field(metadata=config(field_name="name"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    category_id: int = field(default=None, metadata=config(field_name="categoryId"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))

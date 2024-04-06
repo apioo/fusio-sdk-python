@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendMarketplaceInstall:
-    name: str = field(metadata=config(field_name="name"))
+    name: str = field(default=None, metadata=config(field_name="name"))

@@ -10,8 +10,8 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendConnection:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    _class: str = field(metadata=config(field_name="class"))
-    config: BackendConnectionConfig = field(metadata=config(field_name="config"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    _class: str = field(default=None, metadata=config(field_name="class"))
+    config: BackendConnectionConfig = field(default=None, metadata=config(field_name="config"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

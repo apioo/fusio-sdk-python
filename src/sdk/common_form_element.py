@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class CommonFormElement:
-    element: str = field(metadata=config(field_name="element"))
-    name: str = field(metadata=config(field_name="name"))
-    title: str = field(metadata=config(field_name="title"))
-    help: str = field(metadata=config(field_name="help"))
+    element: str = field(default=None, metadata=config(field_name="element"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    title: str = field(default=None, metadata=config(field_name="title"))
+    help: str = field(default=None, metadata=config(field_name="help"))

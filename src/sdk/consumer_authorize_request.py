@@ -8,9 +8,9 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeRequest:
-    response_type: str = field(metadata=config(field_name="responseType"))
-    client_id: str = field(metadata=config(field_name="clientId"))
-    redirect_uri: str = field(metadata=config(field_name="redirectUri"))
-    scope: str = field(metadata=config(field_name="scope"))
-    state: str = field(metadata=config(field_name="state"))
-    allow: bool = field(metadata=config(field_name="allow"))
+    response_type: str = field(default=None, metadata=config(field_name="responseType"))
+    client_id: str = field(default=None, metadata=config(field_name="clientId"))
+    redirect_uri: str = field(default=None, metadata=config(field_name="redirectUri"))
+    scope: str = field(default=None, metadata=config(field_name="scope"))
+    state: str = field(default=None, metadata=config(field_name="state"))
+    allow: bool = field(default=None, metadata=config(field_name="allow"))

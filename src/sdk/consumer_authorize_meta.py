@@ -10,6 +10,6 @@ from consumer_scope import ConsumerScope
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeMeta:
-    name: str = field(metadata=config(field_name="name"))
-    url: str = field(metadata=config(field_name="url"))
-    scopes: List[ConsumerScope] = field(metadata=config(field_name="scopes"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    url: str = field(default=None, metadata=config(field_name="url"))
+    scopes: List[ConsumerScope] = field(default=None, metadata=config(field_name="scopes"))

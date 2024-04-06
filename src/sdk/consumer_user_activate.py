@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserActivate:
-    token: str = field(metadata=config(field_name="token"))
+    token: str = field(default=None, metadata=config(field_name="token"))

@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendGeneratorIndexProvider:
-    name: str = field(metadata=config(field_name="name"))
-    _class: str = field(metadata=config(field_name="class"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    _class: str = field(default=None, metadata=config(field_name="class"))

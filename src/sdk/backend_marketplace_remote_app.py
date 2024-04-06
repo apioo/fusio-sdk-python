@@ -9,4 +9,4 @@ from backend_marketplace_app import BackendMarketplaceApp
 @dataclass_json
 @dataclass
 class BackendMarketplaceRemoteApp(BackendMarketplaceApp):
-    local: BackendMarketplaceApp = field(metadata=config(field_name="local"))
+    local: BackendMarketplaceApp = field(default=None, metadata=config(field_name="local"))

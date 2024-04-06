@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class CommonMessage:
-    success: bool = field(metadata=config(field_name="success"))
-    message: str = field(metadata=config(field_name="message"))
-    id: str = field(metadata=config(field_name="id"))
+    success: bool = field(default=None, metadata=config(field_name="success"))
+    message: str = field(default=None, metadata=config(field_name="message"))
+    id: str = field(default=None, metadata=config(field_name="id"))

@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class CommonFormElementSelectOption:
-    key: str = field(metadata=config(field_name="key"))
-    value: str = field(metadata=config(field_name="value"))
+    key: str = field(default=None, metadata=config(field_name="key"))
+    value: str = field(default=None, metadata=config(field_name="value"))

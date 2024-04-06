@@ -10,9 +10,9 @@ from consumer_webhook_response import ConsumerWebhookResponse
 @dataclass_json
 @dataclass
 class ConsumerWebhook:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    event: str = field(metadata=config(field_name="event"))
-    name: str = field(metadata=config(field_name="name"))
-    endpoint: str = field(metadata=config(field_name="endpoint"))
-    responses: List[ConsumerWebhookResponse] = field(metadata=config(field_name="responses"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    event: str = field(default=None, metadata=config(field_name="event"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    endpoint: str = field(default=None, metadata=config(field_name="endpoint"))
+    responses: List[ConsumerWebhookResponse] = field(default=None, metadata=config(field_name="responses"))

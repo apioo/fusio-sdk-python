@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendSdkGenerate:
-    format: str = field(metadata=config(field_name="format"))
-    config: str = field(metadata=config(field_name="config"))
+    format: str = field(default=None, metadata=config(field_name="format"))
+    config: str = field(default=None, metadata=config(field_name="config"))

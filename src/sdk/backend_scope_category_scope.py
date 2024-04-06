@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendScopeCategoryScope:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    description: str = field(metadata=config(field_name="description"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    description: str = field(default=None, metadata=config(field_name="description"))

@@ -11,4 +11,4 @@ from common_form_element_select_option import CommonFormElementSelectOption
 @dataclass_json
 @dataclass
 class CommonFormElementSelect(CommonFormElement):
-    options: List[CommonFormElementSelectOption] = field(metadata=config(field_name="options"))
+    options: List[CommonFormElementSelectOption] = field(default=None, metadata=config(field_name="options"))

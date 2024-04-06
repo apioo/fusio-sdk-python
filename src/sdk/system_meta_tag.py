@@ -11,6 +11,7 @@ from common_message_exception import CommonMessageException
 from passthru import Passthru
 from system_about import SystemAbout
 from system_health_check import SystemHealthCheck
+from system_o_auth_configuration import SystemOAuthConfiguration
 from system_route import SystemRoute
 from system_schema import SystemSchema
 
@@ -68,6 +69,30 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemRoute.from_json(response.content)
+
+
+            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+        except RequestException as e:
+            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
+    pass
+
+    def get_o_auth_configuration(self) -> SystemOAuthConfiguration:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url("/system/oauth-authorization-server", path_params)
+
+            headers = {}
+
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+            if response.status_code >= 200 and response.status_code < 300:
+                return SystemOAuthConfiguration.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")

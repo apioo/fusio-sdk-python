@@ -9,8 +9,8 @@ from backend_action_execute_request_body import BackendActionExecuteRequestBody
 @dataclass_json
 @dataclass
 class BackendActionExecuteRequest:
-    method: str = field(metadata=config(field_name="method"))
-    uri_fragments: str = field(metadata=config(field_name="uriFragments"))
-    parameters: str = field(metadata=config(field_name="parameters"))
-    headers: str = field(metadata=config(field_name="headers"))
-    body: BackendActionExecuteRequestBody = field(metadata=config(field_name="body"))
+    method: str = field(default=None, metadata=config(field_name="method"))
+    uri_fragments: str = field(default=None, metadata=config(field_name="uriFragments"))
+    parameters: str = field(default=None, metadata=config(field_name="parameters"))
+    headers: str = field(default=None, metadata=config(field_name="headers"))
+    body: BackendActionExecuteRequestBody = field(default=None, metadata=config(field_name="body"))

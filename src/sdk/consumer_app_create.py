@@ -9,6 +9,6 @@ from typing import List
 @dataclass_json
 @dataclass
 class ConsumerAppCreate:
-    name: str = field(metadata=config(field_name="name"))
-    url: str = field(metadata=config(field_name="url"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    url: str = field(default=None, metadata=config(field_name="url"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))

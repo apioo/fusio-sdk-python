@@ -11,13 +11,13 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class ConsumerUserAccount:
-    id: int = field(metadata=config(field_name="id"))
-    plan_id: int = field(metadata=config(field_name="planId"))
-    status: int = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    email: str = field(metadata=config(field_name="email"))
-    points: int = field(metadata=config(field_name="points"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    plans: List[ConsumerUserPlan] = field(metadata=config(field_name="plans"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    plan_id: int = field(default=None, metadata=config(field_name="planId"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    email: str = field(default=None, metadata=config(field_name="email"))
+    points: int = field(default=None, metadata=config(field_name="points"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    plans: List[ConsumerUserPlan] = field(default=None, metadata=config(field_name="plans"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

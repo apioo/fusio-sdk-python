@@ -10,6 +10,6 @@ from backend_statistic_chart_data import BackendStatisticChartData
 @dataclass_json
 @dataclass
 class BackendStatisticChart:
-    labels: List[str] = field(metadata=config(field_name="labels"))
-    data: List[BackendStatisticChartData] = field(metadata=config(field_name="data"))
-    series: List[str] = field(metadata=config(field_name="series"))
+    labels: List[str] = field(default=None, metadata=config(field_name="labels"))
+    data: List[BackendStatisticChartData] = field(default=None, metadata=config(field_name="data"))
+    series: List[str] = field(default=None, metadata=config(field_name="series"))

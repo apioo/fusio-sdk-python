@@ -11,8 +11,8 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendScope:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    description: str = field(metadata=config(field_name="description"))
-    operations: List[BackendScopeOperation] = field(metadata=config(field_name="operations"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    description: str = field(default=None, metadata=config(field_name="description"))
+    operations: List[BackendScopeOperation] = field(default=None, metadata=config(field_name="operations"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

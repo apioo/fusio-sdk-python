@@ -8,9 +8,9 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendWebhookResponse:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    code: int = field(metadata=config(field_name="code"))
-    attempts: int = field(metadata=config(field_name="attempts"))
-    error: str = field(metadata=config(field_name="error"))
-    execute_date: datetime.datetime = field(metadata=config(field_name="executeDate"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    code: int = field(default=None, metadata=config(field_name="code"))
+    attempts: int = field(default=None, metadata=config(field_name="attempts"))
+    error: str = field(default=None, metadata=config(field_name="error"))
+    execute_date: datetime.datetime = field(default=None, metadata=config(field_name="executeDate"))

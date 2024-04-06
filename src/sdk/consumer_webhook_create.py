@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerWebhookCreate:
-    event: str = field(metadata=config(field_name="event"))
-    name: str = field(metadata=config(field_name="name"))
-    endpoint: str = field(metadata=config(field_name="endpoint"))
+    event: str = field(default=None, metadata=config(field_name="event"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    endpoint: str = field(default=None, metadata=config(field_name="endpoint"))

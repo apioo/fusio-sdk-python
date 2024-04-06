@@ -9,6 +9,6 @@ from typing import List
 @dataclass_json
 @dataclass
 class ConsumerTokenCreate:
-    name: str = field(metadata=config(field_name="name"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    expire: datetime.date = field(metadata=config(field_name="expire"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    expire: datetime.date = field(default=None, metadata=config(field_name="expire"))

@@ -10,12 +10,12 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendPlan:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    description: str = field(metadata=config(field_name="description"))
-    price: float = field(metadata=config(field_name="price"))
-    points: int = field(metadata=config(field_name="points"))
-    period: int = field(metadata=config(field_name="period"))
-    external_id: str = field(metadata=config(field_name="externalId"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    description: str = field(default=None, metadata=config(field_name="description"))
+    price: float = field(default=None, metadata=config(field_name="price"))
+    points: int = field(default=None, metadata=config(field_name="points"))
+    period: int = field(default=None, metadata=config(field_name="period"))
+    external_id: str = field(default=None, metadata=config(field_name="externalId"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

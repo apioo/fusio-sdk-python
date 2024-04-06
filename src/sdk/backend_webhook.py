@@ -10,9 +10,9 @@ from backend_webhook_response import BackendWebhookResponse
 @dataclass_json
 @dataclass
 class BackendWebhook:
-    id: int = field(metadata=config(field_name="id"))
-    event_id: int = field(metadata=config(field_name="eventId"))
-    user_id: int = field(metadata=config(field_name="userId"))
-    name: str = field(metadata=config(field_name="name"))
-    endpoint: str = field(metadata=config(field_name="endpoint"))
-    responses: List[BackendWebhookResponse] = field(metadata=config(field_name="responses"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    event_id: int = field(default=None, metadata=config(field_name="eventId"))
+    user_id: int = field(default=None, metadata=config(field_name="userId"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    endpoint: str = field(default=None, metadata=config(field_name="endpoint"))
+    responses: List[BackendWebhookResponse] = field(default=None, metadata=config(field_name="responses"))

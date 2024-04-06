@@ -9,13 +9,13 @@ from consumer_plan import ConsumerPlan
 @dataclass_json
 @dataclass
 class ConsumerTransaction:
-    id: int = field(metadata=config(field_name="id"))
-    user_id: int = field(metadata=config(field_name="userId"))
-    plan_id: int = field(metadata=config(field_name="planId"))
-    plan: ConsumerPlan = field(metadata=config(field_name="plan"))
-    transaction_id: str = field(metadata=config(field_name="transactionId"))
-    amount: float = field(metadata=config(field_name="amount"))
-    points: float = field(metadata=config(field_name="points"))
-    period_start: datetime.datetime = field(metadata=config(field_name="periodStart"))
-    period_end: datetime.datetime = field(metadata=config(field_name="periodEnd"))
-    insert_date: datetime.datetime = field(metadata=config(field_name="insertDate"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    user_id: int = field(default=None, metadata=config(field_name="userId"))
+    plan_id: int = field(default=None, metadata=config(field_name="planId"))
+    plan: ConsumerPlan = field(default=None, metadata=config(field_name="plan"))
+    transaction_id: str = field(default=None, metadata=config(field_name="transactionId"))
+    amount: float = field(default=None, metadata=config(field_name="amount"))
+    points: float = field(default=None, metadata=config(field_name="points"))
+    period_start: datetime.datetime = field(default=None, metadata=config(field_name="periodStart"))
+    period_end: datetime.datetime = field(default=None, metadata=config(field_name="periodEnd"))
+    insert_date: datetime.datetime = field(default=None, metadata=config(field_name="insertDate"))

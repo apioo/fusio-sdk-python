@@ -10,6 +10,6 @@ from backend_scope_category_scope import BackendScopeCategoryScope
 @dataclass_json
 @dataclass
 class BackendScopeCategory:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    scopes: List[BackendScopeCategoryScope] = field(metadata=config(field_name="scopes"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    scopes: List[BackendScopeCategoryScope] = field(default=None, metadata=config(field_name="scopes"))

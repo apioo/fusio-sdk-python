@@ -10,12 +10,12 @@ from backend_log_error import BackendLogError
 @dataclass_json
 @dataclass
 class BackendLog:
-    id: int = field(metadata=config(field_name="id"))
-    ip: str = field(metadata=config(field_name="ip"))
-    user_agent: str = field(metadata=config(field_name="userAgent"))
-    method: str = field(metadata=config(field_name="method"))
-    path: str = field(metadata=config(field_name="path"))
-    header: str = field(metadata=config(field_name="header"))
-    body: str = field(metadata=config(field_name="body"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
-    errors: List[BackendLogError] = field(metadata=config(field_name="errors"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    ip: str = field(default=None, metadata=config(field_name="ip"))
+    user_agent: str = field(default=None, metadata=config(field_name="userAgent"))
+    method: str = field(default=None, metadata=config(field_name="method"))
+    path: str = field(default=None, metadata=config(field_name="path"))
+    header: str = field(default=None, metadata=config(field_name="header"))
+    body: str = field(default=None, metadata=config(field_name="body"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))
+    errors: List[BackendLogError] = field(default=None, metadata=config(field_name="errors"))

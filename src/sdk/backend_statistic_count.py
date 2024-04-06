@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendStatisticCount:
-    count: int = field(metadata=config(field_name="count"))
-    _from: datetime.datetime = field(metadata=config(field_name="from"))
-    to: datetime.datetime = field(metadata=config(field_name="to"))
+    count: int = field(default=None, metadata=config(field_name="count"))
+    _from: datetime.datetime = field(default=None, metadata=config(field_name="from"))
+    to: datetime.datetime = field(default=None, metadata=config(field_name="to"))

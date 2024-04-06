@@ -11,10 +11,10 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendRate:
-    id: int = field(metadata=config(field_name="id"))
-    priority: int = field(metadata=config(field_name="priority"))
-    name: str = field(metadata=config(field_name="name"))
-    rate_limit: int = field(metadata=config(field_name="rateLimit"))
-    timespan: datetime.timedelta = field(metadata=config(field_name="timespan"))
-    allocation: List[BackendRateAllocation] = field(metadata=config(field_name="allocation"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    priority: int = field(default=None, metadata=config(field_name="priority"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    rate_limit: int = field(default=None, metadata=config(field_name="rateLimit"))
+    timespan: datetime.timedelta = field(default=None, metadata=config(field_name="timespan"))
+    allocation: List[BackendRateAllocation] = field(default=None, metadata=config(field_name="allocation"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

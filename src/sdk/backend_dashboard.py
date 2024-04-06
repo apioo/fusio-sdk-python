@@ -13,12 +13,12 @@ from backend_dashboard_transactions import BackendDashboardTransactions
 @dataclass_json
 @dataclass
 class BackendDashboard:
-    errors_per_operation: BackendStatisticChart = field(metadata=config(field_name="errorsPerOperation"))
-    incoming_requests: BackendStatisticChart = field(metadata=config(field_name="incomingRequests"))
-    incoming_transactions: BackendStatisticChart = field(metadata=config(field_name="incomingTransactions"))
-    most_used_operations: BackendStatisticChart = field(metadata=config(field_name="mostUsedOperations"))
-    time_per_operation: BackendStatisticChart = field(metadata=config(field_name="timePerOperation"))
-    latest_apps: BackendDashboardApps = field(metadata=config(field_name="latestApps"))
-    latest_requests: BackendDashboardRequests = field(metadata=config(field_name="latestRequests"))
-    latest_users: BackendDashboardUsers = field(metadata=config(field_name="latestUsers"))
-    latest_transactions: BackendDashboardTransactions = field(metadata=config(field_name="latestTransactions"))
+    errors_per_operation: BackendStatisticChart = field(default=None, metadata=config(field_name="errorsPerOperation"))
+    incoming_requests: BackendStatisticChart = field(default=None, metadata=config(field_name="incomingRequests"))
+    incoming_transactions: BackendStatisticChart = field(default=None, metadata=config(field_name="incomingTransactions"))
+    most_used_operations: BackendStatisticChart = field(default=None, metadata=config(field_name="mostUsedOperations"))
+    time_per_operation: BackendStatisticChart = field(default=None, metadata=config(field_name="timePerOperation"))
+    latest_apps: BackendDashboardApps = field(default=None, metadata=config(field_name="latestApps"))
+    latest_requests: BackendDashboardRequests = field(default=None, metadata=config(field_name="latestRequests"))
+    latest_users: BackendDashboardUsers = field(default=None, metadata=config(field_name="latestUsers"))
+    latest_transactions: BackendDashboardTransactions = field(default=None, metadata=config(field_name="latestTransactions"))

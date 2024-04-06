@@ -12,6 +12,6 @@ from backend_operation import BackendOperation
 @dataclass_json
 @dataclass
 class BackendGeneratorProviderChangelog:
-    schemas: List[BackendSchema] = field(metadata=config(field_name="schemas"))
-    actions: List[BackendAction] = field(metadata=config(field_name="actions"))
-    operations: List[BackendOperation] = field(metadata=config(field_name="operations"))
+    schemas: List[BackendSchema] = field(default=None, metadata=config(field_name="schemas"))
+    actions: List[BackendAction] = field(default=None, metadata=config(field_name="actions"))
+    operations: List[BackendOperation] = field(default=None, metadata=config(field_name="operations"))

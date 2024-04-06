@@ -9,4 +9,4 @@ from common_form_element import CommonFormElement
 @dataclass_json
 @dataclass
 class CommonFormElementTextArea(CommonFormElement):
-    mode: str = field(metadata=config(field_name="mode"))
+    mode: str = field(default=None, metadata=config(field_name="mode"))

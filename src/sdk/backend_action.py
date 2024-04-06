@@ -10,10 +10,10 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendAction:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    _class: str = field(metadata=config(field_name="class"))
-    async: bool = field(metadata=config(field_name="async"))
-    config: BackendActionConfig = field(metadata=config(field_name="config"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    _class: str = field(default=None, metadata=config(field_name="class"))
+    async: bool = field(default=None, metadata=config(field_name="async"))
+    config: BackendActionConfig = field(default=None, metadata=config(field_name="config"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserJWT:
-    token: str = field(metadata=config(field_name="token"))
-    expires_in: int = field(metadata=config(field_name="expires_in"))
-    refresh_token: str = field(metadata=config(field_name="refresh_token"))
-    scope: str = field(metadata=config(field_name="scope"))
+    token: str = field(default=None, metadata=config(field_name="token"))
+    expires_in: int = field(default=None, metadata=config(field_name="expires_in"))
+    refresh_token: str = field(default=None, metadata=config(field_name="refresh_token"))
+    scope: str = field(default=None, metadata=config(field_name="scope"))

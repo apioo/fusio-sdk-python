@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerPaymentCheckoutRequest:
-    plan_id: int = field(metadata=config(field_name="planId"))
-    return_url: str = field(metadata=config(field_name="returnUrl"))
+    plan_id: int = field(default=None, metadata=config(field_name="planId"))
+    return_url: str = field(default=None, metadata=config(field_name="returnUrl"))

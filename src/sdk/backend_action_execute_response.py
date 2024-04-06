@@ -10,6 +10,6 @@ from backend_action_execute_response_body import BackendActionExecuteResponseBod
 @dataclass_json
 @dataclass
 class BackendActionExecuteResponse:
-    status_code: int = field(metadata=config(field_name="statusCode"))
-    headers: BackendActionExecuteResponseHeaders = field(metadata=config(field_name="headers"))
-    body: BackendActionExecuteResponseBody = field(metadata=config(field_name="body"))
+    status_code: int = field(default=None, metadata=config(field_name="statusCode"))
+    headers: BackendActionExecuteResponseHeaders = field(default=None, metadata=config(field_name="headers"))
+    body: BackendActionExecuteResponseBody = field(default=None, metadata=config(field_name="body"))

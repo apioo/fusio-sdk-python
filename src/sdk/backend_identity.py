@@ -9,11 +9,11 @@ from backend_identity_config import BackendIdentityConfig
 @dataclass_json
 @dataclass
 class BackendIdentity:
-    id: int = field(metadata=config(field_name="id"))
-    app_id: int = field(metadata=config(field_name="appId"))
-    role_id: int = field(metadata=config(field_name="roleId"))
-    name: str = field(metadata=config(field_name="name"))
-    icon: str = field(metadata=config(field_name="icon"))
-    _class: str = field(metadata=config(field_name="class"))
-    config: BackendIdentityConfig = field(metadata=config(field_name="config"))
-    allow_create: bool = field(metadata=config(field_name="allowCreate"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    app_id: int = field(default=None, metadata=config(field_name="appId"))
+    role_id: int = field(default=None, metadata=config(field_name="roleId"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    icon: str = field(default=None, metadata=config(field_name="icon"))
+    _class: str = field(default=None, metadata=config(field_name="class"))
+    config: BackendIdentityConfig = field(default=None, metadata=config(field_name="config"))
+    allow_create: bool = field(default=None, metadata=config(field_name="allowCreate"))

@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserRegister:
-    name: str = field(metadata=config(field_name="name"))
-    email: str = field(metadata=config(field_name="email"))
-    password: str = field(metadata=config(field_name="password"))
-    captcha: str = field(metadata=config(field_name="captcha"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    email: str = field(default=None, metadata=config(field_name="email"))
+    password: str = field(default=None, metadata=config(field_name="password"))
+    captcha: str = field(default=None, metadata=config(field_name="captcha"))

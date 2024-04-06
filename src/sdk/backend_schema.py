@@ -11,9 +11,9 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class BackendSchema:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    source: BackendSchemaSource = field(metadata=config(field_name="source"))
-    form: BackendSchemaForm = field(metadata=config(field_name="form"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    source: BackendSchemaSource = field(default=None, metadata=config(field_name="source"))
+    form: BackendSchemaForm = field(default=None, metadata=config(field_name="form"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

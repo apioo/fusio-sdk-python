@@ -8,12 +8,12 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerLog:
-    id: int = field(metadata=config(field_name="id"))
-    app_id: int = field(metadata=config(field_name="appId"))
-    ip: str = field(metadata=config(field_name="ip"))
-    user_agent: str = field(metadata=config(field_name="userAgent"))
-    method: str = field(metadata=config(field_name="method"))
-    path: str = field(metadata=config(field_name="path"))
-    header: str = field(metadata=config(field_name="header"))
-    body: str = field(metadata=config(field_name="body"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    app_id: int = field(default=None, metadata=config(field_name="appId"))
+    ip: str = field(default=None, metadata=config(field_name="ip"))
+    user_agent: str = field(default=None, metadata=config(field_name="userAgent"))
+    method: str = field(default=None, metadata=config(field_name="method"))
+    path: str = field(default=None, metadata=config(field_name="path"))
+    header: str = field(default=None, metadata=config(field_name="header"))
+    body: str = field(default=None, metadata=config(field_name="body"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

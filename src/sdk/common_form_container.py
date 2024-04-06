@@ -14,4 +14,4 @@ from common_form_element_text_area import CommonFormElementTextArea
 @dataclass_json
 @dataclass
 class CommonFormContainer:
-    element: List[Union[CommonFormElementInput, CommonFormElementSelect, CommonFormElementTag, CommonFormElementTextArea]] = field(metadata=config(field_name="element"))
+    element: List[Union[CommonFormElementInput, CommonFormElementSelect, CommonFormElementTag, CommonFormElementTextArea]] = field(default=None, metadata=config(field_name="element"))

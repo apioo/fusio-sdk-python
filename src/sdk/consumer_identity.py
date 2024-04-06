@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerIdentity:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    icon: str = field(metadata=config(field_name="icon"))
-    redirect: str = field(metadata=config(field_name="redirect"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    icon: str = field(default=None, metadata=config(field_name="icon"))
+    redirect: str = field(default=None, metadata=config(field_name="redirect"))

@@ -10,5 +10,5 @@ from system_schema_form import SystemSchemaForm
 @dataclass_json
 @dataclass
 class SystemSchema:
-    schema: SystemSchemaTypeSchema = field(metadata=config(field_name="schema"))
-    form: SystemSchemaForm = field(metadata=config(field_name="form"))
+    schema: SystemSchemaTypeSchema = field(default=None, metadata=config(field_name="schema"))
+    form: SystemSchemaForm = field(default=None, metadata=config(field_name="form"))

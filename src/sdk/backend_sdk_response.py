@@ -9,4 +9,4 @@ from backend_sdk_types import BackendSdkTypes
 @dataclass_json
 @dataclass
 class BackendSdkResponse:
-    types: BackendSdkTypes = field(metadata=config(field_name="types"))
+    types: BackendSdkTypes = field(default=None, metadata=config(field_name="types"))

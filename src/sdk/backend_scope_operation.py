@@ -8,5 +8,5 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendScopeOperation:
-    operation_id: int = field(metadata=config(field_name="operationId"))
-    allow: bool = field(metadata=config(field_name="allow"))
+    operation_id: int = field(default=None, metadata=config(field_name="operationId"))
+    allow: bool = field(default=None, metadata=config(field_name="allow"))

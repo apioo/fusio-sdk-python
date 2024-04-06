@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendSchemaPreviewResponse:
-    preview: str = field(metadata=config(field_name="preview"))
+    preview: str = field(default=None, metadata=config(field_name="preview"))

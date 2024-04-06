@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendOperationSchema:
-    description: str = field(metadata=config(field_name="description"))
-    type: str = field(metadata=config(field_name="type"))
-    format: str = field(metadata=config(field_name="format"))
-    enum: str = field(metadata=config(field_name="enum"))
+    description: str = field(default=None, metadata=config(field_name="description"))
+    type: str = field(default=None, metadata=config(field_name="type"))
+    format: str = field(default=None, metadata=config(field_name="format"))
+    enum: str = field(default=None, metadata=config(field_name="enum"))

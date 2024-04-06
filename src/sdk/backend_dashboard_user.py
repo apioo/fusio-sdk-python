@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendDashboardUser:
-    id: int = field(metadata=config(field_name="id"))
-    status: str = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: str = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

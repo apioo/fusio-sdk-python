@@ -10,7 +10,7 @@ from backend_generator_provider_config import BackendGeneratorProviderConfig
 @dataclass_json
 @dataclass
 class BackendGeneratorProvider:
-    path: str = field(metadata=config(field_name="path"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    public: bool = field(metadata=config(field_name="public"))
-    config: BackendGeneratorProviderConfig = field(metadata=config(field_name="config"))
+    path: str = field(default=None, metadata=config(field_name="path"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    public: bool = field(default=None, metadata=config(field_name="public"))
+    config: BackendGeneratorProviderConfig = field(default=None, metadata=config(field_name="config"))

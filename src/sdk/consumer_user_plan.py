@@ -8,8 +8,8 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerUserPlan:
-    id: int = field(metadata=config(field_name="id"))
-    name: str = field(metadata=config(field_name="name"))
-    price: int = field(metadata=config(field_name="price"))
-    points: int = field(metadata=config(field_name="points"))
-    period: int = field(metadata=config(field_name="period"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    price: int = field(default=None, metadata=config(field_name="price"))
+    points: int = field(default=None, metadata=config(field_name="points"))
+    period: int = field(default=None, metadata=config(field_name="period"))

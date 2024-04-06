@@ -8,4 +8,4 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendTrashRestore:
-    id: int = field(metadata=config(field_name="id"))
+    id: int = field(default=None, metadata=config(field_name="id"))

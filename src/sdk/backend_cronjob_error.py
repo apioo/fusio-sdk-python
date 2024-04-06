@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendCronjobError:
-    message: str = field(metadata=config(field_name="message"))
-    trace: str = field(metadata=config(field_name="trace"))
-    file: str = field(metadata=config(field_name="file"))
-    line: int = field(metadata=config(field_name="line"))
+    message: str = field(default=None, metadata=config(field_name="message"))
+    trace: str = field(default=None, metadata=config(field_name="trace"))
+    file: str = field(default=None, metadata=config(field_name="file"))
+    line: int = field(default=None, metadata=config(field_name="line"))

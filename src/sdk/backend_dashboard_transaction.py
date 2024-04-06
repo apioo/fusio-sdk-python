@@ -8,9 +8,9 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendDashboardTransaction:
-    id: int = field(metadata=config(field_name="id"))
-    status: str = field(metadata=config(field_name="status"))
-    provider: str = field(metadata=config(field_name="provider"))
-    transaction_id: str = field(metadata=config(field_name="transactionId"))
-    amount: float = field(metadata=config(field_name="amount"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: str = field(default=None, metadata=config(field_name="status"))
+    provider: str = field(default=None, metadata=config(field_name="provider"))
+    transaction_id: str = field(default=None, metadata=config(field_name="transactionId"))
+    amount: float = field(default=None, metadata=config(field_name="amount"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

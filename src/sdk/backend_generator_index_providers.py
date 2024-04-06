@@ -10,4 +10,4 @@ from backend_generator_index_provider import BackendGeneratorIndexProvider
 @dataclass_json
 @dataclass
 class BackendGeneratorIndexProviders:
-    providers: List[BackendGeneratorIndexProvider] = field(metadata=config(field_name="providers"))
+    providers: List[BackendGeneratorIndexProvider] = field(default=None, metadata=config(field_name="providers"))

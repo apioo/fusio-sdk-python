@@ -10,6 +10,6 @@ from backend_connection_introspection_entity_row import BackendConnectionIntrosp
 @dataclass_json
 @dataclass
 class BackendConnectionIntrospectionEntity:
-    name: str = field(metadata=config(field_name="name"))
-    headers: List[str] = field(metadata=config(field_name="headers"))
-    rows: List[BackendConnectionIntrospectionEntityRow] = field(metadata=config(field_name="rows"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    headers: List[str] = field(default=None, metadata=config(field_name="headers"))
+    rows: List[BackendConnectionIntrospectionEntityRow] = field(default=None, metadata=config(field_name="rows"))

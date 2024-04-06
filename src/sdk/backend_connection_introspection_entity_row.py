@@ -9,4 +9,4 @@ from typing import List
 @dataclass_json
 @dataclass
 class BackendConnectionIntrospectionEntityRow:
-    values: List[str] = field(metadata=config(field_name="values"))
+    values: List[str] = field(default=None, metadata=config(field_name="values"))

@@ -10,4 +10,4 @@ from backend_connection_index_entry import BackendConnectionIndexEntry
 @dataclass_json
 @dataclass
 class BackendConnectionIndex:
-    connections: List[BackendConnectionIndexEntry] = field(metadata=config(field_name="connections"))
+    connections: List[BackendConnectionIndexEntry] = field(default=None, metadata=config(field_name="connections"))

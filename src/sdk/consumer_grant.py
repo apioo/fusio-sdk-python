@@ -9,6 +9,6 @@ from consumer_app import ConsumerApp
 @dataclass_json
 @dataclass
 class ConsumerGrant:
-    id: int = field(metadata=config(field_name="id"))
-    app: ConsumerApp = field(metadata=config(field_name="app"))
-    create_date: datetime.datetime = field(metadata=config(field_name="createDate"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    app: ConsumerApp = field(default=None, metadata=config(field_name="app"))
+    create_date: datetime.datetime = field(default=None, metadata=config(field_name="createDate"))

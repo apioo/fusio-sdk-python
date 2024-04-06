@@ -9,10 +9,10 @@ from typing import List
 @dataclass_json
 @dataclass
 class ConsumerToken:
-    id: int = field(metadata=config(field_name="id"))
-    status: int = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    ip: str = field(metadata=config(field_name="ip"))
-    expire: datetime.date = field(metadata=config(field_name="expire"))
-    date: datetime.datetime = field(metadata=config(field_name="date"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    ip: str = field(default=None, metadata=config(field_name="ip"))
+    expire: datetime.date = field(default=None, metadata=config(field_name="expire"))
+    date: datetime.datetime = field(default=None, metadata=config(field_name="date"))

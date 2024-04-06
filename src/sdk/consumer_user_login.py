@@ -9,6 +9,6 @@ from typing import List
 @dataclass_json
 @dataclass
 class ConsumerUserLogin:
-    username: str = field(metadata=config(field_name="username"))
-    password: str = field(metadata=config(field_name="password"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
+    username: str = field(default=None, metadata=config(field_name="username"))
+    password: str = field(default=None, metadata=config(field_name="password"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))

@@ -9,4 +9,4 @@ from backend_marketplace_collection_apps import BackendMarketplaceCollectionApps
 @dataclass_json
 @dataclass
 class BackendMarketplaceCollection:
-    apps: BackendMarketplaceCollectionApps = field(metadata=config(field_name="apps"))
+    apps: BackendMarketplaceCollectionApps = field(default=None, metadata=config(field_name="apps"))

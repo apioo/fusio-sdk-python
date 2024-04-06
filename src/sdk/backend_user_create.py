@@ -9,4 +9,4 @@ from backend_user import BackendUser
 @dataclass_json
 @dataclass
 class BackendUserCreate(BackendUser):
-    password: str = field(metadata=config(field_name="password"))
+    password: str = field(default=None, metadata=config(field_name="password"))

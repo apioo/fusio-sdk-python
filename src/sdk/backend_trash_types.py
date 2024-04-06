@@ -9,4 +9,4 @@ from typing import List
 @dataclass_json
 @dataclass
 class BackendTrashTypes:
-    types: List[str] = field(metadata=config(field_name="types"))
+    types: List[str] = field(default=None, metadata=config(field_name="types"))

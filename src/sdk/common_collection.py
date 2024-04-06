@@ -9,7 +9,7 @@ from typing import List
 @dataclass_json
 @dataclass
 class CommonCollection:
-    total_results: int = field(metadata=config(field_name="totalResults"))
-    start_index: int = field(metadata=config(field_name="startIndex"))
-    items_per_page: int = field(metadata=config(field_name="itemsPerPage"))
-    entry: List[T] = field(metadata=config(field_name="entry"))
+    total_results: int = field(default=None, metadata=config(field_name="totalResults"))
+    start_index: int = field(default=None, metadata=config(field_name="startIndex"))
+    items_per_page: int = field(default=None, metadata=config(field_name="itemsPerPage"))
+    entry: List[T] = field(default=None, metadata=config(field_name="entry"))

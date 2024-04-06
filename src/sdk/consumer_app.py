@@ -10,13 +10,13 @@ from common_metadata import CommonMetadata
 @dataclass_json
 @dataclass
 class ConsumerApp:
-    id: int = field(metadata=config(field_name="id"))
-    user_id: int = field(metadata=config(field_name="userId"))
-    status: int = field(metadata=config(field_name="status"))
-    name: str = field(metadata=config(field_name="name"))
-    url: str = field(metadata=config(field_name="url"))
-    app_key: str = field(metadata=config(field_name="appKey"))
-    app_secret: str = field(metadata=config(field_name="appSecret"))
-    date: str = field(metadata=config(field_name="date"))
-    scopes: List[str] = field(metadata=config(field_name="scopes"))
-    metadata: CommonMetadata = field(metadata=config(field_name="metadata"))
+    id: int = field(default=None, metadata=config(field_name="id"))
+    user_id: int = field(default=None, metadata=config(field_name="userId"))
+    status: int = field(default=None, metadata=config(field_name="status"))
+    name: str = field(default=None, metadata=config(field_name="name"))
+    url: str = field(default=None, metadata=config(field_name="url"))
+    app_key: str = field(default=None, metadata=config(field_name="appKey"))
+    app_secret: str = field(default=None, metadata=config(field_name="appSecret"))
+    date: str = field(default=None, metadata=config(field_name="date"))
+    scopes: List[str] = field(default=None, metadata=config(field_name="scopes"))
+    metadata: CommonMetadata = field(default=None, metadata=config(field_name="metadata"))

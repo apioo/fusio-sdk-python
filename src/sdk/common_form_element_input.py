@@ -9,4 +9,4 @@ from common_form_element import CommonFormElement
 @dataclass_json
 @dataclass
 class CommonFormElementInput(CommonFormElement):
-    type: str = field(metadata=config(field_name="type"))
+    type: str = field(default=None, metadata=config(field_name="type"))

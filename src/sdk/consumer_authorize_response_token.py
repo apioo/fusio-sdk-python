@@ -8,7 +8,7 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class ConsumerAuthorizeResponseToken:
-    access_token: str = field(metadata=config(field_name="access_token"))
-    token_type: str = field(metadata=config(field_name="token_type"))
-    expires_in: str = field(metadata=config(field_name="expires_in"))
-    scope: str = field(metadata=config(field_name="scope"))
+    access_token: str = field(default=None, metadata=config(field_name="access_token"))
+    token_type: str = field(default=None, metadata=config(field_name="token_type"))
+    expires_in: str = field(default=None, metadata=config(field_name="expires_in"))
+    scope: str = field(default=None, metadata=config(field_name="scope"))

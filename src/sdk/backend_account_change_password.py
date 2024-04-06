@@ -8,6 +8,6 @@ from dataclasses_json import dataclass_json, config
 @dataclass_json
 @dataclass
 class BackendAccountChangePassword:
-    old_password: str = field(metadata=config(field_name="oldPassword"))
-    new_password: str = field(metadata=config(field_name="newPassword"))
-    verify_password: str = field(metadata=config(field_name="verifyPassword"))
+    old_password: str = field(default=None, metadata=config(field_name="oldPassword"))
+    new_password: str = field(default=None, metadata=config(field_name="newPassword"))
+    verify_password: str = field(default=None, metadata=config(field_name="verifyPassword"))
