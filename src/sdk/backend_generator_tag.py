@@ -41,6 +41,8 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendGeneratorProviderChangelog.from_json(response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
@@ -71,6 +73,8 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
@@ -100,6 +104,8 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonFormContainer.from_json(response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
