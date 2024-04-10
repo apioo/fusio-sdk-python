@@ -1,1 +1,1 @@
-sdkgen-client == 0.1.0
+sdkgen-client >= 0.2.1
