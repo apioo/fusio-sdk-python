@@ -6,19 +6,20 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .common_message_exception import CommonMessageException
 from .consumer_plan import ConsumerPlan
 from .consumer_plan_collection import ConsumerPlanCollection
 
 class ConsumerPlanTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def get(self, plan_id: str) -> ConsumerPlan:
+    @classmethod
+    def get(cls, plan_id: str) -> ConsumerPlan:
         try:
             path_params = {}
             path_params["plan_id"] = plan_id
@@ -27,14 +28,14 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/plan/$plan_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/consumer/plan/$plan_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPlan.from_json(response.content)
+                return ConsumerPlan.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -49,9 +50,8 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> ConsumerPlanCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerPlanCollection:
         try:
             path_params = {}
 
@@ -62,14 +62,14 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/plan", path_params)
+            url = cls.parser.url("/consumer/plan", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPlanCollection.from_json(response.content)
+                return ConsumerPlanCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -79,7 +79,5 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

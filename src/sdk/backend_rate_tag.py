@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_rate import BackendRate
 from .backend_rate_collection import BackendRateCollection
@@ -15,13 +16,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendRateTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, rate_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, rate_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["rate_id"] = rate_id
@@ -30,14 +31,14 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -52,9 +53,8 @@ class BackendRateTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, rate_id: str, payload: BackendRateUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, rate_id: str, payload: BackendRateUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["rate_id"] = rate_id
@@ -63,15 +63,15 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -88,9 +88,8 @@ class BackendRateTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, rate_id: str) -> BackendRate:
+    @classmethod
+    def get(cls, rate_id: str) -> BackendRate:
         try:
             path_params = {}
             path_params["rate_id"] = rate_id
@@ -99,14 +98,14 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/rate/$rate_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendRate.from_json(response.content)
+                return BackendRate.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -121,9 +120,8 @@ class BackendRateTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendRateCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendRateCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -131,15 +129,15 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/rate", path_params)
+            url = cls.parser.url("/backend/rate", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -152,9 +150,8 @@ class BackendRateTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendRateCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendRateCollection:
         try:
             path_params = {}
 
@@ -165,14 +162,14 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/rate", path_params)
+            url = cls.parser.url("/backend/rate", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendRateCollection.from_json(response.content)
+                return BackendRateCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -182,7 +179,5 @@ class BackendRateTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

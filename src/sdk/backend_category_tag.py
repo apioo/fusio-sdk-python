@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_category import BackendCategory
 from .backend_category_collection import BackendCategoryCollection
@@ -15,13 +16,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendCategoryTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, category_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, category_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["category_id"] = category_id
@@ -30,14 +31,14 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -52,9 +53,8 @@ class BackendCategoryTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, category_id: str, payload: BackendCategoryUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, category_id: str, payload: BackendCategoryUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["category_id"] = category_id
@@ -63,15 +63,15 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -88,9 +88,8 @@ class BackendCategoryTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, category_id: str) -> BackendCategory:
+    @classmethod
+    def get(cls, category_id: str) -> BackendCategory:
         try:
             path_params = {}
             path_params["category_id"] = category_id
@@ -99,14 +98,14 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/category/$category_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendCategory.from_json(response.content)
+                return BackendCategory.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -121,9 +120,8 @@ class BackendCategoryTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendCategoryCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendCategoryCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -131,15 +129,15 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/category", path_params)
+            url = cls.parser.url("/backend/category", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -152,9 +150,8 @@ class BackendCategoryTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendCategoryCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendCategoryCollection:
         try:
             path_params = {}
 
@@ -165,14 +162,14 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/category", path_params)
+            url = cls.parser.url("/backend/category", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendCategoryCollection.from_json(response.content)
+                return BackendCategoryCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -182,7 +179,5 @@ class BackendCategoryTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

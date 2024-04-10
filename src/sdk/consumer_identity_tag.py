@@ -6,19 +6,20 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .common_message_exception import CommonMessageException
 from .consumer_identity_collection import ConsumerIdentityCollection
 from .passthru import Passthru
 
 class ConsumerIdentityTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def redirect(self, identity: str) -> Passthru:
+    @classmethod
+    def redirect(cls, identity: str) -> Passthru:
         try:
             path_params = {}
             path_params["identity"] = identity
@@ -27,14 +28,14 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/identity/:identity/redirect", path_params)
+            url = cls.parser.url("/consumer/identity/:identity/redirect", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return Passthru.from_json(response.content)
+                return Passthru.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -45,9 +46,8 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def exchange(self, identity: str) -> Passthru:
+    @classmethod
+    def exchange(cls, identity: str) -> Passthru:
         try:
             path_params = {}
             path_params["identity"] = identity
@@ -56,14 +56,14 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/identity/:identity/exchange", path_params)
+            url = cls.parser.url("/consumer/identity/:identity/exchange", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return Passthru.from_json(response.content)
+                return Passthru.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -74,9 +74,8 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, app_id: int) -> ConsumerIdentityCollection:
+    @classmethod
+    def get_all(cls, app_id: int) -> ConsumerIdentityCollection:
         try:
             path_params = {}
 
@@ -85,14 +84,14 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/identity", path_params)
+            url = cls.parser.url("/consumer/identity", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerIdentityCollection.from_json(response.content)
+                return ConsumerIdentityCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -102,7 +101,5 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

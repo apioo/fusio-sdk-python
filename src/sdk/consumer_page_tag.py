@@ -6,19 +6,20 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .common_message_exception import CommonMessageException
 from .consumer_page import ConsumerPage
 from .consumer_page_collection import ConsumerPageCollection
 
 class ConsumerPageTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def get(self, page_id: str) -> ConsumerPage:
+    @classmethod
+    def get(cls, page_id: str) -> ConsumerPage:
         try:
             path_params = {}
             path_params["page_id"] = page_id
@@ -27,14 +28,14 @@ class ConsumerPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/page/:page_id", path_params)
+            url = cls.parser.url("/consumer/page/:page_id", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPage.from_json(response.content)
+                return ConsumerPage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -49,9 +50,8 @@ class ConsumerPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> ConsumerPageCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerPageCollection:
         try:
             path_params = {}
 
@@ -62,14 +62,14 @@ class ConsumerPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/page", path_params)
+            url = cls.parser.url("/consumer/page", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPageCollection.from_json(response.content)
+                return ConsumerPageCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -79,7 +79,5 @@ class ConsumerPageTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

@@ -6,19 +6,20 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_transaction import BackendTransaction
 from .backend_transaction_collection import BackendTransactionCollection
 from .common_message_exception import CommonMessageException
 
 class BackendTransactionTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def get(self, transaction_id: str) -> BackendTransaction:
+    @classmethod
+    def get(cls, transaction_id: str) -> BackendTransaction:
         try:
             path_params = {}
             path_params["transaction_id"] = transaction_id
@@ -27,14 +28,14 @@ class BackendTransactionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/transaction/$transaction_id<[0-9]+>", path_params)
+            url = cls.parser.url("/backend/transaction/$transaction_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendTransaction.from_json(response.content)
+                return BackendTransaction.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -49,9 +50,8 @@ class BackendTransactionTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str, _from: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
         try:
             path_params = {}
 
@@ -59,7 +59,7 @@ class BackendTransactionTag(sdkgen.TagAbstract):
             query_params["startIndex"] = start_index
             query_params["count"] = count
             query_params["search"] = search
-            query_params["from"] = _from
+            query_params["from"] = from_
             query_params["to"] = to
             query_params["planId"] = plan_id
             query_params["userId"] = user_id
@@ -69,14 +69,14 @@ class BackendTransactionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/transaction", path_params)
+            url = cls.parser.url("/backend/transaction", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendTransactionCollection.from_json(response.content)
+                return BackendTransactionCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -86,7 +86,5 @@ class BackendTransactionTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

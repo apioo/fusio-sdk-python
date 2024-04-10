@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .consumer_account_tag import ConsumerAccountTag
 from .consumer_app_tag import ConsumerAppTag
@@ -22,113 +23,99 @@ from .consumer_transaction_tag import ConsumerTransactionTag
 from .consumer_webhook_tag import ConsumerWebhookTag
 
 class ConsumerTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
-
-    def identity(self) -> ConsumerIdentityTag:
+    @classmethod
+    def identity(cls) -> ConsumerIdentityTag:
         return ConsumerIdentityTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def account(self) -> ConsumerAccountTag:
+    @classmethod
+    def account(cls) -> ConsumerAccountTag:
         return ConsumerAccountTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def transaction(self) -> ConsumerTransactionTag:
+    @classmethod
+    def transaction(cls) -> ConsumerTransactionTag:
         return ConsumerTransactionTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def webhook(self) -> ConsumerWebhookTag:
+    @classmethod
+    def webhook(cls) -> ConsumerWebhookTag:
         return ConsumerWebhookTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def token(self) -> ConsumerTokenTag:
+    @classmethod
+    def token(cls) -> ConsumerTokenTag:
         return ConsumerTokenTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def scope(self) -> ConsumerScopeTag:
+    @classmethod
+    def scope(cls) -> ConsumerScopeTag:
         return ConsumerScopeTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def plan(self) -> ConsumerPlanTag:
+    @classmethod
+    def plan(cls) -> ConsumerPlanTag:
         return ConsumerPlanTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def payment(self) -> ConsumerPaymentTag:
+    @classmethod
+    def payment(cls) -> ConsumerPaymentTag:
         return ConsumerPaymentTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def page(self) -> ConsumerPageTag:
+    @classmethod
+    def page(cls) -> ConsumerPageTag:
         return ConsumerPageTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def log(self) -> ConsumerLogTag:
+    @classmethod
+    def log(cls) -> ConsumerLogTag:
         return ConsumerLogTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def grant(self) -> ConsumerGrantTag:
+    @classmethod
+    def grant(cls) -> ConsumerGrantTag:
         return ConsumerGrantTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def event(self) -> ConsumerEventTag:
+    @classmethod
+    def event(cls) -> ConsumerEventTag:
         return ConsumerEventTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def app(self) -> ConsumerAppTag:
+    @classmethod
+    def app(cls) -> ConsumerAppTag:
         return ConsumerAppTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
-
-    pass
 
 

@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .common_message_exception import CommonMessageException
 from .consumer_payment_checkout_request import ConsumerPaymentCheckoutRequest
@@ -14,13 +15,13 @@ from .consumer_payment_portal_request import ConsumerPaymentPortalRequest
 from .consumer_payment_portal_response import ConsumerPaymentPortalResponse
 
 class ConsumerPaymentTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def checkout(self, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
+    @classmethod
+    def checkout(cls, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -29,15 +30,15 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/payment/:provider/checkout", path_params)
+            url = cls.parser.url("/consumer/payment/:provider/checkout", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPaymentCheckoutResponse.from_json(response.content)
+                return ConsumerPaymentCheckoutResponse.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -48,9 +49,8 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def portal(self, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
+    @classmethod
+    def portal(cls, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -59,15 +59,15 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/payment/:provider/portal", path_params)
+            url = cls.parser.url("/consumer/payment/:provider/portal", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerPaymentPortalResponse.from_json(response.content)
+                return ConsumerPaymentPortalResponse.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -77,7 +77,5 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

@@ -6,18 +6,19 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .common_message_exception import CommonMessageException
 from .consumer_scope_collection import ConsumerScopeCollection
 
 class ConsumerScopeTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def get_all(self, start_index: int, count: int, search: str) -> ConsumerScopeCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerScopeCollection:
         try:
             path_params = {}
 
@@ -28,14 +29,14 @@ class ConsumerScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/consumer/scope", path_params)
+            url = cls.parser.url("/consumer/scope", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return ConsumerScopeCollection.from_json(response.content)
+                return ConsumerScopeCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -45,7 +46,5 @@ class ConsumerScopeTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

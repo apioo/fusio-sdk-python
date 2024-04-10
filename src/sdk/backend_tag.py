@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_account_tag import BackendAccountTag
 from .backend_action_tag import BackendActionTag
@@ -39,249 +40,218 @@ from .backend_user_tag import BackendUserTag
 from .backend_webhook_tag import BackendWebhookTag
 
 class BackendTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
-
-    def webhook(self) -> BackendWebhookTag:
+    @classmethod
+    def webhook(cls) -> BackendWebhookTag:
         return BackendWebhookTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def user(self) -> BackendUserTag:
+    @classmethod
+    def user(cls) -> BackendUserTag:
         return BackendUserTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def trash(self) -> BackendTrashTag:
+    @classmethod
+    def trash(cls) -> BackendTrashTag:
         return BackendTrashTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def transaction(self) -> BackendTransactionTag:
+    @classmethod
+    def transaction(cls) -> BackendTransactionTag:
         return BackendTransactionTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def token(self) -> BackendTokenTag:
+    @classmethod
+    def token(cls) -> BackendTokenTag:
         return BackendTokenTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def tenant(self) -> BackendTenantTag:
+    @classmethod
+    def tenant(cls) -> BackendTenantTag:
         return BackendTenantTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def statistic(self) -> BackendStatisticTag:
+    @classmethod
+    def statistic(cls) -> BackendStatisticTag:
         return BackendStatisticTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def sdk(self) -> BackendSdkTag:
+    @classmethod
+    def sdk(cls) -> BackendSdkTag:
         return BackendSdkTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def scope(self) -> BackendScopeTag:
+    @classmethod
+    def scope(cls) -> BackendScopeTag:
         return BackendScopeTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def schema(self) -> BackendSchemaTag:
+    @classmethod
+    def schema(cls) -> BackendSchemaTag:
         return BackendSchemaTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def operation(self) -> BackendOperationTag:
+    @classmethod
+    def operation(cls) -> BackendOperationTag:
         return BackendOperationTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def role(self) -> BackendRoleTag:
+    @classmethod
+    def role(cls) -> BackendRoleTag:
         return BackendRoleTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def rate(self) -> BackendRateTag:
+    @classmethod
+    def rate(cls) -> BackendRateTag:
         return BackendRateTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def plan(self) -> BackendPlanTag:
+    @classmethod
+    def plan(cls) -> BackendPlanTag:
         return BackendPlanTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def page(self) -> BackendPageTag:
+    @classmethod
+    def page(cls) -> BackendPageTag:
         return BackendPageTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def marketplace(self) -> BackendMarketplaceTag:
+    @classmethod
+    def marketplace(cls) -> BackendMarketplaceTag:
         return BackendMarketplaceTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def log(self) -> BackendLogTag:
+    @classmethod
+    def log(cls) -> BackendLogTag:
         return BackendLogTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def identity(self) -> BackendIdentityTag:
+    @classmethod
+    def identity(cls) -> BackendIdentityTag:
         return BackendIdentityTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def generator(self) -> BackendGeneratorTag:
+    @classmethod
+    def generator(cls) -> BackendGeneratorTag:
         return BackendGeneratorTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def backup(self) -> BackendBackupTag:
+    @classmethod
+    def backup(cls) -> BackendBackupTag:
         return BackendBackupTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def event(self) -> BackendEventTag:
+    @classmethod
+    def event(cls) -> BackendEventTag:
         return BackendEventTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def dashboard(self) -> BackendDashboardTag:
+    @classmethod
+    def dashboard(cls) -> BackendDashboardTag:
         return BackendDashboardTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def cronjob(self) -> BackendCronjobTag:
+    @classmethod
+    def cronjob(cls) -> BackendCronjobTag:
         return BackendCronjobTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def connection(self) -> BackendConnectionTag:
+    @classmethod
+    def connection(cls) -> BackendConnectionTag:
         return BackendConnectionTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def config(self) -> BackendConfigTag:
+    @classmethod
+    def config(cls) -> BackendConfigTag:
         return BackendConfigTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def category(self) -> BackendCategoryTag:
+    @classmethod
+    def category(cls) -> BackendCategoryTag:
         return BackendCategoryTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def audit(self) -> BackendAuditTag:
+    @classmethod
+    def audit(cls) -> BackendAuditTag:
         return BackendAuditTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def app(self) -> BackendAppTag:
+    @classmethod
+    def app(cls) -> BackendAppTag:
         return BackendAppTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def action(self) -> BackendActionTag:
+    @classmethod
+    def action(cls) -> BackendActionTag:
         return BackendActionTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
 
-    pass
-
-    def account(self) -> BackendAccountTag:
+    @classmethod
+    def account(cls) -> BackendAccountTag:
         return BackendAccountTag(
-            this.http_client,
-            this.parser
+            cls.http_client,
+            cls.parser
         )
-
-    pass
 
 

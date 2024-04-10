@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_backup_export import BackendBackupExport
 from .backend_backup_import import BackendBackupImport
@@ -13,13 +14,13 @@ from .backend_backup_import_result import BackendBackupImportResult
 from .common_message_exception import CommonMessageException
 
 class BackendBackupTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def _import(self, payload: BackendBackupImport) -> BackendBackupImportResult:
+    @classmethod
+    def import_(cls, payload: BackendBackupImport) -> BackendBackupImportResult:
         try:
             path_params = {}
 
@@ -27,15 +28,15 @@ class BackendBackupTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/backup/import", path_params)
+            url = cls.parser.url("/backend/backup/import", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendBackupImportResult.from_json(response.content)
+                return BackendBackupImportResult.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -46,9 +47,8 @@ class BackendBackupTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def export(self) -> BackendBackupExport:
+    @classmethod
+    def export(cls) -> BackendBackupExport:
         try:
             path_params = {}
 
@@ -56,14 +56,14 @@ class BackendBackupTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/backup/export", path_params)
+            url = cls.parser.url("/backend/backup/export", path_params)
 
             headers = {}
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendBackupExport.from_json(response.content)
+                return BackendBackupExport.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -73,7 +73,5 @@ class BackendBackupTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

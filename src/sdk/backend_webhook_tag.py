@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_webhook import BackendWebhook
 from .backend_webhook_collection import BackendWebhookCollection
@@ -15,13 +16,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendWebhookTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, webhook_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, webhook_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -30,14 +31,14 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -52,9 +53,8 @@ class BackendWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, webhook_id: str, payload: BackendWebhookUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, webhook_id: str, payload: BackendWebhookUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -63,15 +63,15 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -88,9 +88,8 @@ class BackendWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, webhook_id: str) -> BackendWebhook:
+    @classmethod
+    def get(cls, webhook_id: str) -> BackendWebhook:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -99,14 +98,14 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendWebhook.from_json(response.content)
+                return BackendWebhook.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -119,9 +118,8 @@ class BackendWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendWebhookCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendWebhookCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -129,15 +127,15 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/webhook", path_params)
+            url = cls.parser.url("/backend/webhook", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -150,9 +148,8 @@ class BackendWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendWebhookCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendWebhookCollection:
         try:
             path_params = {}
 
@@ -163,14 +160,14 @@ class BackendWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/webhook", path_params)
+            url = cls.parser.url("/backend/webhook", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendWebhookCollection.from_json(response.content)
+                return BackendWebhookCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -180,7 +177,5 @@ class BackendWebhookTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

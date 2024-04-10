@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_scope import BackendScope
 from .backend_scope_categories import BackendScopeCategories
@@ -16,13 +17,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendScopeTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, scope_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, scope_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["scope_id"] = scope_id
@@ -31,14 +32,14 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -55,9 +56,8 @@ class BackendScopeTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, scope_id: str, payload: BackendScopeUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, scope_id: str, payload: BackendScopeUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["scope_id"] = scope_id
@@ -66,15 +66,15 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -91,9 +91,8 @@ class BackendScopeTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, scope_id: str) -> BackendScope:
+    @classmethod
+    def get(cls, scope_id: str) -> BackendScope:
         try:
             path_params = {}
             path_params["scope_id"] = scope_id
@@ -102,14 +101,14 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/scope/$scope_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendScope.from_json(response.content)
+                return BackendScope.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -124,9 +123,8 @@ class BackendScopeTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_categories(self) -> BackendScopeCategories:
+    @classmethod
+    def get_categories(cls) -> BackendScopeCategories:
         try:
             path_params = {}
 
@@ -134,14 +132,14 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope/categories", path_params)
+            url = cls.parser.url("/backend/scope/categories", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendScopeCategories.from_json(response.content)
+                return BackendScopeCategories.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -152,9 +150,8 @@ class BackendScopeTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendScopeCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendScopeCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -162,15 +159,15 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope", path_params)
+            url = cls.parser.url("/backend/scope", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -183,9 +180,8 @@ class BackendScopeTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendScopeCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendScopeCollection:
         try:
             path_params = {}
 
@@ -196,14 +192,14 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/scope", path_params)
+            url = cls.parser.url("/backend/scope", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendScopeCollection.from_json(response.content)
+                return BackendScopeCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -213,7 +209,5 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

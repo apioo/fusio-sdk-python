@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_cronjob import BackendCronjob
 from .backend_cronjob_collection import BackendCronjobCollection
@@ -15,13 +16,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendCronjobTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, cronjob_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, cronjob_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["cronjob_id"] = cronjob_id
@@ -30,14 +31,14 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -52,9 +53,8 @@ class BackendCronjobTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, cronjob_id: str, payload: BackendCronjobUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, cronjob_id: str, payload: BackendCronjobUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["cronjob_id"] = cronjob_id
@@ -63,15 +63,15 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -88,9 +88,8 @@ class BackendCronjobTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, cronjob_id: str) -> BackendCronjob:
+    @classmethod
+    def get(cls, cronjob_id: str) -> BackendCronjob:
         try:
             path_params = {}
             path_params["cronjob_id"] = cronjob_id
@@ -99,14 +98,14 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/cronjob/$cronjob_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendCronjob.from_json(response.content)
+                return BackendCronjob.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -121,9 +120,8 @@ class BackendCronjobTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendCronjobCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendCronjobCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -131,15 +129,15 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/cronjob", path_params)
+            url = cls.parser.url("/backend/cronjob", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -152,9 +150,8 @@ class BackendCronjobTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendCronjobCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendCronjobCollection:
         try:
             path_params = {}
 
@@ -165,14 +162,14 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/cronjob", path_params)
+            url = cls.parser.url("/backend/cronjob", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendCronjobCollection.from_json(response.content)
+                return BackendCronjobCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -182,7 +179,5 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

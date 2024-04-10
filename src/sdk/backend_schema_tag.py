@@ -6,6 +6,7 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_schema import BackendSchema
 from .backend_schema_collection import BackendSchemaCollection
@@ -17,13 +18,13 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendSchemaTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def delete(self, schema_id: str) -> CommonMessage:
+    @classmethod
+    def delete(cls, schema_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["schema_id"] = schema_id
@@ -32,14 +33,14 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -54,9 +55,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update(self, schema_id: str, payload: BackendSchemaUpdate) -> CommonMessage:
+    @classmethod
+    def update(cls, schema_id: str, payload: BackendSchemaUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["schema_id"] = schema_id
@@ -65,15 +65,15 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -90,9 +90,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get(self, schema_id: str) -> BackendSchema:
+    @classmethod
+    def get(cls, schema_id: str) -> BackendSchema:
         try:
             path_params = {}
             path_params["schema_id"] = schema_id
@@ -101,14 +100,14 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
+            url = cls.parser.url("/backend/schema/$schema_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendSchema.from_json(response.content)
+                return BackendSchema.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -123,9 +122,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def update_form(self, schema_id: str, payload: BackendSchemaForm) -> CommonMessage:
+    @classmethod
+    def update_form(cls, schema_id: str, payload: BackendSchemaForm) -> CommonMessage:
         try:
             path_params = {}
             path_params["schema_id"] = schema_id
@@ -134,15 +132,15 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema/form/$schema_id<[0-9]+>", path_params)
+            url = cls.parser.url("/backend/schema/form/$schema_id<[0-9]+>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -159,9 +157,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_preview(self, schema_id: str) -> BackendSchemaPreviewResponse:
+    @classmethod
+    def get_preview(cls, schema_id: str) -> BackendSchemaPreviewResponse:
         try:
             path_params = {}
             path_params["schema_id"] = schema_id
@@ -170,14 +167,14 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema/preview/:schema_id", path_params)
+            url = cls.parser.url("/backend/schema/preview/:schema_id", path_params)
 
             headers = {}
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendSchemaPreviewResponse.from_json(response.content)
+                return BackendSchemaPreviewResponse.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -188,9 +185,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def create(self, payload: BackendSchemaCreate) -> CommonMessage:
+    @classmethod
+    def create(cls, payload: BackendSchemaCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -198,15 +194,15 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema", path_params)
+            url = cls.parser.url("/backend/schema", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), data=payload.to_json())
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -219,9 +215,8 @@ class BackendSchemaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def get_all(self, start_index: int, count: int, search: str) -> BackendSchemaCollection:
+    @classmethod
+    def get_all(cls, start_index: int, count: int, search: str) -> BackendSchemaCollection:
         try:
             path_params = {}
 
@@ -232,14 +227,14 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/schema", path_params)
+            url = cls.parser.url("/backend/schema", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendSchemaCollection.from_json(response.content)
+                return BackendSchemaCollection.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
@@ -249,7 +244,5 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

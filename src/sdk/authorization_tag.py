@@ -6,19 +6,20 @@ https://sdkgen.app
 import requests
 import sdkgen
 from requests import RequestException
+from typing import List
 
 from .backend_user import BackendUser
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class AuthorizationTag(sdkgen.TagAbstract):
-    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
+    @classmethod
+    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    pass
 
-
-    def get_whoami(self) -> BackendUser:
+    @classmethod
+    def get_whoami(cls) -> BackendUser:
         try:
             path_params = {}
 
@@ -26,14 +27,14 @@ class AuthorizationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/authorization/whoami", path_params)
+            url = cls.parser.url("/authorization/whoami", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendUser.from_json(response.content)
+                return BackendUser.model_validate_json(json_data=response.content)
 
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -42,9 +43,8 @@ class AuthorizationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    pass
-
-    def revoke(self) -> CommonMessage:
+    @classmethod
+    def revoke(cls) -> CommonMessage:
         try:
             path_params = {}
 
@@ -52,14 +52,14 @@ class AuthorizationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/authorization/revoke", path_params)
+            url = cls.parser.url("/authorization/revoke", path_params)
 
             headers = {}
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.from_json(response.content)
+                return CommonMessage.model_validate_json(json_data=response.content)
 
             if response.status_code == 400:
                 raise CommonMessageException(response.content)
@@ -69,7 +69,5 @@ class AuthorizationTag(sdkgen.TagAbstract):
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
-
-    pass
 
 

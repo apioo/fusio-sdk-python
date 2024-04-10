@@ -8,12 +8,12 @@ import sdkgen
 from .common_message import CommonMessage
 
 class CommonMessageException(sdkgen.KnownStatusCodeException):
-    def __init__(self, payload):
-        self.payload = CommonMessage.from_json(payload)
+    payload: CommonMessage = None
 
-    pass
+    @classmethod
+    def __init__(cls, payload):
+        cls.payload = CommonMessage.model_validate_json(json_data=payload)
 
-    def get_payload(self) -> CommonMessage:
-        return self.payload
-
-    pass
+    @classmethod
+    def get_payload(cls) -> CommonMessage:
+        return cls.payload
