@@ -1,47 +1,37 @@
 
 # Fusio Python SDK
 
-This is the official Fusio Java CSharp, it helps to talk to the Fusio REST API.
+This is the official Fusio Python SDK, it helps to talk to the Fusio REST API.
 Fusio is an open source API management system, more information at:
 https://www.fusio-project.org
 
 ## Usage
 
 The following example shows how you can get all registered routes at the backend.
-A working example is also available at: https://github.com/apioo/fusio-sample-csharp-cli
+A working example is also available at: https://github.com/apioo/fusio-sample-python-cli
 
-```csharp
-package org.fusioproject.sample;
+```python
+from sdk.client import Client
+from sdkgen import OAuth2, MemoryTokenStore
 
-import app.sdkgen.client.Credentials.OAuth2;
-import app.sdkgen.client.CredentialsInterface;
-import app.sdkgen.client.Exception.ClientException;
-import app.sdkgen.client.TokenStore.MemoryTokenStore;
-import app.sdkgen.client.TokenStoreInterface;
-import org.fusioproject.sdk.BackendOperationCollection;
-import org.fusioproject.sdk.Client;
+tokenStore = MemoryTokenStore()
+scopes = ["backend"]
 
-import java.util.ArrayList;
-import java.util.List;
+credentials = OAuth2(
+    "test",
+    "FRsNh1zKCXlB",
+    "https://demo.fusio-project.org/authorization/token",
+    "",
+    tokenStore,
+    scopes
+)
 
-public class Main {
+client = Client("https://demo.fusio-project.org", credentials)
 
-    public static void main(String[] args) throws ClientException {
-        List<String> scopes = new ArrayList<>();
-        scopes.add("backend");
-        TokenStoreInterface tokenStore = new MemoryTokenStore();
+print("Operations:")
+collection = client.backend().operation().get_all(0, 16, "")
 
-        CredentialsInterface credentials = new OAuth2("test", "FRsNh1zKCXlB", "https://demo.fusio-project.org/authorization/token", "", tokenStore, scopes);
-        Client client = new Client("https://demo.fusio-project.org/", credentials);
-
-        BackendOperationCollection operations = client.backend().operation().getAll(0, 16, "");
-
-        System.out.println("Operations:");
-        for (int i = 0; i < operations.getEntry().size(); i++) {
-            System.out.println("* " + operations.getEntry().get(i).getHttpMethod() + " " + operations.getEntry().get(i).getHttpPath());
-        }
-    }
-
-}
+for operation in collection.entry:
+    print(" * " + operation.http_method + " " + operation.http_path)
 
 ```
