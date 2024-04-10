@@ -5,10 +5,15 @@ https://sdkgen.app
 
 import sdkgen
 
-class CommonMessageException(sdkgen.KnownStatusCodeException) {
+from .common_message import CommonMessage
 
-    def __init__(self, payload: CommonMessage):
-        self.payload = payload
+class CommonMessageException(sdkgen.KnownStatusCodeException):
+    def __init__(self, payload):
+        self.payload = CommonMessage.from_json(payload)
+
     pass
 
-}
+    def get_payload(self) -> CommonMessage:
+        return self.payload
+
+    pass

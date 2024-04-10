@@ -5,14 +5,16 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
-from system_connection_tag import SystemConnectionTag
-from system_meta_tag import SystemMetaTag
-from system_payment_tag import SystemPaymentTag
+from .system_connection_tag import SystemConnectionTag
+from .system_meta_tag import SystemMetaTag
+from .system_payment_tag import SystemPaymentTag
 
 class SystemTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
     def payment(self) -> SystemPaymentTag:
@@ -20,6 +22,7 @@ class SystemTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def meta(self) -> SystemMetaTag:
@@ -27,6 +30,7 @@ class SystemTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def connection(self) -> SystemConnectionTag:
@@ -34,6 +38,7 @@ class SystemTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
 

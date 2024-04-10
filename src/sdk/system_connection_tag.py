@@ -5,37 +5,40 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
-from common_message import CommonMessage
+from .common_message import CommonMessage
 
 class SystemConnectionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
 
     def callback(self, name: str) -> CommonMessage:
         try:
-            pathParams = {}
-            pathParams["name"] = name
+            path_params = {}
+            path_params["name"] = name
 
-            queryParams = {}
+            query_params = {}
 
-            queryStructNames = [];
+            query_struct_names = []
 
-            url = self.parser.url("/system/connection/:name/callback", pathParams)
+            url = self.parser.url("/system/connection/:name/callback", path_params)
 
             headers = {}
 
-            response = self.http_client.get(url, headers=headers, params=this.parser.query(queryParams, queryStructNames))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.from_json(response.content)
 
 
             raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
-        except Exception as e:
+        except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     pass
 
 

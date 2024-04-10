@@ -5,24 +5,26 @@ https://sdkgen.app
 
 import requests
 import sdkgen
+from requests import RequestException
 
-from consumer_account_tag import ConsumerAccountTag
-from consumer_app_tag import ConsumerAppTag
-from consumer_event_tag import ConsumerEventTag
-from consumer_grant_tag import ConsumerGrantTag
-from consumer_identity_tag import ConsumerIdentityTag
-from consumer_log_tag import ConsumerLogTag
-from consumer_page_tag import ConsumerPageTag
-from consumer_payment_tag import ConsumerPaymentTag
-from consumer_plan_tag import ConsumerPlanTag
-from consumer_scope_tag import ConsumerScopeTag
-from consumer_token_tag import ConsumerTokenTag
-from consumer_transaction_tag import ConsumerTransactionTag
-from consumer_webhook_tag import ConsumerWebhookTag
+from .consumer_account_tag import ConsumerAccountTag
+from .consumer_app_tag import ConsumerAppTag
+from .consumer_event_tag import ConsumerEventTag
+from .consumer_grant_tag import ConsumerGrantTag
+from .consumer_identity_tag import ConsumerIdentityTag
+from .consumer_log_tag import ConsumerLogTag
+from .consumer_page_tag import ConsumerPageTag
+from .consumer_payment_tag import ConsumerPaymentTag
+from .consumer_plan_tag import ConsumerPlanTag
+from .consumer_scope_tag import ConsumerScopeTag
+from .consumer_token_tag import ConsumerTokenTag
+from .consumer_transaction_tag import ConsumerTransactionTag
+from .consumer_webhook_tag import ConsumerWebhookTag
 
 class ConsumerTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
     pass
 
     def identity(self) -> ConsumerIdentityTag:
@@ -30,6 +32,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def account(self) -> ConsumerAccountTag:
@@ -37,6 +40,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def transaction(self) -> ConsumerTransactionTag:
@@ -44,6 +48,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def webhook(self) -> ConsumerWebhookTag:
@@ -51,6 +56,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def token(self) -> ConsumerTokenTag:
@@ -58,6 +64,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def scope(self) -> ConsumerScopeTag:
@@ -65,6 +72,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def plan(self) -> ConsumerPlanTag:
@@ -72,6 +80,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def payment(self) -> ConsumerPaymentTag:
@@ -79,6 +88,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def page(self) -> ConsumerPageTag:
@@ -86,6 +96,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def log(self) -> ConsumerLogTag:
@@ -93,6 +104,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def grant(self) -> ConsumerGrantTag:
@@ -100,6 +112,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def event(self) -> ConsumerEventTag:
@@ -107,6 +120,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
     def app(self) -> ConsumerAppTag:
@@ -114,6 +128,7 @@ class ConsumerTag(sdkgen.TagAbstract):
             this.http_client,
             this.parser
         )
+
     pass
 
 
