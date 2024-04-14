@@ -16,13 +16,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendOperationTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete(cls, operation_id: str) -> CommonMessage:
+    def delete(self, operation_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["operation_id"] = operation_id
@@ -31,11 +29,11 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -53,8 +51,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, operation_id: str, payload: BackendOperationUpdate) -> CommonMessage:
+    def update(self, operation_id: str, payload: BackendOperationUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["operation_id"] = operation_id
@@ -63,12 +60,12 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -88,8 +85,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, operation_id: str) -> BackendOperation:
+    def get(self, operation_id: str) -> BackendOperation:
         try:
             path_params = {}
             path_params["operation_id"] = operation_id
@@ -98,11 +94,11 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/operation/$operation_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendOperation.model_validate_json(json_data=response.content)
@@ -120,8 +116,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def create(cls, payload: BackendOperationCreate) -> CommonMessage:
+    def create(self, payload: BackendOperationCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -129,12 +124,12 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/operation", path_params)
+            url = self.parser.url("/backend/operation", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -150,8 +145,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> BackendOperationCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> BackendOperationCollection:
         try:
             path_params = {}
 
@@ -162,11 +156,11 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/operation", path_params)
+            url = self.parser.url("/backend/operation", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendOperationCollection.model_validate_json(json_data=response.content)

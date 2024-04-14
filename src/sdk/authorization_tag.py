@@ -13,13 +13,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class AuthorizationTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get_whoami(cls) -> BackendUser:
+    def get_whoami(self) -> BackendUser:
         try:
             path_params = {}
 
@@ -27,11 +25,11 @@ class AuthorizationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/authorization/whoami", path_params)
+            url = self.parser.url("/authorization/whoami", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendUser.model_validate_json(json_data=response.content)
@@ -43,8 +41,7 @@ class AuthorizationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def revoke(cls) -> CommonMessage:
+    def revoke(self) -> CommonMessage:
         try:
             path_params = {}
 
@@ -52,11 +49,11 @@ class AuthorizationTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/authorization/revoke", path_params)
+            url = self.parser.url("/authorization/revoke", path_params)
 
             headers = {}
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)

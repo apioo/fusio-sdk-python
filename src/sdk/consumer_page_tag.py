@@ -13,13 +13,11 @@ from .consumer_page import ConsumerPage
 from .consumer_page_collection import ConsumerPageCollection
 
 class ConsumerPageTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get(cls, page_id: str) -> ConsumerPage:
+    def get(self, page_id: str) -> ConsumerPage:
         try:
             path_params = {}
             path_params["page_id"] = page_id
@@ -28,11 +26,11 @@ class ConsumerPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/page/:page_id", path_params)
+            url = self.parser.url("/consumer/page/:page_id", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPage.model_validate_json(json_data=response.content)
@@ -50,8 +48,7 @@ class ConsumerPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerPageCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> ConsumerPageCollection:
         try:
             path_params = {}
 
@@ -62,11 +59,11 @@ class ConsumerPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/page", path_params)
+            url = self.parser.url("/consumer/page", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPageCollection.model_validate_json(json_data=response.content)

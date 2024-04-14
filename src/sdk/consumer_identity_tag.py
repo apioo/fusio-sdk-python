@@ -13,13 +13,11 @@ from .consumer_identity_collection import ConsumerIdentityCollection
 from .passthru import Passthru
 
 class ConsumerIdentityTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def redirect(cls, identity: str) -> Passthru:
+    def redirect(self, identity: str) -> Passthru:
         try:
             path_params = {}
             path_params["identity"] = identity
@@ -28,11 +26,11 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/identity/:identity/redirect", path_params)
+            url = self.parser.url("/consumer/identity/:identity/redirect", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.model_validate_json(json_data=response.content)
@@ -46,8 +44,7 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def exchange(cls, identity: str) -> Passthru:
+    def exchange(self, identity: str) -> Passthru:
         try:
             path_params = {}
             path_params["identity"] = identity
@@ -56,11 +53,11 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/identity/:identity/exchange", path_params)
+            url = self.parser.url("/consumer/identity/:identity/exchange", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.model_validate_json(json_data=response.content)
@@ -74,21 +71,21 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, app_id: int) -> ConsumerIdentityCollection:
+    def get_all(self, app_id: int, app_key: str) -> ConsumerIdentityCollection:
         try:
             path_params = {}
 
             query_params = {}
             query_params["appId"] = app_id
+            query_params["appKey"] = app_key
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/identity", path_params)
+            url = self.parser.url("/consumer/identity", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerIdentityCollection.model_validate_json(json_data=response.content)

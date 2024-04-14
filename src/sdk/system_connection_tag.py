@@ -11,13 +11,11 @@ from typing import List
 from .common_message import CommonMessage
 
 class SystemConnectionTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def callback(cls, name: str) -> CommonMessage:
+    def callback(self, name: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["name"] = name
@@ -26,11 +24,11 @@ class SystemConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/connection/:name/callback", path_params)
+            url = self.parser.url("/system/connection/:name/callback", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)

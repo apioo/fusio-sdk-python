@@ -15,13 +15,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendMarketplaceTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def remove(cls, app_name: str) -> CommonMessage:
+    def remove(self, app_name: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["app_name"] = app_name
@@ -30,11 +28,11 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/marketplace/:app_name", path_params)
+            url = self.parser.url("/backend/marketplace/:app_name", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -50,8 +48,7 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, app_name: str) -> CommonMessage:
+    def update(self, app_name: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["app_name"] = app_name
@@ -60,11 +57,11 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/marketplace/:app_name", path_params)
+            url = self.parser.url("/backend/marketplace/:app_name", path_params)
 
             headers = {}
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -84,8 +81,7 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, app_name: str) -> BackendMarketplaceLocalApp:
+    def get(self, app_name: str) -> BackendMarketplaceLocalApp:
         try:
             path_params = {}
             path_params["app_name"] = app_name
@@ -94,11 +90,11 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/marketplace/:app_name", path_params)
+            url = self.parser.url("/backend/marketplace/:app_name", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendMarketplaceLocalApp.model_validate_json(json_data=response.content)
@@ -116,8 +112,7 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def install(cls, payload: BackendMarketplaceInstall) -> CommonMessage:
+    def install(self, payload: BackendMarketplaceInstall) -> CommonMessage:
         try:
             path_params = {}
 
@@ -125,12 +120,12 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/marketplace", path_params)
+            url = self.parser.url("/backend/marketplace", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -146,8 +141,7 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls) -> BackendMarketplaceCollection:
+    def get_all(self) -> BackendMarketplaceCollection:
         try:
             path_params = {}
 
@@ -155,11 +149,11 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/marketplace", path_params)
+            url = self.parser.url("/backend/marketplace", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendMarketplaceCollection.model_validate_json(json_data=response.content)

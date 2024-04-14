@@ -17,13 +17,11 @@ from .system_route import SystemRoute
 from .system_schema import SystemSchema
 
 class SystemMetaTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get_schema(cls, name: str) -> SystemSchema:
+    def get_schema(self, name: str) -> SystemSchema:
         try:
             path_params = {}
             path_params["name"] = name
@@ -32,11 +30,11 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/schema/:name", path_params)
+            url = self.parser.url("/system/schema/:name", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemSchema.model_validate_json(json_data=response.content)
@@ -52,8 +50,7 @@ class SystemMetaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_routes(cls) -> SystemRoute:
+    def get_routes(self) -> SystemRoute:
         try:
             path_params = {}
 
@@ -61,11 +58,11 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/route", path_params)
+            url = self.parser.url("/system/route", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemRoute.model_validate_json(json_data=response.content)
@@ -75,8 +72,7 @@ class SystemMetaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_o_auth_configuration(cls) -> SystemOAuthConfiguration:
+    def get_o_auth_configuration(self) -> SystemOAuthConfiguration:
         try:
             path_params = {}
 
@@ -84,11 +80,11 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/oauth-authorization-server", path_params)
+            url = self.parser.url("/system/oauth-authorization-server", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemOAuthConfiguration.model_validate_json(json_data=response.content)
@@ -98,8 +94,7 @@ class SystemMetaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_health(cls) -> SystemHealthCheck:
+    def get_health(self) -> SystemHealthCheck:
         try:
             path_params = {}
 
@@ -107,11 +102,11 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/health", path_params)
+            url = self.parser.url("/system/health", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemHealthCheck.model_validate_json(json_data=response.content)
@@ -121,8 +116,7 @@ class SystemMetaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_debug(cls, payload: Passthru) -> Passthru:
+    def get_debug(self, payload: Passthru) -> Passthru:
         try:
             path_params = {}
 
@@ -130,12 +124,12 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/debug", path_params)
+            url = self.parser.url("/system/debug", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return Passthru.model_validate_json(json_data=response.content)
@@ -145,8 +139,7 @@ class SystemMetaTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_about(cls) -> SystemAbout:
+    def get_about(self) -> SystemAbout:
         try:
             path_params = {}
 
@@ -154,11 +147,11 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/about", path_params)
+            url = self.parser.url("/system/about", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return SystemAbout.model_validate_json(json_data=response.content)

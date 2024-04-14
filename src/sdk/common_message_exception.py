@@ -10,9 +10,8 @@ from .common_message import CommonMessage
 class CommonMessageException(sdkgen.KnownStatusCodeException):
     payload: CommonMessage = None
 
-    @classmethod
-    def __init__(cls, payload):
-        cls.payload = CommonMessage.model_validate_json(json_data=payload)
+    def __init__(self, payload):
+        self.payload = CommonMessage.model_validate_json(json_data=payload)
 
     @classmethod
     def get_payload(cls) -> CommonMessage:

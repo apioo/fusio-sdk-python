@@ -16,13 +16,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendPageTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete(cls, page_id: str) -> CommonMessage:
+    def delete(self, page_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["page_id"] = page_id
@@ -31,11 +29,11 @@ class BackendPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -53,8 +51,7 @@ class BackendPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, page_id: str, payload: BackendPageUpdate) -> CommonMessage:
+    def update(self, page_id: str, payload: BackendPageUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["page_id"] = page_id
@@ -63,12 +60,12 @@ class BackendPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -88,8 +85,7 @@ class BackendPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, page_id: str) -> BackendPage:
+    def get(self, page_id: str) -> BackendPage:
         try:
             path_params = {}
             path_params["page_id"] = page_id
@@ -98,11 +94,11 @@ class BackendPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/page/$page_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendPage.model_validate_json(json_data=response.content)
@@ -120,8 +116,7 @@ class BackendPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def create(cls, payload: BackendPageCreate) -> CommonMessage:
+    def create(self, payload: BackendPageCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -129,12 +124,12 @@ class BackendPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/page", path_params)
+            url = self.parser.url("/backend/page", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -150,8 +145,7 @@ class BackendPageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> BackendPageCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> BackendPageCollection:
         try:
             path_params = {}
 
@@ -162,11 +156,11 @@ class BackendPageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/page", path_params)
+            url = self.parser.url("/backend/page", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendPageCollection.model_validate_json(json_data=response.content)

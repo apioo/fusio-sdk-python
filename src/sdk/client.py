@@ -14,36 +14,31 @@ from .consumer_tag import ConsumerTag
 from .backend_tag import BackendTag
 
 class Client(sdkgen.ClientAbstract):
-    @classmethod
-    def __init__(cls, base_url: str, credentials: sdkgen.CredentialsInterface):
+    def __init__(self, base_url: str, credentials: sdkgen.CredentialsInterface):
         super().__init__(base_url, credentials)
 
-    @classmethod
-    def authorization(cls) -> AuthorizationTag:
+    def authorization(self) -> AuthorizationTag:
         return AuthorizationTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def system(cls) -> SystemTag:
+    def system(self) -> SystemTag:
         return SystemTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def consumer(cls) -> ConsumerTag:
+    def consumer(self) -> ConsumerTag:
         return ConsumerTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def backend(cls) -> BackendTag:
+    def backend(self) -> BackendTag:
         return BackendTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
 

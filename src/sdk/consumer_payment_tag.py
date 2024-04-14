@@ -15,13 +15,11 @@ from .consumer_payment_portal_request import ConsumerPaymentPortalRequest
 from .consumer_payment_portal_response import ConsumerPaymentPortalResponse
 
 class ConsumerPaymentTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def checkout(cls, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
+    def checkout(self, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -30,12 +28,12 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/payment/:provider/checkout", path_params)
+            url = self.parser.url("/consumer/payment/:provider/checkout", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPaymentCheckoutResponse.model_validate_json(json_data=response.content)
@@ -49,8 +47,7 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def portal(cls, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
+    def portal(self, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -59,12 +56,12 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/payment/:provider/portal", path_params)
+            url = self.parser.url("/consumer/payment/:provider/portal", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerPaymentPortalResponse.model_validate_json(json_data=response.content)

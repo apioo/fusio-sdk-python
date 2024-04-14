@@ -13,13 +13,11 @@ from .backend_transaction_collection import BackendTransactionCollection
 from .common_message_exception import CommonMessageException
 
 class BackendTransactionTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get(cls, transaction_id: str) -> BackendTransaction:
+    def get(self, transaction_id: str) -> BackendTransaction:
         try:
             path_params = {}
             path_params["transaction_id"] = transaction_id
@@ -28,11 +26,11 @@ class BackendTransactionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/transaction/$transaction_id<[0-9]+>", path_params)
+            url = self.parser.url("/backend/transaction/$transaction_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendTransaction.model_validate_json(json_data=response.content)
@@ -50,8 +48,7 @@ class BackendTransactionTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
+    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
         try:
             path_params = {}
 
@@ -69,11 +66,11 @@ class BackendTransactionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/transaction", path_params)
+            url = self.parser.url("/backend/transaction", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendTransactionCollection.model_validate_json(json_data=response.content)

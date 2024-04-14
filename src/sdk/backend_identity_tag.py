@@ -18,13 +18,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendIdentityTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete(cls, identity_id: str) -> CommonMessage:
+    def delete(self, identity_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["identity_id"] = identity_id
@@ -33,11 +31,11 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -55,8 +53,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, identity_id: str, payload: BackendIdentityUpdate) -> CommonMessage:
+    def update(self, identity_id: str, payload: BackendIdentityUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["identity_id"] = identity_id
@@ -65,12 +62,12 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -90,8 +87,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, identity_id: str) -> BackendIdentity:
+    def get(self, identity_id: str) -> BackendIdentity:
         try:
             path_params = {}
             path_params["identity_id"] = identity_id
@@ -100,11 +96,11 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/identity/$identity_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendIdentity.model_validate_json(json_data=response.content)
@@ -122,8 +118,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_form(cls, class_: str) -> CommonFormContainer:
+    def get_form(self, class_: str) -> CommonFormContainer:
         try:
             path_params = {}
 
@@ -132,11 +127,11 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity/form", path_params)
+            url = self.parser.url("/backend/identity/form", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonFormContainer.model_validate_json(json_data=response.content)
@@ -150,8 +145,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_classes(cls) -> BackendIdentityIndex:
+    def get_classes(self) -> BackendIdentityIndex:
         try:
             path_params = {}
 
@@ -159,11 +153,11 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity/list", path_params)
+            url = self.parser.url("/backend/identity/list", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendIdentityIndex.model_validate_json(json_data=response.content)
@@ -177,8 +171,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def create(cls, payload: BackendIdentityCreate) -> CommonMessage:
+    def create(self, payload: BackendIdentityCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -186,12 +179,12 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity", path_params)
+            url = self.parser.url("/backend/identity", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -207,8 +200,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> BackendIdentityCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> BackendIdentityCollection:
         try:
             path_params = {}
 
@@ -219,11 +211,11 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/identity", path_params)
+            url = self.parser.url("/backend/identity", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendIdentityCollection.model_validate_json(json_data=response.content)

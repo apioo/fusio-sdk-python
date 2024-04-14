@@ -15,13 +15,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendTrashTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def restore(cls, type: str, payload: BackendTrashRestore) -> CommonMessage:
+    def restore(self, type: str, payload: BackendTrashRestore) -> CommonMessage:
         try:
             path_params = {}
             path_params["type"] = type
@@ -30,12 +28,12 @@ class BackendTrashTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/trash/:type", path_params)
+            url = self.parser.url("/backend/trash/:type", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -51,8 +49,7 @@ class BackendTrashTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all_by_type(cls, type: str, start_index: int, count: int, search: str) -> BackendTrashDataCollection:
+    def get_all_by_type(self, type: str, start_index: int, count: int, search: str) -> BackendTrashDataCollection:
         try:
             path_params = {}
             path_params["type"] = type
@@ -64,11 +61,11 @@ class BackendTrashTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/trash/:type", path_params)
+            url = self.parser.url("/backend/trash/:type", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendTrashDataCollection.model_validate_json(json_data=response.content)
@@ -82,8 +79,7 @@ class BackendTrashTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_types(cls) -> BackendTrashTypes:
+    def get_types(self) -> BackendTrashTypes:
         try:
             path_params = {}
 
@@ -91,11 +87,11 @@ class BackendTrashTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/trash", path_params)
+            url = self.parser.url("/backend/trash", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendTrashTypes.model_validate_json(json_data=response.content)

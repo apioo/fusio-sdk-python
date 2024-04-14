@@ -17,13 +17,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendGeneratorTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get_changelog(cls, provider: str, payload: BackendGeneratorProviderConfig) -> BackendGeneratorProviderChangelog:
+    def get_changelog(self, provider: str, payload: BackendGeneratorProviderConfig) -> BackendGeneratorProviderChangelog:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -32,12 +30,12 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/generator/:provider", path_params)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendGeneratorProviderChangelog.model_validate_json(json_data=response.content)
@@ -53,8 +51,7 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def execute_provider(cls, provider: str, payload: BackendGeneratorProvider) -> CommonMessage:
+    def execute_provider(self, provider: str, payload: BackendGeneratorProvider) -> CommonMessage:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -63,12 +60,12 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/generator/:provider", path_params)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -84,8 +81,7 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_form(cls, provider: str) -> CommonFormContainer:
+    def get_form(self, provider: str) -> CommonFormContainer:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -94,11 +90,11 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/generator/:provider", path_params)
+            url = self.parser.url("/backend/generator/:provider", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonFormContainer.model_validate_json(json_data=response.content)
@@ -114,8 +110,7 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_classes(cls) -> BackendGeneratorIndexProviders:
+    def get_classes(self) -> BackendGeneratorIndexProviders:
         try:
             path_params = {}
 
@@ -123,11 +118,11 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/generator", path_params)
+            url = self.parser.url("/backend/generator", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendGeneratorIndexProviders.model_validate_json(json_data=response.content)

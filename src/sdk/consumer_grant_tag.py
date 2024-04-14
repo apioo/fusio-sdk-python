@@ -13,13 +13,11 @@ from .common_message_exception import CommonMessageException
 from .consumer_grant_collection import ConsumerGrantCollection
 
 class ConsumerGrantTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete(cls, grant_id: str) -> CommonMessage:
+    def delete(self, grant_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["grant_id"] = grant_id
@@ -28,11 +26,11 @@ class ConsumerGrantTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/grant/$grant_id<[0-9]+>", path_params)
+            url = self.parser.url("/consumer/grant/$grant_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -50,8 +48,7 @@ class ConsumerGrantTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerGrantCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> ConsumerGrantCollection:
         try:
             path_params = {}
 
@@ -62,11 +59,11 @@ class ConsumerGrantTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/grant", path_params)
+            url = self.parser.url("/consumer/grant", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerGrantCollection.model_validate_json(json_data=response.content)

@@ -13,13 +13,11 @@ from .consumer_log import ConsumerLog
 from .consumer_log_collection import ConsumerLogCollection
 
 class ConsumerLogTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get(cls, log_id: str) -> ConsumerLog:
+    def get(self, log_id: str) -> ConsumerLog:
         try:
             path_params = {}
             path_params["log_id"] = log_id
@@ -28,11 +26,11 @@ class ConsumerLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/log/$log_id<[0-9]+>", path_params)
+            url = self.parser.url("/consumer/log/$log_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerLog.model_validate_json(json_data=response.content)
@@ -50,8 +48,7 @@ class ConsumerLogTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerLogCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> ConsumerLogCollection:
         try:
             path_params = {}
 
@@ -62,11 +59,11 @@ class ConsumerLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/log", path_params)
+            url = self.parser.url("/consumer/log", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerLogCollection.model_validate_json(json_data=response.content)

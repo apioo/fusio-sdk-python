@@ -16,13 +16,11 @@ from .consumer_webhook_create import ConsumerWebhookCreate
 from .consumer_webhook_update import ConsumerWebhookUpdate
 
 class ConsumerWebhookTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete(cls, webhook_id: str) -> CommonMessage:
+    def delete(self, webhook_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -31,11 +29,11 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -53,8 +51,7 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, webhook_id: str, payload: ConsumerWebhookUpdate) -> CommonMessage:
+    def update(self, webhook_id: str, payload: ConsumerWebhookUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -63,12 +60,12 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -88,8 +85,7 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, webhook_id: str) -> ConsumerWebhook:
+    def get(self, webhook_id: str) -> ConsumerWebhook:
         try:
             path_params = {}
             path_params["webhook_id"] = webhook_id
@@ -98,11 +94,11 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/consumer/webhook/$webhook_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerWebhook.model_validate_json(json_data=response.content)
@@ -120,8 +116,7 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def create(cls, payload: ConsumerWebhookCreate) -> CommonMessage:
+    def create(self, payload: ConsumerWebhookCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -129,12 +124,12 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/webhook", path_params)
+            url = self.parser.url("/consumer/webhook", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -150,8 +145,7 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerWebhookCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> ConsumerWebhookCollection:
         try:
             path_params = {}
 
@@ -162,11 +156,11 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/webhook", path_params)
+            url = self.parser.url("/consumer/webhook", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerWebhookCollection.model_validate_json(json_data=response.content)

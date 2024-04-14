@@ -16,13 +16,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendAppTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def delete_token(cls, app_id: str, token_id: str) -> CommonMessage:
+    def delete_token(self, app_id: str, token_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["app_id"] = app_id
@@ -32,11 +30,11 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app/$app_id<[0-9]+>/token/:token_id", path_params)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+>/token/:token_id", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -54,8 +52,7 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def delete(cls, app_id: str) -> CommonMessage:
+    def delete(self, app_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["app_id"] = app_id
@@ -64,11 +61,11 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.delete(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.delete(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -86,8 +83,7 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def update(cls, app_id: str, payload: BackendAppUpdate) -> CommonMessage:
+    def update(self, app_id: str, payload: BackendAppUpdate) -> CommonMessage:
         try:
             path_params = {}
             path_params["app_id"] = app_id
@@ -96,12 +92,12 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.put(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -121,8 +117,7 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get(cls, app_id: str) -> BackendApp:
+    def get(self, app_id: str) -> BackendApp:
         try:
             path_params = {}
             path_params["app_id"] = app_id
@@ -131,11 +126,11 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
+            url = self.parser.url("/backend/app/$app_id<[0-9]+|^~>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendApp.model_validate_json(json_data=response.content)
@@ -153,8 +148,7 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def create(cls, payload: BackendAppCreate) -> CommonMessage:
+    def create(self, payload: BackendAppCreate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -162,12 +156,12 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app", path_params)
+            url = self.parser.url("/backend/app", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
@@ -183,8 +177,7 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> BackendAppCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> BackendAppCollection:
         try:
             path_params = {}
 
@@ -195,11 +188,11 @@ class BackendAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/app", path_params)
+            url = self.parser.url("/backend/app", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendAppCollection.model_validate_json(json_data=response.content)

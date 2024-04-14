@@ -13,29 +13,25 @@ from .system_meta_tag import SystemMetaTag
 from .system_payment_tag import SystemPaymentTag
 
 class SystemTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    @classmethod
-    def payment(cls) -> SystemPaymentTag:
+    def payment(self) -> SystemPaymentTag:
         return SystemPaymentTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def meta(cls) -> SystemMetaTag:
+    def meta(self) -> SystemMetaTag:
         return SystemMetaTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def connection(cls) -> SystemConnectionTag:
+    def connection(self) -> SystemConnectionTag:
         return SystemConnectionTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
 

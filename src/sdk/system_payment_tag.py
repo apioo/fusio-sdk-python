@@ -12,13 +12,11 @@ from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class SystemPaymentTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def webhook(cls, provider: str) -> CommonMessage:
+    def webhook(self, provider: str) -> CommonMessage:
         try:
             path_params = {}
             path_params["provider"] = provider
@@ -27,11 +25,11 @@ class SystemPaymentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/payment/:provider/webhook", path_params)
+            url = self.parser.url("/system/payment/:provider/webhook", path_params)
 
             headers = {}
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)

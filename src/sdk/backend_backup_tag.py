@@ -14,13 +14,11 @@ from .backend_backup_import_result import BackendBackupImportResult
 from .common_message_exception import CommonMessageException
 
 class BackendBackupTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def import_(cls, payload: BackendBackupImport) -> BackendBackupImportResult:
+    def import_(self, payload: BackendBackupImport) -> BackendBackupImportResult:
         try:
             path_params = {}
 
@@ -28,12 +26,12 @@ class BackendBackupTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/backup/import", path_params)
+            url = self.parser.url("/backend/backup/import", path_params)
 
             headers = {}
             headers["Content-Type"] = "application/json"
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendBackupImportResult.model_validate_json(json_data=response.content)
@@ -47,8 +45,7 @@ class BackendBackupTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def export(cls) -> BackendBackupExport:
+    def export(self) -> BackendBackupExport:
         try:
             path_params = {}
 
@@ -56,11 +53,11 @@ class BackendBackupTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/backup/export", path_params)
+            url = self.parser.url("/backend/backup/export", path_params)
 
             headers = {}
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendBackupExport.model_validate_json(json_data=response.content)

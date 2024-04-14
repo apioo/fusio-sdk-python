@@ -15,13 +15,11 @@ from .backend_log_error_collection import BackendLogErrorCollection
 from .common_message_exception import CommonMessageException
 
 class BackendLogTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get(cls, log_id: str) -> BackendLog:
+    def get(self, log_id: str) -> BackendLog:
         try:
             path_params = {}
             path_params["log_id"] = log_id
@@ -30,11 +28,11 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/log/$log_id<[0-9]+>", path_params)
+            url = self.parser.url("/backend/log/$log_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendLog.model_validate_json(json_data=response.content)
@@ -52,8 +50,7 @@ class BackendLogTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str, from_: str, to: str, route_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendLogCollection:
+    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, route_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendLogCollection:
         try:
             path_params = {}
 
@@ -75,11 +72,11 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/log", path_params)
+            url = self.parser.url("/backend/log", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendLogCollection.model_validate_json(json_data=response.content)
@@ -93,8 +90,7 @@ class BackendLogTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_error(cls, error_id: str) -> BackendLogError:
+    def get_error(self, error_id: str) -> BackendLogError:
         try:
             path_params = {}
             path_params["error_id"] = error_id
@@ -103,11 +99,11 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/log/error/$error_id<[0-9]+>", path_params)
+            url = self.parser.url("/backend/log/error/$error_id<[0-9]+>", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendLogError.model_validate_json(json_data=response.content)
@@ -121,8 +117,7 @@ class BackendLogTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    @classmethod
-    def get_all_errors(cls, start_index: int, count: int, search: str) -> BackendLogErrorCollection:
+    def get_all_errors(self, start_index: int, count: int, search: str) -> BackendLogErrorCollection:
         try:
             path_params = {}
 
@@ -133,11 +128,11 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/log/error", path_params)
+            url = self.parser.url("/backend/log/error", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return BackendLogErrorCollection.model_validate_json(json_data=response.content)

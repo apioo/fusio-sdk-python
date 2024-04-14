@@ -12,13 +12,11 @@ from .common_message_exception import CommonMessageException
 from .consumer_event_collection import ConsumerEventCollection
 
 class ConsumerEventTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str) -> ConsumerEventCollection:
+    def get_all(self, start_index: int, count: int, search: str) -> ConsumerEventCollection:
         try:
             path_params = {}
 
@@ -29,11 +27,11 @@ class ConsumerEventTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = cls.parser.url("/consumer/event", path_params)
+            url = self.parser.url("/consumer/event", path_params)
 
             headers = {}
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
                 return ConsumerEventCollection.model_validate_json(json_data=response.content)
