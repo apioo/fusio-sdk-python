@@ -14,6 +14,7 @@ from .backend_connection_create import BackendConnectionCreate
 from .backend_connection_index import BackendConnectionIndex
 from .backend_connection_introspection_entities import BackendConnectionIntrospectionEntities
 from .backend_connection_introspection_entity import BackendConnectionIntrospectionEntity
+from .backend_connection_redirect_response import BackendConnectionRedirectResponse
 from .backend_connection_update import BackendConnectionUpdate
 from .common_form_container import CommonFormContainer
 from .common_message import CommonMessage
@@ -83,7 +84,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    def get_redirect(self, connection_id: str) -> CommonMessage:
+    def get_redirect(self, connection_id: str) -> BackendConnectionRedirectResponse:
         try:
             path_params = {}
             path_params["connection_id"] = connection_id
@@ -99,7 +100,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.model_validate_json(json_data=response.content)
+                return BackendConnectionRedirectResponse.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
