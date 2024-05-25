@@ -44,6 +44,6 @@ class Client(sdkgen.ClientAbstract):
 
 
     @staticmethod
-    def build(clientId: str, clientSecret: str, tokenStore: sdkgen.TokenStoreInterface, scopes: List[str]):
-        return Client("https://api.typehub.cloud/", sdkgen.OAuth2(clientId, clientSecret, "https://api.typehub.cloud/authorization/token", "", tokenStore, scopes))
+    def build():
+        return Client("https://api.sdkgen.app/", sdkgen.Anonymous())
 
