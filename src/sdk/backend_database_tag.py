@@ -138,13 +138,21 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    def get_rows(self, connection_id: str, table_name: str) -> BackendDatabaseRows:
+    def get_rows(self, connection_id: str, table_name: str, start_index: int, count: int, filter_by: str, filter_op: str, filter_value: str, sort_by: str, sort_order: str, columns: str) -> BackendDatabaseRows:
         try:
             path_params = {}
             path_params["connection_id"] = connection_id
             path_params["table_name"] = table_name
 
             query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["filterBy"] = filter_by
+            query_params["filterOp"] = filter_op
+            query_params["filterValue"] = filter_value
+            query_params["sortBy"] = sort_by
+            query_params["sortOrder"] = sort_order
+            query_params["columns"] = columns
 
             query_struct_names = []
 
