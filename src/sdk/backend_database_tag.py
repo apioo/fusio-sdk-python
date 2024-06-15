@@ -41,7 +41,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -71,7 +75,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -100,7 +108,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -130,6 +142,8 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
                 return BackendDatabaseRow.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -167,6 +181,8 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
+            if response.status_code == 404:
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
 
@@ -193,7 +209,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -222,7 +242,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -250,7 +274,11 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             if response.status_code >= 200 and response.status_code < 300:
                 return CommonMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
@@ -280,6 +308,8 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
+            if response.status_code == 404:
+                raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
 
@@ -306,6 +336,8 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
                 return BackendDatabaseTables.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 404:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
                 raise CommonMessageException(response.content)
