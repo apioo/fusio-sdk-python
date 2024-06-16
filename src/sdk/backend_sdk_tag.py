@@ -9,8 +9,8 @@ from requests import RequestException
 from typing import List
 
 from .backend_sdk_generate import BackendSdkGenerate
+from .backend_sdk_message import BackendSdkMessage
 from .backend_sdk_response import BackendSdkResponse
-from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendSdkTag(sdkgen.TagAbstract):
@@ -18,7 +18,7 @@ class BackendSdkTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def generate(self, payload: BackendSdkGenerate) -> CommonMessage:
+    def generate(self, payload: BackendSdkGenerate) -> BackendSdkMessage:
         try:
             path_params = {}
 
@@ -34,8 +34,10 @@ class BackendSdkTag(sdkgen.TagAbstract):
             response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.model_validate_json(json_data=response.content)
+                return BackendSdkMessage.model_validate_json(json_data=response.content)
 
+            if response.status_code == 400:
+                raise CommonMessageException(response.content)
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
             if response.status_code == 500:
