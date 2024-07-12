@@ -44,6 +44,6 @@ class Client(sdkgen.ClientAbstract):
 
 
     @staticmethod
-    def build():
-        return Client("https://api.sdkgen.app/", sdkgen.Anonymous())
+    def build(clientId: str, clientSecret: str, tokenStore: sdkgen.TokenStoreInterface, scopes: List[str]):
+        return Client("http://127.0.0.1/", sdkgen.OAuth2(clientId, clientSecret, "http://127.0.0.1/authorization/token", "", tokenStore, scopes))
 
