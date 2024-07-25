@@ -34,6 +34,7 @@ from .backend_scope_tag import BackendScopeTag
 from .backend_sdk_tag import BackendSdkTag
 from .backend_statistic_tag import BackendStatisticTag
 from .backend_tenant_tag import BackendTenantTag
+from .backend_test_tag import BackendTestTag
 from .backend_token_tag import BackendTokenTag
 from .backend_transaction_tag import BackendTransactionTag
 from .backend_trash_tag import BackendTrashTag
@@ -70,6 +71,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def token(self) -> BackendTokenTag:
         return BackendTokenTag(
+            self.http_client,
+            self.parser
+        )
+
+    def test(self) -> BackendTestTag:
+        return BackendTestTag(
             self.http_client,
             self.parser
         )
