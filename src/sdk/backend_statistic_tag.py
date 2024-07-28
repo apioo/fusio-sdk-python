@@ -523,7 +523,7 @@ class BackendStatisticTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
-    def get_activities_per_user(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticCount:
+    def get_activities_per_user(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
             path_params = {}
 
@@ -552,7 +552,7 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendStatisticCount.model_validate_json(json_data=response.content)
+                return BackendStatisticChart.model_validate_json(json_data=response.content)
 
             if response.status_code == 401:
                 raise CommonMessageException(response.content)
