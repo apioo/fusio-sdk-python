@@ -17,6 +17,46 @@ class BackendStatisticTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
+    def get_user_registrations(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = from_
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
+
+            query_struct_names = []
+
+            url = self.parser.url("/backend/statistic/user_registrations", path_params)
+
+            headers = {}
+
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+            if response.status_code >= 200 and response.status_code < 300:
+                return BackendStatisticChart.model_validate_json(json_data=response.content)
+
+            if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 500:
+                raise CommonMessageException(response.content)
+
+            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+        except RequestException as e:
+            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     def get_used_points(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
             path_params = {}
@@ -243,6 +283,46 @@ class BackendStatisticTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException("An unknown error occurred: " + str(e))
 
+    def get_most_used_activities(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = from_
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
+
+            query_struct_names = []
+
+            url = self.parser.url("/backend/statistic/most_used_activities", path_params)
+
+            headers = {}
+
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+            if response.status_code >= 200 and response.status_code < 300:
+                return BackendStatisticChart.model_validate_json(json_data=response.content)
+
+            if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 500:
+                raise CommonMessageException(response.content)
+
+            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+        except RequestException as e:
+            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
     def get_issued_tokens(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
         try:
             path_params = {}
@@ -426,6 +506,46 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             query_struct_names = []
 
             url = self.parser.url("/backend/statistic/count_requests", path_params)
+
+            headers = {}
+
+            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+            if response.status_code >= 200 and response.status_code < 300:
+                return BackendStatisticCount.model_validate_json(json_data=response.content)
+
+            if response.status_code == 401:
+                raise CommonMessageException(response.content)
+            if response.status_code == 500:
+                raise CommonMessageException(response.content)
+
+            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+        except RequestException as e:
+            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+
+    def get_activities_per_user(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticCount:
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params["startIndex"] = start_index
+            query_params["count"] = count
+            query_params["search"] = search
+            query_params["from"] = from_
+            query_params["to"] = to
+            query_params["operationId"] = operation_id
+            query_params["appId"] = app_id
+            query_params["userId"] = user_id
+            query_params["ip"] = ip
+            query_params["userAgent"] = user_agent
+            query_params["method"] = method
+            query_params["path"] = path
+            query_params["header"] = header
+            query_params["body"] = body
+
+            query_struct_names = []
+
+            url = self.parser.url("/backend/statistic/activities_per_user", path_params)
 
             headers = {}
 

@@ -7,9 +7,6 @@ from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
 from .backend_statistic_chart import BackendStatisticChart
-from .backend_dashboard_apps import BackendDashboardApps
-from .backend_dashboard_requests import BackendDashboardRequests
-from .backend_dashboard_users import BackendDashboardUsers
 class BackendDashboard(BaseModel):
     errors_per_operation: Optional[BackendStatisticChart] = Field(default=None, alias="errorsPerOperation")
     incoming_requests: Optional[BackendStatisticChart] = Field(default=None, alias="incomingRequests")
@@ -17,7 +14,7 @@ class BackendDashboard(BaseModel):
     most_used_operations: Optional[BackendStatisticChart] = Field(default=None, alias="mostUsedOperations")
     time_per_operation: Optional[BackendStatisticChart] = Field(default=None, alias="timePerOperation")
     test_coverage: Optional[BackendStatisticChart] = Field(default=None, alias="testCoverage")
-    latest_apps: Optional[BackendDashboardApps] = Field(default=None, alias="latestApps")
-    latest_requests: Optional[BackendDashboardRequests] = Field(default=None, alias="latestRequests")
-    latest_users: Optional[BackendDashboardUsers] = Field(default=None, alias="latestUsers")
+    most_used_activities: Optional[BackendStatisticChart] = Field(default=None, alias="mostUsedActivities")
+    activities_per_user: Optional[BackendStatisticChart] = Field(default=None, alias="activitiesPerUser")
+    user_registrations: Optional[BackendStatisticChart] = Field(default=None, alias="userRegistrations")
     pass
