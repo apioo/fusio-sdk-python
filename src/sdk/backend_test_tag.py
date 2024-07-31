@@ -10,7 +10,6 @@ from typing import List
 
 from .backend_test import BackendTest
 from .backend_test_collection import BackendTestCollection
-from .backend_test_config import BackendTestConfig
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -19,7 +18,7 @@ class BackendTestTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def update(self, test_id: str, payload: BackendTestConfig) -> CommonMessage:
+    def update(self, test_id: str, payload: BackendTest) -> CommonMessage:
         try:
             path_params = {}
             path_params["test_id"] = test_id
