@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_webhook_response import BackendWebhookResponse
+
+
 class BackendWebhook(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     event_id: Optional[int] = Field(default=None, alias="eventId")
@@ -15,3 +17,5 @@ class BackendWebhook(BaseModel):
     endpoint: Optional[str] = Field(default=None, alias="endpoint")
     responses: Optional[List[BackendWebhookResponse]] = Field(default=None, alias="responses")
     pass
+
+

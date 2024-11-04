@@ -4,6 +4,8 @@ https://sdkgen.app
 """
 
 import sdkgen
+from typing import Dict
+from typing import Any
 
 from .common_message import CommonMessage
 
@@ -11,7 +13,7 @@ class CommonMessageException(sdkgen.KnownStatusCodeException):
     payload: CommonMessage = None
 
     def __init__(self, payload):
-        self.payload = CommonMessage.model_validate_json(json_data=payload)
+        self.payload = payload
 
     def get_payload(self) -> CommonMessage:
         return self.payload

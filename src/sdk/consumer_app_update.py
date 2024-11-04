@@ -5,9 +5,13 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class ConsumerAppUpdate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     url: Optional[str] = Field(default=None, alias="url")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     pass
+
+

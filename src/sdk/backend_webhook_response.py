@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 import datetime
+
+
 class BackendWebhookResponse(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
@@ -15,3 +17,5 @@ class BackendWebhookResponse(BaseModel):
     error: Optional[str] = Field(default=None, alias="error")
     execute_date: Optional[datetime.datetime] = Field(default=None, alias="executeDate")
     pass
+
+

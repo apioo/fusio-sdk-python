@@ -5,7 +5,9 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class BackendLogError(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     message: Optional[int] = Field(default=None, alias="message")
@@ -13,3 +15,5 @@ class BackendLogError(BaseModel):
     file: Optional[str] = Field(default=None, alias="file")
     line: Optional[int] = Field(default=None, alias="line")
     pass
+
+

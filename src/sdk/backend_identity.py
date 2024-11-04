@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_identity_config import BackendIdentityConfig
+
+
 class BackendIdentity(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     app_id: Optional[int] = Field(default=None, alias="appId")
@@ -17,3 +19,5 @@ class BackendIdentity(BaseModel):
     config: Optional[BackendIdentityConfig] = Field(default=None, alias="config")
     allow_create: Optional[bool] = Field(default=None, alias="allowCreate")
     pass
+
+

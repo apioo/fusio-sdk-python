@@ -5,10 +5,14 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .system_schema_type_schema import SystemSchemaTypeSchema
 from .system_schema_form import SystemSchemaForm
+
+
 class SystemSchema(BaseModel):
     schema_: Optional[SystemSchemaTypeSchema] = Field(default=None, alias="schema")
     form: Optional[SystemSchemaForm] = Field(default=None, alias="form")
     pass
+
+

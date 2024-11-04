@@ -5,11 +5,12 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
-from .common_form_element_input import CommonFormElementInput
-from .common_form_element_select import CommonFormElementSelect
-from .common_form_element_tag import CommonFormElementTag
-from .common_form_element_text_area import CommonFormElementTextArea
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+from .common_form_element import CommonFormElement
+
+
 class CommonFormContainer(BaseModel):
-    element: Optional[List[Union[CommonFormElementInput, CommonFormElementSelect, CommonFormElementTag, CommonFormElementTextArea]]] = Field(default=None, alias="element")
+    element: Optional[List[CommonFormElement]] = Field(default=None, alias="element")
     pass
+
+

@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .common_metadata import CommonMetadata
+
+
 class BackendEvent(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
@@ -14,3 +16,5 @@ class BackendEvent(BaseModel):
     schema_: Optional[str] = Field(default=None, alias="schema")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
+
+

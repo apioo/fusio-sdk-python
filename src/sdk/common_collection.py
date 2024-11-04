@@ -5,7 +5,9 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 T = TypeVar("T")
 class CommonCollection(BaseModel, Generic[T]):
     total_results: Optional[int] = Field(default=None, alias="totalResults")
@@ -13,3 +15,5 @@ class CommonCollection(BaseModel, Generic[T]):
     items_per_page: Optional[int] = Field(default=None, alias="itemsPerPage")
     entry: Optional[List[T]] = Field(default=None, alias="entry")
     pass
+
+

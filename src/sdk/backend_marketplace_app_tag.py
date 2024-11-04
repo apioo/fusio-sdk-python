@@ -7,6 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .marketplace_app import MarketplaceApp
 from .marketplace_app_collection import MarketplaceAppCollection
@@ -22,68 +25,107 @@ class BackendMarketplaceAppTag(sdkgen.TagAbstract):
     def upgrade(self, user: str, name: str) -> MarketplaceMessage:
         try:
             path_params = {}
-            path_params["user"] = user
-            path_params["name"] = name
+            path_params['user'] = user
+            path_params['name'] = name
 
             query_params = {}
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/marketplace/app/:user/:name", path_params)
+            url = self.parser.url('/backend/marketplace/app/:user/:name', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = self.http_client.put(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('PUT', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return MarketplaceMessage.model_validate_json(json_data=response.content)
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
 
-            if response.status_code == 400:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 401:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 404:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 410:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 500:
-                raise MarketplaceMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 400:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 401:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 404:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 410:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 500:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, user: str, name: str) -> MarketplaceApp:
         try:
             path_params = {}
-            path_params["user"] = user
-            path_params["name"] = name
+            path_params['user'] = user
+            path_params['name'] = name
 
             query_params = {}
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/marketplace/app/:user/:name", path_params)
+            url = self.parser.url('/backend/marketplace/app/:user/:name', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return MarketplaceApp.model_validate_json(json_data=response.content)
+                data = MarketplaceApp.model_validate_json(json_data=response.content)
 
-            if response.status_code == 401:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 404:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 410:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 500:
-                raise MarketplaceMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 401:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 404:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 410:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 500:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def install(self, payload: MarketplaceInstall) -> MarketplaceMessage:
         try:
@@ -93,53 +135,82 @@ class BackendMarketplaceAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/marketplace/app", path_params)
+            url = self.parser.url('/backend/marketplace/app', path_params)
 
-            headers = {}
-            headers["Content-Type"] = "application/json"
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = self.http_client.post(url, headers=headers, params=self.parser.query(query_params, query_struct_names), json=payload.model_dump(by_alias=True))
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return MarketplaceMessage.model_validate_json(json_data=response.content)
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
 
-            if response.status_code == 400:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 401:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 500:
-                raise MarketplaceMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 400:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 401:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 500:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, query: str) -> MarketplaceAppCollection:
         try:
             path_params = {}
 
             query_params = {}
-            query_params["startIndex"] = start_index
-            query_params["query"] = query
+            query_params['startIndex'] = start_index
+            query_params['query'] = query
 
             query_struct_names = []
 
-            url = self.parser.url("/backend/marketplace/app", path_params)
+            url = self.parser.url('/backend/marketplace/app', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = self.http_client.get(url, headers=headers, params=self.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return MarketplaceAppCollection.model_validate_json(json_data=response.content)
+                data = MarketplaceAppCollection.model_validate_json(json_data=response.content)
 
-            if response.status_code == 401:
-                raise MarketplaceMessageException(response.content)
-            if response.status_code == 500:
-                raise MarketplaceMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 401:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            if statusCode == 500:
+                data = MarketplaceMessage.model_validate_json(json_data=response.content)
+
+                raise MarketplaceMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
 
 

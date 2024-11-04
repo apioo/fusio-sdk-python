@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_statistic_chart import BackendStatisticChart
+
+
 class BackendDashboard(BaseModel):
     errors_per_operation: Optional[BackendStatisticChart] = Field(default=None, alias="errorsPerOperation")
     incoming_requests: Optional[BackendStatisticChart] = Field(default=None, alias="incomingRequests")
@@ -18,3 +20,5 @@ class BackendDashboard(BaseModel):
     activities_per_user: Optional[BackendStatisticChart] = Field(default=None, alias="activitiesPerUser")
     user_registrations: Optional[BackendStatisticChart] = Field(default=None, alias="userRegistrations")
     pass
+
+

@@ -5,8 +5,12 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class ConsumerUserPasswordReset(BaseModel):
     token: Optional[str] = Field(default=None, alias="token")
     new_password: Optional[str] = Field(default=None, alias="newPassword")
     pass
+
+

@@ -5,8 +5,12 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class SystemAboutLink(BaseModel):
     rel: Optional[str] = Field(default=None, alias="rel")
     href: Optional[str] = Field(default=None, alias="href")
     pass
+
+

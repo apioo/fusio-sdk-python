@@ -5,10 +5,14 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .marketplace_object import MarketplaceObject
 from .marketplace_action_config import MarketplaceActionConfig
+
+
 class MarketplaceAction(MarketplaceObject):
     class_: Optional[str] = Field(default=None, alias="class")
     config: Optional[MarketplaceActionConfig] = Field(default=None, alias="config")
     pass
+
+

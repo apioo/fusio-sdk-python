@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_action_execute_request_body import BackendActionExecuteRequestBody
+
+
 class BackendActionExecuteRequest(BaseModel):
     method: Optional[str] = Field(default=None, alias="method")
     uri_fragments: Optional[str] = Field(default=None, alias="uriFragments")
@@ -14,3 +16,5 @@ class BackendActionExecuteRequest(BaseModel):
     headers: Optional[str] = Field(default=None, alias="headers")
     body: Optional[BackendActionExecuteRequestBody] = Field(default=None, alias="body")
     pass
+
+

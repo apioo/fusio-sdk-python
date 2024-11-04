@@ -7,6 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .authorization_tag import AuthorizationTag
 from .system_tag import SystemTag
@@ -43,7 +46,7 @@ class Client(sdkgen.ClientAbstract):
 
 
 
-    @staticmethod
-    def build(baseUrl: str):
-        return Client(baseUrl, sdkgen.Anonymous())
 
+    @staticmethod
+    def buildAnonymous(baseUrl: str):
+        return Client(baseUrl, sdkgen.Anonymous())
