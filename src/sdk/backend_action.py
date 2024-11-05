@@ -5,9 +5,11 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_action_config import BackendActionConfig
 from .common_metadata import CommonMetadata
+
+
 class BackendAction(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
@@ -17,3 +19,5 @@ class BackendAction(BaseModel):
     config: Optional[BackendActionConfig] = Field(default=None, alias="config")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
+
+

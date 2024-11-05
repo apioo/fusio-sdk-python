@@ -5,10 +5,14 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class ConsumerWebhookResponse(BaseModel):
     status: Optional[int] = Field(default=None, alias="status")
     code: Optional[int] = Field(default=None, alias="code")
     attempts: Optional[str] = Field(default=None, alias="attempts")
     execute_date: Optional[str] = Field(default=None, alias="executeDate")
     pass
+
+

@@ -5,8 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .common_metadata import CommonMetadata
+
+
 class ConsumerApp(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     user_id: Optional[int] = Field(default=None, alias="userId")
@@ -19,3 +21,5 @@ class ConsumerApp(BaseModel):
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
+
+

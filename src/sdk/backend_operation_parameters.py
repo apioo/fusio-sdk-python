@@ -5,9 +5,10 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
-from .backend_operation_schema import BackendOperationSchema
-class BackendOperationParameters(Dict[str, BackendOperationSchema]):
-    @classmethod
-    def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:
-        return core_schema.dict_schema(handler.generate_schema(str), handler.generate_schema(BackendOperationSchema))
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
+class BackendOperationParameters(BaseModel):
+    pass
+
+

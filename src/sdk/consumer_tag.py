@@ -7,6 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .consumer_account_tag import ConsumerAccountTag
 from .consumer_app_tag import ConsumerAppTag
@@ -23,99 +26,85 @@ from .consumer_transaction_tag import ConsumerTransactionTag
 from .consumer_webhook_tag import ConsumerWebhookTag
 
 class ConsumerTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    @classmethod
-    def identity(cls) -> ConsumerIdentityTag:
+    def identity(self) -> ConsumerIdentityTag:
         return ConsumerIdentityTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def account(cls) -> ConsumerAccountTag:
+    def account(self) -> ConsumerAccountTag:
         return ConsumerAccountTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def transaction(cls) -> ConsumerTransactionTag:
+    def transaction(self) -> ConsumerTransactionTag:
         return ConsumerTransactionTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def webhook(cls) -> ConsumerWebhookTag:
+    def webhook(self) -> ConsumerWebhookTag:
         return ConsumerWebhookTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def token(cls) -> ConsumerTokenTag:
+    def token(self) -> ConsumerTokenTag:
         return ConsumerTokenTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def scope(cls) -> ConsumerScopeTag:
+    def scope(self) -> ConsumerScopeTag:
         return ConsumerScopeTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def plan(cls) -> ConsumerPlanTag:
+    def plan(self) -> ConsumerPlanTag:
         return ConsumerPlanTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def payment(cls) -> ConsumerPaymentTag:
+    def payment(self) -> ConsumerPaymentTag:
         return ConsumerPaymentTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def page(cls) -> ConsumerPageTag:
+    def page(self) -> ConsumerPageTag:
         return ConsumerPageTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def log(cls) -> ConsumerLogTag:
+    def log(self) -> ConsumerLogTag:
         return ConsumerLogTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def grant(cls) -> ConsumerGrantTag:
+    def grant(self) -> ConsumerGrantTag:
         return ConsumerGrantTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def event(cls) -> ConsumerEventTag:
+    def event(self) -> ConsumerEventTag:
         return ConsumerEventTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def app(cls) -> ConsumerAppTag:
+    def app(self) -> ConsumerAppTag:
         return ConsumerAppTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
 

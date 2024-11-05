@@ -7,84 +7,115 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .backend_transaction import BackendTransaction
 from .backend_transaction_collection import BackendTransactionCollection
 from .common_message_exception import CommonMessageException
 
 class BackendTransactionTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def get(cls, transaction_id: str) -> BackendTransaction:
+    def get(self, transaction_id: str) -> BackendTransaction:
         try:
             path_params = {}
-            path_params["transaction_id"] = transaction_id
+            path_params['transaction_id'] = transaction_id
 
             query_params = {}
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/transaction/$transaction_id<[0-9]+>", path_params)
+            url = self.parser.url('/backend/transaction/$transaction_id<[0-9]+>', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendTransaction.model_validate_json(json_data=response.content)
+                data = BackendTransaction.model_validate_json(json_data=response.content)
 
-            if response.status_code == 401:
-                raise CommonMessageException(response.content)
-            if response.status_code == 404:
-                raise CommonMessageException(response.content)
-            if response.status_code == 410:
-                raise CommonMessageException(response.content)
-            if response.status_code == 500:
-                raise CommonMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 401:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            if statusCode == 404:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            if statusCode == 410:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            if statusCode == 500:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    @classmethod
-    def get_all(cls, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
+    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
         try:
             path_params = {}
 
             query_params = {}
-            query_params["startIndex"] = start_index
-            query_params["count"] = count
-            query_params["search"] = search
-            query_params["from"] = from_
-            query_params["to"] = to
-            query_params["planId"] = plan_id
-            query_params["userId"] = user_id
-            query_params["appId"] = app_id
-            query_params["status"] = status
-            query_params["provider"] = provider
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+            query_params['from'] = from_
+            query_params['to'] = to
+            query_params['planId'] = plan_id
+            query_params['userId'] = user_id
+            query_params['appId'] = app_id
+            query_params['status'] = status
+            query_params['provider'] = provider
 
             query_struct_names = []
 
-            url = cls.parser.url("/backend/transaction", path_params)
+            url = self.parser.url('/backend/transaction', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = cls.http_client.get(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return BackendTransactionCollection.model_validate_json(json_data=response.content)
+                data = BackendTransactionCollection.model_validate_json(json_data=response.content)
 
-            if response.status_code == 401:
-                raise CommonMessageException(response.content)
-            if response.status_code == 500:
-                raise CommonMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 401:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            if statusCode == 500:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
 
 

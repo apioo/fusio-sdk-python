@@ -5,9 +5,11 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .backend_rate_allocation import BackendRateAllocation
 from .common_metadata import CommonMetadata
+
+
 class BackendRate(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     priority: Optional[int] = Field(default=None, alias="priority")
@@ -17,3 +19,5 @@ class BackendRate(BaseModel):
     allocation: Optional[List[BackendRateAllocation]] = Field(default=None, alias="allocation")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
+
+

@@ -5,7 +5,9 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class ConsumerUserPlan(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
@@ -13,3 +15,5 @@ class ConsumerUserPlan(BaseModel):
     points: Optional[int] = Field(default=None, alias="points")
     period: Optional[int] = Field(default=None, alias="period")
     pass
+
+

@@ -5,7 +5,9 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
+
+
 class SystemOAuthConfiguration(BaseModel):
     issuer: Optional[str] = Field(default=None, alias="issuer")
     token_endpoint: Optional[str] = Field(default=None, alias="token_endpoint")
@@ -14,3 +16,5 @@ class SystemOAuthConfiguration(BaseModel):
     scopes_supported: Optional[List[str]] = Field(default=None, alias="scopes_supported")
     claims_supported: Optional[List[str]] = Field(default=None, alias="claims_supported")
     pass
+
+

@@ -7,40 +7,51 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class SystemPaymentTag(sdkgen.TagAbstract):
-    @classmethod
-    def __init__(cls, http_client: requests.Session, parser: sdkgen.Parser):
+    def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
 
-    @classmethod
-    def webhook(cls, provider: str) -> CommonMessage:
+    def webhook(self, provider: str) -> CommonMessage:
         try:
             path_params = {}
-            path_params["provider"] = provider
+            path_params['provider'] = provider
 
             query_params = {}
 
             query_struct_names = []
 
-            url = cls.parser.url("/system/payment/:provider/webhook", path_params)
+            url = self.parser.url('/system/payment/:provider/webhook', path_params)
 
-            headers = {}
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
 
-            response = cls.http_client.post(url, headers=headers, params=cls.parser.query(query_params, query_struct_names))
+
+
+            response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return CommonMessage.model_validate_json(json_data=response.content)
+                data = CommonMessage.model_validate_json(json_data=response.content)
 
-            if response.status_code == 500:
-                raise CommonMessageException(response.content)
+                return data
 
-            raise sdkgen.UnknownStatusCodeException("The server returned an unknown status code")
+            statusCode = response.status_code
+            if statusCode == 500:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
         except RequestException as e:
-            raise sdkgen.ClientException("An unknown error occurred: " + str(e))
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
 
 

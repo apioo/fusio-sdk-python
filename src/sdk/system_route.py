@@ -5,8 +5,12 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .system_route_path import SystemRoutePath
+
+
 class SystemRoute(BaseModel):
     routes: Optional[SystemRoutePath] = Field(default=None, alias="routes")
     pass
+
+

@@ -5,10 +5,12 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 import datetime
 from .backend_app import BackendApp
 from .common_metadata import CommonMetadata
+
+
 class BackendUser(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     role_id: Optional[int] = Field(default=None, alias="roleId")
@@ -22,3 +24,5 @@ class BackendUser(BaseModel):
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
     pass
+
+

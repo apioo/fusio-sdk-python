@@ -5,9 +5,11 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 from .system_about_apps import SystemAboutApps
 from .system_about_link import SystemAboutLink
+
+
 class SystemAbout(BaseModel):
     api_version: Optional[str] = Field(default=None, alias="apiVersion")
     title: Optional[str] = Field(default=None, alias="title")
@@ -24,3 +26,5 @@ class SystemAbout(BaseModel):
     apps: Optional[SystemAboutApps] = Field(default=None, alias="apps")
     links: Optional[List[SystemAboutLink]] = Field(default=None, alias="links")
     pass
+
+

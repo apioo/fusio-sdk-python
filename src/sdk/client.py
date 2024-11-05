@@ -7,6 +7,9 @@ import requests
 import sdkgen
 from requests import RequestException
 from typing import List
+from typing import Dict
+from typing import Any
+from urllib.parse import parse_qs
 
 from .authorization_tag import AuthorizationTag
 from .system_tag import SystemTag
@@ -14,41 +17,36 @@ from .consumer_tag import ConsumerTag
 from .backend_tag import BackendTag
 
 class Client(sdkgen.ClientAbstract):
-    @classmethod
-    def __init__(cls, base_url: str, credentials: sdkgen.CredentialsInterface):
+    def __init__(self, base_url: str, credentials: sdkgen.CredentialsInterface):
         super().__init__(base_url, credentials)
 
-    @classmethod
-    def authorization(cls) -> AuthorizationTag:
+    def authorization(self) -> AuthorizationTag:
         return AuthorizationTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def system(cls) -> SystemTag:
+    def system(self) -> SystemTag:
         return SystemTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def consumer(cls) -> ConsumerTag:
+    def consumer(self) -> ConsumerTag:
         return ConsumerTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
 
-    @classmethod
-    def backend(cls) -> BackendTag:
+    def backend(self) -> BackendTag:
         return BackendTag(
-            cls.http_client,
-            cls.parser
+            self.http_client,
+            self.parser
         )
+
 
 
 
     @staticmethod
-    def build(clientId: str, clientSecret: str, tokenStore: sdkgen.TokenStoreInterface, scopes: List[str]):
-        return Client("https://api.typehub.cloud/", sdkgen.OAuth2(clientId, clientSecret, "https://api.typehub.cloud/authorization/token", "", tokenStore, scopes))
-
+    def buildAnonymous(baseUrl: str):
+        return Client(baseUrl, sdkgen.Anonymous())
