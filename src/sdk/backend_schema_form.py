@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDi
 
 
 # Contains a UI vocabulary to describe the UI of the schema
-class BackendSchemaForm(BaseModel):
-    pass
+class BackendSchemaForm(UserDict[str, Any]):
+    @classmethod
+    def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:
+        return core_schema.dict_schema(handler.generate_schema(str), handler.generate_schema(Any))
 
 
