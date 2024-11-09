@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, UserList, UserDict
 
 
+# Base collection
 T = TypeVar("T")
 class CommonCollection(BaseModel, Generic[T]):
     total_results: Optional[int] = Field(default=None, alias="totalResults")
