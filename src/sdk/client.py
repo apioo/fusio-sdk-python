@@ -12,9 +12,9 @@ from typing import Any
 from urllib.parse import parse_qs
 
 from .authorization_tag import AuthorizationTag
-from .system_tag import SystemTag
-from .consumer_tag import ConsumerTag
 from .backend_tag import BackendTag
+from .consumer_tag import ConsumerTag
+from .system_tag import SystemTag
 
 class Client(sdkgen.ClientAbstract):
     def __init__(self, base_url: str, credentials: sdkgen.CredentialsInterface):
@@ -26,8 +26,8 @@ class Client(sdkgen.ClientAbstract):
             self.parser
         )
 
-    def system(self) -> SystemTag:
-        return SystemTag(
+    def backend(self) -> BackendTag:
+        return BackendTag(
             self.http_client,
             self.parser
         )
@@ -38,8 +38,8 @@ class Client(sdkgen.ClientAbstract):
             self.parser
         )
 
-    def backend(self) -> BackendTag:
-        return BackendTag(
+    def system(self) -> SystemTag:
+        return SystemTag(
             self.http_client,
             self.parser
         )

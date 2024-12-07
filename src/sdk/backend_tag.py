@@ -48,182 +48,8 @@ class BackendTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    def webhook(self) -> BackendWebhookTag:
-        return BackendWebhookTag(
-            self.http_client,
-            self.parser
-        )
-
-    def user(self) -> BackendUserTag:
-        return BackendUserTag(
-            self.http_client,
-            self.parser
-        )
-
-    def trash(self) -> BackendTrashTag:
-        return BackendTrashTag(
-            self.http_client,
-            self.parser
-        )
-
-    def transaction(self) -> BackendTransactionTag:
-        return BackendTransactionTag(
-            self.http_client,
-            self.parser
-        )
-
-    def token(self) -> BackendTokenTag:
-        return BackendTokenTag(
-            self.http_client,
-            self.parser
-        )
-
-    def test(self) -> BackendTestTag:
-        return BackendTestTag(
-            self.http_client,
-            self.parser
-        )
-
-    def tenant(self) -> BackendTenantTag:
-        return BackendTenantTag(
-            self.http_client,
-            self.parser
-        )
-
-    def statistic(self) -> BackendStatisticTag:
-        return BackendStatisticTag(
-            self.http_client,
-            self.parser
-        )
-
-    def sdk(self) -> BackendSdkTag:
-        return BackendSdkTag(
-            self.http_client,
-            self.parser
-        )
-
-    def scope(self) -> BackendScopeTag:
-        return BackendScopeTag(
-            self.http_client,
-            self.parser
-        )
-
-    def schema_(self) -> BackendSchemaTag:
-        return BackendSchemaTag(
-            self.http_client,
-            self.parser
-        )
-
-    def operation(self) -> BackendOperationTag:
-        return BackendOperationTag(
-            self.http_client,
-            self.parser
-        )
-
-    def role(self) -> BackendRoleTag:
-        return BackendRoleTag(
-            self.http_client,
-            self.parser
-        )
-
-    def rate(self) -> BackendRateTag:
-        return BackendRateTag(
-            self.http_client,
-            self.parser
-        )
-
-    def plan(self) -> BackendPlanTag:
-        return BackendPlanTag(
-            self.http_client,
-            self.parser
-        )
-
-    def page(self) -> BackendPageTag:
-        return BackendPageTag(
-            self.http_client,
-            self.parser
-        )
-
-    def marketplace(self) -> BackendMarketplaceTag:
-        return BackendMarketplaceTag(
-            self.http_client,
-            self.parser
-        )
-
-    def log(self) -> BackendLogTag:
-        return BackendLogTag(
-            self.http_client,
-            self.parser
-        )
-
-    def identity(self) -> BackendIdentityTag:
-        return BackendIdentityTag(
-            self.http_client,
-            self.parser
-        )
-
-    def generator(self) -> BackendGeneratorTag:
-        return BackendGeneratorTag(
-            self.http_client,
-            self.parser
-        )
-
-    def backup(self) -> BackendBackupTag:
-        return BackendBackupTag(
-            self.http_client,
-            self.parser
-        )
-
-    def event(self) -> BackendEventTag:
-        return BackendEventTag(
-            self.http_client,
-            self.parser
-        )
-
-    def database(self) -> BackendDatabaseTag:
-        return BackendDatabaseTag(
-            self.http_client,
-            self.parser
-        )
-
-    def dashboard(self) -> BackendDashboardTag:
-        return BackendDashboardTag(
-            self.http_client,
-            self.parser
-        )
-
-    def cronjob(self) -> BackendCronjobTag:
-        return BackendCronjobTag(
-            self.http_client,
-            self.parser
-        )
-
-    def connection(self) -> BackendConnectionTag:
-        return BackendConnectionTag(
-            self.http_client,
-            self.parser
-        )
-
-    def config(self) -> BackendConfigTag:
-        return BackendConfigTag(
-            self.http_client,
-            self.parser
-        )
-
-    def category(self) -> BackendCategoryTag:
-        return BackendCategoryTag(
-            self.http_client,
-            self.parser
-        )
-
-    def audit(self) -> BackendAuditTag:
-        return BackendAuditTag(
-            self.http_client,
-            self.parser
-        )
-
-    def app(self) -> BackendAppTag:
-        return BackendAppTag(
+    def account(self) -> BackendAccountTag:
+        return BackendAccountTag(
             self.http_client,
             self.parser
         )
@@ -234,8 +60,182 @@ class BackendTag(sdkgen.TagAbstract):
             self.parser
         )
 
-    def account(self) -> BackendAccountTag:
-        return BackendAccountTag(
+    def app(self) -> BackendAppTag:
+        return BackendAppTag(
+            self.http_client,
+            self.parser
+        )
+
+    def audit(self) -> BackendAuditTag:
+        return BackendAuditTag(
+            self.http_client,
+            self.parser
+        )
+
+    def backup(self) -> BackendBackupTag:
+        return BackendBackupTag(
+            self.http_client,
+            self.parser
+        )
+
+    def category(self) -> BackendCategoryTag:
+        return BackendCategoryTag(
+            self.http_client,
+            self.parser
+        )
+
+    def config(self) -> BackendConfigTag:
+        return BackendConfigTag(
+            self.http_client,
+            self.parser
+        )
+
+    def connection(self) -> BackendConnectionTag:
+        return BackendConnectionTag(
+            self.http_client,
+            self.parser
+        )
+
+    def cronjob(self) -> BackendCronjobTag:
+        return BackendCronjobTag(
+            self.http_client,
+            self.parser
+        )
+
+    def dashboard(self) -> BackendDashboardTag:
+        return BackendDashboardTag(
+            self.http_client,
+            self.parser
+        )
+
+    def database(self) -> BackendDatabaseTag:
+        return BackendDatabaseTag(
+            self.http_client,
+            self.parser
+        )
+
+    def event(self) -> BackendEventTag:
+        return BackendEventTag(
+            self.http_client,
+            self.parser
+        )
+
+    def generator(self) -> BackendGeneratorTag:
+        return BackendGeneratorTag(
+            self.http_client,
+            self.parser
+        )
+
+    def identity(self) -> BackendIdentityTag:
+        return BackendIdentityTag(
+            self.http_client,
+            self.parser
+        )
+
+    def log(self) -> BackendLogTag:
+        return BackendLogTag(
+            self.http_client,
+            self.parser
+        )
+
+    def marketplace(self) -> BackendMarketplaceTag:
+        return BackendMarketplaceTag(
+            self.http_client,
+            self.parser
+        )
+
+    def operation(self) -> BackendOperationTag:
+        return BackendOperationTag(
+            self.http_client,
+            self.parser
+        )
+
+    def page(self) -> BackendPageTag:
+        return BackendPageTag(
+            self.http_client,
+            self.parser
+        )
+
+    def plan(self) -> BackendPlanTag:
+        return BackendPlanTag(
+            self.http_client,
+            self.parser
+        )
+
+    def rate(self) -> BackendRateTag:
+        return BackendRateTag(
+            self.http_client,
+            self.parser
+        )
+
+    def role(self) -> BackendRoleTag:
+        return BackendRoleTag(
+            self.http_client,
+            self.parser
+        )
+
+    def schema_(self) -> BackendSchemaTag:
+        return BackendSchemaTag(
+            self.http_client,
+            self.parser
+        )
+
+    def scope(self) -> BackendScopeTag:
+        return BackendScopeTag(
+            self.http_client,
+            self.parser
+        )
+
+    def sdk(self) -> BackendSdkTag:
+        return BackendSdkTag(
+            self.http_client,
+            self.parser
+        )
+
+    def statistic(self) -> BackendStatisticTag:
+        return BackendStatisticTag(
+            self.http_client,
+            self.parser
+        )
+
+    def tenant(self) -> BackendTenantTag:
+        return BackendTenantTag(
+            self.http_client,
+            self.parser
+        )
+
+    def test(self) -> BackendTestTag:
+        return BackendTestTag(
+            self.http_client,
+            self.parser
+        )
+
+    def token(self) -> BackendTokenTag:
+        return BackendTokenTag(
+            self.http_client,
+            self.parser
+        )
+
+    def transaction(self) -> BackendTransactionTag:
+        return BackendTransactionTag(
+            self.http_client,
+            self.parser
+        )
+
+    def trash(self) -> BackendTrashTag:
+        return BackendTrashTag(
+            self.http_client,
+            self.parser
+        )
+
+    def user(self) -> BackendUserTag:
+        return BackendUserTag(
+            self.http_client,
+            self.parser
+        )
+
+    def webhook(self) -> BackendWebhookTag:
+        return BackendWebhookTag(
             self.http_client,
             self.parser
         )
