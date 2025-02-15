@@ -17,7 +17,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: apioo/sdkgen-generator-action@v0.2.1
         with:
           client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
@@ -47,7 +47,7 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python3 -m build
       - name: Store the distribution packages
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-package-distributions
           path: dist/
@@ -60,7 +60,7 @@ jobs:
       url: https://pypi.org/p/fusio-sdk
     steps:
       - name: Download all the dists
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: python-package-distributions
           path: dist/
