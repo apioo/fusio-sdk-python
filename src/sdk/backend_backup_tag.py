@@ -14,6 +14,7 @@ from urllib.parse import parse_qs
 from .backend_backup_export import BackendBackupExport
 from .backend_backup_import import BackendBackupImport
 from .backend_backup_import_result import BackendBackupImportResult
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendBackupTag(sdkgen.TagAbstract):

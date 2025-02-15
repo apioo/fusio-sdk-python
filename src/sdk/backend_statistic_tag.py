@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_statistic_chart import BackendStatisticChart
 from .backend_statistic_count import BackendStatisticCount
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendStatisticTag(sdkgen.TagAbstract):

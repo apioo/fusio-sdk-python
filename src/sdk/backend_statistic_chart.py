@@ -6,12 +6,12 @@ https://sdkgen.app
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
-from .backend_statistic_chart_data import BackendStatisticChartData
+from .array import Array
 
 
 class BackendStatisticChart(BaseModel):
     labels: Optional[List[str]] = Field(default=None, alias="labels")
-    data: Optional[List[BackendStatisticChartData]] = Field(default=None, alias="data")
+    data: Optional[List[Array]] = Field(default=None, alias="data")
     series: Optional[List[str]] = Field(default=None, alias="series")
     pass
 

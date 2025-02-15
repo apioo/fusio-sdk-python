@@ -14,6 +14,7 @@ from urllib.parse import parse_qs
 from .backend_sdk_generate import BackendSdkGenerate
 from .backend_sdk_message import BackendSdkMessage
 from .backend_sdk_response import BackendSdkResponse
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendSdkTag(sdkgen.TagAbstract):

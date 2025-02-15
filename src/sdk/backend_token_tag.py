@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_token import BackendToken
 from .backend_token_collection import BackendTokenCollection
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendTokenTag(sdkgen.TagAbstract):

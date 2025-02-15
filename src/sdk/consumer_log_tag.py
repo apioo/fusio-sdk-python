@@ -11,6 +11,7 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 from .consumer_log import ConsumerLog
 from .consumer_log_collection import ConsumerLogCollection

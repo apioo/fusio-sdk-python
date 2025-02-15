@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_audit import BackendAudit
 from .backend_audit_collection import BackendAuditCollection
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendAuditTag(sdkgen.TagAbstract):

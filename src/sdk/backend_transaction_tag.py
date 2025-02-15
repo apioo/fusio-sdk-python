@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_transaction import BackendTransaction
 from .backend_transaction_collection import BackendTransactionCollection
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendTransactionTag(sdkgen.TagAbstract):

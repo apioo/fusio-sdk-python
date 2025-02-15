@@ -15,6 +15,7 @@ from .backend_log import BackendLog
 from .backend_log_collection import BackendLogCollection
 from .backend_log_error import BackendLogError
 from .backend_log_error_collection import BackendLogErrorCollection
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendLogTag(sdkgen.TagAbstract):

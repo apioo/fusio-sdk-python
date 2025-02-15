@@ -12,6 +12,7 @@ from typing import Any
 from urllib.parse import parse_qs
 
 from .backend_dashboard import BackendDashboard
+from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
 class BackendDashboardTag(sdkgen.TagAbstract):

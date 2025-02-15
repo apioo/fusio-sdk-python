@@ -17,6 +17,7 @@ class BackendSchema(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     source: Optional[BackendSchemaSource] = Field(default=None, alias="source")
     form: Optional[BackendSchemaForm] = Field(default=None, alias="form")
+    readonly: Optional[bool] = Field(default=None, alias="readonly")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
 
