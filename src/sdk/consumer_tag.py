@@ -29,14 +29,68 @@ class ConsumerTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
+    def account(self) -> ConsumerAccountTag:
+        return ConsumerAccountTag(
+            self.http_client,
+            self.parser
+        )
+
+    def app(self) -> ConsumerAppTag:
+        return ConsumerAppTag(
+            self.http_client,
+            self.parser
+        )
+
+    def event(self) -> ConsumerEventTag:
+        return ConsumerEventTag(
+            self.http_client,
+            self.parser
+        )
+
+    def grant(self) -> ConsumerGrantTag:
+        return ConsumerGrantTag(
+            self.http_client,
+            self.parser
+        )
+
     def identity(self) -> ConsumerIdentityTag:
         return ConsumerIdentityTag(
             self.http_client,
             self.parser
         )
 
-    def account(self) -> ConsumerAccountTag:
-        return ConsumerAccountTag(
+    def log(self) -> ConsumerLogTag:
+        return ConsumerLogTag(
+            self.http_client,
+            self.parser
+        )
+
+    def page(self) -> ConsumerPageTag:
+        return ConsumerPageTag(
+            self.http_client,
+            self.parser
+        )
+
+    def payment(self) -> ConsumerPaymentTag:
+        return ConsumerPaymentTag(
+            self.http_client,
+            self.parser
+        )
+
+    def plan(self) -> ConsumerPlanTag:
+        return ConsumerPlanTag(
+            self.http_client,
+            self.parser
+        )
+
+    def scope(self) -> ConsumerScopeTag:
+        return ConsumerScopeTag(
+            self.http_client,
+            self.parser
+        )
+
+    def token(self) -> ConsumerTokenTag:
+        return ConsumerTokenTag(
             self.http_client,
             self.parser
         )
@@ -49,60 +103,6 @@ class ConsumerTag(sdkgen.TagAbstract):
 
     def webhook(self) -> ConsumerWebhookTag:
         return ConsumerWebhookTag(
-            self.http_client,
-            self.parser
-        )
-
-    def token(self) -> ConsumerTokenTag:
-        return ConsumerTokenTag(
-            self.http_client,
-            self.parser
-        )
-
-    def scope(self) -> ConsumerScopeTag:
-        return ConsumerScopeTag(
-            self.http_client,
-            self.parser
-        )
-
-    def plan(self) -> ConsumerPlanTag:
-        return ConsumerPlanTag(
-            self.http_client,
-            self.parser
-        )
-
-    def payment(self) -> ConsumerPaymentTag:
-        return ConsumerPaymentTag(
-            self.http_client,
-            self.parser
-        )
-
-    def page(self) -> ConsumerPageTag:
-        return ConsumerPageTag(
-            self.http_client,
-            self.parser
-        )
-
-    def log(self) -> ConsumerLogTag:
-        return ConsumerLogTag(
-            self.http_client,
-            self.parser
-        )
-
-    def grant(self) -> ConsumerGrantTag:
-        return ConsumerGrantTag(
-            self.http_client,
-            self.parser
-        )
-
-    def event(self) -> ConsumerEventTag:
-        return ConsumerEventTag(
-            self.http_client,
-            self.parser
-        )
-
-    def app(self) -> ConsumerAppTag:
-        return ConsumerAppTag(
             self.http_client,
             self.parser
         )

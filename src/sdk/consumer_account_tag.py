@@ -31,7 +31,7 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def execute_password_reset(self, payload: ConsumerUserPasswordReset) -> CommonMessage:
+    def activate(self, payload: ConsumerUserActivate) -> CommonMessage:
         try:
             path_params = {}
 
@@ -39,52 +39,7 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/password_reset', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('PUT', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def request_password_reset(self, payload: ConsumerUserEmail) -> CommonMessage:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/password_reset', path_params)
+            url = self.parser.url('/consumer/activate', path_params)
 
             options = {}
             options['headers'] = {}
@@ -102,142 +57,7 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def register(self, payload: ConsumerUserRegister) -> CommonMessage:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/register', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def refresh(self, payload: ConsumerUserRefresh) -> ConsumerUserJWT:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/login', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('PUT', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerUserJWT.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def login(self, payload: ConsumerUserLogin) -> ConsumerUserJWT:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/login', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerUserJWT.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -272,100 +92,7 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_app(self) -> ConsumerAuthorizeMeta:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/authorize', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerAuthorizeMeta.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def activate(self, payload: ConsumerUserActivate) -> CommonMessage:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/activate', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -400,17 +127,248 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 400:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
 
-            if statusCode == 401:
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def execute_password_reset(self, payload: ConsumerUserPasswordReset) -> CommonMessage:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/password_reset', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('PUT', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
 
-            if statusCode == 500:
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get(self) -> ConsumerUserAccount:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/account', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerUserAccount.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_app(self) -> ConsumerAuthorizeMeta:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/authorize', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerAuthorizeMeta.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def login(self, payload: ConsumerUserLogin) -> ConsumerUserJWT:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/login', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerUserJWT.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def refresh(self, payload: ConsumerUserRefresh) -> ConsumerUserJWT:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/login', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('PUT', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerUserJWT.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def register(self, payload: ConsumerUserRegister) -> CommonMessage:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/register', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def request_password_reset(self, payload: ConsumerUserEmail) -> CommonMessage:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/password_reset', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -445,75 +403,7 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get(self) -> ConsumerUserAccount:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/account', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerUserAccount.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)

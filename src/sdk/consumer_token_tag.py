@@ -24,6 +24,41 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
+    def create(self, payload: ConsumerTokenCreate) -> ConsumerTokenAccessToken:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/token', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerTokenAccessToken.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
     def delete(self, token_id: str) -> CommonMessage:
         try:
             path_params = {}
@@ -49,78 +84,7 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def update(self, token_id: str, payload: ConsumerTokenUpdate) -> ConsumerTokenAccessToken:
-        try:
-            path_params = {}
-            path_params['token_id'] = token_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/token/$token_id<[0-9]+|^~>', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('PUT', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerTokenAccessToken.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -154,67 +118,7 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def create(self, payload: ConsumerTokenCreate) -> ConsumerTokenAccessToken:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/consumer/token', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = ConsumerTokenAccessToken.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -250,12 +154,43 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
 
-            if statusCode == 500:
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def update(self, token_id: str, payload: ConsumerTokenUpdate) -> ConsumerTokenAccessToken:
+        try:
+            path_params = {}
+            path_params['token_id'] = token_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/token/$token_id<[0-9]+|^~>', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('PUT', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerTokenAccessToken.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)

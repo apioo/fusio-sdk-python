@@ -28,126 +28,33 @@ class BackendConnectionTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def get_introspection_for_entity(self, connection_id: str, entity: str) -> BackendConnectionIntrospectionEntity:
+    def create(self, payload: BackendConnectionCreate) -> CommonMessage:
         try:
             path_params = {}
-            path_params['connection_id'] = connection_id
-            path_params['entity'] = entity
 
             query_params = {}
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/introspection/:entity', path_params)
+            url = self.parser.url('/backend/connection', path_params)
 
             options = {}
             options['headers'] = {}
             options['params'] = self.parser.query(query_params, query_struct_names)
 
+            options['json'] = payload.model_dump(by_alias=True)
 
+            options['headers']['Content-Type'] = 'application/json'
 
-            response = self.http_client.request('GET', url, **options)
+            response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendConnectionIntrospectionEntity.model_validate_json(json_data=response.content)
+                data = CommonMessage.model_validate_json(json_data=response.content)
 
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_introspection(self, connection_id: str) -> BackendConnectionIntrospectionEntities:
-        try:
-            path_params = {}
-            path_params['connection_id'] = connection_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/introspection', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendConnectionIntrospectionEntities.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_redirect(self, connection_id: str) -> BackendConnectionRedirectResponse:
-        try:
-            path_params = {}
-            path_params['connection_id'] = connection_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendConnectionRedirectResponse.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -181,78 +88,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def update(self, connection_id: str, payload: BackendConnectionUpdate) -> CommonMessage:
-        try:
-            path_params = {}
-            path_params['connection_id'] = connection_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('PUT', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -286,144 +122,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_form(self, class_: str) -> CommonFormContainer:
-        try:
-            path_params = {}
-
-            query_params = {}
-            query_params['class'] = class_
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/form', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonFormContainer.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_classes(self) -> BackendConnectionIndex:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/list', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendConnectionIndex.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def create(self, payload: BackendConnectionCreate) -> CommonMessage:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -459,12 +158,213 @@ class BackendConnectionTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
 
-            if statusCode == 500:
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_classes(self) -> BackendConnectionIndex:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/list', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendConnectionIndex.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_form(self, class_: str) -> CommonFormContainer:
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params['class'] = class_
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/form', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonFormContainer.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_introspection(self, connection_id: str) -> BackendConnectionIntrospectionEntities:
+        try:
+            path_params = {}
+            path_params['connection_id'] = connection_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/introspection', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendConnectionIntrospectionEntities.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_introspection_for_entity(self, connection_id: str, entity: str) -> BackendConnectionIntrospectionEntity:
+        try:
+            path_params = {}
+            path_params['connection_id'] = connection_id
+            path_params['entity'] = entity
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/introspection/:entity', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendConnectionIntrospectionEntity.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_redirect(self, connection_id: str) -> BackendConnectionRedirectResponse:
+        try:
+            path_params = {}
+            path_params['connection_id'] = connection_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendConnectionRedirectResponse.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def update(self, connection_id: str, payload: BackendConnectionUpdate) -> CommonMessage:
+        try:
+            path_params = {}
+            path_params['connection_id'] = connection_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('PUT', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)

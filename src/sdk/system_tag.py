@@ -19,8 +19,8 @@ class SystemTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    def payment(self) -> SystemPaymentTag:
-        return SystemPaymentTag(
+    def connection(self) -> SystemConnectionTag:
+        return SystemConnectionTag(
             self.http_client,
             self.parser
         )
@@ -31,8 +31,8 @@ class SystemTag(sdkgen.TagAbstract):
             self.parser
         )
 
-    def connection(self) -> SystemConnectionTag:
-        return SystemConnectionTag(
+    def payment(self) -> SystemPaymentTag:
+        return SystemPaymentTag(
             self.http_client,
             self.parser
         )

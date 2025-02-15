@@ -23,25 +23,25 @@ class BackendAppTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def delete_token(self, app_id: str, token_id: str) -> CommonMessage:
+    def create(self, payload: BackendAppCreate) -> CommonMessage:
         try:
             path_params = {}
-            path_params['app_id'] = app_id
-            path_params['token_id'] = token_id
 
             query_params = {}
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/app/$app_id<[0-9]+>/token/:token_id', path_params)
+            url = self.parser.url('/backend/app', path_params)
 
             options = {}
             options['headers'] = {}
             options['params'] = self.parser.query(query_params, query_struct_names)
 
+            options['json'] = payload.model_dump(by_alias=True)
 
+            options['headers']['Content-Type'] = 'application/json'
 
-            response = self.http_client.request('DELETE', url, **options)
+            response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = CommonMessage.model_validate_json(json_data=response.content)
@@ -49,22 +49,7 @@ class BackendAppTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -98,22 +83,7 @@ class BackendAppTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -122,26 +92,25 @@ class BackendAppTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def update(self, app_id: str, payload: BackendAppUpdate) -> CommonMessage:
+    def delete_token(self, app_id: str, token_id: str) -> CommonMessage:
         try:
             path_params = {}
             path_params['app_id'] = app_id
+            path_params['token_id'] = token_id
 
             query_params = {}
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/app/$app_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/app/$app_id<[0-9]+>/token/:token_id', path_params)
 
             options = {}
             options['headers'] = {}
             options['params'] = self.parser.query(query_params, query_struct_names)
 
-            options['json'] = payload.model_dump(by_alias=True)
 
-            options['headers']['Content-Type'] = 'application/json'
 
-            response = self.http_client.request('PUT', url, **options)
+            response = self.http_client.request('DELETE', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = CommonMessage.model_validate_json(json_data=response.content)
@@ -149,27 +118,7 @@ class BackendAppTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -203,67 +152,7 @@ class BackendAppTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 404:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 410:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def create(self, payload: BackendAppCreate) -> CommonMessage:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/app', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('POST', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode == 400:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 401:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            if statusCode == 500:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
@@ -299,12 +188,43 @@ class BackendAppTag(sdkgen.TagAbstract):
                 return data
 
             statusCode = response.status_code
-            if statusCode == 401:
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)
 
-            if statusCode == 500:
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def update(self, app_id: str, payload: BackendAppUpdate) -> CommonMessage:
+        try:
+            path_params = {}
+            path_params['app_id'] = app_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/app/$app_id<[0-9]+|^~>', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('PUT', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
                 data = CommonMessage.model_validate_json(json_data=response.content)
 
                 raise CommonMessageException(data)

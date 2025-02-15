@@ -18,14 +18,14 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
 
-    def app(self) -> BackendMarketplaceAppTag:
-        return BackendMarketplaceAppTag(
+    def action(self) -> BackendMarketplaceActionTag:
+        return BackendMarketplaceActionTag(
             self.http_client,
             self.parser
         )
 
-    def action(self) -> BackendMarketplaceActionTag:
-        return BackendMarketplaceActionTag(
+    def app(self) -> BackendMarketplaceAppTag:
+        return BackendMarketplaceAppTag(
             self.http_client,
             self.parser
         )
