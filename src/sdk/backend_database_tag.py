@@ -11,11 +11,10 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
-from .backend_database_connections import BackendDatabaseConnections
 from .backend_database_row import BackendDatabaseRow
-from .backend_database_rows import BackendDatabaseRows
+from .backend_database_row_collection import BackendDatabaseRowCollection
 from .backend_database_table import BackendDatabaseTable
-from .backend_database_tables import BackendDatabaseTables
+from .backend_database_table_collection import BackendDatabaseTableCollection
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -168,39 +167,6 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_connections(self) -> BackendDatabaseConnections:
-        try:
-            path_params = {}
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/database', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendDatabaseConnections.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
     def get_row(self, connection_id: str, table_name: str, id: str) -> BackendDatabaseRow:
         try:
             path_params = {}
@@ -237,7 +203,7 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_rows(self, connection_id: str, table_name: str, start_index: int, count: int, filter_by: str, filter_op: str, filter_value: str, sort_by: str, sort_order: str, columns: str) -> BackendDatabaseRows:
+    def get_rows(self, connection_id: str, table_name: str, start_index: int, count: int, filter_by: str, filter_op: str, filter_value: str, sort_by: str, sort_order: str, columns: str) -> BackendDatabaseRowCollection:
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -266,7 +232,7 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendDatabaseRows.model_validate_json(json_data=response.content)
+                data = BackendDatabaseRowCollection.model_validate_json(json_data=response.content)
 
                 return data
 
@@ -315,7 +281,7 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_tables(self, connection_id: str) -> BackendDatabaseTables:
+    def get_tables(self, connection_id: str) -> BackendDatabaseTableCollection:
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -335,7 +301,7 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendDatabaseTables.model_validate_json(json_data=response.content)
+                data = BackendDatabaseTableCollection.model_validate_json(json_data=response.content)
 
                 return data
 
