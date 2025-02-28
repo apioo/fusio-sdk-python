@@ -6,14 +6,17 @@ https://sdkgen.app
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
+import datetime
 
 
 class BackendLogError(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
-    message: Optional[int] = Field(default=None, alias="message")
+    log_id: Optional[int] = Field(default=None, alias="logId")
+    message: Optional[str] = Field(default=None, alias="message")
     trace: Optional[str] = Field(default=None, alias="trace")
     file: Optional[str] = Field(default=None, alias="file")
     line: Optional[int] = Field(default=None, alias="line")
+    insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
     pass
 
 
