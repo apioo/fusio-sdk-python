@@ -57,7 +57,7 @@ class BackendLogTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, route_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendLogCollection:
+    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendLogCollection:
         try:
             path_params = {}
 
@@ -67,7 +67,7 @@ class BackendLogTag(sdkgen.TagAbstract):
             query_params['search'] = search
             query_params['from'] = from_
             query_params['to'] = to
-            query_params['routeId'] = route_id
+            query_params['operationId'] = operation_id
             query_params['appId'] = app_id
             query_params['userId'] = user_id
             query_params['ip'] = ip
