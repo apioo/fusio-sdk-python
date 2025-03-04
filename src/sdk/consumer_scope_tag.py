@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
+from .consumer_scope_categories import ConsumerScopeCategories
 from .consumer_scope_collection import ConsumerScopeCollection
 
 class ConsumerScopeTag(sdkgen.TagAbstract):
@@ -43,6 +44,39 @@ class ConsumerScopeTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = ConsumerScopeCollection.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_categories(self) -> ConsumerScopeCategories:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/consumer/scope/categories', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = ConsumerScopeCategories.model_validate_json(json_data=response.content)
 
                 return data
 
