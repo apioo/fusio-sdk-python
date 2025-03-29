@@ -14,6 +14,7 @@ from urllib.parse import parse_qs
 from .consumer_account_tag import ConsumerAccountTag
 from .consumer_app_tag import ConsumerAppTag
 from .consumer_event_tag import ConsumerEventTag
+from .consumer_form_tag import ConsumerFormTag
 from .consumer_grant_tag import ConsumerGrantTag
 from .consumer_identity_tag import ConsumerIdentityTag
 from .consumer_log_tag import ConsumerLogTag
@@ -43,6 +44,12 @@ class ConsumerTag(sdkgen.TagAbstract):
 
     def event(self) -> ConsumerEventTag:
         return ConsumerEventTag(
+            self.http_client,
+            self.parser
+        )
+
+    def form(self) -> ConsumerFormTag:
+        return ConsumerFormTag(
             self.http_client,
             self.parser
         )

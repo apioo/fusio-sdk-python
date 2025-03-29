@@ -23,6 +23,7 @@ from .backend_cronjob_tag import BackendCronjobTag
 from .backend_dashboard_tag import BackendDashboardTag
 from .backend_database_tag import BackendDatabaseTag
 from .backend_event_tag import BackendEventTag
+from .backend_form_tag import BackendFormTag
 from .backend_generator_tag import BackendGeneratorTag
 from .backend_identity_tag import BackendIdentityTag
 from .backend_log_tag import BackendLogTag
@@ -116,6 +117,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def event(self) -> BackendEventTag:
         return BackendEventTag(
+            self.http_client,
+            self.parser
+        )
+
+    def form(self) -> BackendFormTag:
+        return BackendFormTag(
             self.http_client,
             self.parser
         )
