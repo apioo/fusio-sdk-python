@@ -15,7 +15,6 @@ class BackendFirewall(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     type: Optional[int] = Field(default=None, alias="type")
     ip: Optional[str] = Field(default=None, alias="ip")
-    mask: Optional[int] = Field(default=None, alias="mask")
     expire: Optional[datetime.datetime] = Field(default=None, alias="expire")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
