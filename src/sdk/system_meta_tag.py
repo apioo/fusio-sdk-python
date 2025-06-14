@@ -14,6 +14,7 @@ from urllib.parse import parse_qs
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 from .passthru import Passthru
+from .system_api_catalog import SystemAPICatalog
 from .system_about import SystemAbout
 from .system_health_check import SystemHealthCheck
 from .system_o_auth_configuration import SystemOAuthConfiguration
@@ -45,6 +46,39 @@ class SystemMetaTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = SystemAbout.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_api_catalog(self) -> SystemAPICatalog:
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/system/api-catalog', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = SystemAPICatalog.model_validate_json(json_data=response.content)
 
                 return data
 
