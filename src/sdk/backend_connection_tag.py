@@ -27,6 +27,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendConnectionCreate) -> CommonMessage:
+        """
+        Creates a new connection
+        """
         try:
             path_params = {}
 
@@ -62,6 +65,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, connection_id: str) -> CommonMessage:
+        """
+        Deletes an existing connection
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -96,6 +102,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, connection_id: str) -> BackendConnection:
+        """
+        Returns a specific connection
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -130,6 +139,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str, class_: str) -> BackendConnectionCollection:
+        """
+        Returns a paginated list of connections
+        """
         try:
             path_params = {}
 
@@ -167,6 +179,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_classes(self) -> BackendConnectionIndex:
+        """
+        Returns all available connection classes
+        """
         try:
             path_params = {}
 
@@ -200,6 +215,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_form(self, class_: str) -> CommonFormContainer:
+        """
+        Returns the connection config form
+        """
         try:
             path_params = {}
 
@@ -234,6 +252,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_redirect(self, connection_id: str) -> BackendConnectionRedirectResponse:
+        """
+        Returns a redirect url to start the OAuth2 authorization flow for the given connection
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -268,6 +289,9 @@ class BackendConnectionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, connection_id: str, payload: BackendConnectionUpdate) -> CommonMessage:
+        """
+        Updates an existing connection
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id

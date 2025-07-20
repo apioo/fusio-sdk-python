@@ -10,6 +10,7 @@ import datetime
 from .common_metadata import CommonMetadata
 
 
+# This object represents a firewall rule which blocks specific IP addresses
 class BackendFirewall(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

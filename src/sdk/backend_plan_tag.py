@@ -24,6 +24,9 @@ class BackendPlanTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendPlanCreate) -> CommonMessage:
+        """
+        Creates a new plan
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendPlanTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, plan_id: str) -> CommonMessage:
+        """
+        Deletes an existing plan
+        """
         try:
             path_params = {}
             path_params['plan_id'] = plan_id
@@ -93,6 +99,9 @@ class BackendPlanTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, plan_id: str) -> BackendPlan:
+        """
+        Returns a specific plan
+        """
         try:
             path_params = {}
             path_params['plan_id'] = plan_id
@@ -127,6 +136,9 @@ class BackendPlanTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendPlanCollection:
+        """
+        Returns a paginated list of plans
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendPlanTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, plan_id: str, payload: BackendPlanUpdate) -> CommonMessage:
+        """
+        Updates an existing plan
+        """
         try:
             path_params = {}
             path_params['plan_id'] = plan_id

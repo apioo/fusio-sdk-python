@@ -24,6 +24,9 @@ class BackendPageTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendPageCreate) -> CommonMessage:
+        """
+        Creates a new page
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendPageTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, page_id: str) -> CommonMessage:
+        """
+        Deletes an existing page
+        """
         try:
             path_params = {}
             path_params['page_id'] = page_id
@@ -93,6 +99,9 @@ class BackendPageTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, page_id: str) -> BackendPage:
+        """
+        Returns a specific page
+        """
         try:
             path_params = {}
             path_params['page_id'] = page_id
@@ -127,6 +136,9 @@ class BackendPageTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendPageCollection:
+        """
+        Returns a paginated list of pages
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendPageTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, page_id: str, payload: BackendPageUpdate) -> CommonMessage:
+        """
+        Updates an existing page
+        """
         try:
             path_params = {}
             path_params['page_id'] = page_id

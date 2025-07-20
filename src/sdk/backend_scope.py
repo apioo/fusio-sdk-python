@@ -10,6 +10,7 @@ from .backend_scope_operation import BackendScopeOperation
 from .common_metadata import CommonMetadata
 
 
+# This object represents a scope. A scope is assigned to a user and is required to access operations
 class BackendScope(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

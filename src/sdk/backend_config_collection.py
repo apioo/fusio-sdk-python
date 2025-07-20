@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_config import BackendConfig
 
 
+# A paginated collection of config objects
 class BackendConfigCollection(CommonCollection[BackendConfig]):
     pass
 

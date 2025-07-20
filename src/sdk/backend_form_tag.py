@@ -24,6 +24,9 @@ class BackendFormTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendFormCreate) -> CommonMessage:
+        """
+        Creates a new form
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendFormTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, form_id: str) -> CommonMessage:
+        """
+        Deletes an existing form
+        """
         try:
             path_params = {}
             path_params['form_id'] = form_id
@@ -93,6 +99,9 @@ class BackendFormTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, form_id: str) -> BackendForm:
+        """
+        Returns a specific form
+        """
         try:
             path_params = {}
             path_params['form_id'] = form_id
@@ -127,6 +136,9 @@ class BackendFormTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendFormCollection:
+        """
+        Returns a paginated list of forms
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendFormTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, form_id: str, payload: BackendFormUpdate) -> CommonMessage:
+        """
+        Updates an existing form
+        """
         try:
             path_params = {}
             path_params['form_id'] = form_id

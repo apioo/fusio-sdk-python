@@ -6,13 +6,13 @@ https://sdkgen.app
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
-from .consumer_authorize_response_token import ConsumerAuthorizeResponseToken
 
 
 class ConsumerAuthorizeResponse(BaseModel):
     type: Optional[str] = Field(default=None, alias="type")
-    token: Optional[ConsumerAuthorizeResponseToken] = Field(default=None, alias="token")
     code: Optional[str] = Field(default=None, alias="code")
+    error: Optional[str] = Field(default=None, alias="error")
+    state: Optional[str] = Field(default=None, alias="state")
     redirect_uri: Optional[str] = Field(default=None, alias="redirectUri")
     pass
 

@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_webhook_response import BackendWebhookResponse
 
 
+# This object represents a webhook, a webhook is called in case a specific event was triggered
 class BackendWebhook(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     event_id: Optional[int] = Field(default=None, alias="eventId")

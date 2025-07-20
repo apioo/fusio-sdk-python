@@ -22,6 +22,9 @@ class BackendTokenTag(sdkgen.TagAbstract):
 
 
     def get(self, token_id: str) -> BackendToken:
+        """
+        Returns a specific token
+        """
         try:
             path_params = {}
             path_params['token_id'] = token_id
@@ -56,6 +59,9 @@ class BackendTokenTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, app_id: int, user_id: int, status: int, scope: str, ip: str) -> BackendTokenCollection:
+        """
+        Returns a paginated list of tokens
+        """
         try:
             path_params = {}
 

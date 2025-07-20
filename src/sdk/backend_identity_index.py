@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_identity_index_entry import BackendIdentityIndexEntry
 
 
+# Contains all possible classes which can be used at an identity as class
 class BackendIdentityIndex(BaseModel):
     providers: Optional[List[BackendIdentityIndexEntry]] = Field(default=None, alias="providers")
     pass

@@ -23,6 +23,9 @@ class BackendConfigTag(sdkgen.TagAbstract):
 
 
     def get(self, config_id: str) -> BackendConfig:
+        """
+        Returns a specific config
+        """
         try:
             path_params = {}
             path_params['config_id'] = config_id
@@ -57,6 +60,9 @@ class BackendConfigTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendConfigCollection:
+        """
+        Returns a paginated list of configuration values
+        """
         try:
             path_params = {}
 
@@ -93,6 +99,9 @@ class BackendConfigTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, config_id: str, payload: BackendConfigUpdate) -> CommonMessage:
+        """
+        Updates an existing config value
+        """
         try:
             path_params = {}
             path_params['config_id'] = config_id

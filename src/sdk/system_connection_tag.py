@@ -20,6 +20,9 @@ class SystemConnectionTag(sdkgen.TagAbstract):
 
 
     def callback(self, name: str) -> CommonMessage:
+        """
+        Connection OAuth2 callback to authorize a connection
+        """
         try:
             path_params = {}
             path_params['name'] = name

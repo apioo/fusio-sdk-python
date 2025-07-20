@@ -24,6 +24,9 @@ class BackendEventTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendEventCreate) -> CommonMessage:
+        """
+        Creates a new event
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendEventTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, event_id: str) -> CommonMessage:
+        """
+        Deletes an existing event
+        """
         try:
             path_params = {}
             path_params['event_id'] = event_id
@@ -93,6 +99,9 @@ class BackendEventTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, event_id: str) -> BackendEvent:
+        """
+        Returns a specific event
+        """
         try:
             path_params = {}
             path_params['event_id'] = event_id
@@ -127,6 +136,9 @@ class BackendEventTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendEventCollection:
+        """
+        Returns a paginated list of events
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendEventTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, event_id: str, payload: BackendEventUpdate) -> CommonMessage:
+        """
+        Updates an existing event
+        """
         try:
             path_params = {}
             path_params['event_id'] = event_id

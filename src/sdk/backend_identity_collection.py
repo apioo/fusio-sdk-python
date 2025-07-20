@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_identity import BackendIdentity
 
 
+# A paginated collection of identity objects
 class BackendIdentityCollection(CommonCollection[BackendIdentity]):
     pass
 

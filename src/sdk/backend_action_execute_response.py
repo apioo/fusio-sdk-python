@@ -10,6 +10,7 @@ from .backend_action_execute_response_headers import BackendActionExecuteRespons
 from .backend_action_execute_response_body import BackendActionExecuteResponseBody
 
 
+# Represents an action execution response
 class BackendActionExecuteResponse(BaseModel):
     status_code: Optional[int] = Field(default=None, alias="statusCode")
     headers: Optional[BackendActionExecuteResponseHeaders] = Field(default=None, alias="headers")

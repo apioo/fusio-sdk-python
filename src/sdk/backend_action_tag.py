@@ -28,6 +28,9 @@ class BackendActionTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendActionCreate) -> CommonMessage:
+        """
+        Creates a new action
+        """
         try:
             path_params = {}
 
@@ -63,6 +66,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, action_id: str) -> CommonMessage:
+        """
+        Deletes an existing action
+        """
         try:
             path_params = {}
             path_params['action_id'] = action_id
@@ -97,6 +103,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def execute(self, action_id: str, payload: BackendActionExecuteRequest) -> BackendActionExecuteResponse:
+        """
+        Executes a specific action
+        """
         try:
             path_params = {}
             path_params['action_id'] = action_id
@@ -133,6 +142,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, action_id: str) -> BackendAction:
+        """
+        Returns a specific action
+        """
         try:
             path_params = {}
             path_params['action_id'] = action_id
@@ -167,6 +179,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendActionCollection:
+        """
+        Returns a paginated list of actions
+        """
         try:
             path_params = {}
 
@@ -203,6 +218,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_classes(self) -> BackendActionIndex:
+        """
+        Returns all available action classes
+        """
         try:
             path_params = {}
 
@@ -236,6 +254,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_form(self, class_: str) -> CommonFormContainer:
+        """
+        Returns the action config form
+        """
         try:
             path_params = {}
 
@@ -270,6 +291,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, action_id: str, payload: BackendActionUpdate) -> CommonMessage:
+        """
+        Updates an existing action
+        """
         try:
             path_params = {}
             path_params['action_id'] = action_id

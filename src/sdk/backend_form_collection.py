@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_form import BackendForm
 
 
+# A paginated collection of form objects
 class BackendFormCollection(CommonCollection[BackendForm]):
     pass
 

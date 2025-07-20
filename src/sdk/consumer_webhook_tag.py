@@ -24,6 +24,9 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: ConsumerWebhookCreate) -> CommonMessage:
+        """
+        Creates a new webhook for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, webhook_id: str) -> CommonMessage:
+        """
+        Deletes an existing webhook for the authenticated user
+        """
         try:
             path_params = {}
             path_params['webhook_id'] = webhook_id
@@ -93,6 +99,9 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, webhook_id: str) -> ConsumerWebhook:
+        """
+        Returns a specific webhook for the authenticated user
+        """
         try:
             path_params = {}
             path_params['webhook_id'] = webhook_id
@@ -127,6 +136,9 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerWebhookCollection:
+        """
+        Returns a paginated list of webhooks which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class ConsumerWebhookTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, webhook_id: str, payload: ConsumerWebhookUpdate) -> CommonMessage:
+        """
+        Updates an existing webhook for the authenticated user
+        """
         try:
             path_params = {}
             path_params['webhook_id'] = webhook_id

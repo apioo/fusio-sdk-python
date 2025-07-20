@@ -22,6 +22,9 @@ class ConsumerLogTag(sdkgen.TagAbstract):
 
 
     def get(self, log_id: str) -> ConsumerLog:
+        """
+        Returns a specific log for the authenticated user
+        """
         try:
             path_params = {}
             path_params['log_id'] = log_id
@@ -56,6 +59,9 @@ class ConsumerLogTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerLogCollection:
+        """
+        Returns a paginated list of logs which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 

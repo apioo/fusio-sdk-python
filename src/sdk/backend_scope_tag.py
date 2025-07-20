@@ -25,6 +25,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendScopeCreate) -> CommonMessage:
+        """
+        Creates a new scope
+        """
         try:
             path_params = {}
 
@@ -60,6 +63,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, scope_id: str) -> CommonMessage:
+        """
+        Deletes an existing scope
+        """
         try:
             path_params = {}
             path_params['scope_id'] = scope_id
@@ -94,6 +100,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, scope_id: str) -> BackendScope:
+        """
+        Returns a specific scope
+        """
         try:
             path_params = {}
             path_params['scope_id'] = scope_id
@@ -128,6 +137,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendScopeCollection:
+        """
+        Returns a paginated list of scopes
+        """
         try:
             path_params = {}
 
@@ -197,6 +209,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, scope_id: str, payload: BackendScopeUpdate) -> CommonMessage:
+        """
+        Updates an existing scope
+        """
         try:
             path_params = {}
             path_params['scope_id'] = scope_id

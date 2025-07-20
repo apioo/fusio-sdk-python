@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# Redirect response to initiate an OAuth2 flow
 class BackendConnectionRedirectResponse(BaseModel):
     redirect_uri: Optional[str] = Field(default=None, alias="redirectUri")
     pass

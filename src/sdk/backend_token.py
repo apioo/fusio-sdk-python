@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# This object represents a token, this an access token which was requested by a user
 class BackendToken(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

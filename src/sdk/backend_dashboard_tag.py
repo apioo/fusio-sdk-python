@@ -21,6 +21,9 @@ class BackendDashboardTag(sdkgen.TagAbstract):
 
 
     def get_all(self) -> BackendDashboard:
+        """
+        Returns all available dashboard widgets
+        """
         try:
             path_params = {}
 

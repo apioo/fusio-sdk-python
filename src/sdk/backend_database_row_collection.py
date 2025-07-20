@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_database_row import BackendDatabaseRow
 
 
+# A paginated collection of database rows
 class BackendDatabaseRowCollection(CommonCollection[BackendDatabaseRow]):
     pass
 

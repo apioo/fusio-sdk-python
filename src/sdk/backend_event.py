@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# This object represents an event which can be triggered by an action
 class BackendEvent(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

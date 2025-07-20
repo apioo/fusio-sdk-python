@@ -22,6 +22,9 @@ class ConsumerScopeTag(sdkgen.TagAbstract):
 
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerScopeCollection:
+        """
+        Returns a paginated list of scopes which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 
@@ -58,6 +61,9 @@ class ConsumerScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_categories(self) -> ConsumerScopeCategories:
+        """
+        Returns all scopes by category
+        """
         try:
             path_params = {}
 

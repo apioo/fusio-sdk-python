@@ -24,6 +24,9 @@ class BackendCronjobTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendCronjobCreate) -> CommonMessage:
+        """
+        Creates a new cronjob
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, cronjob_id: str) -> CommonMessage:
+        """
+        Deletes an existing cronjob
+        """
         try:
             path_params = {}
             path_params['cronjob_id'] = cronjob_id
@@ -93,6 +99,9 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, cronjob_id: str) -> BackendCronjob:
+        """
+        Returns a specific cronjob
+        """
         try:
             path_params = {}
             path_params['cronjob_id'] = cronjob_id
@@ -127,6 +136,9 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendCronjobCollection:
+        """
+        Returns a paginated list of cronjobs
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, cronjob_id: str, payload: BackendCronjobUpdate) -> CommonMessage:
+        """
+        Updates an existing cronjob
+        """
         try:
             path_params = {}
             path_params['cronjob_id'] = cronjob_id

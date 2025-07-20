@@ -22,6 +22,9 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
 
 
     def exchange(self, identity: str) -> Passthru:
+        """
+        Identity callback endpoint to exchange an access token
+        """
         try:
             path_params = {}
             path_params['identity'] = identity
@@ -56,6 +59,9 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, app_id: int, app_key: str) -> ConsumerIdentityCollection:
+        """
+        Returns a paginated list of identities which are relevant to the authenticated user
+        """
         try:
             path_params = {}
 
@@ -91,6 +97,9 @@ class ConsumerIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def redirect(self, identity: str) -> Passthru:
+        """
+        Redirect the user to the configured identity provider
+        """
         try:
             path_params = {}
             path_params['identity'] = identity

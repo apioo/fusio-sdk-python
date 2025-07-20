@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_page import BackendPage
 
 
+# A paginated collection of page objects
 class BackendPageCollection(CommonCollection[BackendPage]):
     pass
 

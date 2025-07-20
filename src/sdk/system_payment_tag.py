@@ -20,6 +20,9 @@ class SystemPaymentTag(sdkgen.TagAbstract):
 
 
     def webhook(self, provider: str) -> CommonMessage:
+        """
+        Payment webhook endpoint after successful purchase of a plan
+        """
         try:
             path_params = {}
             path_params['provider'] = provider

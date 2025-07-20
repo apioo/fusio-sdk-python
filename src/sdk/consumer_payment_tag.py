@@ -24,6 +24,9 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
 
 
     def checkout(self, provider: str, payload: ConsumerPaymentCheckoutRequest) -> ConsumerPaymentCheckoutResponse:
+        """
+        Start the checkout process for a specific plan
+        """
         try:
             path_params = {}
             path_params['provider'] = provider
@@ -60,6 +63,9 @@ class ConsumerPaymentTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def portal(self, provider: str, payload: ConsumerPaymentPortalRequest) -> ConsumerPaymentPortalResponse:
+        """
+        Generates a payment portal link for the authenticated user
+        """
         try:
             path_params = {}
             path_params['provider'] = provider

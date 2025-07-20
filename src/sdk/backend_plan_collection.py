@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_plan import BackendPlan
 
 
+# A paginated collection of plan objects
 class BackendPlanCollection(CommonCollection[BackendPlan]):
     pass
 

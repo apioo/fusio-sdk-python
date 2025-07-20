@@ -26,6 +26,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendIdentityCreate) -> CommonMessage:
+        """
+        Creates a new identity
+        """
         try:
             path_params = {}
 
@@ -61,6 +64,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, identity_id: str) -> CommonMessage:
+        """
+        Deletes an existing identity
+        """
         try:
             path_params = {}
             path_params['identity_id'] = identity_id
@@ -95,6 +101,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, identity_id: str) -> BackendIdentity:
+        """
+        Returns a specific identity
+        """
         try:
             path_params = {}
             path_params['identity_id'] = identity_id
@@ -129,6 +138,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendIdentityCollection:
+        """
+        Returns a paginated list of identities
+        """
         try:
             path_params = {}
 
@@ -165,6 +177,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_classes(self) -> BackendIdentityIndex:
+        """
+        Returns all available identity classes
+        """
         try:
             path_params = {}
 
@@ -198,6 +213,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_form(self, class_: str) -> CommonFormContainer:
+        """
+        Returns the identity config form
+        """
         try:
             path_params = {}
 
@@ -232,6 +250,9 @@ class BackendIdentityTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, identity_id: str, payload: BackendIdentityUpdate) -> CommonMessage:
+        """
+        Updates an existing identity
+        """
         try:
             path_params = {}
             path_params['identity_id'] = identity_id

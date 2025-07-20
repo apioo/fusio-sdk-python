@@ -24,6 +24,9 @@ class ConsumerAppTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: ConsumerAppCreate) -> CommonMessage:
+        """
+        Creates a new app for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class ConsumerAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, app_id: str) -> CommonMessage:
+        """
+        Deletes an existing app for the authenticated user
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id
@@ -93,6 +99,9 @@ class ConsumerAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, app_id: str) -> ConsumerApp:
+        """
+        Returns a specific app for the authenticated user
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id
@@ -127,6 +136,9 @@ class ConsumerAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerAppCollection:
+        """
+        Returns a paginated list of apps which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class ConsumerAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, app_id: str, payload: ConsumerAppUpdate) -> CommonMessage:
+        """
+        Updates an existing app for the authenticated user
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id

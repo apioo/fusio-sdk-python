@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_scope import BackendScope
 
 
+# A paginated collection of scope objects
 class BackendScopeCollection(CommonCollection[BackendScope]):
     pass
 

@@ -21,6 +21,9 @@ class AuthorizationTag(sdkgen.TagAbstract):
 
 
     def get_whoami(self) -> BackendUser:
+        """
+        Returns user data of the current authenticated user
+        """
         try:
             path_params = {}
 
@@ -54,6 +57,9 @@ class AuthorizationTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def revoke(self) -> CommonMessage:
+        """
+        Revoke the access token of the current authenticated user
+        """
         try:
             path_params = {}
 

@@ -23,6 +23,9 @@ class BackendTrashTag(sdkgen.TagAbstract):
 
 
     def get_all_by_type(self, type: str, start_index: int, count: int, search: str) -> BackendTrashDataCollection:
+        """
+        Returns all deleted records by trash type
+        """
         try:
             path_params = {}
             path_params['type'] = type
@@ -60,6 +63,9 @@ class BackendTrashTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_types(self) -> BackendTrashTypes:
+        """
+        Returns all trash types
+        """
         try:
             path_params = {}
 
@@ -93,6 +99,9 @@ class BackendTrashTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def restore(self, type: str, payload: BackendTrashRestore) -> CommonMessage:
+        """
+        Restores a previously deleted record
+        """
         try:
             path_params = {}
             path_params['type'] = type

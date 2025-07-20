@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a system configuration
 class BackendConfig(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     type: Optional[int] = Field(default=None, alias="type")

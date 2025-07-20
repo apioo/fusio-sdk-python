@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_token import BackendToken
 
 
+# A paginated collection of token objects
 class BackendTokenCollection(CommonCollection[BackendToken]):
     pass
 

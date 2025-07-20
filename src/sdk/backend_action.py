@@ -10,6 +10,7 @@ from .backend_action_config import BackendActionConfig
 from .common_metadata import CommonMetadata
 
 
+# This object represents the business logic which can be executed either through an operation or cronjob
 class BackendAction(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

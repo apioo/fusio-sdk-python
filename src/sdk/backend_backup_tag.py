@@ -23,6 +23,9 @@ class BackendBackupTag(sdkgen.TagAbstract):
 
 
     def export(self) -> BackendBackupExport:
+        """
+        Generates an backup of the current system
+        """
         try:
             path_params = {}
 
@@ -56,6 +59,9 @@ class BackendBackupTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def import_(self, payload: BackendBackupImport) -> BackendBackupImportResult:
+        """
+        Imports an backup to the current system
+        """
         try:
             path_params = {}
 

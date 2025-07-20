@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_trash_data import BackendTrashData
 
 
+# A paginated collection of deleted objects
 class BackendTrashDataCollection(CommonCollection[BackendTrashData]):
     pass
 

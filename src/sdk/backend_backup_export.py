@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# Export of the complete system configuration
 class BackendBackupExport(BaseModel):
     export: Optional[str] = Field(default=None, alias="export")
     pass

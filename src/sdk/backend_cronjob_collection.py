@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_cronjob import BackendCronjob
 
 
+# A paginated collection of cronjob objects
 class BackendCronjobCollection(CommonCollection[BackendCronjob]):
     pass
 

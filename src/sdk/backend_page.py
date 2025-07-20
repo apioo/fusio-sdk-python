@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# This object represents a page at the developer portal
 class BackendPage(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

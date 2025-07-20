@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_statistic_chart import BackendStatisticChart
 
 
+# Represents an object containing all widget data for the dashboard
 class BackendDashboard(BaseModel):
     errors_per_operation: Optional[BackendStatisticChart] = Field(default=None, alias="errorsPerOperation")
     incoming_requests: Optional[BackendStatisticChart] = Field(default=None, alias="incomingRequests")

@@ -22,6 +22,9 @@ class ConsumerPageTag(sdkgen.TagAbstract):
 
 
     def get(self, page_id: str) -> ConsumerPage:
+        """
+        Returns a specific page for the authenticated user
+        """
         try:
             path_params = {}
             path_params['page_id'] = page_id
@@ -56,6 +59,9 @@ class ConsumerPageTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerPageCollection:
+        """
+        Returns a paginated list of pages which are relevant to the authenticated user
+        """
         try:
             path_params = {}
 

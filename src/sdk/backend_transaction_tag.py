@@ -22,6 +22,9 @@ class BackendTransactionTag(sdkgen.TagAbstract):
 
 
     def get(self, transaction_id: str) -> BackendTransaction:
+        """
+        Returns a specific transaction
+        """
         try:
             path_params = {}
             path_params['transaction_id'] = transaction_id
@@ -56,6 +59,9 @@ class BackendTransactionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
+        """
+        Returns a paginated list of transactions
+        """
         try:
             path_params = {}
 

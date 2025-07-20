@@ -11,6 +11,7 @@ from .backend_database_table_index import BackendDatabaseTableIndex
 from .backend_database_table_foreign_key_constraint import BackendDatabaseTableForeignKeyConstraint
 
 
+# This object represents a relational table on a database connection
 class BackendDatabaseTable(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     columns: Optional[List[BackendDatabaseTableColumn]] = Field(default=None, alias="columns")

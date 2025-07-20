@@ -14,7 +14,6 @@ from urllib.parse import parse_qs
 from .backend_schema import BackendSchema
 from .backend_schema_collection import BackendSchemaCollection
 from .backend_schema_create import BackendSchemaCreate
-from .backend_schema_form import BackendSchemaForm
 from .backend_schema_preview_response import BackendSchemaPreviewResponse
 from .backend_schema_update import BackendSchemaUpdate
 from .common_message import CommonMessage
@@ -26,6 +25,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendSchemaCreate) -> CommonMessage:
+        """
+        Creates a new schema
+        """
         try:
             path_params = {}
 
@@ -61,6 +63,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, schema_id: str) -> CommonMessage:
+        """
+        Deletes an existing schema
+        """
         try:
             path_params = {}
             path_params['schema_id'] = schema_id
@@ -95,6 +100,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, schema_id: str) -> BackendSchema:
+        """
+        Returns a specific schema
+        """
         try:
             path_params = {}
             path_params['schema_id'] = schema_id
@@ -129,6 +137,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendSchemaCollection:
+        """
+        Returns a paginated list of schemas
+        """
         try:
             path_params = {}
 
@@ -199,6 +210,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, schema_id: str, payload: BackendSchemaUpdate) -> CommonMessage:
+        """
+        Updates an existing schema
+        """
         try:
             path_params = {}
             path_params['schema_id'] = schema_id
@@ -208,42 +222,6 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             query_struct_names = []
 
             url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-            options['json'] = payload.model_dump(by_alias=True)
-
-            options['headers']['Content-Type'] = 'application/json'
-
-            response = self.http_client.request('PUT', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def update_form(self, schema_id: str, payload: BackendSchemaForm) -> CommonMessage:
-        try:
-            path_params = {}
-            path_params['schema_id'] = schema_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/schema/form/$schema_id<[0-9]+>', path_params)
 
             options = {}
             options['headers'] = {}

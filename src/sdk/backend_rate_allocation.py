@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a rate allocation, in case a request matches it gets assigned to the attached rate
 class BackendRateAllocation(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     operation_id: Optional[int] = Field(default=None, alias="operationId")

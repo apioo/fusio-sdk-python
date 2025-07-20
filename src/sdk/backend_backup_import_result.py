@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# Result of a backup import operation
 class BackendBackupImportResult(BaseModel):
     success: Optional[bool] = Field(default=None, alias="success")
     message: Optional[str] = Field(default=None, alias="message")

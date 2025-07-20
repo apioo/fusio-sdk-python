@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_firewall import BackendFirewall
 
 
+# A paginated collection of firewall objects
 class BackendFirewallCollection(CommonCollection[BackendFirewall]):
     pass
 

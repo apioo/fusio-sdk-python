@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_user import BackendUser
 
 
+# A paginated collection of user objects
 class BackendUserCollection(CommonCollection[BackendUser]):
     pass
 

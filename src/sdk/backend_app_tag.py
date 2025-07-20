@@ -24,6 +24,9 @@ class BackendAppTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendAppCreate) -> CommonMessage:
+        """
+        Creates a new app
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, app_id: str) -> CommonMessage:
+        """
+        Deletes an existing app
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id
@@ -93,6 +99,9 @@ class BackendAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete_token(self, app_id: str, token_id: str) -> CommonMessage:
+        """
+        Deletes an existing token from an app
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id
@@ -128,6 +137,9 @@ class BackendAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, app_id: str) -> BackendApp:
+        """
+        Returns a specific app
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id
@@ -162,6 +174,9 @@ class BackendAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendAppCollection:
+        """
+        Returns a paginated list of apps
+        """
         try:
             path_params = {}
 
@@ -198,6 +213,9 @@ class BackendAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, app_id: str, payload: BackendAppUpdate) -> CommonMessage:
+        """
+        Updates an existing app
+        """
         try:
             path_params = {}
             path_params['app_id'] = app_id

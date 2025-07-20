@@ -22,6 +22,9 @@ class BackendAuditTag(sdkgen.TagAbstract):
 
 
     def get(self, audit_id: str) -> BackendAudit:
+        """
+        Returns a specific audit
+        """
         try:
             path_params = {}
             path_params['audit_id'] = audit_id
@@ -56,6 +59,9 @@ class BackendAuditTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, app_id: int, user_id: int, event: str, ip: str, message: str) -> BackendAuditCollection:
+        """
+        Returns a paginated list of audits
+        """
         try:
             path_params = {}
 

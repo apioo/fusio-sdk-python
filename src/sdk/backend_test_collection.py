@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_test import BackendTest
 
 
+# A paginated collection of test objects
 class BackendTestCollection(CommonCollection[BackendTest]):
     pass
 

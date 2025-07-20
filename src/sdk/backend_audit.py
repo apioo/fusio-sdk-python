@@ -12,6 +12,7 @@ from .backend_user import BackendUser
 from .backend_audit_object import BackendAuditObject
 
 
+# This object represents an audit which is created every time something was changed at the system
 class BackendAudit(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     app: Optional[BackendApp] = Field(default=None, alias="app")

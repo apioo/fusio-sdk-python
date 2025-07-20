@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_role import BackendRole
 
 
+# A paginated collection of role objects
 class BackendRoleCollection(CommonCollection[BackendRole]):
     pass
 

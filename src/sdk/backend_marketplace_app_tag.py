@@ -24,6 +24,9 @@ class BackendMarketplaceAppTag(sdkgen.TagAbstract):
 
 
     def get(self, user: str, name: str) -> MarketplaceApp:
+        """
+        Returns a specific marketplace app
+        """
         try:
             path_params = {}
             path_params['user'] = user
@@ -59,6 +62,9 @@ class BackendMarketplaceAppTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, query: str) -> MarketplaceAppCollection:
+        """
+        Returns a paginated list of marketplace apps
+        """
         try:
             path_params = {}
 

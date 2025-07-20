@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_action_execute_request_body import BackendActionExecuteRequestBody
 
 
+# Represents a request to execute an action
 class BackendActionExecuteRequest(BaseModel):
     method: Optional[str] = Field(default=None, alias="method")
     uri_fragments: Optional[str] = Field(default=None, alias="uriFragments")

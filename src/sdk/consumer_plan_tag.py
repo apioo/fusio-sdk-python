@@ -22,6 +22,9 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
 
 
     def get(self, plan_id: str) -> ConsumerPlan:
+        """
+        Returns a specific plan for the authenticated user
+        """
         try:
             path_params = {}
             path_params['plan_id'] = plan_id
@@ -56,6 +59,9 @@ class ConsumerPlanTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerPlanCollection:
+        """
+        Returns a paginated list of plans which are relevant to the authenticated user
+        """
         try:
             path_params = {}
 

@@ -24,6 +24,9 @@ class BackendLogTag(sdkgen.TagAbstract):
 
 
     def get(self, log_id: str) -> BackendLog:
+        """
+        Returns a specific log
+        """
         try:
             path_params = {}
             path_params['log_id'] = log_id
@@ -58,6 +61,9 @@ class BackendLogTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendLogCollection:
+        """
+        Returns a paginated list of logs
+        """
         try:
             path_params = {}
 
@@ -105,6 +111,9 @@ class BackendLogTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all_errors(self, start_index: int, count: int, search: str) -> BackendLogErrorCollection:
+        """
+        Returns a paginated list of log errors
+        """
         try:
             path_params = {}
 

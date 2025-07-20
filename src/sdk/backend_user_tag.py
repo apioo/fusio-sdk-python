@@ -24,6 +24,9 @@ class BackendUserTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendUserCreate) -> CommonMessage:
+        """
+        Creates a new user
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendUserTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, user_id: str) -> CommonMessage:
+        """
+        Deletes an existing user
+        """
         try:
             path_params = {}
             path_params['user_id'] = user_id
@@ -93,6 +99,9 @@ class BackendUserTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, user_id: str) -> BackendUser:
+        """
+        Returns a specific user
+        """
         try:
             path_params = {}
             path_params['user_id'] = user_id
@@ -127,6 +136,9 @@ class BackendUserTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendUserCollection:
+        """
+        Returns a paginated list of users
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendUserTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, user_id: str, payload: BackendUserUpdate) -> CommonMessage:
+        """
+        Updates an existing user
+        """
         try:
             path_params = {}
             path_params['user_id'] = user_id

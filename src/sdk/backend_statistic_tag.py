@@ -22,6 +22,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
 
 
     def get_activities_per_user(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the activities per user
+        """
         try:
             path_params = {}
 
@@ -69,6 +72,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_count_requests(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticCount:
+        """
+        Returns a statistic containing the request count
+        """
         try:
             path_params = {}
 
@@ -116,6 +122,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_errors_per_operation(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the errors per operation
+        """
         try:
             path_params = {}
 
@@ -163,6 +172,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_incoming_requests(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the incoming requests
+        """
         try:
             path_params = {}
 
@@ -210,6 +222,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_incoming_transactions(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the incoming transactions
+        """
         try:
             path_params = {}
 
@@ -257,6 +272,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_issued_tokens(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the issues tokens
+        """
         try:
             path_params = {}
 
@@ -304,6 +322,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_most_used_activities(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the most used activities
+        """
         try:
             path_params = {}
 
@@ -351,6 +372,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_most_used_apps(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the most used apps
+        """
         try:
             path_params = {}
 
@@ -398,6 +422,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_most_used_operations(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the most used operations
+        """
         try:
             path_params = {}
 
@@ -445,6 +472,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_test_coverage(self) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the test coverage
+        """
         try:
             path_params = {}
 
@@ -478,6 +508,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_time_average(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the time average
+        """
         try:
             path_params = {}
 
@@ -525,6 +558,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_time_per_operation(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the time per operation
+        """
         try:
             path_params = {}
 
@@ -572,6 +608,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_used_points(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the used points
+        """
         try:
             path_params = {}
 
@@ -619,6 +658,9 @@ class BackendStatisticTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_user_registrations(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the user registrations
+        """
         try:
             path_params = {}
 

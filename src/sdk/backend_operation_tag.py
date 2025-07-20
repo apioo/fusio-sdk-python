@@ -24,6 +24,9 @@ class BackendOperationTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendOperationCreate) -> CommonMessage:
+        """
+        Creates a new operation
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendOperationTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, operation_id: str) -> CommonMessage:
+        """
+        Deletes an existing operation
+        """
         try:
             path_params = {}
             path_params['operation_id'] = operation_id
@@ -93,6 +99,9 @@ class BackendOperationTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, operation_id: str) -> BackendOperation:
+        """
+        Returns a specific operation
+        """
         try:
             path_params = {}
             path_params['operation_id'] = operation_id
@@ -127,6 +136,9 @@ class BackendOperationTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendOperationCollection:
+        """
+        Returns a paginated list of operations
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendOperationTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, operation_id: str, payload: BackendOperationUpdate) -> CommonMessage:
+        """
+        Updates an existing operation
+        """
         try:
             path_params = {}
             path_params['operation_id'] = operation_id

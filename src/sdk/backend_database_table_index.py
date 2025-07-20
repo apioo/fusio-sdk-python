@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a table index on a relational database
 class BackendDatabaseTableIndex(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     unique: Optional[bool] = Field(default=None, alias="unique")

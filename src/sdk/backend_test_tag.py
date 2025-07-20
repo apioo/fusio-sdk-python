@@ -22,6 +22,9 @@ class BackendTestTag(sdkgen.TagAbstract):
 
 
     def get(self, test_id: str) -> BackendTest:
+        """
+        Returns a specific test
+        """
         try:
             path_params = {}
             path_params['test_id'] = test_id
@@ -56,6 +59,9 @@ class BackendTestTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendTestCollection:
+        """
+        Returns a paginated list of tests
+        """
         try:
             path_params = {}
 
@@ -92,6 +98,9 @@ class BackendTestTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def refresh(self) -> CommonMessage:
+        """
+        Refresh all tests
+        """
         try:
             path_params = {}
 
@@ -125,6 +134,9 @@ class BackendTestTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def run(self) -> CommonMessage:
+        """
+        Run all tests
+        """
         try:
             path_params = {}
 
@@ -158,6 +170,9 @@ class BackendTestTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, test_id: str, payload: BackendTest) -> CommonMessage:
+        """
+        Updates an existing test
+        """
         try:
             path_params = {}
             path_params['test_id'] = test_id

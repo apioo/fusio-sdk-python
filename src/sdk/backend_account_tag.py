@@ -23,6 +23,9 @@ class BackendAccountTag(sdkgen.TagAbstract):
 
 
     def change_password(self, payload: BackendAccountChangePassword) -> CommonMessage:
+        """
+        Changes the password of the authenticated user
+        """
         try:
             path_params = {}
 
@@ -58,6 +61,9 @@ class BackendAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self) -> BackendUser:
+        """
+        Returns user data of the authenticated user
+        """
         try:
             path_params = {}
 
@@ -91,6 +97,9 @@ class BackendAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, payload: BackendUserUpdate) -> CommonMessage:
+        """
+        Updates user data of the authenticated user
+        """
         try:
             path_params = {}
 

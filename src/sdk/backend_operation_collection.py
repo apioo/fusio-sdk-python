@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_operation import BackendOperation
 
 
+# A paginated collection of operation objects
 class BackendOperationCollection(CommonCollection[BackendOperation]):
     pass
 

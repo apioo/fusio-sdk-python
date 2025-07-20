@@ -97,6 +97,9 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_classes(self) -> BackendGeneratorIndexProviders:
+        """
+        Returns all available generator classes
+        """
         try:
             path_params = {}
 
@@ -130,6 +133,9 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_form(self, provider: str) -> CommonFormContainer:
+        """
+        Returns the generator config form
+        """
         try:
             path_params = {}
             path_params['provider'] = provider

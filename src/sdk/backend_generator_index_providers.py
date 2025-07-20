@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_generator_index_provider import BackendGeneratorIndexProvider
 
 
+# Contains all possible classes which can be used at an generator as class
 class BackendGeneratorIndexProviders(BaseModel):
     providers: Optional[List[BackendGeneratorIndexProvider]] = Field(default=None, alias="providers")
     pass

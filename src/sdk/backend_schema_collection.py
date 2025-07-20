@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_schema import BackendSchema
 
 
+# A paginated collection of schema objects
 class BackendSchemaCollection(CommonCollection[BackendSchema]):
     pass
 

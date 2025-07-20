@@ -22,6 +22,9 @@ class ConsumerFormTag(sdkgen.TagAbstract):
 
 
     def get(self, form_id: str) -> ConsumerForm:
+        """
+        Returns a specific form for the authenticated user
+        """
         try:
             path_params = {}
             path_params['form_id'] = form_id
@@ -56,6 +59,9 @@ class ConsumerFormTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerFormCollection:
+        """
+        Returns a paginated list of forms which are relevant to the authenticated user
+        """
         try:
             path_params = {}
 

@@ -23,6 +23,9 @@ class BackendSdkTag(sdkgen.TagAbstract):
 
 
     def generate(self, payload: BackendSdkGenerate) -> BackendSdkMessage:
+        """
+        Generates a specific SDK
+        """
         try:
             path_params = {}
 
@@ -58,6 +61,9 @@ class BackendSdkTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self) -> BackendSdkResponse:
+        """
+        Returns a paginated list of SDKs
+        """
         try:
             path_params = {}
 

@@ -11,6 +11,7 @@ from .common_metadata import CommonMetadata
 from .backend_token import BackendToken
 
 
+# This object represents an app to access the API on-behalf of a user
 class BackendApp(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     user_id: Optional[int] = Field(default=None, alias="userId")

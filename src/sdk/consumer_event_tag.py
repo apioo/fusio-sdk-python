@@ -22,6 +22,9 @@ class ConsumerEventTag(sdkgen.TagAbstract):
 
 
     def get(self, event_id: str) -> ConsumerEvent:
+        """
+        Returns a specific event for the authenticated user
+        """
         try:
             path_params = {}
             path_params['event_id'] = event_id
@@ -56,6 +59,9 @@ class ConsumerEventTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerEventCollection:
+        """
+        Returns a paginated list of apps which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 

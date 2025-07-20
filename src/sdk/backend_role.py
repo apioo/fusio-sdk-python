@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a role, every user is assigned to a role and all scopes of the role are automatically attached to the user
 class BackendRole(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     category_id: Optional[int] = Field(default=None, alias="categoryId")

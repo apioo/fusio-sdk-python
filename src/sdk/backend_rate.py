@@ -10,6 +10,7 @@ from .backend_rate_allocation import BackendRateAllocation
 from .common_metadata import CommonMetadata
 
 
+# This object represents a rate limitation, which allows to limit the requests which a user can send
 class BackendRate(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     priority: Optional[int] = Field(default=None, alias="priority")

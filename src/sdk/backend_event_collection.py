@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_event import BackendEvent
 
 
+# A paginated collection of event objects
 class BackendEventCollection(CommonCollection[BackendEvent]):
     pass
 

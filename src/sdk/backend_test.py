@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_test_config import BackendTestConfig
 
 
+# This object represents a test. A test helps to verify that all operations work as expected
 class BackendTest(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

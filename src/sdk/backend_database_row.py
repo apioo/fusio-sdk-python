@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from collections import UserDict
 
 
+# This object represents a row on a relational table
 class BackendDatabaseRow(UserDict[str, Any]):
     @classmethod
     def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:

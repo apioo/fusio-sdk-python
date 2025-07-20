@@ -24,6 +24,9 @@ class BackendRoleTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendRoleCreate) -> CommonMessage:
+        """
+        Creates a new role
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendRoleTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, role_id: str) -> CommonMessage:
+        """
+        Deletes an existing role
+        """
         try:
             path_params = {}
             path_params['role_id'] = role_id
@@ -93,6 +99,9 @@ class BackendRoleTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, role_id: str) -> BackendRole:
+        """
+        Returns a specific role
+        """
         try:
             path_params = {}
             path_params['role_id'] = role_id
@@ -127,6 +136,9 @@ class BackendRoleTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendRoleCollection:
+        """
+        Returns a paginated list of roles
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendRoleTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, role_id: str, payload: BackendRoleUpdate) -> CommonMessage:
+        """
+        Updates an existing role
+        """
         try:
             path_params = {}
             path_params['role_id'] = role_id

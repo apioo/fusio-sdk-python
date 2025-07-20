@@ -7,17 +7,15 @@ from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_schema_source import BackendSchemaSource
-from .backend_schema_form import BackendSchemaForm
 from .common_metadata import CommonMetadata
 
 
+# This object represents a schema to describe a JSON payload
 class BackendSchema(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     name: Optional[str] = Field(default=None, alias="name")
     source: Optional[BackendSchemaSource] = Field(default=None, alias="source")
-    form: Optional[BackendSchemaForm] = Field(default=None, alias="form")
-    readonly: Optional[bool] = Field(default=None, alias="readonly")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
 

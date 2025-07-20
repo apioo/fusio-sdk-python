@@ -24,6 +24,9 @@ class BackendRateTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendRateCreate) -> CommonMessage:
+        """
+        Creates a new rate limitation
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendRateTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, rate_id: str) -> CommonMessage:
+        """
+        Deletes an existing rate
+        """
         try:
             path_params = {}
             path_params['rate_id'] = rate_id
@@ -93,6 +99,9 @@ class BackendRateTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, rate_id: str) -> BackendRate:
+        """
+        Returns a specific rate
+        """
         try:
             path_params = {}
             path_params['rate_id'] = rate_id
@@ -127,6 +136,9 @@ class BackendRateTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendRateCollection:
+        """
+        Returns a paginated list of rate limitations
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendRateTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, rate_id: str, payload: BackendRateUpdate) -> CommonMessage:
+        """
+        Updates an existing rate
+        """
         try:
             path_params = {}
             path_params['rate_id'] = rate_id

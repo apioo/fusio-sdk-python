@@ -10,6 +10,7 @@ from .backend_connection_config import BackendConnectionConfig
 from .common_metadata import CommonMetadata
 
 
+# This object represents a connection to an external system like i.e. a database, message-queue or client-sdk
 class BackendConnection(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

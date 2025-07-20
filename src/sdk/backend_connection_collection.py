@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_connection import BackendConnection
 
 
+# A paginated collection of connection objects
 class BackendConnectionCollection(CommonCollection[BackendConnection]):
     pass
 

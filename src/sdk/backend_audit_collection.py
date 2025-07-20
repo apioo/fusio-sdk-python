@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_audit import BackendAudit
 
 
+# A paginated collection of audit objects
 class BackendAuditCollection(CommonCollection[BackendAudit]):
     pass
 

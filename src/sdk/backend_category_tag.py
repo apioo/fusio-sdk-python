@@ -24,6 +24,9 @@ class BackendCategoryTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendCategoryCreate) -> CommonMessage:
+        """
+        Creates a new category
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendCategoryTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, category_id: str) -> CommonMessage:
+        """
+        Deletes an existing category
+        """
         try:
             path_params = {}
             path_params['category_id'] = category_id
@@ -93,6 +99,9 @@ class BackendCategoryTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, category_id: str) -> BackendCategory:
+        """
+        Returns a specific category
+        """
         try:
             path_params = {}
             path_params['category_id'] = category_id
@@ -127,6 +136,9 @@ class BackendCategoryTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendCategoryCollection:
+        """
+        Returns a paginated list of categories
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendCategoryTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, category_id: str, payload: BackendCategoryUpdate) -> CommonMessage:
+        """
+        Updates an existing category
+        """
         try:
             path_params = {}
             path_params['category_id'] = category_id

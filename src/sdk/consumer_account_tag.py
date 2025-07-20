@@ -32,6 +32,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
 
 
     def activate(self, payload: ConsumerUserActivate) -> CommonMessage:
+        """
+        Activates an previously registered account through a token which was provided to the user via email
+        """
         try:
             path_params = {}
 
@@ -67,6 +70,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def authorize(self, payload: ConsumerAuthorizeRequest) -> ConsumerAuthorizeResponse:
+        """
+        Authorizes the access of a specific app for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -102,6 +108,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def change_password(self, payload: BackendAccountChangePassword) -> CommonMessage:
+        """
+        Change the password for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -137,6 +146,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def execute_password_reset(self, payload: ConsumerUserPasswordReset) -> CommonMessage:
+        """
+        Change the password after the password reset flow was started
+        """
         try:
             path_params = {}
 
@@ -172,6 +184,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self) -> ConsumerUserAccount:
+        """
+        Returns a user data for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -204,11 +219,16 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_app(self) -> ConsumerAuthorizeMeta:
+    def get_app(self, client_id: str, scope: str) -> ConsumerAuthorizeMeta:
+        """
+        Returns information about a specific app to start the OAuth2 authorization code flow
+        """
         try:
             path_params = {}
 
             query_params = {}
+            query_params['client_id'] = client_id
+            query_params['scope'] = scope
 
             query_struct_names = []
 
@@ -238,6 +258,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def login(self, payload: ConsumerUserLogin) -> ConsumerUserJWT:
+        """
+        User login by providing a username and password
+        """
         try:
             path_params = {}
 
@@ -273,6 +296,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def refresh(self, payload: ConsumerUserRefresh) -> ConsumerUserJWT:
+        """
+        Refresh a previously obtained access token
+        """
         try:
             path_params = {}
 
@@ -308,6 +334,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def register(self, payload: ConsumerUserRegister) -> CommonMessage:
+        """
+        Register a new user account
+        """
         try:
             path_params = {}
 
@@ -343,6 +372,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def request_password_reset(self, payload: ConsumerUserEmail) -> CommonMessage:
+        """
+        Start the password reset flow
+        """
         try:
             path_params = {}
 
@@ -378,6 +410,9 @@ class ConsumerAccountTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, payload: ConsumerUserAccount) -> CommonMessage:
+        """
+        Updates user data for the authenticated user
+        """
         try:
             path_params = {}
 

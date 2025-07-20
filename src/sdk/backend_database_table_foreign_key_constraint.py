@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a foreign key constraint on a relational database
 class BackendDatabaseTableForeignKeyConstraint(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     foreign_table: Optional[str] = Field(default=None, alias="foreignTable")

@@ -11,6 +11,7 @@ from .backend_operation_throws import BackendOperationThrows
 from .common_metadata import CommonMetadata
 
 
+# This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload
 class BackendOperation(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

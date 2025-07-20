@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# This object represents a plan, a plan allows users to obtain points or in general subscribe to your app
 class BackendPlan(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

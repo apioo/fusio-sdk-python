@@ -20,6 +20,9 @@ class BackendTenantTag(sdkgen.TagAbstract):
 
 
     def remove(self, tenant_id: str) -> CommonMessage:
+        """
+        Removes an existing tenant
+        """
         try:
             path_params = {}
             path_params['tenant_id'] = tenant_id
@@ -54,6 +57,9 @@ class BackendTenantTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def setup(self, tenant_id: str) -> CommonMessage:
+        """
+        Setup a new tenant
+        """
         try:
             path_params = {}
             path_params['tenant_id'] = tenant_id

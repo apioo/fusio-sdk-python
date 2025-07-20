@@ -21,6 +21,9 @@ class ConsumerGrantTag(sdkgen.TagAbstract):
 
 
     def delete(self, grant_id: str) -> CommonMessage:
+        """
+        Deletes an existing grant for an app which was created by the authenticated user
+        """
         try:
             path_params = {}
             path_params['grant_id'] = grant_id
@@ -55,6 +58,9 @@ class ConsumerGrantTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerGrantCollection:
+        """
+        Returns a paginated list of grants which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 

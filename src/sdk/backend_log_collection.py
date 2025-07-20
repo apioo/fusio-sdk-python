@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_log import BackendLog
 
 
+# A paginated collection of log objects
 class BackendLogCollection(CommonCollection[BackendLog]):
     pass
 

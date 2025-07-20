@@ -25,6 +25,9 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: ConsumerTokenCreate) -> ConsumerTokenAccessToken:
+        """
+        Creates a new token for the authenticated user
+        """
         try:
             path_params = {}
 
@@ -60,6 +63,9 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, token_id: str) -> CommonMessage:
+        """
+        Deletes an existing token for the authenticated user
+        """
         try:
             path_params = {}
             path_params['token_id'] = token_id
@@ -94,6 +100,9 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, token_id: str) -> ConsumerToken:
+        """
+        Returns a specific token for the authenticated user
+        """
         try:
             path_params = {}
             path_params['token_id'] = token_id
@@ -128,6 +137,9 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerTokenCollection:
+        """
+        Returns a paginated list of tokens which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 
@@ -164,6 +176,9 @@ class ConsumerTokenTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, token_id: str, payload: ConsumerTokenUpdate) -> ConsumerTokenAccessToken:
+        """
+        Updates an existing token for the authenticated user
+        """
         try:
             path_params = {}
             path_params['token_id'] = token_id

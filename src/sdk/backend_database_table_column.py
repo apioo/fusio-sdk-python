@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 
+# This object represents a column at a relation table
 class BackendDatabaseTableColumn(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     type: Optional[str] = Field(default=None, alias="type")

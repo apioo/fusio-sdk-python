@@ -11,6 +11,7 @@ from .backend_app import BackendApp
 from .common_metadata import CommonMetadata
 
 
+# This object represents a user
 class BackendUser(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     role_id: Optional[int] = Field(default=None, alias="roleId")

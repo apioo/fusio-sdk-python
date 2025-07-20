@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_category import BackendCategory
 
 
+# A paginated collection of category objects
 class BackendCategoryCollection(CommonCollection[BackendCategory]):
     pass
 

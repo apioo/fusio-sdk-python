@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_rate import BackendRate
 
 
+# A paginated collection of rate objects
 class BackendRateCollection(CommonCollection[BackendRate]):
     pass
 

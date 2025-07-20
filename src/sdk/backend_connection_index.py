@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_connection_index_entry import BackendConnectionIndexEntry
 
 
+# Contains all possible classes which can be used at an connection as class
 class BackendConnectionIndex(BaseModel):
     connections: Optional[List[BackendConnectionIndexEntry]] = Field(default=None, alias="connections")
     pass

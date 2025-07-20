@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_identity_config import BackendIdentityConfig
 
 
+# This object represents an identity which allows to authenticate with a remote identity provider
 class BackendIdentity(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     app_id: Optional[int] = Field(default=None, alias="appId")

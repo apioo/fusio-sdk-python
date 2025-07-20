@@ -22,6 +22,9 @@ class ConsumerTransactionTag(sdkgen.TagAbstract):
 
 
     def get(self, transaction_id: str) -> ConsumerTransaction:
+        """
+        Returns a specific transaction for the authenticated user
+        """
         try:
             path_params = {}
             path_params['transaction_id'] = transaction_id
@@ -56,6 +59,9 @@ class ConsumerTransactionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> ConsumerTransactionCollection:
+        """
+        Returns a paginated list of transactions which are assigned to the authenticated user
+        """
         try:
             path_params = {}
 

@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_transaction import BackendTransaction
 
 
+# A paginated collection of transaction objects
 class BackendTransactionCollection(CommonCollection[BackendTransaction]):
     pass
 

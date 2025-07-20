@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_webhook import BackendWebhook
 
 
+# A paginated collection of webhook objects
 class BackendWebhookCollection(CommonCollection[BackendWebhook]):
     pass
 

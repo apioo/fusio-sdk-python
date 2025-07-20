@@ -24,6 +24,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
 
 
     def create_row(self, connection_id: str, table_name: str, payload: BackendDatabaseRow) -> CommonMessage:
+        """
+        Creates a new row at a table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -61,6 +64,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def create_table(self, connection_id: str, payload: BackendDatabaseTable) -> CommonMessage:
+        """
+        Creates a new table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -97,6 +103,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete_row(self, connection_id: str, table_name: str, id: str) -> CommonMessage:
+        """
+        Deletes an existing row at a table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -133,6 +142,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete_table(self, connection_id: str, table_name: str) -> CommonMessage:
+        """
+        Deletes an existing table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -168,6 +180,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_row(self, connection_id: str, table_name: str, id: str) -> BackendDatabaseRow:
+        """
+        Returns a specific row at a table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -204,6 +219,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_rows(self, connection_id: str, table_name: str, start_index: int, count: int, filter_by: str, filter_op: str, filter_value: str, sort_by: str, sort_order: str, columns: str) -> BackendDatabaseRowCollection:
+        """
+        Returns paginated rows at a table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -247,6 +265,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_table(self, connection_id: str, table_name: str) -> BackendDatabaseTable:
+        """
+        Returns the schema of a specific table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -282,6 +303,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_tables(self, connection_id: str, start_index: int, count: int) -> BackendDatabaseTableCollection:
+        """
+        Returns all available tables on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -318,6 +342,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update_row(self, connection_id: str, table_name: str, id: str, payload: BackendDatabaseRow) -> CommonMessage:
+        """
+        Updates an existing row at a table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id
@@ -356,6 +383,9 @@ class BackendDatabaseTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update_table(self, connection_id: str, table_name: str, payload: BackendDatabaseTable) -> CommonMessage:
+        """
+        Updates an existing table on a database
+        """
         try:
             path_params = {}
             path_params['connection_id'] = connection_id

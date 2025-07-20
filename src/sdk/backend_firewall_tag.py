@@ -24,6 +24,9 @@ class BackendFirewallTag(sdkgen.TagAbstract):
 
 
     def create(self, payload: BackendFirewallCreate) -> CommonMessage:
+        """
+        Creates a new firewall rule
+        """
         try:
             path_params = {}
 
@@ -59,6 +62,9 @@ class BackendFirewallTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def delete(self, firewall_id: str) -> CommonMessage:
+        """
+        Deletes an existing firewall rule
+        """
         try:
             path_params = {}
             path_params['firewall_id'] = firewall_id
@@ -93,6 +99,9 @@ class BackendFirewallTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get(self, firewall_id: str) -> BackendFirewall:
+        """
+        Returns a specific firewall rule
+        """
         try:
             path_params = {}
             path_params['firewall_id'] = firewall_id
@@ -127,6 +136,9 @@ class BackendFirewallTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_all(self, start_index: int, count: int, search: str) -> BackendFirewallCollection:
+        """
+        Returns a paginated list of firewall rules
+        """
         try:
             path_params = {}
 
@@ -163,6 +175,9 @@ class BackendFirewallTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def update(self, firewall_id: str, payload: BackendFirewallUpdate) -> CommonMessage:
+        """
+        Updates an existing firewall rule
+        """
         try:
             path_params = {}
             path_params['firewall_id'] = firewall_id

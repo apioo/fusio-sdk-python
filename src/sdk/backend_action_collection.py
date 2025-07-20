@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .backend_action import BackendAction
 
 
+# A paginated collection of action objects
 class BackendActionCollection(CommonCollection[BackendAction]):
     pass
 
