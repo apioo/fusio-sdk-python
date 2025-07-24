@@ -100,6 +100,9 @@ class BackendMarketplaceActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def install(self, payload: MarketplaceInstall) -> MarketplaceMessage:
+        """
+        Installs an action from the marketplace
+        """
         try:
             path_params = {}
 
