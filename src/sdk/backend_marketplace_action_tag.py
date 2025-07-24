@@ -138,6 +138,9 @@ class BackendMarketplaceActionTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def upgrade(self, user: str, name: str) -> CommonMessage:
+        """
+        Upgrades an action from the marketplace
+        """
         try:
             path_params = {}
             path_params['user'] = user

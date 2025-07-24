@@ -176,6 +176,9 @@ class BackendSchemaTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_preview(self, schema_id: str) -> BackendSchemaPreviewResponse:
+        """
+        Returns a HTML preview of the provided schema
+        """
         try:
             path_params = {}
             path_params['schema_id'] = schema_id

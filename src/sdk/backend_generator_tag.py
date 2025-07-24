@@ -25,6 +25,9 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
 
 
     def execute_provider(self, provider: str, payload: BackendGeneratorProvider) -> CommonMessage:
+        """
+        Executes a generator with the provided config
+        """
         try:
             path_params = {}
             path_params['provider'] = provider
@@ -61,6 +64,9 @@ class BackendGeneratorTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_changelog(self, provider: str, payload: BackendGeneratorProviderConfig) -> BackendGeneratorProviderChangelog:
+        """
+        Generates a changelog of all potential changes if you execute this generator with the provided config
+        """
         try:
             path_params = {}
             path_params['provider'] = provider

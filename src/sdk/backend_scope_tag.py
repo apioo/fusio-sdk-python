@@ -176,6 +176,9 @@ class BackendScopeTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_categories(self) -> BackendScopeCategories:
+        """
+        Returns all available scopes grouped by category
+        """
         try:
             path_params = {}
 

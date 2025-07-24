@@ -150,6 +150,9 @@ class BackendLogTag(sdkgen.TagAbstract):
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
     def get_error(self, error_id: str) -> BackendLogError:
+        """
+        Returns a specific error
+        """
         try:
             path_params = {}
             path_params['error_id'] = error_id
