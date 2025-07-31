@@ -72,7 +72,7 @@ class BackendFileTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/filesystem/:connection_id/:file_id', path_params)
+            url = self.parser.url('/backend/file/:connection_id/:file_id', path_params)
 
             options = {}
             options['headers'] = {}
