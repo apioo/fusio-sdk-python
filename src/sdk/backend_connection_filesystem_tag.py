@@ -96,7 +96,7 @@ class BackendConnectionFilesystemTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get(self, connection_id: str, file_id: str):
+    def get(self, connection_id: str, file_id: str) -> bytearray:
         """
         Returns the content of the provided file id on the filesystem connection
         """
@@ -116,11 +116,14 @@ class BackendConnectionFilesystemTag(sdkgen.TagAbstract):
             options['params'] = self.parser.query(query_params, query_struct_names)
 
 
+            options['headers']['Accept'] = 'application/octet-stream'
 
             response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                return
+                data = response.content
+
+                return data
 
             statusCode = response.status_code
             if statusCode >= 0 and statusCode <= 999:
