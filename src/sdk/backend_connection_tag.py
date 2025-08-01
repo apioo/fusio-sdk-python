@@ -14,8 +14,12 @@ from urllib.parse import parse_qs
 from .backend_connection import BackendConnection
 from .backend_connection_collection import BackendConnectionCollection
 from .backend_connection_create import BackendConnectionCreate
+from .backend_connection_database_tag import BackendConnectionDatabaseTag
+from .backend_connection_filesystem_tag import BackendConnectionFilesystemTag
+from .backend_connection_http_tag import BackendConnectionHttpTag
 from .backend_connection_index import BackendConnectionIndex
 from .backend_connection_redirect_response import BackendConnectionRedirectResponse
+from .backend_connection_sdk_tag import BackendConnectionSdkTag
 from .backend_connection_update import BackendConnectionUpdate
 from .common_form_container import CommonFormContainer
 from .common_message import CommonMessage
@@ -24,6 +28,30 @@ from .common_message_exception import CommonMessageException
 class BackendConnectionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
+    def database(self) -> BackendConnectionDatabaseTag:
+        return BackendConnectionDatabaseTag(
+            self.http_client,
+            self.parser
+        )
+
+    def filesystem(self) -> BackendConnectionFilesystemTag:
+        return BackendConnectionFilesystemTag(
+            self.http_client,
+            self.parser
+        )
+
+    def http(self) -> BackendConnectionHttpTag:
+        return BackendConnectionHttpTag(
+            self.http_client,
+            self.parser
+        )
+
+    def sdk(self) -> BackendConnectionSdkTag:
+        return BackendConnectionSdkTag(
+            self.http_client,
+            self.parser
+        )
 
 
     def create(self, payload: BackendConnectionCreate) -> CommonMessage:
@@ -263,7 +291,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>/redirect', path_params)
+            url = self.parser.url('/backend/connection/:connection_id/redirect', path_params)
 
             options = {}
             options['headers'] = {}

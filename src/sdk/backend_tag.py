@@ -21,9 +21,7 @@ from .backend_config_tag import BackendConfigTag
 from .backend_connection_tag import BackendConnectionTag
 from .backend_cronjob_tag import BackendCronjobTag
 from .backend_dashboard_tag import BackendDashboardTag
-from .backend_database_tag import BackendDatabaseTag
 from .backend_event_tag import BackendEventTag
-from .backend_file_tag import BackendFileTag
 from .backend_firewall_tag import BackendFirewallTag
 from .backend_form_tag import BackendFormTag
 from .backend_generator_tag import BackendGeneratorTag
@@ -111,20 +109,8 @@ class BackendTag(sdkgen.TagAbstract):
             self.parser
         )
 
-    def database(self) -> BackendDatabaseTag:
-        return BackendDatabaseTag(
-            self.http_client,
-            self.parser
-        )
-
     def event(self) -> BackendEventTag:
         return BackendEventTag(
-            self.http_client,
-            self.parser
-        )
-
-    def file(self) -> BackendFileTag:
-        return BackendFileTag(
             self.http_client,
             self.parser
         )
