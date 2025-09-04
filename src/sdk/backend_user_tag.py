@@ -17,6 +17,7 @@ from .backend_user_create import BackendUserCreate
 from .backend_user_update import BackendUserUpdate
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
+from .passthru import Passthru
 
 class BackendUserTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
@@ -161,6 +162,45 @@ class BackendUserTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = BackendUserCollection.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def resend(self, user_id: str, payload: Passthru) -> CommonMessage:
+        """
+        Resend the activation mail to the provided user
+        """
+        try:
+            path_params = {}
+            path_params['user_id'] = user_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/user/$user_id<[0-9]+|^~>/resend', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
 
                 return data
 
