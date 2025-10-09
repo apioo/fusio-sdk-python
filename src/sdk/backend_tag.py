@@ -42,6 +42,7 @@ from .backend_test_tag import BackendTestTag
 from .backend_token_tag import BackendTokenTag
 from .backend_transaction_tag import BackendTransactionTag
 from .backend_trash_tag import BackendTrashTag
+from .backend_trigger_tag import BackendTriggerTag
 from .backend_user_tag import BackendUserTag
 from .backend_webhook_tag import BackendWebhookTag
 
@@ -231,6 +232,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def trash(self) -> BackendTrashTag:
         return BackendTrashTag(
+            self.http_client,
+            self.parser
+        )
+
+    def trigger(self) -> BackendTriggerTag:
+        return BackendTriggerTag(
             self.http_client,
             self.parser
         )
