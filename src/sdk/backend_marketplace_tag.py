@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_marketplace_action_tag import BackendMarketplaceActionTag
 from .backend_marketplace_app_tag import BackendMarketplaceAppTag
+from .backend_marketplace_bundle_tag import BackendMarketplaceBundleTag
 
 class BackendMarketplaceTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
@@ -26,6 +27,12 @@ class BackendMarketplaceTag(sdkgen.TagAbstract):
 
     def app(self) -> BackendMarketplaceAppTag:
         return BackendMarketplaceAppTag(
+            self.http_client,
+            self.parser
+        )
+
+    def bundle(self) -> BackendMarketplaceBundleTag:
+        return BackendMarketplaceBundleTag(
             self.http_client,
             self.parser
         )
