@@ -11,10 +11,10 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
+from .backend_bundle import BackendBundle
 from .backend_bundle_collection import BackendBundleCollection
 from .backend_bundle_create import BackendBundleCreate
 from .backend_bundle_update import BackendBundleUpdate
-from .backend_event import BackendEvent
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -98,7 +98,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get(self, bundle_id: str) -> BackendEvent:
+    def get(self, bundle_id: str) -> BackendBundle:
         """
         Returns a specific bundle
         """
@@ -121,7 +121,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
             response = self.http_client.request('GET', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendEvent.model_validate_json(json_data=response.content)
+                data = BackendBundle.model_validate_json(json_data=response.content)
 
                 return data
 
