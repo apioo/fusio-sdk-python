@@ -13,8 +13,8 @@ from urllib.parse import parse_qs
 
 from .backend_bundle_collection import BackendBundleCollection
 from .backend_bundle_create import BackendBundleCreate
+from .backend_bundle_update import BackendBundleUpdate
 from .backend_event import BackendEvent
-from .backend_event_update import BackendEventUpdate
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -174,7 +174,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def update(self, bundle_id: str, payload: BackendEventUpdate) -> CommonMessage:
+    def update(self, bundle_id: str, payload: BackendBundleUpdate) -> CommonMessage:
         """
         Updates an existing bundle
         """
