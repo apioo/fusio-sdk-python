@@ -16,6 +16,7 @@ from .backend_action_tag import BackendActionTag
 from .backend_app_tag import BackendAppTag
 from .backend_audit_tag import BackendAuditTag
 from .backend_backup_tag import BackendBackupTag
+from .backend_bundle_tag import BackendBundleTag
 from .backend_category_tag import BackendCategoryTag
 from .backend_config_tag import BackendConfigTag
 from .backend_connection_tag import BackendConnectionTag
@@ -42,6 +43,7 @@ from .backend_test_tag import BackendTestTag
 from .backend_token_tag import BackendTokenTag
 from .backend_transaction_tag import BackendTransactionTag
 from .backend_trash_tag import BackendTrashTag
+from .backend_trigger_tag import BackendTriggerTag
 from .backend_user_tag import BackendUserTag
 from .backend_webhook_tag import BackendWebhookTag
 
@@ -75,6 +77,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def backup(self) -> BackendBackupTag:
         return BackendBackupTag(
+            self.http_client,
+            self.parser
+        )
+
+    def bundle(self) -> BackendBundleTag:
+        return BackendBundleTag(
             self.http_client,
             self.parser
         )
@@ -231,6 +239,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def trash(self) -> BackendTrashTag:
         return BackendTrashTag(
+            self.http_client,
+            self.parser
+        )
+
+    def trigger(self) -> BackendTriggerTag:
+        return BackendTriggerTag(
             self.http_client,
             self.parser
         )

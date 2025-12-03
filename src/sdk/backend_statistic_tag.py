@@ -471,6 +471,156 @@ class BackendStatisticTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
+    def get_requests_per_ip(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the requests per ip
+        """
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+            query_params['from'] = from_
+            query_params['to'] = to
+            query_params['operationId'] = operation_id
+            query_params['appId'] = app_id
+            query_params['userId'] = user_id
+            query_params['ip'] = ip
+            query_params['userAgent'] = user_agent
+            query_params['method'] = method
+            query_params['path'] = path
+            query_params['header'] = header
+            query_params['body'] = body
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/statistic/requests_per_ip', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendStatisticChart.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_requests_per_operation(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the requests per operation
+        """
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+            query_params['from'] = from_
+            query_params['to'] = to
+            query_params['operationId'] = operation_id
+            query_params['appId'] = app_id
+            query_params['userId'] = user_id
+            query_params['ip'] = ip
+            query_params['userAgent'] = user_agent
+            query_params['method'] = method
+            query_params['path'] = path
+            query_params['header'] = header
+            query_params['body'] = body
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/statistic/requests_per_operation', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendStatisticChart.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_requests_per_user(self, start_index: int, count: int, search: str, from_: str, to: str, operation_id: int, app_id: int, user_id: int, ip: str, user_agent: str, method: str, path: str, header: str, body: str) -> BackendStatisticChart:
+        """
+        Returns a statistic containing the requests per user
+        """
+        try:
+            path_params = {}
+
+            query_params = {}
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+            query_params['from'] = from_
+            query_params['to'] = to
+            query_params['operationId'] = operation_id
+            query_params['appId'] = app_id
+            query_params['userId'] = user_id
+            query_params['ip'] = ip
+            query_params['userAgent'] = user_agent
+            query_params['method'] = method
+            query_params['path'] = path
+            query_params['header'] = header
+            query_params['body'] = body
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/statistic/requests_per_user', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendStatisticChart.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
     def get_test_coverage(self) -> BackendStatisticChart:
         """
         Returns a statistic containing the test coverage
