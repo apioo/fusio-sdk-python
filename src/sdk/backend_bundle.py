@@ -13,6 +13,11 @@ from .backend_bundle_config import BackendBundleConfig
 class BackendBundle(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
+    version: Optional[str] = Field(default=None, alias="version")
+    icon: Optional[str] = Field(default=None, alias="icon")
+    summary: Optional[str] = Field(default=None, alias="summary")
+    description: Optional[str] = Field(default=None, alias="description")
+    cost: Optional[int] = Field(default=None, alias="cost")
     config: Optional[BackendBundleConfig] = Field(default=None, alias="config")
     pass
 
