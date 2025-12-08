@@ -174,6 +174,43 @@ class BackendBundleTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
+    def publish(self, bundle_id: str) -> CommonMessage:
+        """
+        Publish an existing bundle to the marketplace
+        """
+        try:
+            path_params = {}
+            path_params['bundle_id'] = bundle_id
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/bundle/$bundle_id<[0-9]+|^~>/publish', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
     def update(self, bundle_id: str, payload: BackendBundleUpdate) -> CommonMessage:
         """
         Updates an existing bundle
