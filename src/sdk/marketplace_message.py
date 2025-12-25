@@ -11,6 +11,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class MarketplaceMessage(BaseModel):
     success: Optional[bool] = Field(default=None, alias="success")
     message: Optional[str] = Field(default=None, alias="message")
+    id: Optional[str] = Field(default=None, alias="id")
     pass
 
 
