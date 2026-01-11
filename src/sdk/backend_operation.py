@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 from .backend_operation_parameters import BackendOperationParameters
 from .backend_operation_throws import BackendOperationThrows
 from .common_metadata import CommonMetadata

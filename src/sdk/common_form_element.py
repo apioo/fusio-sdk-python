@@ -5,11 +5,11 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
 class CommonFormElement(BaseModel):
-    type: Optional[str] = Field(default=None, alias="type")
+    type: str = Field(alias="type")
     element: Optional[str] = Field(default=None, alias="element")
     name: Optional[str] = Field(default=None, alias="name")
     title: Optional[str] = Field(default=None, alias="title")

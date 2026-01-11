@@ -5,7 +5,7 @@ https://sdkgen.app
 
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
-from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
+from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 from .backend_database_table_column import BackendDatabaseTableColumn
 from .backend_database_table_index import BackendDatabaseTableIndex
 from .backend_database_table_foreign_key_constraint import BackendDatabaseTableForeignKeyConstraint
