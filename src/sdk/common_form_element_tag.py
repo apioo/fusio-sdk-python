@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_form_element import CommonFormElement
 
 
+# Form element which represents an input tag editor to enter comma-separated values
 class CommonFormElementTag(CommonFormElement):
     type: Literal["http://fusio-project.org/ns/2015/form/tag"] = Field(alias="type")
     pass

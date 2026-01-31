@@ -13,8 +13,9 @@ from .common_form_element_tag import CommonFormElementTag
 from .common_form_element_text_area import CommonFormElementTextArea
 
 
+# Represents a config form with a list of elements
 class CommonFormContainer(BaseModel):
-    element: List[Union[CommonFormElementInput, CommonFormElementSelect, CommonFormElementTag, CommonFormElementTextArea]] = Field(discriminator="type", default_factory=list, alias="element")
+    element: List[Annotated[Union[CommonFormElementInput, CommonFormElementSelect, CommonFormElementTag, CommonFormElementTextArea], Field(discriminator="type")]] = Field(alias="element")
     pass
 
 

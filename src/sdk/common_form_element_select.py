@@ -10,6 +10,7 @@ from .common_form_element import CommonFormElement
 from .common_form_element_select_option import CommonFormElementSelectOption
 
 
+# Form element which represents a select element
 class CommonFormElementSelect(CommonFormElement):
     type: Literal["http://fusio-project.org/ns/2015/form/select"] = Field(alias="type")
     options: Optional[List[CommonFormElementSelectOption]] = Field(default=None, alias="options")

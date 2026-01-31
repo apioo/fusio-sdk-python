@@ -104,7 +104,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
     def execute(self, action_id: str, payload: BackendActionExecuteRequest) -> BackendActionExecuteResponse:
         """
-        Executes a specific action
+        Executes a specific action. This method should be used to test an action configuration
         """
         try:
             path_params = {}

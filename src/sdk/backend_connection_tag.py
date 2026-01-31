@@ -12,6 +12,7 @@ from typing import Any
 from urllib.parse import parse_qs
 
 from .backend_connection import BackendConnection
+from .backend_connection_agent_tag import BackendConnectionAgentTag
 from .backend_connection_collection import BackendConnectionCollection
 from .backend_connection_create import BackendConnectionCreate
 from .backend_connection_database_tag import BackendConnectionDatabaseTag
@@ -28,6 +29,12 @@ from .common_message_exception import CommonMessageException
 class BackendConnectionTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
+    def agent(self) -> BackendConnectionAgentTag:
+        return BackendConnectionAgentTag(
+            self.http_client,
+            self.parser
+        )
 
     def database(self) -> BackendConnectionDatabaseTag:
         return BackendConnectionDatabaseTag(
