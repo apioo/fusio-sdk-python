@@ -19,7 +19,7 @@ from .backend_agent_message_tool_call import BackendAgentMessageToolCall
 class BackendAgent(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     origin: Optional[int] = Field(default=None, alias="origin")
-    message: Annotated[Union[BackendAgentMessageBinary, BackendAgentMessageChoice, BackendAgentMessageObject, BackendAgentMessageText, BackendAgentMessageToolCall], Field(discriminator="type")] = Field(alias="message")
+    message: Annotated[Union["BackendAgentMessageBinary", "BackendAgentMessageChoice", "BackendAgentMessageObject", "BackendAgentMessageText", "BackendAgentMessageToolCall"], Field(discriminator="type")] = Field(alias="message")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
     pass
 

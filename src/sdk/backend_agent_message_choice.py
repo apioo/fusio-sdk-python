@@ -8,7 +8,6 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 from .backend_agent_message import BackendAgentMessage
 from .backend_agent_message_binary import BackendAgentMessageBinary
-from .backend_agent_message_choice import BackendAgentMessageChoice
 from .backend_agent_message_object import BackendAgentMessageObject
 from .backend_agent_message_text import BackendAgentMessageText
 from .backend_agent_message_tool_call import BackendAgentMessageToolCall
@@ -17,7 +16,7 @@ from .backend_agent_message_tool_call import BackendAgentMessageToolCall
 # Choice agent result
 class BackendAgentMessageChoice(BackendAgentMessage):
     type: Literal["choice"] = Field(alias="type")
-    items: List[Annotated[Union[BackendAgentMessageBinary, BackendAgentMessageChoice, BackendAgentMessageObject, BackendAgentMessageText, BackendAgentMessageToolCall], Field(discriminator="type")]] = Field(alias="items")
+    items: List[Annotated[Union["BackendAgentMessageBinary", "BackendAgentMessageChoice", "BackendAgentMessageObject", "BackendAgentMessageText", "BackendAgentMessageToolCall"], Field(discriminator="type")]] = Field(alias="items")
     pass
 
 

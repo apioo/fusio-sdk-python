@@ -17,7 +17,7 @@ from .backend_agent_message_tool_call import BackendAgentMessageToolCall
 # This object represents an agent request
 class BackendAgentRequest(BaseModel):
     intent: Optional[str] = Field(default=None, alias="intent")
-    input: Annotated[Union[BackendAgentMessageBinary, BackendAgentMessageChoice, BackendAgentMessageObject, BackendAgentMessageText, BackendAgentMessageToolCall], Field(discriminator="type")] = Field(alias="input")
+    input: Annotated[Union["BackendAgentMessageBinary", "BackendAgentMessageChoice", "BackendAgentMessageObject", "BackendAgentMessageText", "BackendAgentMessageToolCall"], Field(discriminator="type")] = Field(alias="input")
     pass
 
 

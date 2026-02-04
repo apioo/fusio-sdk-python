@@ -16,7 +16,7 @@ from .backend_agent_message_tool_call import BackendAgentMessageToolCall
 
 # This object represents an agent response
 class BackendAgentResponse(BaseModel):
-    output: Annotated[Union[BackendAgentMessageBinary, BackendAgentMessageChoice, BackendAgentMessageObject, BackendAgentMessageText, BackendAgentMessageToolCall], Field(discriminator="type")] = Field(alias="output")
+    output: Annotated[Union["BackendAgentMessageBinary", "BackendAgentMessageChoice", "BackendAgentMessageObject", "BackendAgentMessageText", "BackendAgentMessageToolCall"], Field(discriminator="type")] = Field(alias="output")
     pass
 
 
