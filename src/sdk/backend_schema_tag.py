@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_schema import BackendSchema
 from .backend_schema_collection import BackendSchemaCollection
+from .backend_schema_commit_collection import BackendSchemaCommitCollection
 from .backend_schema_create import BackendSchemaCreate
 from .backend_schema_preview_response import BackendSchemaPreviewResponse
 from .backend_schema_update import BackendSchemaUpdate
@@ -162,6 +163,46 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = BackendSchemaCollection.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_commits(self, schema_id: str, start_index: int, count: int, search: str) -> BackendSchemaCommitCollection:
+        """
+        Returns a paginated list of schema commits
+        """
+        try:
+            path_params = {}
+            path_params['schema_id'] = schema_id
+
+            query_params = {}
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>/commit', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendSchemaCommitCollection.model_validate_json(json_data=response.content)
 
                 return data
 

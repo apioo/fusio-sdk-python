@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_action import BackendAction
 from .backend_action_collection import BackendActionCollection
+from .backend_action_commit_collection import BackendActionCommitCollection
 from .backend_action_create import BackendActionCreate
 from .backend_action_execute_request import BackendActionExecuteRequest
 from .backend_action_execute_response import BackendActionExecuteResponse
@@ -240,6 +241,46 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = BackendActionIndex.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def get_commits(self, action_id: str, start_index: int, count: int, search: str) -> BackendActionCommitCollection:
+        """
+        Returns a paginated list of action commits
+        """
+        try:
+            path_params = {}
+            path_params['action_id'] = action_id
+
+            query_params = {}
+            query_params['startIndex'] = start_index
+            query_params['count'] = count
+            query_params['search'] = search
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/action/$action_id<[0-9]+|^~>/commit', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendActionCommitCollection.model_validate_json(json_data=response.content)
 
                 return data
 
