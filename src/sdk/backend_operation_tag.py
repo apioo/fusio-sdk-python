@@ -135,7 +135,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_all(self, start_index: int, count: int, search: str) -> BackendOperationCollection:
+    def get_all(self, start_index: int, count: int, search: str, taxonomy: int) -> BackendOperationCollection:
         """
         Returns a paginated list of operations
         """
@@ -146,6 +146,7 @@ class BackendOperationTag(sdkgen.TagAbstract):
             query_params['startIndex'] = start_index
             query_params['count'] = count
             query_params['search'] = search
+            query_params['taxonomy'] = taxonomy
 
             query_struct_names = []
 
