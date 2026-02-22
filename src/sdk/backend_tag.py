@@ -13,6 +13,7 @@ from urllib.parse import parse_qs
 
 from .backend_account_tag import BackendAccountTag
 from .backend_action_tag import BackendActionTag
+from .backend_agent_tag import BackendAgentTag
 from .backend_app_tag import BackendAppTag
 from .backend_audit_tag import BackendAuditTag
 from .backend_backup_tag import BackendBackupTag
@@ -60,6 +61,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def action(self) -> BackendActionTag:
         return BackendActionTag(
+            self.http_client,
+            self.parser
+        )
+
+    def agent(self) -> BackendAgentTag:
+        return BackendAgentTag(
             self.http_client,
             self.parser
         )

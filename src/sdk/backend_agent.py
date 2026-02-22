@@ -7,20 +7,22 @@ from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 import datetime
-from .backend_agent_message import BackendAgentMessage
-from .backend_agent_message_binary import BackendAgentMessageBinary
-from .backend_agent_message_choice import BackendAgentMessageChoice
-from .backend_agent_message_object import BackendAgentMessageObject
-from .backend_agent_message_text import BackendAgentMessageText
-from .backend_agent_message_tool_call import BackendAgentMessageToolCall
+from .common_metadata import CommonMetadata
 
 
-# This object represents an agent message
+# This object represents an agent
 class BackendAgent(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
-    origin: Optional[int] = Field(default=None, alias="origin")
-    message: Annotated[Union["BackendAgentMessageBinary", "BackendAgentMessageChoice", "BackendAgentMessageObject", "BackendAgentMessageText", "BackendAgentMessageToolCall"], Field(discriminator="type")] = Field(alias="message")
+    connection: Optional[int] = Field(default=None, alias="connection")
+    type: Optional[int] = Field(default=None, alias="type")
+    name: Optional[str] = Field(default=None, alias="name")
+    description: Optional[str] = Field(default=None, alias="description")
+    introduction: Optional[str] = Field(default=None, alias="introduction")
+    tools: Optional[List[str]] = Field(default=None, alias="tools")
+    outgoing: Optional[str] = Field(default=None, alias="outgoing")
+    action: Optional[str] = Field(default=None, alias="action")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
+    metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     pass
 
 

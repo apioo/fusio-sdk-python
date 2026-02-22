@@ -6,12 +6,21 @@ https://sdkgen.app
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
+import datetime
+from .backend_agent_content import BackendAgentContent
+from .backend_agent_content_binary import BackendAgentContentBinary
+from .backend_agent_content_choice import BackendAgentContentChoice
+from .backend_agent_content_object import BackendAgentContentObject
+from .backend_agent_content_text import BackendAgentContentText
+from .backend_agent_content_tool_call import BackendAgentContentToolCall
 
 
-# Agent call result
+# This object represents an agent message
 class BackendAgentMessage(BaseModel):
-    type: str = Field(alias="type")
-    metadata: Optional[Dict[str, Any]] = Field(default=None, alias="metadata")
+    id: Optional[int] = Field(default=None, alias="id")
+    role: Optional[str] = Field(default=None, alias="role")
+    content: Annotated[Union["BackendAgentContentBinary", "BackendAgentContentChoice", "BackendAgentContentObject", "BackendAgentContentText", "BackendAgentContentToolCall"], Field(discriminator="type")] = Field(alias="content")
+    insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
     pass
 
 
