@@ -16,6 +16,7 @@ from .backend_agent_content_tool_call import BackendAgentContentToolCall
 
 # This object represents an agent output
 class BackendAgentOutput(BaseModel):
+    id: Optional[str] = Field(default=None, alias="id")
     output: Annotated[Union["BackendAgentContentBinary", "BackendAgentContentChoice", "BackendAgentContentObject", "BackendAgentContentText", "BackendAgentContentToolCall"], Field(discriminator="type")] = Field(alias="output")
     pass
 
