@@ -12,6 +12,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendTaxonomyMove(BaseModel):
     operations: Optional[List[int]] = Field(default=None, alias="operations")
     actions: Optional[List[int]] = Field(default=None, alias="actions")
+    schemas: Optional[List[int]] = Field(default=None, alias="schemas")
     events: Optional[List[int]] = Field(default=None, alias="events")
     cronjobs: Optional[List[int]] = Field(default=None, alias="cronjobs")
     triggers: Optional[List[int]] = Field(default=None, alias="triggers")
