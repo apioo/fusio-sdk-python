@@ -60,7 +60,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def submit(self, agent_id: str, payload: BackendAgentInput) -> BackendAgentOutput:
+    def submit(self, agent_id: str, payload: BackendAgentInput, parent: int) -> BackendAgentOutput:
         """
         Submits a new agent message
         """
@@ -69,6 +69,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
             path_params['agent_id'] = agent_id
 
             query_params = {}
+            query_params['parent'] = parent
 
             query_struct_names = []
 
