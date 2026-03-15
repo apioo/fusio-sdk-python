@@ -22,7 +22,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def get_all(self, agent_id: str, parent: int) -> BackendAgentMessageCollection:
+    def get_all(self, agent_id: str, chat_id: str) -> BackendAgentMessageCollection:
         """
         Returns a paginated list of agent messages
         """
@@ -31,7 +31,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
             path_params['agent_id'] = agent_id
 
             query_params = {}
-            query_params['parent'] = parent
+            query_params['chat_id'] = chat_id
 
             query_struct_names = []
 
@@ -60,7 +60,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def submit(self, agent_id: str, payload: CommonAgentInput, parent: int) -> CommonAgentOutput:
+    def submit(self, agent_id: str, payload: CommonAgentInput) -> CommonAgentOutput:
         """
         Submits a new agent message
         """
@@ -69,7 +69,6 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
             path_params['agent_id'] = agent_id
 
             query_params = {}
-            query_params['parent'] = parent
 
             query_struct_names = []
 
