@@ -11,8 +11,8 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
-from .backend_agent_input import BackendAgentInput
-from .backend_agent_output import BackendAgentOutput
+from .common_agent_input import CommonAgentInput
+from .common_agent_output import CommonAgentOutput
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -21,7 +21,7 @@ class BackendConnectionAgentTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def send(self, connection_id: str, payload: BackendAgentInput) -> BackendAgentOutput:
+    def send(self, connection_id: str, payload: CommonAgentInput) -> CommonAgentOutput:
         """
         Sends a message to an agent
         """
@@ -46,7 +46,7 @@ class BackendConnectionAgentTag(sdkgen.TagAbstract):
             response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendAgentOutput.model_validate_json(json_data=response.content)
+                data = CommonAgentOutput.model_validate_json(json_data=response.content)
 
                 return data
 

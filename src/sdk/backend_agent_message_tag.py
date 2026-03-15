@@ -11,9 +11,9 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
-from .backend_agent_input import BackendAgentInput
 from .backend_agent_message_collection import BackendAgentMessageCollection
-from .backend_agent_output import BackendAgentOutput
+from .common_agent_input import CommonAgentInput
+from .common_agent_output import CommonAgentOutput
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -60,7 +60,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def submit(self, agent_id: str, payload: BackendAgentInput, parent: int) -> BackendAgentOutput:
+    def submit(self, agent_id: str, payload: CommonAgentInput, parent: int) -> CommonAgentOutput:
         """
         Submits a new agent message
         """
@@ -86,7 +86,7 @@ class BackendAgentMessageTag(sdkgen.TagAbstract):
             response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendAgentOutput.model_validate_json(json_data=response.content)
+                data = CommonAgentOutput.model_validate_json(json_data=response.content)
 
                 return data
 

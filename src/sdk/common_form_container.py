@@ -7,15 +7,22 @@ from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 from .common_form_element import CommonFormElement
+from .common_form_element_action import CommonFormElementAction
+from .common_form_element_agent import CommonFormElementAgent
+from .common_form_element_checkbox import CommonFormElementCheckbox
+from .common_form_element_collection import CommonFormElementCollection
+from .common_form_element_connection import CommonFormElementConnection
 from .common_form_element_input import CommonFormElementInput
+from .common_form_element_map import CommonFormElementMap
 from .common_form_element_select import CommonFormElementSelect
-from .common_form_element_tag import CommonFormElementTag
 from .common_form_element_text_area import CommonFormElementTextArea
+from .common_form_element_type_api import CommonFormElementTypeAPI
+from .common_form_element_type_schema import CommonFormElementTypeSchema
 
 
 # Represents a config form with a list of elements
 class CommonFormContainer(BaseModel):
-    element: List[Annotated[Union["CommonFormElementInput", "CommonFormElementSelect", "CommonFormElementTag", "CommonFormElementTextArea"], Field(discriminator="type")]] = Field(alias="element")
+    element: List[Annotated[Union["CommonFormElementAction", "CommonFormElementAgent", "CommonFormElementCheckbox", "CommonFormElementCollection", "CommonFormElementConnection", "CommonFormElementInput", "CommonFormElementMap", "CommonFormElementSelect", "CommonFormElementTextArea", "CommonFormElementTypeAPI", "CommonFormElementTypeSchema"], Field(discriminator="type")]] = Field(alias="element")
     pass
 
 
