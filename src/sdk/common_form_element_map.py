@@ -6,11 +6,11 @@ https://sdkgen.app
 from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
-from .common_form_element_input import CommonFormElementInput
+from .common_form_element import CommonFormElement
 
 
 # Form element which represents a map element
-class CommonFormElementMap(CommonFormElementInput):
+class CommonFormElementMap(CommonFormElement):
     type: Literal["map"] = Field(alias="type")
     pass
 
