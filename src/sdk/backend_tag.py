@@ -38,6 +38,7 @@ from .backend_role_tag import BackendRoleTag
 from .backend_schema_tag import BackendSchemaTag
 from .backend_scope_tag import BackendScopeTag
 from .backend_sdk_tag import BackendSdkTag
+from .backend_specification_tag import BackendSpecificationTag
 from .backend_statistic_tag import BackendStatisticTag
 from .backend_taxonomy_tag import BackendTaxonomyTag
 from .backend_tenant_tag import BackendTenantTag
@@ -211,6 +212,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def sdk(self) -> BackendSdkTag:
         return BackendSdkTag(
+            self.http_client,
+            self.parser
+        )
+
+    def specification(self) -> BackendSpecificationTag:
+        return BackendSpecificationTag(
             self.http_client,
             self.parser
         )
