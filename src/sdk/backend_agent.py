@@ -15,6 +15,7 @@ class BackendAgent(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     connection: Optional[int] = Field(default=None, alias="connection")
     type: Optional[int] = Field(default=None, alias="type")
+    public: Optional[bool] = Field(default=None, alias="public")
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")
     introduction: Optional[str] = Field(default=None, alias="introduction")

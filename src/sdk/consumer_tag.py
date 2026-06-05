@@ -12,6 +12,7 @@ from typing import Any
 from urllib.parse import parse_qs
 
 from .consumer_account_tag import ConsumerAccountTag
+from .consumer_agent_tag import ConsumerAgentTag
 from .consumer_app_tag import ConsumerAppTag
 from .consumer_event_tag import ConsumerEventTag
 from .consumer_form_tag import ConsumerFormTag
@@ -32,6 +33,12 @@ class ConsumerTag(sdkgen.TagAbstract):
 
     def account(self) -> ConsumerAccountTag:
         return ConsumerAccountTag(
+            self.http_client,
+            self.parser
+        )
+
+    def agent(self) -> ConsumerAgentTag:
+        return ConsumerAgentTag(
             self.http_client,
             self.parser
         )
