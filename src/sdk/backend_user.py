@@ -24,6 +24,5 @@ class BackendUser(BaseModel):
     apps: Optional[List[BackendApp]] = Field(default=None, alias="apps")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
-    pass
 
 

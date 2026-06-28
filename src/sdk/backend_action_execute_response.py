@@ -15,6 +15,5 @@ class BackendActionExecuteResponse(BaseModel):
     status_code: Optional[int] = Field(default=None, alias="statusCode")
     headers: Optional[BackendActionExecuteResponseHeaders] = Field(default=None, alias="headers")
     body: Optional[BackendActionExecuteResponseBody] = Field(default=None, alias="body")
-    pass
 
 

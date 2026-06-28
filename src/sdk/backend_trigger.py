@@ -16,6 +16,5 @@ class BackendTrigger(BaseModel):
     event: Optional[str] = Field(default=None, alias="event")
     action: Optional[str] = Field(default=None, alias="action")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

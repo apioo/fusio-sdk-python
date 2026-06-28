@@ -18,6 +18,5 @@ from .agent_item_tool_call import AgentItemToolCall
 class AgentInput(BaseModel):
     previous_id: Optional[str] = Field(default=None, alias="previousId")
     item: Annotated[Union["AgentItemBinary", "AgentItemChoice", "AgentItemObject", "AgentItemText", "AgentItemToolCall"], Field(discriminator="type")] = Field(alias="item")
-    pass
 
 

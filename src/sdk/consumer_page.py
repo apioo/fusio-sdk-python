@@ -15,6 +15,5 @@ class ConsumerPage(BaseModel):
     slug: Optional[str] = Field(default=None, alias="slug")
     content: Optional[str] = Field(default=None, alias="content")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

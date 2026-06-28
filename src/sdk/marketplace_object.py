@@ -22,6 +22,5 @@ class MarketplaceObject(BaseModel):
     cost: Optional[int] = Field(default=None, alias="cost")
     update_date: Optional[datetime.datetime] = Field(default=None, alias="updateDate")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

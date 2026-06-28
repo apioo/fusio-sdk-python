@@ -12,6 +12,5 @@ import datetime
 class ConsumerTokenUpdate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     expire: Optional[datetime.date] = Field(default=None, alias="expire")
-    pass
 
 

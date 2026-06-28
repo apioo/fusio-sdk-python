@@ -13,6 +13,5 @@ from .agent_item import AgentItem
 class AgentItemText(AgentItem):
     type: Literal["text"] = Field(alias="type")
     content: Optional[str] = Field(default=None, alias="content")
-    pass
 
 

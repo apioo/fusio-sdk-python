@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendScopeOperation(BaseModel):
     operation_id: Optional[int] = Field(default=None, alias="operationId")
     allow: Optional[bool] = Field(default=None, alias="allow")
-    pass
 
 

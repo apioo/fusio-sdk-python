@@ -14,6 +14,5 @@ from .agent_item_tool_call_function import AgentItemToolCallFunction
 class AgentItemToolCall(AgentItem):
     type: Literal["tool_call"] = Field(alias="type")
     functions: Optional[List[AgentItemToolCallFunction]] = Field(default=None, alias="functions")
-    pass
 
 

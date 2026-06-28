@@ -14,6 +14,5 @@ from .common_form_element_select_option import CommonFormElementSelectOption
 class CommonFormElementSelect(CommonFormElement):
     type: Literal["select"] = Field(alias="type")
     options: Optional[List[CommonFormElementSelectOption]] = Field(default=None, alias="options")
-    pass
 
 

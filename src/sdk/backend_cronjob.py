@@ -21,6 +21,5 @@ class BackendCronjob(BaseModel):
     exit_code: Optional[int] = Field(default=None, alias="exitCode")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     errors: Optional[List[BackendCronjobError]] = Field(default=None, alias="errors")
-    pass
 
 

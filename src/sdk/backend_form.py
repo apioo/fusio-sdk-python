@@ -17,6 +17,5 @@ class BackendForm(BaseModel):
     operation_id: Optional[int] = Field(default=None, alias="operationId")
     ui_schema: Optional[Any] = Field(default=None, alias="uiSchema")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

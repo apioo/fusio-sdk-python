@@ -20,6 +20,5 @@ class BackendDashboard(BaseModel):
     most_used_activities: Optional[BackendStatisticChart] = Field(default=None, alias="mostUsedActivities")
     activities_per_user: Optional[BackendStatisticChart] = Field(default=None, alias="activitiesPerUser")
     user_registrations: Optional[BackendStatisticChart] = Field(default=None, alias="userRegistrations")
-    pass
 
 

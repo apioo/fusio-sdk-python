@@ -22,6 +22,5 @@ class ConsumerAgentMessage(BaseModel):
     role: Optional[str] = Field(default=None, alias="role")
     item: Annotated[Union["AgentItemBinary", "AgentItemChoice", "AgentItemObject", "AgentItemText", "AgentItemToolCall"], Field(discriminator="type")] = Field(alias="item")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

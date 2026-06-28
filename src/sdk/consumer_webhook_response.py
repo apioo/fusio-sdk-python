@@ -13,6 +13,5 @@ class ConsumerWebhookResponse(BaseModel):
     code: Optional[int] = Field(default=None, alias="code")
     attempts: Optional[str] = Field(default=None, alias="attempts")
     execute_date: Optional[str] = Field(default=None, alias="executeDate")
-    pass
 
 

@@ -13,6 +13,5 @@ from .agent_item import AgentItem
 class AgentItemObject(AgentItem):
     type: Literal["object"] = Field(alias="type")
     payload: Optional[Any] = Field(default=None, alias="payload")
-    pass
 
 

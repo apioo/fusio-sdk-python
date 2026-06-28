@@ -12,6 +12,5 @@ from .common_form_element import CommonFormElement
 # Form element which represents an input element
 class CommonFormElementInput(CommonFormElement):
     type: Literal["input"] = Field(alias="type")
-    pass
 
 

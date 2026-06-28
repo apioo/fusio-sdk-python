@@ -12,6 +12,5 @@ class BackendTrashData(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     name: Optional[str] = Field(default=None, alias="name")
-    pass
 
 

@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class SystemHealthCheck(BaseModel):
     healthy: Optional[bool] = Field(default=None, alias="healthy")
     error: Optional[str] = Field(default=None, alias="error")
-    pass
 
 

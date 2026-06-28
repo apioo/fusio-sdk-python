@@ -16,6 +16,5 @@ class BackendWebhookResponse(BaseModel):
     attempts: Optional[int] = Field(default=None, alias="attempts")
     error: Optional[str] = Field(default=None, alias="error")
     execute_date: Optional[datetime.datetime] = Field(default=None, alias="executeDate")
-    pass
 
 

@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class ConsumerUserEmail(BaseModel):
     email: Optional[str] = Field(default=None, alias="email")
     captcha: Optional[str] = Field(default=None, alias="captcha")
-    pass
 
 

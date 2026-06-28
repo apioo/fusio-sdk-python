@@ -18,6 +18,5 @@ class BackendSchemaCommit(BaseModel):
     commit_hash: Optional[str] = Field(default=None, alias="commitHash")
     schema_: Optional[BackendSchemaSource] = Field(default=None, alias="schema")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

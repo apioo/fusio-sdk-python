@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 # Import a previously exported system configuration
 class BackendBackupImport(BaseModel):
     import_: Optional[str] = Field(default=None, alias="import")
-    pass
 
 

@@ -11,6 +11,5 @@ from .system_route_path import SystemRoutePath
 
 class SystemRoute(BaseModel):
     routes: Optional[SystemRoutePath] = Field(default=None, alias="routes")
-    pass
 
 

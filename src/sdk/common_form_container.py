@@ -20,6 +20,5 @@ from .common_form_element_type_schema import CommonFormElementTypeSchema
 # Represents a config form with a list of elements
 class CommonFormContainer(BaseModel):
     element: List[Annotated[Union["CommonFormElementCheckbox", "CommonFormElementCollection", "CommonFormElementInput", "CommonFormElementMap", "CommonFormElementSelect", "CommonFormElementTextArea", "CommonFormElementTypeAPI", "CommonFormElementTypeSchema"], Field(discriminator="type")]] = Field(alias="element")
-    pass
 
 

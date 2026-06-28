@@ -13,6 +13,5 @@ class BackendTaxonomy(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     parent_id: Optional[int] = Field(default=None, alias="parentId")
     name: Optional[str] = Field(default=None, alias="name")
-    pass
 
 

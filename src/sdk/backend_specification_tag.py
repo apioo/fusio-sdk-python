@@ -11,10 +11,12 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
+from .backend_specification_changelog import BackendSpecificationChangelog
 from .backend_specification_get import BackendSpecificationGet
 from .backend_specification_publish import BackendSpecificationPublish
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
+from .passthru import Passthru
 
 class BackendSpecificationTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
@@ -57,6 +59,42 @@ class BackendSpecificationTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
+    def get_changelog(self) -> BackendSpecificationChangelog:
+        """
+        Returns the changelog between your current specification and the last tag
+        """
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/specification/changelog', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+
+
+            response = self.http_client.request('GET', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = BackendSpecificationChangelog.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
     def publish(self, payload: BackendSpecificationPublish) -> CommonMessage:
         """
         Publish the specification
@@ -69,6 +107,44 @@ class BackendSpecificationTag(sdkgen.TagAbstract):
             query_struct_names = []
 
             url = self.parser.url('/backend/specification', path_params)
+
+            options = {}
+            options['headers'] = {}
+            options['params'] = self.parser.query(query_params, query_struct_names)
+
+            options['json'] = payload.model_dump(by_alias=True)
+
+            options['headers']['Content-Type'] = 'application/json'
+
+            response = self.http_client.request('POST', url, **options)
+
+            if response.status_code >= 200 and response.status_code < 300:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                return data
+
+            statusCode = response.status_code
+            if statusCode >= 0 and statusCode <= 999:
+                data = CommonMessage.model_validate_json(json_data=response.content)
+
+                raise CommonMessageException(data)
+
+            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
+        except RequestException as e:
+            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
+
+    def tag(self, payload: Passthru) -> CommonMessage:
+        """
+        Creates a new tag of your specification
+        """
+        try:
+            path_params = {}
+
+            query_params = {}
+
+            query_struct_names = []
+
+            url = self.parser.url('/backend/specification/tag', path_params)
 
             options = {}
             options['headers'] = {}

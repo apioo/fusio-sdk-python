@@ -12,6 +12,5 @@ class MarketplaceUser(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     verified: Optional[bool] = Field(default=None, alias="verified")
-    pass
 
 

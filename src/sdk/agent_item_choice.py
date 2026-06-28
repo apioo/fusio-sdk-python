@@ -17,6 +17,5 @@ from .agent_item_tool_call import AgentItemToolCall
 class AgentItemChoice(AgentItem):
     type: Literal["choice"] = Field(alias="type")
     items: List[Annotated[Union["AgentItemBinary", "AgentItemChoice", "AgentItemObject", "AgentItemText", "AgentItemToolCall"], Field(discriminator="type")]] = Field(alias="items")
-    pass
 
 

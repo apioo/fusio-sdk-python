@@ -14,6 +14,5 @@ class AgentItemBinary(AgentItem):
     type: Literal["binary"] = Field(alias="type")
     mime: Optional[str] = Field(default=None, alias="mime")
     data: Optional[str] = Field(default=None, alias="data")
-    pass
 
 

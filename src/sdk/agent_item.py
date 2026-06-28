@@ -12,6 +12,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class AgentItem(BaseModel):
     type: str = Field(alias="type")
     metadata: Optional[Dict[str, Any]] = Field(default=None, alias="metadata")
-    pass
 
 

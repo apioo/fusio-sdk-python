@@ -13,6 +13,5 @@ class ConsumerIdentity(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     icon: Optional[str] = Field(default=None, alias="icon")
     redirect: Optional[str] = Field(default=None, alias="redirect")
-    pass
 
 

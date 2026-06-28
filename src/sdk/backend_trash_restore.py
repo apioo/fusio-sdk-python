@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class BackendTrashRestore(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
-    pass
 
 

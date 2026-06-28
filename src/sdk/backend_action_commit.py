@@ -18,6 +18,5 @@ class BackendActionCommit(BaseModel):
     commit_hash: Optional[str] = Field(default=None, alias="commitHash")
     config: Optional[BackendActionConfig] = Field(default=None, alias="config")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

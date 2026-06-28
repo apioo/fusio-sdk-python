@@ -24,6 +24,5 @@ class BackendAgent(BaseModel):
     action: Optional[str] = Field(default=None, alias="action")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

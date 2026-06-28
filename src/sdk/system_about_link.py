@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class SystemAboutLink(BaseModel):
     rel: Optional[str] = Field(default=None, alias="rel")
     href: Optional[str] = Field(default=None, alias="href")
-    pass
 
 

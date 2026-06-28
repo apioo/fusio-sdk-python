@@ -16,6 +16,5 @@ class BackendRateAllocation(BaseModel):
     plan_id: Optional[int] = Field(default=None, alias="planId")
     app_id: Optional[int] = Field(default=None, alias="appId")
     authenticated: Optional[bool] = Field(default=None, alias="authenticated")
-    pass
 
 

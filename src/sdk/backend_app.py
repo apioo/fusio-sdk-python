@@ -25,6 +25,5 @@ class BackendApp(BaseModel):
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     tokens: Optional[List[BackendToken]] = Field(default=None, alias="tokens")
-    pass
 
 

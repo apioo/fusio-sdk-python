@@ -19,6 +19,5 @@ class BackendAction(BaseModel):
     async_: Optional[bool] = Field(default=None, alias="async")
     config: Optional[BackendActionConfig] = Field(default=None, alias="config")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

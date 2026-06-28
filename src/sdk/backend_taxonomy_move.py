@@ -16,6 +16,5 @@ class BackendTaxonomyMove(BaseModel):
     events: Optional[List[int]] = Field(default=None, alias="events")
     cronjobs: Optional[List[int]] = Field(default=None, alias="cronjobs")
     triggers: Optional[List[int]] = Field(default=None, alias="triggers")
-    pass
 
 

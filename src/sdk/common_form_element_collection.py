@@ -12,6 +12,5 @@ from .common_form_element import CommonFormElement
 # Form element which represents a collection element
 class CommonFormElementCollection(CommonFormElement):
     type: Literal["collection"] = Field(alias="type")
-    pass
 
 

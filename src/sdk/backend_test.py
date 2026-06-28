@@ -17,6 +17,5 @@ class BackendTest(BaseModel):
     message: Optional[str] = Field(default=None, alias="message")
     response: Optional[str] = Field(default=None, alias="response")
     config: Optional[BackendTestConfig] = Field(default=None, alias="config")
-    pass
 
 

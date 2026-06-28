@@ -13,6 +13,5 @@ class ConsumerTokenCreate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     expire: Optional[datetime.date] = Field(default=None, alias="expire")
-    pass
 
 

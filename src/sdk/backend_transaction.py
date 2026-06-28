@@ -20,6 +20,5 @@ class BackendTransaction(BaseModel):
     period_start: Optional[datetime.datetime] = Field(default=None, alias="periodStart")
     period_end: Optional[datetime.datetime] = Field(default=None, alias="periodEnd")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

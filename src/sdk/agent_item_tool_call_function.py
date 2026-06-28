@@ -13,6 +13,5 @@ class AgentItemToolCallFunction(BaseModel):
     id: Optional[str] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     arguments: Optional[str] = Field(default=None, alias="arguments")
-    pass
 
 

@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendStatisticChartSeries(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     data: Optional[List[float]] = Field(default=None, alias="data")
-    pass
 
 

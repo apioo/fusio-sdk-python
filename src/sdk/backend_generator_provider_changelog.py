@@ -15,6 +15,5 @@ class BackendGeneratorProviderChangelog(BaseModel):
     schemas: Optional[List[BackendSchema]] = Field(default=None, alias="schemas")
     actions: Optional[List[BackendAction]] = Field(default=None, alias="actions")
     operations: Optional[List[BackendOperation]] = Field(default=None, alias="operations")
-    pass
 
 

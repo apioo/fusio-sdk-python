@@ -13,6 +13,5 @@ from .marketplace_action_config import MarketplaceActionConfig
 class MarketplaceAction(MarketplaceObject):
     class_: Optional[str] = Field(default=None, alias="class")
     config: Optional[MarketplaceActionConfig] = Field(default=None, alias="config")
-    pass
 
 

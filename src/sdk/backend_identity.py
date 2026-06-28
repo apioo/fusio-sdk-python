@@ -19,6 +19,5 @@ class BackendIdentity(BaseModel):
     class_: Optional[str] = Field(default=None, alias="class")
     config: Optional[BackendIdentityConfig] = Field(default=None, alias="config")
     allow_create: Optional[bool] = Field(default=None, alias="allowCreate")
-    pass
 
 

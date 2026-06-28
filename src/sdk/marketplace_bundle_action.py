@@ -13,6 +13,5 @@ class MarketplaceBundleAction(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     class_: Optional[str] = Field(default=None, alias="class")
     config: Optional[MarketplaceBundleActionConfig] = Field(default=None, alias="config")
-    pass
 
 

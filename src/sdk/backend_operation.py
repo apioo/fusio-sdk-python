@@ -31,6 +31,5 @@ class BackendOperation(BaseModel):
     costs: Optional[int] = Field(default=None, alias="costs")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

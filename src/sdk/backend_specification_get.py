@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class BackendSpecificationGet(BaseModel):
     spec: Optional[Any] = Field(default=None, alias="spec")
-    pass
 
 

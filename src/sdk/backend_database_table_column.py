@@ -21,6 +21,5 @@ class BackendDatabaseTableColumn(BaseModel):
     auto_increment: Optional[bool] = Field(default=None, alias="autoIncrement")
     default: Optional[Any] = Field(default=None, alias="default")
     comment: Optional[str] = Field(default=None, alias="comment")
-    pass
 
 

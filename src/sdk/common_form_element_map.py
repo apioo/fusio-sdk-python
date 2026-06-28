@@ -12,6 +12,5 @@ from .common_form_element import CommonFormElement
 # Form element which represents a map element
 class CommonFormElementMap(CommonFormElement):
     type: Literal["map"] = Field(alias="type")
-    pass
 
 

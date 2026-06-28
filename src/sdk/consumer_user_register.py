@@ -13,6 +13,5 @@ class ConsumerUserRegister(BaseModel):
     email: Optional[str] = Field(default=None, alias="email")
     password: Optional[str] = Field(default=None, alias="password")
     captcha: Optional[str] = Field(default=None, alias="captcha")
-    pass
 
 

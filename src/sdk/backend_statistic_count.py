@@ -13,6 +13,5 @@ class BackendStatisticCount(BaseModel):
     count: Optional[int] = Field(default=None, alias="count")
     from_: Optional[datetime.datetime] = Field(default=None, alias="from")
     to: Optional[datetime.datetime] = Field(default=None, alias="to")
-    pass
 
 

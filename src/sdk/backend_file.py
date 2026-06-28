@@ -16,6 +16,5 @@ class BackendFile(BaseModel):
     content_type: Optional[str] = Field(default=None, alias="contentType")
     checksum: Optional[str] = Field(default=None, alias="checksum")
     last_modified: Optional[datetime.datetime] = Field(default=None, alias="lastModified")
-    pass
 
 

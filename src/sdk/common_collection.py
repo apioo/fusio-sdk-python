@@ -15,6 +15,5 @@ class CommonCollection(BaseModel, Generic[T]):
     start_index: Optional[int] = Field(default=None, alias="startIndex")
     items_per_page: Optional[int] = Field(default=None, alias="itemsPerPage")
     entry: Optional[List[T]] = Field(default=None, alias="entry")
-    pass
 
 

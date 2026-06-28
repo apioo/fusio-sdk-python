@@ -12,6 +12,5 @@ class ConsumerUserLogin(BaseModel):
     username: Optional[str] = Field(default=None, alias="username")
     password: Optional[str] = Field(default=None, alias="password")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
-    pass
 
 

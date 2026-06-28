@@ -14,6 +14,5 @@ class BackendRole(BaseModel):
     category_id: Optional[int] = Field(default=None, alias="categoryId")
     name: Optional[str] = Field(default=None, alias="name")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
-    pass
 
 

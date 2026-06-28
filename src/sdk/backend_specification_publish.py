@@ -12,6 +12,5 @@ class BackendSpecificationPublish(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     filter_name: Optional[str] = Field(default=None, alias="filterName")
     standalone: Optional[bool] = Field(default=None, alias="standalone")
-    pass
 
 

@@ -14,6 +14,5 @@ class ConsumerTokenAccessToken(BaseModel):
     expires_in: Optional[int] = Field(default=None, alias="expires_in")
     refresh_token: Optional[str] = Field(default=None, alias="refresh_token")
     scope: Optional[str] = Field(default=None, alias="scope")
-    pass
 
 

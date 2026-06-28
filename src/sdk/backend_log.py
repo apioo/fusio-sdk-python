@@ -21,6 +21,5 @@ class BackendLog(BaseModel):
     body: Optional[str] = Field(default=None, alias="body")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
     errors: Optional[List[BackendLogError]] = Field(default=None, alias="errors")
-    pass
 
 

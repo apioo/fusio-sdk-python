@@ -17,6 +17,5 @@ class BackendScope(BaseModel):
     description: Optional[str] = Field(default=None, alias="description")
     operations: Optional[List[BackendScopeOperation]] = Field(default=None, alias="operations")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

@@ -19,6 +19,5 @@ class ConsumerLog(BaseModel):
     header: Optional[str] = Field(default=None, alias="header")
     body: Optional[str] = Field(default=None, alias="body")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
-    pass
 
 

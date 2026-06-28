@@ -16,6 +16,5 @@ class BackendEvent(BaseModel):
     description: Optional[str] = Field(default=None, alias="description")
     schema_: Optional[str] = Field(default=None, alias="schema")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

@@ -13,6 +13,5 @@ class BackendHttpResponse(BaseModel):
     status_code: Optional[int] = Field(default=None, alias="statusCode")
     headers: Optional[Dict[str, str]] = Field(default=None, alias="headers")
     body: Optional[str] = Field(default=None, alias="body")
-    pass
 
 

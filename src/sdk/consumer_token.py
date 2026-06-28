@@ -17,6 +17,5 @@ class ConsumerToken(BaseModel):
     ip: Optional[str] = Field(default=None, alias="ip")
     expire: Optional[datetime.date] = Field(default=None, alias="expire")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
-    pass
 
 

@@ -15,6 +15,5 @@ class BackendConfig(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")
     value: Optional[Any] = Field(default=None, alias="value")
-    pass
 
 

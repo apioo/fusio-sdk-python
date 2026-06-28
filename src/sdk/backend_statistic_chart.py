@@ -12,6 +12,5 @@ from .backend_statistic_chart_series import BackendStatisticChartSeries
 class BackendStatisticChart(BaseModel):
     labels: Optional[List[str]] = Field(default=None, alias="labels")
     series: Optional[List[BackendStatisticChartSeries]] = Field(default=None, alias="series")
-    pass
 
 

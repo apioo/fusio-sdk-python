@@ -13,6 +13,5 @@ class BackendDatabaseTableIndex(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     unique: Optional[bool] = Field(default=None, alias="unique")
     columns: Optional[List[str]] = Field(default=None, alias="columns")
-    pass
 
 
