@@ -19,6 +19,7 @@ class BackendAgent(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")
     introduction: Optional[str] = Field(default=None, alias="introduction")
+    temperature: Optional[float] = Field(default=None, alias="temperature")
     tools: Optional[List[str]] = Field(default=None, alias="tools")
     outgoing: Optional[str] = Field(default=None, alias="outgoing")
     action: Optional[str] = Field(default=None, alias="action")
