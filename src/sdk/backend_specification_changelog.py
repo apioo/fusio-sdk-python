@@ -12,6 +12,6 @@ class BackendSpecificationChangelog(BaseModel):
     master: Optional[Any] = Field(default=None, alias="master")
     tag: Optional[Any] = Field(default=None, alias="tag")
     version: Optional[str] = Field(default=None, alias="version")
-    changelog: Optional[List[str]] = Field(default=None, alias="changelog")
+    changelog: Optional[str] = Field(default=None, alias="changelog")
 
 
