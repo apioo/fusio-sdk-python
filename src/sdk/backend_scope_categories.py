@@ -11,6 +11,5 @@ from .backend_scope_category import BackendScopeCategory
 
 class BackendScopeCategories(BaseModel):
     categories: Optional[List[BackendScopeCategory]] = Field(default=None, alias="categories")
-    pass
 
 

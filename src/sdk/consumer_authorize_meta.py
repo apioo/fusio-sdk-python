@@ -13,6 +13,5 @@ class ConsumerAuthorizeMeta(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     url: Optional[str] = Field(default=None, alias="url")
     scopes: Optional[List[ConsumerScope]] = Field(default=None, alias="scopes")
-    pass
 
 

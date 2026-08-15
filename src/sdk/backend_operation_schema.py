@@ -13,6 +13,5 @@ class BackendOperationSchema(BaseModel):
     type: Optional[str] = Field(default=None, alias="type")
     format: Optional[str] = Field(default=None, alias="format")
     enum: Optional[str] = Field(default=None, alias="enum")
-    pass
 
 

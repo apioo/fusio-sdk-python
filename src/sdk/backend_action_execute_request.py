@@ -16,6 +16,5 @@ class BackendActionExecuteRequest(BaseModel):
     parameters: Optional[str] = Field(default=None, alias="parameters")
     headers: Optional[str] = Field(default=None, alias="headers")
     body: Optional[BackendActionExecuteRequestBody] = Field(default=None, alias="body")
-    pass
 
 

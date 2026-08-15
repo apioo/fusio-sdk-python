@@ -18,6 +18,5 @@ class BackendConnection(BaseModel):
     oauth_: Optional[bool] = Field(default=None, alias="oauth2")
     config: Optional[BackendConnectionConfig] = Field(default=None, alias="config")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

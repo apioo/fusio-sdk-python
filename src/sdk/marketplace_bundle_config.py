@@ -19,6 +19,5 @@ class MarketplaceBundleConfig(BaseModel):
     events: Optional[List[MarketplaceBundleEvent]] = Field(default=None, alias="events")
     cronjobs: Optional[List[MarketplaceBundleCronjob]] = Field(default=None, alias="cronjobs")
     triggers: Optional[List[MarketplaceBundleTrigger]] = Field(default=None, alias="triggers")
-    pass
 
 

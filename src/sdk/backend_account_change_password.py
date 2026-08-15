@@ -12,6 +12,5 @@ class BackendAccountChangePassword(BaseModel):
     old_password: Optional[str] = Field(default=None, alias="oldPassword")
     new_password: Optional[str] = Field(default=None, alias="newPassword")
     verify_password: Optional[str] = Field(default=None, alias="verifyPassword")
-    pass
 
 

@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendSdkGenerate(BaseModel):
     format: Optional[str] = Field(default=None, alias="format")
     config: Optional[str] = Field(default=None, alias="config")
-    pass
 
 

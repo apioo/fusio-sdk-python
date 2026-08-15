@@ -14,6 +14,5 @@ class ConsumerEvent(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

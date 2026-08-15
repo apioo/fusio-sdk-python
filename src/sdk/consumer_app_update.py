@@ -12,6 +12,5 @@ class ConsumerAppUpdate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     url: Optional[str] = Field(default=None, alias="url")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
-    pass
 
 

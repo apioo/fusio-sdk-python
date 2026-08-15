@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class ConsumerUserActivate(BaseModel):
     token: Optional[str] = Field(default=None, alias="token")
-    pass
 
 

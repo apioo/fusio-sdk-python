@@ -12,6 +12,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendConnectionIndexEntry(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     class_: Optional[str] = Field(default=None, alias="class")
-    pass
 
 

@@ -19,6 +19,5 @@ class BackendBundle(BaseModel):
     description: Optional[str] = Field(default=None, alias="description")
     cost: Optional[int] = Field(default=None, alias="cost")
     config: Optional[BackendBundleConfig] = Field(default=None, alias="config")
-    pass
 
 

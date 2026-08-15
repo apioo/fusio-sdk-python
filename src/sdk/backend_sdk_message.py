@@ -12,6 +12,5 @@ class BackendSdkMessage(BaseModel):
     success: Optional[bool] = Field(default=None, alias="success")
     message: Optional[str] = Field(default=None, alias="message")
     link: Optional[str] = Field(default=None, alias="link")
-    pass
 
 

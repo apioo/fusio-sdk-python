@@ -13,6 +13,5 @@ class BackendBackupImportResult(BaseModel):
     success: Optional[bool] = Field(default=None, alias="success")
     message: Optional[str] = Field(default=None, alias="message")
     logs: Optional[List[str]] = Field(default=None, alias="logs")
-    pass
 
 

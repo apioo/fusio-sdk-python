@@ -11,9 +11,8 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
-from .backend_agent_collection import BackendAgentCollection
-from .backend_agent_request import BackendAgentRequest
-from .backend_agent_response import BackendAgentResponse
+from .agent_input import AgentInput
+from .agent_output import AgentOutput
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -22,82 +21,7 @@ class BackendConnectionAgentTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def get(self, connection_id: str, intent: str) -> BackendAgentCollection:
-        """
-        Returns all previous sent messages
-        """
-        try:
-            path_params = {}
-            path_params['connection_id'] = connection_id
-
-            query_params = {}
-            query_params['intent'] = intent
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/:connection_id/agent', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendAgentCollection.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def reset(self, connection_id: str) -> CommonMessage:
-        """
-        Resets all agent messages
-        """
-        try:
-            path_params = {}
-            path_params['connection_id'] = connection_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/connection/:connection_id/agent', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('DELETE', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def send(self, connection_id: str, payload: BackendAgentRequest) -> BackendAgentResponse:
+    def send(self, connection_id: str, payload: AgentInput) -> AgentOutput:
         """
         Sends a message to an agent
         """
@@ -122,7 +46,7 @@ class BackendConnectionAgentTag(sdkgen.TagAbstract):
             response = self.http_client.request('POST', url, **options)
 
             if response.status_code >= 200 and response.status_code < 300:
-                data = BackendAgentResponse.model_validate_json(json_data=response.content)
+                data = AgentOutput.model_validate_json(json_data=response.content)
 
                 return data
 

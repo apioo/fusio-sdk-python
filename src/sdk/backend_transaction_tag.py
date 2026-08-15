@@ -58,7 +58,7 @@ class BackendTransactionTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str) -> BackendTransactionCollection:
+    def get_all(self, start_index: int, count: int, search: str, from_: str, to: str, plan_id: int, user_id: int, app_id: int, status: str, provider: str, taxonomy: int) -> BackendTransactionCollection:
         """
         Returns a paginated list of transactions
         """
@@ -76,6 +76,7 @@ class BackendTransactionTag(sdkgen.TagAbstract):
             query_params['appId'] = app_id
             query_params['status'] = status
             query_params['provider'] = provider
+            query_params['taxonomy'] = taxonomy
 
             query_struct_names = []
 

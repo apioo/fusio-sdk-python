@@ -19,6 +19,5 @@ class BackendRate(BaseModel):
     timespan: Optional[str] = Field(default=None, alias="timespan")
     allocation: Optional[List[BackendRateAllocation]] = Field(default=None, alias="allocation")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

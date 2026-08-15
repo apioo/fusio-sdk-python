@@ -12,6 +12,5 @@ class MarketplaceBundleEvent(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")
     schema_: Optional[str] = Field(default=None, alias="schema")
-    pass
 
 

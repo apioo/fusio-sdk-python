@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class BackendTrashTypes(BaseModel):
     types: Optional[List[str]] = Field(default=None, alias="types")
-    pass
 
 

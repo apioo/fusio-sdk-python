@@ -14,6 +14,5 @@ class ConsumerUserPlan(BaseModel):
     price: Optional[int] = Field(default=None, alias="price")
     points: Optional[int] = Field(default=None, alias="points")
     period: Optional[int] = Field(default=None, alias="period")
-    pass
 
 

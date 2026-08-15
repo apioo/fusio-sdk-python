@@ -14,6 +14,5 @@ class BackendHttpRequest(BaseModel):
     uri: Optional[str] = Field(default=None, alias="uri")
     headers: Optional[Dict[str, str]] = Field(default=None, alias="headers")
     body: Optional[str] = Field(default=None, alias="body")
-    pass
 
 

@@ -14,6 +14,5 @@ class BackendDatabaseTableForeignKeyConstraint(BaseModel):
     foreign_table: Optional[str] = Field(default=None, alias="foreignTable")
     local_column_names: Optional[List[str]] = Field(default=None, alias="localColumnNames")
     foreign_column_names: Optional[List[str]] = Field(default=None, alias="foreignColumnNames")
-    pass
 
 

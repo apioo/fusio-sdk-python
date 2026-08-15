@@ -25,6 +25,5 @@ class SystemAbout(BaseModel):
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     apps: Optional[SystemAboutApps] = Field(default=None, alias="apps")
     links: Optional[List[SystemAboutLink]] = Field(default=None, alias="links")
-    pass
 
 

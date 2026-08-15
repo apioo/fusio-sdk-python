@@ -12,6 +12,5 @@ class MarketplaceBundleCronjob(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     cron: Optional[str] = Field(default=None, alias="cron")
     action: Optional[str] = Field(default=None, alias="action")
-    pass
 
 

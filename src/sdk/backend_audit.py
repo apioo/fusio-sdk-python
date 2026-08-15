@@ -22,6 +22,5 @@ class BackendAudit(BaseModel):
     message: Optional[str] = Field(default=None, alias="message")
     content: Optional[BackendAuditObject] = Field(default=None, alias="content")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
-    pass
 
 

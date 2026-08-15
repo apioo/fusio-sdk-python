@@ -11,6 +11,5 @@ from .consumer_scope_category import ConsumerScopeCategory
 
 class ConsumerScopeCategories(BaseModel):
     categories: Optional[List[ConsumerScopeCategory]] = Field(default=None, alias="categories")
-    pass
 
 

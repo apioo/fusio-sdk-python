@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 # Installs an object from the marketplace
 class MarketplaceInstall(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
-    pass
 
 

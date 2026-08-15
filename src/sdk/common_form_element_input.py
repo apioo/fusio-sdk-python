@@ -11,7 +11,6 @@ from .common_form_element import CommonFormElement
 
 # Form element which represents an input element
 class CommonFormElementInput(CommonFormElement):
-    type: Literal["http://fusio-project.org/ns/2015/form/input"] = Field(alias="type")
-    pass
+    type: Literal["input"] = Field(alias="type")
 
 

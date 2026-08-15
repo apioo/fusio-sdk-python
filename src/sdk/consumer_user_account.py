@@ -22,6 +22,5 @@ class ConsumerUserAccount(BaseModel):
     plans: Optional[List[ConsumerUserPlan]] = Field(default=None, alias="plans")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
     date: Optional[datetime.datetime] = Field(default=None, alias="date")
-    pass
 
 

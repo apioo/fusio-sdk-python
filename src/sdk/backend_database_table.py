@@ -18,6 +18,5 @@ class BackendDatabaseTable(BaseModel):
     primary_key: Optional[str] = Field(default=None, alias="primaryKey")
     indexes: Optional[List[BackendDatabaseTableIndex]] = Field(default=None, alias="indexes")
     foreign_keys: Optional[List[BackendDatabaseTableForeignKeyConstraint]] = Field(default=None, alias="foreignKeys")
-    pass
 
 

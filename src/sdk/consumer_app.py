@@ -20,6 +20,5 @@ class ConsumerApp(BaseModel):
     date: Optional[str] = Field(default=None, alias="date")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

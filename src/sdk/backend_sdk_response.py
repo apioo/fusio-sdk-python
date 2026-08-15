@@ -11,6 +11,5 @@ from .backend_sdk_types import BackendSdkTypes
 
 class BackendSdkResponse(BaseModel):
     types: Optional[BackendSdkTypes] = Field(default=None, alias="types")
-    pass
 
 

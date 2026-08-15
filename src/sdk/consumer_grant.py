@@ -14,6 +14,5 @@ class ConsumerGrant(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     app: Optional[ConsumerApp] = Field(default=None, alias="app")
     create_date: Optional[datetime.datetime] = Field(default=None, alias="createDate")
-    pass
 
 

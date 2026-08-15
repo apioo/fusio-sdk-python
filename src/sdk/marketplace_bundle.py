@@ -12,6 +12,5 @@ from .marketplace_bundle_config import MarketplaceBundleConfig
 
 class MarketplaceBundle(MarketplaceObject):
     config: Optional[MarketplaceBundleConfig] = Field(default=None, alias="config")
-    pass
 
 

@@ -11,6 +11,5 @@ from .backend_user import BackendUser
 
 class BackendUserCreate(BackendUser):
     password: Optional[str] = Field(default=None, alias="password")
-    pass
 
 

@@ -14,6 +14,5 @@ class BackendCronjobError(BaseModel):
     trace: Optional[str] = Field(default=None, alias="trace")
     file: Optional[str] = Field(default=None, alias="file")
     line: Optional[int] = Field(default=None, alias="line")
-    pass
 
 

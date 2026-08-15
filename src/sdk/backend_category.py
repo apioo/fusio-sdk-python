@@ -12,6 +12,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class BackendCategory(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
-    pass
 
 

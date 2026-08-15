@@ -13,6 +13,5 @@ class MarketplaceApp(MarketplaceObject):
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     download_url: Optional[str] = Field(default=None, alias="downloadUrl")
     hash: Optional[str] = Field(default=None, alias="hash")
-    pass
 
 

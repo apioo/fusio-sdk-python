@@ -12,6 +12,5 @@ class ConsumerWebhookCreate(BaseModel):
     event: Optional[str] = Field(default=None, alias="event")
     name: Optional[str] = Field(default=None, alias="name")
     endpoint: Optional[str] = Field(default=None, alias="endpoint")
-    pass
 
 

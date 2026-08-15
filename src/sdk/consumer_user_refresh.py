@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class ConsumerUserRefresh(BaseModel):
     refresh_token: Optional[str] = Field(default=None, alias="refresh_token")
-    pass
 
 

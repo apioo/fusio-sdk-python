@@ -12,6 +12,5 @@ from .backend_action_index_entry import BackendActionIndexEntry
 # Contains all possible classes which can be used at an action as class
 class BackendActionIndex(BaseModel):
     actions: Optional[List[BackendActionIndexEntry]] = Field(default=None, alias="actions")
-    pass
 
 

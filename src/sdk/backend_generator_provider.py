@@ -14,6 +14,5 @@ class BackendGeneratorProvider(BaseModel):
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     public: Optional[bool] = Field(default=None, alias="public")
     config: Optional[BackendGeneratorProviderConfig] = Field(default=None, alias="config")
-    pass
 
 

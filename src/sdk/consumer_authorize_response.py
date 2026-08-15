@@ -14,6 +14,5 @@ class ConsumerAuthorizeResponse(BaseModel):
     error: Optional[str] = Field(default=None, alias="error")
     state: Optional[str] = Field(default=None, alias="state")
     redirect_uri: Optional[str] = Field(default=None, alias="redirectUri")
-    pass
 
 

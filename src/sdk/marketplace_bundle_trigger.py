@@ -12,6 +12,5 @@ class MarketplaceBundleTrigger(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     event: Optional[str] = Field(default=None, alias="event")
     action: Optional[str] = Field(default=None, alias="action")
-    pass
 
 

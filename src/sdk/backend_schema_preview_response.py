@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class BackendSchemaPreviewResponse(BaseModel):
     preview: Optional[str] = Field(default=None, alias="preview")
-    pass
 
 

@@ -11,6 +11,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 class ConsumerPaymentCheckoutRequest(BaseModel):
     plan_id: Optional[int] = Field(default=None, alias="planId")
     return_url: Optional[str] = Field(default=None, alias="returnUrl")
-    pass
 
 

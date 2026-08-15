@@ -17,6 +17,5 @@ class BackendWebhook(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     endpoint: Optional[str] = Field(default=None, alias="endpoint")
     responses: Optional[List[BackendWebhookResponse]] = Field(default=None, alias="responses")
-    pass
 
 

@@ -135,7 +135,7 @@ class BackendCronjobTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_all(self, start_index: int, count: int, search: str) -> BackendCronjobCollection:
+    def get_all(self, start_index: int, count: int, search: str, taxonomy: int) -> BackendCronjobCollection:
         """
         Returns a paginated list of cronjobs
         """
@@ -146,6 +146,7 @@ class BackendCronjobTag(sdkgen.TagAbstract):
             query_params['startIndex'] = start_index
             query_params['count'] = count
             query_params['search'] = search
+            query_params['taxonomy'] = taxonomy
 
             query_struct_names = []
 

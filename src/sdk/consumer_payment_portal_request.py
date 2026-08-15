@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class ConsumerPaymentPortalRequest(BaseModel):
     return_url: Optional[str] = Field(default=None, alias="returnUrl")
-    pass
 
 

@@ -10,6 +10,5 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 class ConsumerPaymentPortalResponse(BaseModel):
     redirect_url: Optional[str] = Field(default=None, alias="redirectUrl")
-    pass
 
 

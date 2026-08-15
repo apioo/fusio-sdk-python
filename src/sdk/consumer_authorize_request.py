@@ -15,6 +15,5 @@ class ConsumerAuthorizeRequest(BaseModel):
     scope: Optional[str] = Field(default=None, alias="scope")
     state: Optional[str] = Field(default=None, alias="state")
     allow: Optional[bool] = Field(default=None, alias="allow")
-    pass
 
 

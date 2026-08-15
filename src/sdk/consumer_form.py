@@ -17,6 +17,5 @@ class ConsumerForm(BaseModel):
     json_schema: Optional[Any] = Field(default=None, alias="jsonSchema")
     ui_schema: Optional[Any] = Field(default=None, alias="uiSchema")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

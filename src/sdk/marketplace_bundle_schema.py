@@ -12,6 +12,5 @@ from .marketplace_bundle_schema_source import MarketplaceBundleSchemaSource
 class MarketplaceBundleSchema(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     source: Optional[MarketplaceBundleSchemaSource] = Field(default=None, alias="source")
-    pass
 
 

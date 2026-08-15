@@ -17,6 +17,5 @@ class BackendLogError(BaseModel):
     file: Optional[str] = Field(default=None, alias="file")
     line: Optional[int] = Field(default=None, alias="line")
     insert_date: Optional[datetime.datetime] = Field(default=None, alias="insertDate")
-    pass
 
 

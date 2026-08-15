@@ -17,6 +17,5 @@ class ConsumerPlan(BaseModel):
     points: Optional[int] = Field(default=None, alias="points")
     period: Optional[int] = Field(default=None, alias="period")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 

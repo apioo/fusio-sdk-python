@@ -16,6 +16,5 @@ class ConsumerWebhook(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     endpoint: Optional[str] = Field(default=None, alias="endpoint")
     responses: Optional[List[ConsumerWebhookResponse]] = Field(default=None, alias="responses")
-    pass
 
 

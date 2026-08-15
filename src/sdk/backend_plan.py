@@ -20,6 +20,5 @@ class BackendPlan(BaseModel):
     external_id: Optional[str] = Field(default=None, alias="externalId")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")
     metadata: Optional[CommonMetadata] = Field(default=None, alias="metadata")
-    pass
 
 
