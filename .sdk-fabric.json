@@ -1,0 +1,9 @@
+{
+  "typehub_user": "fusio",
+  "typehub_document": "sdk",
+  "github_user": "apioo",
+  "github_repository": "fusio-sdk-python",
+
+  "name": "fusio-sdk",
+  "description": "Fusio Python SDK managed by SDK Fabric"
+}
