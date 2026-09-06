@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: apioo/sdkgen-generator-action@v0.2.1
+      - uses: apioo/sdkgen-generator-action@v0.3.0
         with:
           client_id: '${{ secrets.SDKGEN_CLIENT_ID }}'
           client_secret: '${{ secrets.SDKGEN_CLIENT_SECRET }}'
@@ -37,7 +37,7 @@ jobs:
         with:
           python-version: "3.x"
       - name: Set version
-        run: sed -i 's/0.0.0/${{ inputs.typehub_version }}/g' ./pyproject.toml
+        run: sed -i 's/0.1.0/${{ inputs.typehub_version }}/g' ./pyproject.toml
       - name: Install pypa/build
         run: >-
           python3 -m
@@ -53,6 +53,7 @@ jobs:
           path: dist/
   publish-to-pypi:
     name: Publish to PyPI
+    if: "${{ inputs.typehub_version != '' }}"
     needs: build
     runs-on: ubuntu-latest
     environment:
