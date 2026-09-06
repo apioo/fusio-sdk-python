@@ -1,10 +1,10 @@
 [project]
 name = "fusio-sdk"
-version = "0.0.0"
+version = "0.1.0"
 authors = [
   { name="Christoph Kappestein", email="christoph.kappestein@gmail.com" },
 ]
-description = "SDK to talk to the Fusio REST API"
+description = "Fusio Python SDK managed by SDK Fabric"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
@@ -15,12 +15,12 @@ classifiers = [
     "Topic :: Software Development :: Code Generators",
 ]
 dependencies = [
-    "sdkgen-client >= 2.0.1",
+    "sdkgen-client"
 ]
 
 [project.urls]
 Homepage = "https://github.com/apioo/fusio-sdk-python"
-Issues = "https://github.com/apioo/fusio-sdk-sdkgen-python/issues"
+Issues = "https://github.com/apioo/fusio-sdk-python/issues"
 
 [build-system]
 requires = ["setuptools>=61.0"]
