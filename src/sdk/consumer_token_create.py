@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Payload for issuing a new personal access token
 class ConsumerTokenCreate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")

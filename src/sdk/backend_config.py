@@ -10,6 +10,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 # This object represents a system configuration
 class BackendConfig(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     type: Optional[int] = Field(default=None, alias="type")
     name: Optional[str] = Field(default=None, alias="name")

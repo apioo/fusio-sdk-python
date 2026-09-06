@@ -13,6 +13,7 @@ from .backend_schema_source import BackendSchemaSource
 
 # A schema commit which represents a change in the schema source
 class BackendSchemaCommit(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     user: Optional[BackendUser] = Field(default=None, alias="user")
     commit_hash: Optional[str] = Field(default=None, alias="commitHash")

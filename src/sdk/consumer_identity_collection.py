@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_identity import ConsumerIdentity
 
 
+# Collection of third-party identity providers
 class ConsumerIdentityCollection(CommonCollection[ConsumerIdentity]):
     pass
 

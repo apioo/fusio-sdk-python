@@ -10,6 +10,7 @@ from collections import UserDict
 from .backend_operation_schema import BackendOperationSchema
 
 
+# Map of path or query parameters accepted by the operation
 class BackendOperationParameters(UserDict[str, BackendOperationSchema]):
     @classmethod
     def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:

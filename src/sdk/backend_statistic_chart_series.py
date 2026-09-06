@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# A single data line or bar series for a statistic chart
 class BackendStatisticChartSeries(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     data: Optional[List[float]] = Field(default=None, alias="data")

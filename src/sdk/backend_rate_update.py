@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_rate import BackendRate
 
 
+# Payload for updating an existing rate limit policy
 class BackendRateUpdate(BackendRate):
     pass
 

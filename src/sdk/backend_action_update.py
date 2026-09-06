@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_action import BackendAction
 
 
+# Payload for updating an existing action entity
 class BackendActionUpdate(BackendAction):
     pass
 

@@ -13,6 +13,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a user
 class BackendUser(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     role_id: Optional[int] = Field(default=None, alias="roleId")
     plan_id: Optional[int] = Field(default=None, alias="planId")

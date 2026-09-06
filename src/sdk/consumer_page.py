@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# Content page definition for developer portal documentation
 class ConsumerPage(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     title: Optional[str] = Field(default=None, alias="title")
     slug: Optional[str] = Field(default=None, alias="slug")

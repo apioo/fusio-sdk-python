@@ -12,6 +12,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a connection to an external system like i.e. a database, message-queue or client-sdk
 class BackendConnection(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     class_: Optional[str] = Field(default=None, alias="class")

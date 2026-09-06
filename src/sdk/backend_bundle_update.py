@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_bundle import BackendBundle
 
 
+# Payload for updating an existing configuration bundle
 class BackendBundleUpdate(BackendBundle):
     pass
 

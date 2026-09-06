@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_scope_category import BackendScopeCategory
 
 
+# Container for grouping available scopes into logical categories
 class BackendScopeCategories(BaseModel):
     categories: Optional[List[BackendScopeCategory]] = Field(default=None, alias="categories")
 

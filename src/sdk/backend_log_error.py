@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Represents an error logged during a specific HTTP request
 class BackendLogError(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     log_id: Optional[int] = Field(default=None, alias="logId")
     message: Optional[str] = Field(default=None, alias="message")

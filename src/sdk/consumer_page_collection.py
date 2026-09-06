@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_page import ConsumerPage
 
 
+# Collection of content page entries
 class ConsumerPageCollection(CommonCollection[ConsumerPage]):
     pass
 

@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_user import BackendUser
 
 
+# Request payload to register or create a new user account
 class BackendUserCreate(BackendUser):
     password: Optional[str] = Field(default=None, alias="password")
 

@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload required to update the current user's password
 class BackendAccountChangePassword(BaseModel):
     old_password: Optional[str] = Field(default=None, alias="oldPassword")
     new_password: Optional[str] = Field(default=None, alias="newPassword")

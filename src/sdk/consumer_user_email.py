@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload used to initiate account recovery or email requests
 class ConsumerUserEmail(BaseModel):
     email: Optional[str] = Field(default=None, alias="email")
     captcha: Optional[str] = Field(default=None, alias="captcha")

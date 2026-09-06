@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_scope_category_scope import BackendScopeCategoryScope
 
 
+# Represents a functional grouping of scopes
 class BackendScopeCategory(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

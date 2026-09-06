@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_webhook import ConsumerWebhook
 
 
+# Collection of webhook subscriptions
 class ConsumerWebhookCollection(CommonCollection[ConsumerWebhook]):
     pass
 

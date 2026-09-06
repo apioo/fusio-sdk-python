@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .consumer_webhook_response import ConsumerWebhookResponse
 
 
+# Webhook endpoint subscription definition
 class ConsumerWebhook(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     event: Optional[str] = Field(default=None, alias="event")

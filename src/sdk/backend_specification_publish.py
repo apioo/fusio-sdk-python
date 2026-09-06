@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload defining configuration parameters for publishing an API specification export
 class BackendSpecificationPublish(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     filter_name: Optional[str] = Field(default=None, alias="filterName")

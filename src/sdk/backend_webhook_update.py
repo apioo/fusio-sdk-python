@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_webhook import BackendWebhook
 
 
+# Request payload to update an existing webhook subscription
 class BackendWebhookUpdate(BackendWebhook):
     pass
 

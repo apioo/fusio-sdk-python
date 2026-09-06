@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_sdk_types import BackendSdkTypes
 
 
+# Container listing target SDK languages or formats available for generator execution
 class BackendSdkResponse(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     types: Optional[BackendSdkTypes] = Field(default=None, alias="types")
 
 

@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# Represents an event trigger definition within the platform
 class ConsumerEvent(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     description: Optional[str] = Field(default=None, alias="description")

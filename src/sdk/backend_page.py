@@ -11,6 +11,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a page at the developer portal
 class BackendPage(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     title: Optional[str] = Field(default=None, alias="title")

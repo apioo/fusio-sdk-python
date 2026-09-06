@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_user import BackendUser
 
 
+# Request payload to update existing user account information
 class BackendUserUpdate(BackendUser):
     pass
 

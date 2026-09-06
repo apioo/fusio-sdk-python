@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Response payload containing the customer portal portal link
 class ConsumerPaymentPortalResponse(BaseModel):
     redirect_url: Optional[str] = Field(default=None, alias="redirectUrl")
 

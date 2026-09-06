@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_identity import BackendIdentity
 
 
+# Payload for creating a new identity provider entity
 class BackendIdentityCreate(BackendIdentity):
     pass
 

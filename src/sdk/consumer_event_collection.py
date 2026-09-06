@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_event import ConsumerEvent
 
 
+# Collection of event definitions
 class ConsumerEventCollection(CommonCollection[ConsumerEvent]):
     pass
 

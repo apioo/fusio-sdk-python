@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Log record representing an execution attempt and delivery response for a webhook target
 class BackendWebhookResponse(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")

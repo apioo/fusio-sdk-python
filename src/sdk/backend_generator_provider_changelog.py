@@ -11,6 +11,7 @@ from .backend_action import BackendAction
 from .backend_operation import BackendOperation
 
 
+# Represents a preview changelog of entities created or updated by a generator run
 class BackendGeneratorProviderChangelog(BaseModel):
     schemas: Optional[List[BackendSchema]] = Field(default=None, alias="schemas")
     actions: Optional[List[BackendAction]] = Field(default=None, alias="actions")

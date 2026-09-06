@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .consumer_scope_category_scope import ConsumerScopeCategoryScope
 
 
+# Category grouping related API scopes together
 class ConsumerScopeCategory(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")

@@ -13,6 +13,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents an operation, an operation invokes an action in case a specific HTTP method and path was requested. It defines also schema information about the request and response payload
 class BackendOperation(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     active: Optional[bool] = Field(default=None, alias="active")

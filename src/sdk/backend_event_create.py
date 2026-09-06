@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_event import BackendEvent
 
 
+# Payload for creating a new event entity
 class BackendEventCreate(BackendEvent):
     pass
 

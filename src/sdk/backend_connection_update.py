@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_connection import BackendConnection
 
 
+# Payload for updating an existing connection
 class BackendConnectionUpdate(BackendConnection):
     pass
 

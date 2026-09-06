@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_cronjob import BackendCronjob
 
 
+# Payload for creating a new cronjob
 class BackendCronjobCreate(BackendCronjob):
     pass
 

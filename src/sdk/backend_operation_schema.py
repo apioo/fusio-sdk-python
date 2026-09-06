@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Defines primitive type constraints for parameter schema definitions
 class BackendOperationSchema(BaseModel):
     description: Optional[str] = Field(default=None, alias="description")
     type: Optional[str] = Field(default=None, alias="type")

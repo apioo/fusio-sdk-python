@@ -11,6 +11,7 @@ from typing import Dict
 from typing import Any
 from urllib.parse import parse_qs
 
+from .system_captcha_tag import SystemCaptchaTag
 from .system_connection_tag import SystemConnectionTag
 from .system_meta_tag import SystemMetaTag
 from .system_payment_tag import SystemPaymentTag
@@ -18,6 +19,12 @@ from .system_payment_tag import SystemPaymentTag
 class SystemTag(sdkgen.TagAbstract):
     def __init__(self, http_client: requests.Session, parser: sdkgen.Parser):
         super().__init__(http_client, parser)
+
+    def captcha(self) -> SystemCaptchaTag:
+        return SystemCaptchaTag(
+            self.http_client,
+            self.parser
+        )
 
     def connection(self) -> SystemConnectionTag:
         return SystemConnectionTag(

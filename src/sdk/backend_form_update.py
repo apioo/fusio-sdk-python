@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_form import BackendForm
 
 
+# Payload for updating an existing form definition
 class BackendFormUpdate(BackendForm):
     pass
 

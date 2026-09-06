@@ -12,6 +12,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a rate limitation, which allows to limit the requests which a user can send
 class BackendRate(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     priority: Optional[int] = Field(default=None, alias="priority")
     name: Optional[str] = Field(default=None, alias="name")

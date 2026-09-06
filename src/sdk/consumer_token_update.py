@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Payload for updating an existing personal access token
 class ConsumerTokenUpdate(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     expire: Optional[datetime.date] = Field(default=None, alias="expire")

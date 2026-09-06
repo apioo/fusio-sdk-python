@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_plan import ConsumerPlan
 
 
+# Collection of subscription plans
 class ConsumerPlanCollection(CommonCollection[ConsumerPlan]):
     pass
 

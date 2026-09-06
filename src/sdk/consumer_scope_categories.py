@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .consumer_scope_category import ConsumerScopeCategory
 
 
+# Grouped list of scope categories for user authorization forms
 class ConsumerScopeCategories(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     categories: Optional[List[ConsumerScopeCategory]] = Field(default=None, alias="categories")
 
 

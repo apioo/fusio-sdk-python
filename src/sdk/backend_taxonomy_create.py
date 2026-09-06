@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_taxonomy import BackendTaxonomy
 
 
+# Payload for creating a new taxonomy organization node
 class BackendTaxonomyCreate(BackendTaxonomy):
     pass
 

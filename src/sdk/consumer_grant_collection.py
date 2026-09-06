@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_grant import ConsumerGrant
 
 
+# Collection of user authorization grant records
 class ConsumerGrantCollection(CommonCollection[ConsumerGrant]):
     pass
 

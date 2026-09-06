@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# OAuth 2.0 access token response object
 class ConsumerTokenAccessToken(BaseModel):
     access_token: Optional[str] = Field(default=None, alias="access_token")
     token_type: Optional[str] = Field(default=None, alias="token_type")

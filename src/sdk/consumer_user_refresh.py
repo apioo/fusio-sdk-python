@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload to request a refreshed authentication token
 class ConsumerUserRefresh(BaseModel):
     refresh_token: Optional[str] = Field(default=None, alias="refresh_token")
 

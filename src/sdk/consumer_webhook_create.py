@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload for registering a new webhook subscription
 class ConsumerWebhookCreate(BaseModel):
     event: Optional[str] = Field(default=None, alias="event")
     name: Optional[str] = Field(default=None, alias="name")

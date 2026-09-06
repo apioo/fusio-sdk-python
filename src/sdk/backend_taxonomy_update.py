@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_taxonomy import BackendTaxonomy
 
 
+# Payload for updating an existing taxonomy node
 class BackendTaxonomyUpdate(BackendTaxonomy):
     pass
 

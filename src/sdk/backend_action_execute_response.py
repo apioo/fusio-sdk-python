@@ -12,6 +12,7 @@ from .backend_action_execute_response_body import BackendActionExecuteResponseBo
 
 # Represents an action execution response
 class BackendActionExecuteResponse(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     status_code: Optional[int] = Field(default=None, alias="statusCode")
     headers: Optional[BackendActionExecuteResponseHeaders] = Field(default=None, alias="headers")
     body: Optional[BackendActionExecuteResponseBody] = Field(default=None, alias="body")

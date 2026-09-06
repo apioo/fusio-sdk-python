@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_operation import BackendOperation
 
 
+# Payload for creating a new operation entity
 class BackendOperationCreate(BackendOperation):
     pass
 

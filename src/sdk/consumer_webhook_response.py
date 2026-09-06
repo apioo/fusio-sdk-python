@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Recorded delivery log response for a webhook dispatch
 class ConsumerWebhookResponse(BaseModel):
     status: Optional[int] = Field(default=None, alias="status")
     code: Optional[int] = Field(default=None, alias="code")

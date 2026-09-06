@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_scope import BackendScope
 
 
+# Payload for updating an existing scope entity
 class BackendScopeUpdate(BackendScope):
     pass
 

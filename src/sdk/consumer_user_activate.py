@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload used to activate a user account via token
 class ConsumerUserActivate(BaseModel):
     token: Optional[str] = Field(default=None, alias="token")
 

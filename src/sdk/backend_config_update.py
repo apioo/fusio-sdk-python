@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_config import BackendConfig
 
 
+# Payload for updating a system configuration entry
 class BackendConfigUpdate(BackendConfig):
     pass
 

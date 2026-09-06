@@ -10,7 +10,9 @@ import datetime
 from .consumer_plan import ConsumerPlan
 
 
+# Billing transaction record for quota or subscription purchases
 class ConsumerTransaction(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     user_id: Optional[int] = Field(default=None, alias="userId")
     plan_id: Optional[int] = Field(default=None, alias="planId")

@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_log import ConsumerLog
 
 
+# Collection of access log records
 class ConsumerLogCollection(CommonCollection[ConsumerLog]):
     pass
 

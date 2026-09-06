@@ -10,7 +10,9 @@ import datetime
 from .consumer_app import ConsumerApp
 
 
+# Represents user authorization granted to a consumer application
 class ConsumerGrant(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     app: Optional[ConsumerApp] = Field(default=None, alias="app")
     create_date: Optional[datetime.datetime] = Field(default=None, alias="createDate")

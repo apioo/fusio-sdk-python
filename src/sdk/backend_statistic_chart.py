@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_statistic_chart_series import BackendStatisticChartSeries
 
 
+# Represents dataset structures formatted for rendering statistic charts
 class BackendStatisticChart(BaseModel):
     labels: Optional[List[str]] = Field(default=None, alias="labels")
     series: Optional[List[BackendStatisticChartSeries]] = Field(default=None, alias="series")

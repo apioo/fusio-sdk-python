@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_role import BackendRole
 
 
+# Payload for updating an existing user role entity
 class BackendRoleUpdate(BackendRole):
     pass
 

@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .common_metadata import CommonMetadata
 
 
+# Represents a consumer application registered by a user
 class ConsumerApp(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     user_id: Optional[int] = Field(default=None, alias="userId")
     status: Optional[int] = Field(default=None, alias="status")

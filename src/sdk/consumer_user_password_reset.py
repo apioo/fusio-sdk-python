@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload for completing a password reset
 class ConsumerUserPasswordReset(BaseModel):
     token: Optional[str] = Field(default=None, alias="token")
     new_password: Optional[str] = Field(default=None, alias="newPassword")

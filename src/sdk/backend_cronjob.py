@@ -13,6 +13,7 @@ from .backend_cronjob_error import BackendCronjobError
 
 # This object represents a cronjob which can invoke an action at a specific interval
 class BackendCronjob(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     cron: Optional[str] = Field(default=None, alias="cron")

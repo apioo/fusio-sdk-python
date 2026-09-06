@@ -11,6 +11,7 @@ from .backend_statistic_chart import BackendStatisticChart
 
 # Represents an object containing all widget data for the dashboard
 class BackendDashboard(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     errors_per_operation: Optional[BackendStatisticChart] = Field(default=None, alias="errorsPerOperation")
     incoming_requests: Optional[BackendStatisticChart] = Field(default=None, alias="incomingRequests")
     incoming_transactions: Optional[BackendStatisticChart] = Field(default=None, alias="incomingTransactions")

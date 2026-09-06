@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Response container for a generated schema code preview
 class BackendSchemaPreviewResponse(BaseModel):
     preview: Optional[str] = Field(default=None, alias="preview")
 

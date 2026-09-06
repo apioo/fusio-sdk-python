@@ -12,6 +12,7 @@ from .backend_log_error import BackendLogError
 
 # This object represents a log entry. Every HTTP requests to the system generates such a log entry.
 class BackendLog(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     ip: Optional[str] = Field(default=None, alias="ip")
     user_agent: Optional[str] = Field(default=None, alias="userAgent")

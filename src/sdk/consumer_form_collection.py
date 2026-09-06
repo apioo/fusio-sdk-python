@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_form import ConsumerForm
 
 
+# Collection of dynamic form definitions
 class ConsumerFormCollection(CommonCollection[ConsumerForm]):
     pass
 

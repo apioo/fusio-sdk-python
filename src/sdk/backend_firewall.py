@@ -12,6 +12,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a firewall rule which blocks specific IP addresses
 class BackendFirewall(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     type: Optional[int] = Field(default=None, alias="type")

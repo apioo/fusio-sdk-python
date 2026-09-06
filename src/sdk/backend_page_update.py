@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_page import BackendPage
 
 
+# Payload for updating an existing portal page
 class BackendPageUpdate(BackendPage):
     pass
 

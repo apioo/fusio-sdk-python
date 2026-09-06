@@ -13,6 +13,7 @@ from .backend_action_config import BackendActionConfig
 
 # An action commit which represents a change in the action configuration
 class BackendActionCommit(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     user: Optional[BackendUser] = Field(default=None, alias="user")
     commit_hash: Optional[str] = Field(default=None, alias="commitHash")

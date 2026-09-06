@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Payload defining target format and configuration for triggering an SDK generation run
 class BackendSdkGenerate(BaseModel):
     format: Optional[str] = Field(default=None, alias="format")
     config: Optional[str] = Field(default=None, alias="config")

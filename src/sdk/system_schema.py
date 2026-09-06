@@ -11,6 +11,7 @@ from .system_schema_form import SystemSchemaForm
 
 
 class SystemSchema(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     schema_: Optional[SystemSchemaTypeSchema] = Field(default=None, alias="schema")
     form: Optional[SystemSchemaForm] = Field(default=None, alias="form")
 

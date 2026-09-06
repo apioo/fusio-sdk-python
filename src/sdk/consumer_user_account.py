@@ -11,7 +11,9 @@ from .consumer_user_plan import ConsumerUserPlan
 from .common_metadata import CommonMetadata
 
 
+# User profile and subscription status details
 class ConsumerUserAccount(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     plan_id: Optional[int] = Field(default=None, alias="planId")
     status: Optional[int] = Field(default=None, alias="status")

@@ -10,6 +10,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 
 # This object represents a taxonomy. A taxonomy helps to internally organize operations, actions and other entities
 class BackendTaxonomy(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     parent_id: Optional[int] = Field(default=None, alias="parentId")
     name: Optional[str] = Field(default=None, alias="name")

@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Represents an aggregated count metric over a specific timeframe
 class BackendStatisticCount(BaseModel):
     count: Optional[int] = Field(default=None, alias="count")
     from_: Optional[datetime.datetime] = Field(default=None, alias="from")

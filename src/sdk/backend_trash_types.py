@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# List of available entity types that can be restored from the trash
 class BackendTrashTypes(BaseModel):
     types: Optional[List[str]] = Field(default=None, alias="types")
 

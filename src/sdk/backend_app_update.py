@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_app import BackendApp
 
 
+# Payload for updating an existing consumer application
 class BackendAppUpdate(BackendApp):
     pass
 

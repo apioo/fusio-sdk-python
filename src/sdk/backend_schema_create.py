@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_schema import BackendSchema
 
 
+# Payload for creating a new schema definition
 class BackendSchemaCreate(BackendSchema):
     pass
 

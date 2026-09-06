@@ -11,6 +11,7 @@ import datetime
 
 # This object represents a token, this an access token which was requested by a user
 class BackendToken(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     name: Optional[str] = Field(default=None, alias="name")

@@ -9,7 +9,9 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 import datetime
 
 
+# Access log entry recording an incoming HTTP request
 class ConsumerLog(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     app_id: Optional[int] = Field(default=None, alias="appId")
     ip: Optional[str] = Field(default=None, alias="ip")

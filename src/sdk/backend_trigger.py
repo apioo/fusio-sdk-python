@@ -11,6 +11,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a trigger which can invoke an action on a custom event
 class BackendTrigger(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     event: Optional[str] = Field(default=None, alias="event")

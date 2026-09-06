@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Credentials payload for user login
 class ConsumerUserLogin(BaseModel):
     username: Optional[str] = Field(default=None, alias="username")
     password: Optional[str] = Field(default=None, alias="password")

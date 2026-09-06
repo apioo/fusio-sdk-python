@@ -11,6 +11,7 @@ from .backend_agent_tool import BackendAgentTool
 
 # Represents a collection of available tools
 class BackendAgentTools(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     tools: Optional[List[BackendAgentTool]] = Field(default=None, alias="tools")
 
 

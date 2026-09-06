@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Mapping defining access permissions for a specific operation within a scope
 class BackendScopeOperation(BaseModel):
     operation_id: Optional[int] = Field(default=None, alias="operationId")
     allow: Optional[bool] = Field(default=None, alias="allow")

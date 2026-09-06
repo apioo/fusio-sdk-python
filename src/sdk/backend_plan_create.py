@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_plan import BackendPlan
 
 
+# Payload for creating a new subscription or point plan
 class BackendPlanCreate(BackendPlan):
     pass
 

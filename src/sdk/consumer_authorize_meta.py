@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .consumer_scope import ConsumerScope
 
 
+# Metadata for an OAuth authorization request screen
 class ConsumerAuthorizeMeta(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
     url: Optional[str] = Field(default=None, alias="url")

@@ -11,6 +11,7 @@ from .backend_connection_index_entry import BackendConnectionIndexEntry
 
 # Contains all possible classes which can be used at an connection as class
 class BackendConnectionIndex(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     connections: Optional[List[BackendConnectionIndexEntry]] = Field(default=None, alias="connections")
 
 

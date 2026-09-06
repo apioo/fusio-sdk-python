@@ -11,6 +11,7 @@ from .common_metadata import CommonMetadata
 
 # This object represents a form which helps to dynamically generate a form at a frontend app
 class BackendForm(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     status: Optional[int] = Field(default=None, alias="status")
     name: Optional[str] = Field(default=None, alias="name")

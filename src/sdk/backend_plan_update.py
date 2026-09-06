@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_plan import BackendPlan
 
 
+# Payload for updating an existing plan definition
 class BackendPlanUpdate(BackendPlan):
     pass
 

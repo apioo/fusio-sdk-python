@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Request payload to launch the billing management portal
 class ConsumerPaymentPortalRequest(BaseModel):
     return_url: Optional[str] = Field(default=None, alias="returnUrl")
 

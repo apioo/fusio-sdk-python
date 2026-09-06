@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_firewall import BackendFirewall
 
 
+# Payload for updating an existing firewall rule
 class BackendFirewallUpdate(BackendFirewall):
     pass
 

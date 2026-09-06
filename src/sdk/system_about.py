@@ -11,6 +11,7 @@ from .system_about_link import SystemAboutLink
 
 
 class SystemAbout(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     api_version: Optional[str] = Field(default=None, alias="apiVersion")
     title: Optional[str] = Field(default=None, alias="title")
     description: Optional[str] = Field(default=None, alias="description")

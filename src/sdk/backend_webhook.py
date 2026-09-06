@@ -11,6 +11,7 @@ from .backend_webhook_response import BackendWebhookResponse
 
 # This object represents a webhook, a webhook is called in case a specific event was triggered
 class BackendWebhook(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     event_id: Optional[int] = Field(default=None, alias="eventId")
     user_id: Optional[int] = Field(default=None, alias="userId")

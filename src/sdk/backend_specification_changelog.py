@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Represents structural changelog differences between specification versions
 class BackendSpecificationChangelog(BaseModel):
     master: Optional[Any] = Field(default=None, alias="master")
     tag: Optional[Any] = Field(default=None, alias="tag")

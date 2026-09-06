@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_action_execute_request import BackendActionExecuteRequest
 
 
+# Configuration parameters for executing a test run
 class BackendTestConfig(BackendActionExecuteRequest):
     pass
 

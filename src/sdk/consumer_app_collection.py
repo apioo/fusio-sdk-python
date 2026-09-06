@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_app import ConsumerApp
 
 
+# Collection of consumer applications
 class ConsumerAppCollection(CommonCollection[ConsumerApp]):
     pass
 

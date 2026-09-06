@@ -11,6 +11,7 @@ from .backend_bundle_config import BackendBundleConfig
 
 # This object represents a bundle which contains action, schema, event, cronjob and trigger configurations from you local instance
 class BackendBundle(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     name: Optional[str] = Field(default=None, alias="name")
     version: Optional[str] = Field(default=None, alias="version")

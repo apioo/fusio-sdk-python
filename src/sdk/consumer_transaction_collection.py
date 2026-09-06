@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_transaction import ConsumerTransaction
 
 
+# Collection of transaction records
 class ConsumerTransactionCollection(CommonCollection[ConsumerTransaction]):
     pass
 

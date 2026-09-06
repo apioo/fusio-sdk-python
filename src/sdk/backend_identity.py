@@ -11,6 +11,7 @@ from .backend_identity_config import BackendIdentityConfig
 
 # This object represents an identity which allows to authenticate with a remote identity provider
 class BackendIdentity(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     app_id: Optional[int] = Field(default=None, alias="appId")
     role_id: Optional[int] = Field(default=None, alias="roleId")

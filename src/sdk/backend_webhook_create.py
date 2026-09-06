@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_webhook import BackendWebhook
 
 
+# Request payload to create a new webhook subscription
 class BackendWebhookCreate(BackendWebhook):
     pass
 

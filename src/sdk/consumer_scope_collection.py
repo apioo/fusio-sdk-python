@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_scope import ConsumerScope
 
 
+# Collection of API permission scopes
 class ConsumerScopeCollection(CommonCollection[ConsumerScope]):
     pass
 

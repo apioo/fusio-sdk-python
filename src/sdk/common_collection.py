@@ -11,6 +11,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 # Base collection
 T = TypeVar("T")
 class CommonCollection(BaseModel, Generic[T]):
+    kind: Optional[str] = Field(default=None, alias="kind")
     total_results: Optional[int] = Field(default=None, alias="totalResults")
     start_index: Optional[int] = Field(default=None, alias="startIndex")
     items_per_page: Optional[int] = Field(default=None, alias="itemsPerPage")

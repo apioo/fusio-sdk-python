@@ -10,6 +10,7 @@ from .common_collection import CommonCollection
 from .consumer_token import ConsumerToken
 
 
+# Collection of personal access tokens
 class ConsumerTokenCollection(CommonCollection[ConsumerToken]):
     pass
 

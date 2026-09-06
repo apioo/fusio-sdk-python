@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_generator_provider_config import BackendGeneratorProviderConfig
 
 
+# Configuration object used to invoke a schema/operation generator
 class BackendGeneratorProvider(BaseModel):
     path: Optional[str] = Field(default=None, alias="path")
     scopes: Optional[List[str]] = Field(default=None, alias="scopes")

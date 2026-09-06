@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_form import BackendForm
 
 
+# Payload for creating a new form definition
 class BackendFormCreate(BackendForm):
     pass
 

@@ -8,6 +8,7 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Container delivering the compiled API specification schema object
 class BackendSpecificationGet(BaseModel):
     spec: Optional[Any] = Field(default=None, alias="spec")
 

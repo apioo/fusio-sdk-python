@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_agent import BackendAgent
 
 
+# Payload for creating a new AI agent
 class BackendAgentCreate(BackendAgent):
     pass
 

@@ -17,6 +17,7 @@ from .agent_item_tool_call import AgentItemToolCall
 
 # This object represents an agent message
 class BackendAgentMessage(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     id: Optional[int] = Field(default=None, alias="id")
     chat_id: Optional[str] = Field(default=None, alias="chatId")
     role: Optional[str] = Field(default=None, alias="role")

@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_trigger import BackendTrigger
 
 
+# Request payload to update an existing trigger
 class BackendTriggerUpdate(BackendTrigger):
     pass
 

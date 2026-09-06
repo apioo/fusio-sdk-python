@@ -10,6 +10,7 @@ from .system_route_path import SystemRoutePath
 
 
 class SystemRoute(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     routes: Optional[SystemRoutePath] = Field(default=None, alias="routes")
 
 

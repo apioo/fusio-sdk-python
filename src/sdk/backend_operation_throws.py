@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from collections import UserDict
 
 
+# Map of HTTP error status codes to target schema names
 class BackendOperationThrows(UserDict[str, str]):
     @classmethod
     def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:

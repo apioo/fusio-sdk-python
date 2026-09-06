@@ -9,6 +9,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 from .backend_category import BackendCategory
 
 
+# Payload for creating a new category
 class BackendCategoryCreate(BackendCategory):
     pass
 

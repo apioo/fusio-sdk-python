@@ -8,7 +8,9 @@ from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 
 
+# Response structure detailing the outcome of an SDK generation job
 class BackendSdkMessage(BaseModel):
+    kind: Optional[str] = Field(default=None, alias="kind")
     success: Optional[bool] = Field(default=None, alias="success")
     message: Optional[str] = Field(default=None, alias="message")
     link: Optional[str] = Field(default=None, alias="link")
