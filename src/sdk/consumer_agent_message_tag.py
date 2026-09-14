@@ -22,7 +22,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
         super().__init__(http_client, parser)
 
 
-    def get_all(self, agent_id: str, chat_id: str) -> ConsumerAgentMessageCollection:
+    def get_all(self, agent_id: str, ref_id: int, chat_id: str) -> ConsumerAgentMessageCollection:
         """
         Returns a paginated list of agent messages
         """
@@ -31,6 +31,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
             path_params['agent_id'] = agent_id
 
             query_params = {}
+            query_params['ref_id'] = ref_id
             query_params['chat_id'] = chat_id
 
             query_struct_names = []
@@ -60,7 +61,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def submit(self, agent_id: str, payload: AgentInput) -> AgentOutput:
+    def submit(self, agent_id: str, payload: AgentInput, ref_id: int) -> AgentOutput:
         """
         Submits a new agent message
         """
@@ -69,6 +70,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
             path_params['agent_id'] = agent_id
 
             query_params = {}
+            query_params['ref_id'] = ref_id
 
             query_struct_names = []
 
