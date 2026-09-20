@@ -72,10 +72,10 @@ response = client.backend().agent().getAll(1, 1, "search")
 response = client.backend().agent().getTools()
 
 # Returns a paginated list of agent messages.
-response = client.backend().agent().message().getAll("agent_id", "chat_id")
+response = client.backend().agent().message().getAll("agent_id", 1, "chat_id")
 
 # Submits a new agent message.
-response = client.backend().agent().message().submit("agent_id", Agent_Input())
+response = client.backend().agent().message().submit("agent_id", 1, Agent_Input())
 
 # Updates an existing agent.
 response = client.backend().agent().update("agent_id", Backend_AgentUpdate())
@@ -705,10 +705,10 @@ response = client.consumer().agent().get("agent_id")
 response = client.consumer().agent().getAll(1, 1, "search")
 
 # Returns a paginated list of agent messages.
-response = client.consumer().agent().message().getAll("agent_id", "chat_id")
+response = client.consumer().agent().message().getAll("agent_id", 1, "chat_id")
 
 # Submits a new agent message.
-response = client.consumer().agent().message().submit("agent_id", Agent_Input())
+response = client.consumer().agent().message().submit("agent_id", 1, Agent_Input())
 
 # Creates a new app for the authenticated user.
 response = client.consumer().app().create(Consumer_AppCreate())
