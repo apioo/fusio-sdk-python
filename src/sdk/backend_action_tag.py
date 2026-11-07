@@ -218,7 +218,7 @@ class BackendActionTag(sdkgen.TagAbstract):
         except RequestException as e:
             raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
 
-    def get_classes(self) -> BackendActionIndex:
+    def get_classes(self, marketplace: bool, start_index: int, search: str) -> BackendActionIndex:
         """
         Returns all available action classes
         """
@@ -226,6 +226,9 @@ class BackendActionTag(sdkgen.TagAbstract):
             path_params = {}
 
             query_params = {}
+            query_params['marketplace'] = marketplace
+            query_params['startIndex'] = start_index
+            query_params['search'] = search
 
             query_struct_names = []
 
