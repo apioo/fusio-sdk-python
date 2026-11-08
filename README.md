@@ -45,7 +45,7 @@ response = client.backend().action().get("action_id")
 response = client.backend().action().getAll(1, 1, "search")
 
 # Returns all available action classes.
-response = client.backend().action().getClasses()
+response = client.backend().action().getClasses(True, 1, "search")
 
 # Returns a paginated list of action commits.
 response = client.backend().action().getCommits("action_id", 1, 1, "search")
