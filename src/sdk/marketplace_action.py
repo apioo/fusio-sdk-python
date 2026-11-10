@@ -7,24 +7,12 @@ from pydantic import BaseModel, Field, GetCoreSchemaHandler, Tag
 from pydantic_core import CoreSchema, core_schema
 from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union, Literal
 from .marketplace_object import MarketplaceObject
-from .form_element import FormElement
 from .marketplace_action_config import MarketplaceActionConfig
-from .form_element_action import FormElementAction
-from .form_element_agent import FormElementAgent
-from .form_element_checkbox import FormElementCheckbox
-from .form_element_collection import FormElementCollection
-from .form_element_connection import FormElementConnection
-from .form_element_input import FormElementInput
-from .form_element_map import FormElementMap
-from .form_element_select import FormElementSelect
-from .form_element_text_area import FormElementTextArea
-from .form_element_type_api import FormElementTypeAPI
-from .form_element_type_schema import FormElementTypeSchema
 
 
 class MarketplaceAction(MarketplaceObject):
     class_: Optional[str] = Field(default=None, alias="class")
-    form: List[Annotated[Union["FormElementAction", "FormElementAgent", "FormElementCheckbox", "FormElementCollection", "FormElementConnection", "FormElementInput", "FormElementMap", "FormElementSelect", "FormElementTextArea", "FormElementTypeAPI", "FormElementTypeSchema"], Field(discriminator="type")]] = Field(alias="form")
+    form: Optional[Any] = Field(default=None, alias="form")
     config: Optional[MarketplaceActionConfig] = Field(default=None, alias="config")
 
 
