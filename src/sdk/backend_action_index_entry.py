@@ -11,6 +11,7 @@ from typing import Any, Dict, Generic, List, Optional, TypeVar, Annotated, Union
 # Represents a concrete action class
 class BackendActionIndexEntry(BaseModel):
     name: Optional[str] = Field(default=None, alias="name")
+    description: Optional[str] = Field(default=None, alias="description")
     class_: Optional[str] = Field(default=None, alias="class")
 
 

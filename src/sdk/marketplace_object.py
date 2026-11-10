@@ -13,6 +13,7 @@ from .marketplace_user import MarketplaceUser
 # Base class of all objects on the marketplace
 class MarketplaceObject(BaseModel):
     id: Optional[int] = Field(default=None, alias="id")
+    visibility: Optional[int] = Field(default=None, alias="visibility")
     name: Optional[str] = Field(default=None, alias="name")
     author: Optional[MarketplaceUser] = Field(default=None, alias="author")
     version: Optional[str] = Field(default=None, alias="version")
