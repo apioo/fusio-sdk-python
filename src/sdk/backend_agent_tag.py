@@ -15,6 +15,7 @@ from .backend_agent import BackendAgent
 from .backend_agent_collection import BackendAgentCollection
 from .backend_agent_create import BackendAgentCreate
 from .backend_agent_message_tag import BackendAgentMessageTag
+from .backend_agent_task_tag import BackendAgentTaskTag
 from .backend_agent_tools import BackendAgentTools
 from .backend_agent_update import BackendAgentUpdate
 from .common_message import CommonMessage
@@ -26,6 +27,12 @@ class BackendAgentTag(sdkgen.TagAbstract):
 
     def message(self) -> BackendAgentMessageTag:
         return BackendAgentMessageTag(
+            self.http_client,
+            self.parser
+        )
+
+    def task(self) -> BackendAgentTaskTag:
+        return BackendAgentTaskTag(
             self.http_client,
             self.parser
         )
