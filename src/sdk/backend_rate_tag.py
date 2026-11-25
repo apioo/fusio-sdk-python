@@ -73,7 +73,7 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/rate/$rate_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/rate/:rate_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -110,7 +110,7 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/rate/$rate_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/rate/:rate_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -186,7 +186,7 @@ class BackendRateTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/rate/$rate_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/rate/:rate_id', path_params)
 
             options = {}
             options['headers'] = {}

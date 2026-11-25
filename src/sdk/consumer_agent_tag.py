@@ -40,7 +40,7 @@ class ConsumerAgentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/agent/$agent_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/consumer/agent/:agent_id', path_params)
 
             options = {}
             options['headers'] = {}

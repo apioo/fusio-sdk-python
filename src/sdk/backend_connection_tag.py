@@ -111,7 +111,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/connection/:connection_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -148,7 +148,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/connection/:connection_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -224,7 +224,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/list', path_params)
+            url = self.parser.url('/backend/capability/connection/list', path_params)
 
             options = {}
             options['headers'] = {}
@@ -261,7 +261,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/form', path_params)
+            url = self.parser.url('/backend/capability/connection/form', path_params)
 
             options = {}
             options['headers'] = {}
@@ -335,7 +335,7 @@ class BackendConnectionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/connection/$connection_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/connection/:connection_id', path_params)
 
             options = {}
             options['headers'] = {}

@@ -75,7 +75,7 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/schema/:schema_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -112,7 +112,7 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/schema/:schema_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -192,7 +192,7 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>/commit', path_params)
+            url = self.parser.url('/backend/schema/:schema_id/commit', path_params)
 
             options = {}
             options['headers'] = {}
@@ -229,7 +229,7 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/schema/preview/:schema_id', path_params)
+            url = self.parser.url('/backend/schema/:schema_id/preview', path_params)
 
             options = {}
             options['headers'] = {}
@@ -266,7 +266,7 @@ class BackendSchemaTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/schema/$schema_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/schema/:schema_id', path_params)
 
             options = {}
             options['headers'] = {}

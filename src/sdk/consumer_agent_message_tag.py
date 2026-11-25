@@ -36,7 +36,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/agent/$agent_id<[0-9]+|^~>/message', path_params)
+            url = self.parser.url('/consumer/agent/:agent_id/message', path_params)
 
             options = {}
             options['headers'] = {}
@@ -74,7 +74,7 @@ class ConsumerAgentMessageTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/agent/$agent_id<[0-9]+|^~>/message', path_params)
+            url = self.parser.url('/consumer/agent/:agent_id/message', path_params)
 
             options = {}
             options['headers'] = {}

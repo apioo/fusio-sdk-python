@@ -23,6 +23,7 @@ from .backend_config_tag import BackendConfigTag
 from .backend_connection_tag import BackendConnectionTag
 from .backend_cronjob_tag import BackendCronjobTag
 from .backend_dashboard_tag import BackendDashboardTag
+from .backend_error_tag import BackendErrorTag
 from .backend_event_tag import BackendEventTag
 from .backend_firewall_tag import BackendFirewallTag
 from .backend_form_tag import BackendFormTag
@@ -122,6 +123,12 @@ class BackendTag(sdkgen.TagAbstract):
 
     def dashboard(self) -> BackendDashboardTag:
         return BackendDashboardTag(
+            self.http_client,
+            self.parser
+        )
+
+    def error(self) -> BackendErrorTag:
+        return BackendErrorTag(
             self.http_client,
             self.parser
         )

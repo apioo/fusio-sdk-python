@@ -35,7 +35,7 @@ class BackendAgentTaskTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>/task/:task_id', path_params)
+            url = self.parser.url('/backend/agent/:agent_id/task/:task_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -73,7 +73,7 @@ class BackendAgentTaskTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>/task', path_params)
+            url = self.parser.url('/backend/agent/:agent_id/task', path_params)
 
             options = {}
             options['headers'] = {}
@@ -113,7 +113,7 @@ class BackendAgentTaskTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>/task/:task_id', path_params)
+            url = self.parser.url('/backend/agent/:agent_id/task/:task_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -152,7 +152,7 @@ class BackendAgentTaskTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>/task', path_params)
+            url = self.parser.url('/backend/agent/:agent_id/task', path_params)
 
             options = {}
             options['headers'] = {}

@@ -34,7 +34,7 @@ class BackendConfigTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/config/$config_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/config/:config_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -110,7 +110,7 @@ class BackendConfigTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/config/$config_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/config/:config_id', path_params)
 
             options = {}
             options['headers'] = {}

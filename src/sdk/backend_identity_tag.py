@@ -75,7 +75,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/identity/$identity_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/identity/:identity_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -112,7 +112,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/identity/$identity_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/identity/:identity_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -187,7 +187,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/identity/list', path_params)
+            url = self.parser.url('/backend/capability/identity/list', path_params)
 
             options = {}
             options['headers'] = {}
@@ -224,7 +224,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/identity/form', path_params)
+            url = self.parser.url('/backend/capability/identity/form', path_params)
 
             options = {}
             options['headers'] = {}
@@ -261,7 +261,7 @@ class BackendIdentityTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/identity/$identity_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/identity/:identity_id', path_params)
 
             options = {}
             options['headers'] = {}

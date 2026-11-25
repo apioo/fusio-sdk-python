@@ -78,7 +78,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/$action_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/action/:action_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -115,7 +115,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/execute/:action_id', path_params)
+            url = self.parser.url('/backend/action/:action_id/execute', path_params)
 
             options = {}
             options['headers'] = {}
@@ -154,7 +154,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/$action_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/action/:action_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -232,7 +232,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/list', path_params)
+            url = self.parser.url('/backend/capability/action/list', path_params)
 
             options = {}
             options['headers'] = {}
@@ -272,7 +272,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/$action_id<[0-9]+|^~>/commit', path_params)
+            url = self.parser.url('/backend/action/:action_id/commit', path_params)
 
             options = {}
             options['headers'] = {}
@@ -309,7 +309,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/form', path_params)
+            url = self.parser.url('/backend/capability/action/form', path_params)
 
             options = {}
             options['headers'] = {}
@@ -346,7 +346,7 @@ class BackendActionTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/action/$action_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/action/:action_id', path_params)
 
             options = {}
             options['headers'] = {}

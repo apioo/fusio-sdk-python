@@ -88,7 +88,7 @@ class BackendAgentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/agent/:agent_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -125,7 +125,7 @@ class BackendAgentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/agent/:agent_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -200,7 +200,7 @@ class BackendAgentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/tools', path_params)
+            url = self.parser.url('/backend/capability/agent/tools', path_params)
 
             options = {}
             options['headers'] = {}
@@ -237,7 +237,7 @@ class BackendAgentTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/agent/$agent_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/agent/:agent_id', path_params)
 
             options = {}
             options['headers'] = {}

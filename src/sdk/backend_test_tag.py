@@ -33,7 +33,7 @@ class BackendTestTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/test/$test_id<[0-9]+>', path_params)
+            url = self.parser.url('/backend/test/:test_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -181,7 +181,7 @@ class BackendTestTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/test/$test_id<[0-9]+>', path_params)
+            url = self.parser.url('/backend/test/:test_id', path_params)
 
             options = {}
             options['headers'] = {}

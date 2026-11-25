@@ -74,7 +74,7 @@ class BackendUserTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/user/$user_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/user/:user_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -111,7 +111,7 @@ class BackendUserTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/user/$user_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/user/:user_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -187,7 +187,7 @@ class BackendUserTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/user/$user_id<[0-9]+|^~>/resend', path_params)
+            url = self.parser.url('/backend/user/:user_id/resend', path_params)
 
             options = {}
             options['headers'] = {}
@@ -226,7 +226,7 @@ class BackendUserTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/user/$user_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/user/:user_id', path_params)
 
             options = {}
             options['headers'] = {}

@@ -13,8 +13,6 @@ from urllib.parse import parse_qs
 
 from .backend_log import BackendLog
 from .backend_log_collection import BackendLogCollection
-from .backend_log_error import BackendLogError
-from .backend_log_error_collection import BackendLogErrorCollection
 from .common_message import CommonMessage
 from .common_message_exception import CommonMessageException
 
@@ -35,7 +33,7 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/log/$log_id<[0-9]+>', path_params)
+            url = self.parser.url('/backend/log/:log_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -97,82 +95,6 @@ class BackendLogTag(sdkgen.TagAbstract):
 
             if response.status_code >= 200 and response.status_code < 300:
                 data = BackendLogCollection.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_all_errors(self, start_index: int, count: int, search: str) -> BackendLogErrorCollection:
-        """
-        Returns a paginated list of log errors
-        """
-        try:
-            path_params = {}
-
-            query_params = {}
-            query_params['startIndex'] = start_index
-            query_params['count'] = count
-            query_params['search'] = search
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/log/error', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendLogErrorCollection.model_validate_json(json_data=response.content)
-
-                return data
-
-            statusCode = response.status_code
-            if statusCode >= 0 and statusCode <= 999:
-                data = CommonMessage.model_validate_json(json_data=response.content)
-
-                raise CommonMessageException(data)
-
-            raise sdkgen.UnknownStatusCodeException('The server returned an unknown status code: ' + str(statusCode))
-        except RequestException as e:
-            raise sdkgen.ClientException('An unknown error occurred: ' + str(e))
-
-    def get_error(self, error_id: str) -> BackendLogError:
-        """
-        Returns a specific error
-        """
-        try:
-            path_params = {}
-            path_params['error_id'] = error_id
-
-            query_params = {}
-
-            query_struct_names = []
-
-            url = self.parser.url('/backend/log/error/$error_id<[0-9]+>', path_params)
-
-            options = {}
-            options['headers'] = {}
-            options['params'] = self.parser.query(query_params, query_struct_names)
-
-
-
-            response = self.http_client.request('GET', url, **options)
-
-            if response.status_code >= 200 and response.status_code < 300:
-                data = BackendLogError.model_validate_json(json_data=response.content)
 
                 return data
 

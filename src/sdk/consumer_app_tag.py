@@ -73,7 +73,7 @@ class ConsumerAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/app/$app_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/consumer/app/:app_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -110,7 +110,7 @@ class ConsumerAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/app/$app_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/consumer/app/:app_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -186,7 +186,7 @@ class ConsumerAppTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/consumer/app/$app_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/consumer/app/:app_id', path_params)
 
             options = {}
             options['headers'] = {}

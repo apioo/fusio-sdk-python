@@ -73,7 +73,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/bundle/$bundle_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/bundle/:bundle_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -110,7 +110,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/bundle/$bundle_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/bundle/:bundle_id', path_params)
 
             options = {}
             options['headers'] = {}
@@ -186,7 +186,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/bundle/$bundle_id<[0-9]+|^~>/publish', path_params)
+            url = self.parser.url('/backend/bundle/:bundle_id/publish', path_params)
 
             options = {}
             options['headers'] = {}
@@ -223,7 +223,7 @@ class BackendBundleTag(sdkgen.TagAbstract):
 
             query_struct_names = []
 
-            url = self.parser.url('/backend/bundle/$bundle_id<[0-9]+|^~>', path_params)
+            url = self.parser.url('/backend/bundle/:bundle_id', path_params)
 
             options = {}
             options['headers'] = {}
